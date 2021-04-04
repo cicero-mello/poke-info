@@ -42,6 +42,7 @@
 
 body {
     margin: 0px;
+    width: 100%;
     min-height: 100vh;
     box-sizing: border-box;
     font-family: Play, -apple-system, sans-serif;
@@ -71,7 +72,10 @@ h5 { margin: 0px; }
 
 p { margin: 0px; }
 
+img { box-sizing: border-box; }
+
 button {
+    font-family: Play, -apple-system, sans-serif;
     cursor: pointer;
     outline: none;
 }

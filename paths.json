@@ -2,9 +2,10 @@
     "compilerOptions": {
         "baseUrl": "./",
         "paths": {
-            "@interfaces": ["src/shared/interfaces/index.ts"],
             "@types": ["src/shared/types/index.ts"],
-            "@components": ["src/components/index.ts"]
+            "@styles": ["src/shared/styles/index.ts"],
+            "@components": ["src/components/index.ts"],
+            "@interfaces": ["src/shared/interfaces/index.ts"]
         }
     }
 }
