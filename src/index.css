@@ -1,13 +1,77 @@
+@font-face {
+    font-family: "Play";
+    src: url("./assets/fonts/play/Play-Regular.ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Play-Bold";
+    src: url("./assets/fonts/play/Play-Bold.ttf");
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Quantico";
+    src: url("./assets/fonts/quantico/Quantico-Regular.ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Quantico-Italic";
+    src: url("./assets/fonts/quantico/Quantico-Italic.ttf");
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Quantico-Bold";
+    src: url("./assets/fonts/quantico/Quantico-Bold.ttf");
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Quantico-Bold-Italic";
+    src: url("./assets/fonts/quantico/Quantico-BoldItalic.ttf");
+    font-style: italic;
+    font-weight: 700;
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    font-family: Play, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background-size: cover;
+    background-position: center;
+    background-image: url("./assets/images/main-background.png");
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace
+    ;
+}
+
+h1 { margin: 0px; }
+
+h2 { margin: 0px; }
+
+h3 { margin: 0px; }
+
+h4 { margin: 0px; }
+
+h5 { margin: 0px; }
+
+p { margin: 0px; }
+
+button {
+    cursor: pointer;
+    outline: none;
 }
