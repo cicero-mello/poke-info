@@ -1,0 +1,49 @@
+@font-face {
+    font-family: "Play";
+    src: url("../../assets/fonts/play/Play-Regular.ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Play-Bold";
+    src: url("../../assets/fonts/play/Play-Bold.ttf");
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Quantico";
+    src: url("../../assets/fonts/quantico/Quantico-Regular.ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Quantico-Italic";
+    src: url("../../assets/fonts/quantico/Quantico-Italic.ttf");
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Quantico-Bold";
+    src: url("../../assets/fonts/quantico/Quantico-Bold.ttf");
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Quantico-Bold-Italic";
+    src: url("../../assets/fonts/quantico/Quantico-BoldItalic.ttf");
+    font-style: italic;
+    font-weight: 700;
+}
+
+body {
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Play, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
