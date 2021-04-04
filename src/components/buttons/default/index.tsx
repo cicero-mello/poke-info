@@ -1,8 +1,14 @@
 import { FunctionComponent } from "react"
+import { ButtonProps } from "./interfaces"
+import * as S from "./styles"
 
-export const Button: FunctionComponent = () => {
+export const Button: FunctionComponent <ButtonProps> = ({
+    theme, text, ...rest
+}) => {
 
     return (
-        <h1>Button</h1>
+        <S.Component theme={theme} {...rest}>
+            {text ?? rest.children}
+        </S.Component>
     )
 }

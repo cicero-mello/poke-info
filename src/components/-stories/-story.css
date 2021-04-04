@@ -1,0 +1,12 @@
+body {
+    min-height: none impo !important;
+    background-image: none !important;
+}
+
+.sb-main-padded {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+}
