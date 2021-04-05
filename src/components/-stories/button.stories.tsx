@@ -1,7 +1,7 @@
 import { Story, Meta } from "@storybook/react"
 import { Button as Component, ButtonProps } from "../buttons"
 import "./-story.css"
-import "../../index.css"
+import "src/index.css"
 
 export default {
     title: 'Components/Buttons/Button',
