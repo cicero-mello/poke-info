@@ -9,6 +9,7 @@ export const Button: FunctionComponent <ButtonProps> = ({
     return (
         <S.Component theme={theme} {...rest}>
             {text ?? rest.children}
+            <S.Underline />
         </S.Component>
     )
 }

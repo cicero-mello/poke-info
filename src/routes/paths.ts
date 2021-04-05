@@ -3,5 +3,6 @@ export const PATHS = {
     NOT_FOUND: "*",
     ABOUT: "/about",
     CANDIES: "/candies",
-    POKEDEX: "/pokedex"
+    POKEDEX: "/pokedex",
+    FIND_POKEMON: "/find-pokemon"
 }
