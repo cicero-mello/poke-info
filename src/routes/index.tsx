@@ -1,8 +1,8 @@
 import { FunctionComponent } from "react"
 import { Route, Switch } from "react-router-dom"
-import * as Screen from "../screens"
 import { PATHS } from "./paths"
-import { PagesContainer } from "../shared"
+import * as Screen from "src/screens"
+import { PagesContainer } from "src/shared/styles"
 
 export const Routes: FunctionComponent = () => {
 

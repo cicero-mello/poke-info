@@ -1,8 +1,8 @@
 import { FunctionComponent, useState,  useEffect } from "react"
 import { useHistory } from "react-router-dom"
-import { PATHS } from "../../routes/paths"
-import { Button } from "../../components"
-import logo from "../../assets/images/logo.png"
+import logo from "src/assets/images/logo.png"
+import { PATHS } from "src/routes/paths"
+import { Button } from "src/components"
 import * as S from "./styles"
 
 export const Home: FunctionComponent = () => {

@@ -1,6 +1,9 @@
 import styled from "styled-components"
 import { ButtonProps } from "../interfaces"
-import { componentStylePerTheme, underlineStylePerTheme } from "./styles"
+import { 
+    componentStylePerTheme, 
+    underlineStylePerTheme
+} from "./styles"
 
 export const Component = styled.button.attrs(
     ({ theme }) => ({ className: `button-${theme}` })
