@@ -93,7 +93,7 @@ export const ButtonContainer = styled.div.attrs({
         padding-top: 5%;
     }
 
-    @media (max-height: 600px){
+    @media (max-height: 653px){
         padding-top: 0%;
         max-width: 500px;
 

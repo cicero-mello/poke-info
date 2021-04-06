@@ -44,6 +44,7 @@ body {
     margin: 0px;
     width: 100%;
     min-height: 100vh;
+    overflow: hidden;
     box-sizing: border-box;
     font-family: Play, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
