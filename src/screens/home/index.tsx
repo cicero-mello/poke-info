@@ -15,8 +15,8 @@ export const Home: FunctionComponent = () => {
         if(!closeScreen) {
             setCloseScreen(true)
             setTimeout(() => {
-                history.push(path, "HOME")
-            }, 400)
+                history.push(path)
+            }, 300)
         }
     }
 

@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react"
 import { Route, Switch } from "react-router-dom"
 import { PATHS } from "./paths"
+import * as C from "src/components"
 import * as Screen from "src/screens"
 import { PagesContainer } from "./styles"
 
@@ -8,6 +9,7 @@ export const Routes: FunctionComponent = () => {
 
     return (
         <PagesContainer>
+            <C.Header />
             <Switch>
                 <Route exact path={PATHS.HOME}>
                     <Screen.Home />
