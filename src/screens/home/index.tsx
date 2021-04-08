@@ -2,7 +2,7 @@ import { FunctionComponent, useState,  useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import logo from "src/assets/images/logo.png"
 import { PATHS } from "src/routes/paths"
-import { Button } from "src/components"
+import { HomeButton } from "src/components"
 import * as S from "./styles"
 
 export const Home: FunctionComponent = () => {
@@ -28,18 +28,15 @@ export const Home: FunctionComponent = () => {
         <S.Page closeScreen={closeScreen} openScreen={openScreen}>
             <S.Image src={logo}/>
             <S.ButtonContainer>
-                <Button 
-                    theme="HOME"
+                <HomeButton
                     text="Where do I find a Pokémon ?"
                     onClick={() => { changeScreen(PATHS.FIND_POKEMON) }}
                 />
-                <Button 
-                    theme="HOME"
+                <HomeButton
                     text="My Pokedex"
                     onClick={() => { changeScreen(PATHS.POKEDEX) }}
                 />
-                <Button 
-                    theme="HOME"
+                <HomeButton
                     text="Candies"
                     onClick={() => { changeScreen(PATHS.CANDIES) }}
                 />

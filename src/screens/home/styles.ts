@@ -8,6 +8,7 @@ interface PageProps {
 export const Page = styled.div.attrs({
     className: "home-page"
 })<PageProps>`
+
     display: flex;
     align-self: center;
     justify-content: space-between;
