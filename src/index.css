@@ -79,4 +79,5 @@ button {
     font-family: Play, -apple-system, sans-serif;
     cursor: pointer;
     outline: none;
+    padding: 0px;
 }

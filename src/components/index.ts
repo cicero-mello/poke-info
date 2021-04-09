@@ -1,5 +1,6 @@
 export * from "./input"
 export * from "./header"
+export * from "./buttons"
 export * from "./pokedex"
 export * from "./buttons"
 export * from "./poke-tag"
