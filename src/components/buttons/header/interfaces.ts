@@ -5,5 +5,4 @@ extends Omit<Button, "className"> {
 
     text?: string
     activated?: boolean
-    automaticActivation?: boolean
 }

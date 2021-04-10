@@ -27,7 +27,7 @@ export const Component = styled.button.attrs({
     word-break: keep-all;
     flex-direction: column;
     background-color: transparent;
-    font-size: 24px;
+    font-size: 19px;
 
     ::before {
         content: ${({ text }) => text && `'${text}'`};
@@ -45,7 +45,7 @@ export const Component = styled.button.attrs({
     }
 `
 
-export const Underline = styled.div.attrs({
+export const Underline = styled.span.attrs({
     className: "header-button-underline"
 })<HeaderButtonProps>`
 

@@ -2,7 +2,16 @@ import styled, { css } from "styled-components"
 
 interface ComponentProps {
     visible: boolean
+    buttonsNeedTransition: boolean
 }
+
+const removingButtonTransition = css`
+    & nav > button {
+        transition: none !important;
+        ::before { transition: none !important; }
+        .header-button-underline { transition: none !important; }
+    }
+`
 
 export const Component = styled.div.attrs({
     className: "header"
@@ -20,7 +29,11 @@ export const Component = styled.div.attrs({
             opacity: 0%;
             pointer-events: none;
         `
-    };
+    }
+
+    ${({ buttonsNeedTransition }) => 
+        !buttonsNeedTransition && removingButtonTransition
+    }
 `
 
 export const Container = styled.div.attrs({
@@ -40,10 +53,23 @@ export const Logo = styled.img.attrs({
 })`
     max-height: 50px;
     cursor: pointer;
-    transition: 0.1s ease-in-out;
     filter: contrast(90%);
 
     :hover {
         filter: contrast(100%);
+    }
+`
+
+export const NavegationContainer = styled.nav.attrs({
+    className: "header-navegation"
+})`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin-top: 7px;
+
+    > button {
+        margin-left: 40px;
     }
 `
