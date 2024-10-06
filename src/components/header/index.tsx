@@ -1,4 +1,4 @@
-import { PATHS } from "@pages"
+import { PATHS } from "@types"
 import { FC } from "react"
 
 export const Header: FC = () => {

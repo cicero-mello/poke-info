@@ -1,6 +1,6 @@
 import { LocationProvider, Router } from "preact-iso"
 import { Layout } from "@layout"
-import { PATHS } from "@pages"
+import { PATHS } from "@types"
 import * as P from "@pages"
 
 const AppRouter = () => (
