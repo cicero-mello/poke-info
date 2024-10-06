@@ -1,6 +1,4 @@
-import { FC } from "react"
-
-export const Berries: FC = () => {
+export const Berries = () => {
 
     return (
         <h1> Berries </h1>

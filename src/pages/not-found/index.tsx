@@ -1,7 +1,6 @@
 import { useDocumentTitle } from "@hooks"
-import { FC } from "react"
 
-export const NotFound: FC = () => {
+export const NotFound = () => {
     useDocumentTitle("404")
 
     return (

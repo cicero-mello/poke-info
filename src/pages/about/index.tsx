@@ -1,6 +1,6 @@
-import { FC } from "react"
 
-export const About: FC = () => {
+
+export const About = () => {
 
     return (
         <h1> About </h1>

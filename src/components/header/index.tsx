@@ -1,7 +1,6 @@
 import { PATHS } from "@types"
-import { FC } from "react"
 
-export const Header: FC = () => {
+export const Header = () => {
 
     return (
         <>

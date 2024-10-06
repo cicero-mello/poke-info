@@ -1,7 +1,6 @@
 import { PATHS } from "@types"
-import { FC } from "react"
 
-export const Pokedex: FC = () => {
+export const Pokedex = () => {
 
     return (
         <>

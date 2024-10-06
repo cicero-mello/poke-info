@@ -1,9 +1,8 @@
-import { FC } from "react"
-import { useRoute } from "preact-iso"
 import { useDocumentTitle } from "@hooks"
 import { useState } from "preact/hooks"
+import { useRoute } from "preact-iso"
 
-export const Pokemon: FC = () => {
+export const Pokemon = () => {
     const  { params } = useRoute()
     const [state, setState] = useState("Loading Pokemon...")
     useDocumentTitle(state)

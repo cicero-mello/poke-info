@@ -1,6 +1,4 @@
-import { FC } from "react"
-
-export const FindPokemon: FC = () => {
+export const FindPokemon = () => {
 
     return (
         <h1> FindPokemon </h1>
