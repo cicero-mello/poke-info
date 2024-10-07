@@ -1,5 +1,5 @@
 import { FunctionComponent } from "preact"
-import { useDocumentTitle } from "@hooks"
+import { NavigationProvider, useDocumentTitle } from "@hooks"
 import { BackgroundImage, Header } from "@components"
 import * as S from "./styles"
 
@@ -11,7 +11,9 @@ export const Layout: FunctionComponent = ({ children }) => {
             <BackgroundImage />
             <Header />
             <S.LayoutWrapper>
-                {children}
+                <NavigationProvider>
+                    {children}
+                </NavigationProvider>
             </S.LayoutWrapper>
         </S.Layout>
     )
