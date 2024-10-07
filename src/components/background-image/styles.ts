@@ -18,6 +18,7 @@ export const Component = styled.img
     width: 100%;
     object-fit: cover;
     z-index: -1;
+    pointer-events: none;
 
     opacity: 0;
     filter: blur(10px);
