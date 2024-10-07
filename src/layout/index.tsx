@@ -9,12 +9,9 @@ export const Layout: FunctionComponent = ({ children }) => {
     return (
         <S.Layout>
             <BackgroundImage />
-            <Header />
-            <S.LayoutWrapper>
-                <NavigationProvider>
-                    {children}
-                </NavigationProvider>
-            </S.LayoutWrapper>
+            <NavigationProvider staticChildren={<Header />}>
+                {children}
+            </NavigationProvider>
         </S.Layout>
     )
 }

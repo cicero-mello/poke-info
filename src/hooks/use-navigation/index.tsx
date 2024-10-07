@@ -1,7 +1,7 @@
 
+import { Navigate, NavigationProviderProps, TransitionState, UseNavigation } from "./types"
 import { createContext, FunctionComponent } from "preact"
 import { FADE_TIME, TransitionWrapper } from "./styles"
-import { Navigate, TransitionState, UseNavigation } from "./types"
 import { useContext, useState } from "preact/hooks"
 import { useLocation } from "preact-iso"
 import { delay } from "@utils"
@@ -15,8 +15,8 @@ const NavigationContext = createContext<UseNavigation>({
  */
 export const useNavigation = () => useContext(NavigationContext)
 
-export const NavigationProvider: FunctionComponent = ({
-    children
+export const NavigationProvider: FunctionComponent<NavigationProviderProps> = ({
+    children, staticChildren
 }) => {
     const { route } = useLocation()
     const [transitionState, setTransitionState] = useState<TransitionState>()
@@ -35,6 +35,7 @@ export const NavigationProvider: FunctionComponent = ({
 
     return (
         <NavigationContext.Provider value={{ navigate }}>
+            {staticChildren && staticChildren}
             <TransitionWrapper $state={transitionState}>
                 {children}
             </TransitionWrapper>

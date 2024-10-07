@@ -14,8 +14,15 @@ const fadeOut = keyframes`
 `
 
 export const TransitionWrapper = styled.div.attrs({
-    class: "transition-wrapper"
+    className: "transition-wrapper"
 })<{ $state: TransitionState }>`${({ $state }) => css`
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+
+    max-width: 1920px;
+    width: calc(100% - 48px);
+    height: 100%;
 
     ${$state === "fadeIn" && css`
         animation: ${fadeIn} ${FADE_TIME}ms forwards;

@@ -1,3 +1,5 @@
+import { ReactNode } from "preact/compat"
+
 export type Navigate = (
     path: string,
     transition?: boolean
@@ -8,3 +10,7 @@ export interface UseNavigation {
 }
 
 export type TransitionState = "fadeIn" | "fadeOut" | undefined
+
+export interface NavigationProviderProps {
+    staticChildren?: ReactNode
+}
