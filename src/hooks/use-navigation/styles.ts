@@ -1,7 +1,7 @@
 import styled, { css, keyframes } from "styled-components"
 import { TransitionState } from "./types"
 
-export const FADE_TIME = 300
+export const FADE_TIME = 600
 
 const fadeIn = keyframes`
     from { opacity: 0; }

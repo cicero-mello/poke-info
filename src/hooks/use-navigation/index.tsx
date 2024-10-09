@@ -1,7 +1,7 @@
 
 import { Navigate, NavigationProviderProps, TransitionState, UseNavigation } from "./types"
 import { createContext, FunctionComponent } from "preact"
-import { FADE_TIME, TransitionWrapper } from "./styles"
+import { TransitionWrapper } from "./styles"
 import { useContext, useState } from "preact/hooks"
 import { useLocation } from "preact-iso"
 import { delay } from "@utils"
@@ -27,10 +27,9 @@ export const NavigationProvider: FunctionComponent<NavigationProviderProps> = ({
             return
         }
         setTransitionState("fadeOut")
-        await delay(FADE_TIME)
+        await delay(10)
         route(path)
         setTransitionState("fadeIn")
-        await delay(FADE_TIME)
     }
 
     return (

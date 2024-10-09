@@ -2,33 +2,53 @@ import { css } from "styled-components"
 import { styleGuide } from "@style-guide"
 import { ButtonTheme, ThemeFunction } from "../types"
 
-const lineGray: ThemeFunction = ($emphasis) => css`
-    ${styleGuide.text["2xl"]}
-
+const line: ThemeFunction = ($emphasis) => css`
     font-family: Play, sans-serif;
+    transition-property: color;
+    transition-duration: ${styleGuide.transitionTime.fast};
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        transition: ${styleGuide.transitionTime.slow};
+        height: 1px;
+        width: 0%;
+        bottom: 0;
+    }
+
+    ${$emphasis && css`
+        &::before {
+            width: 100%;
+        }
+    `}
+`
+
+const lineGray: ThemeFunction = ($emphasis) => css`
+    ${line($emphasis)}
+    ${styleGuide.text.lg}
+
     color: ${styleGuide.color.stoneGray};
 
     ${$emphasis && css`
         color: ${styleGuide.color.skyBlue};
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 8px;
-        text-decoration-color: ${styleGuide.color.skyBlue};
+        &::before {
+            background-color: ${styleGuide.color.skyBlue};
+        }
     `}
 `
 
 const lineWhite: ThemeFunction = ($emphasis) => css`
-    ${styleGuide.text["2xl"]}
+    ${line($emphasis)}
+    ${styleGuide.text.lg}
 
-    font-family: Play, sans-serif;
-    color: ${styleGuide.color.cloudGray};
+    color: ${styleGuide.color.cloudGrayAlpha92};
 
     ${$emphasis && css`
         color: ${styleGuide.color.cornflower};
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 8px;
-        text-decoration-color: ${styleGuide.color.cornflower};
+        &::before {
+            background-color: ${styleGuide.color.cornflower};
+        }
     `}
 `
 
