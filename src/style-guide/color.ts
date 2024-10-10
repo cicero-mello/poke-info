@@ -7,5 +7,7 @@ export enum color {
     slateBlue = "#68779F",
     periwinkle = "#6A89DC",
     cornflower = "#84A4F8",
+    azureBlue = "#507DF4",
     skyBlue = "#4274F3",
+    skyBlueAlpha92 = "#4274F3EB"
 }

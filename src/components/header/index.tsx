@@ -1,5 +1,6 @@
 import { useLayoutEffect, useState } from "preact/hooks"
 import { DesktopNavigation } from "./desktop"
+import { MobileNavigation } from "./mobile"
 import { useLocation } from "preact-iso"
 import { HeaderTheme } from "./types"
 import { Button } from "@components"
@@ -29,7 +30,7 @@ export const Header = () => {
                 <Button navigate={{ path: PATHS.HOME }}>
                     <S.Logo src={logo} />
                 </Button>
-                <DesktopNavigation
+                <MobileNavigation
                     headerTheme={theme}
                     path={path}
                 />

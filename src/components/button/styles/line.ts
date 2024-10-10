@@ -3,6 +3,7 @@ import { styleGuide } from "@style-guide"
 import { ButtonTheme, ThemeFunction } from "../types"
 
 const line: ThemeFunction = ($emphasis) => css`
+    ${styleGuide.text.lg}
     font-family: Play, sans-serif;
     transition-property: color;
     transition-duration: ${styleGuide.transitionTime.fast};
@@ -26,7 +27,6 @@ const line: ThemeFunction = ($emphasis) => css`
 
 const lineGray: ThemeFunction = ($emphasis) => css`
     ${line($emphasis)}
-    ${styleGuide.text.lg}
 
     color: ${styleGuide.color.stoneGray};
 
@@ -40,7 +40,6 @@ const lineGray: ThemeFunction = ($emphasis) => css`
 
 const lineWhite: ThemeFunction = ($emphasis) => css`
     ${line($emphasis)}
-    ${styleGuide.text.lg}
 
     color: ${styleGuide.color.cloudGrayAlpha92};
 

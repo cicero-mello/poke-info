@@ -1,6 +1,6 @@
 import { HeaderTheme } from "../types"
 
-export interface DesktopNavigationProps {
+export interface MobileNavigationProps {
     headerTheme: HeaderTheme
     path: string
 }

@@ -3,7 +3,7 @@ import { styleGuide } from "@style-guide"
 import { ButtonTheme, ThemeFunction } from "../types"
 
 const boldWhite: ThemeFunction = ($emphasis) => css`
-    ${styleGuide.text["2xl"]}
+    ${styleGuide.text.lg}
 
     font-family: Play, sans-serif;
     color: white;
