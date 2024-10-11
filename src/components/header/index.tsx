@@ -1,4 +1,5 @@
 import { useLayoutEffect, useState } from "preact/hooks"
+import { useHeaderLayout } from "./use-header-layout"
 import { DesktopNavigation } from "./desktop"
 import { MobileNavigation } from "./mobile"
 import { useLocation } from "preact-iso"
@@ -12,6 +13,7 @@ import pokeInfoDarkLogo from "@assets/poke-info-dark-logo.svg"
 
 export const Header = () => {
     const [theme, setTheme] = useState<HeaderTheme>("hidden")
+    const headerMode = useHeaderLayout()
     const { path } = useLocation()
 
     const logo = (
@@ -28,12 +30,20 @@ export const Header = () => {
         <S.Component $theme={theme}>
             <S.HeaderContainer>
                 <Button navigate={{ path: PATHS.HOME }}>
-                    <S.Logo src={logo} />
+                    <S.Logo src={logo} alt="PokéInfo"/>
                 </Button>
-                <MobileNavigation
-                    headerTheme={theme}
-                    path={path}
-                />
+                {!headerMode.isMobile &&
+                    <DesktopNavigation
+                        headerTheme={theme}
+                        path={path}
+                    />
+                }
+                {headerMode.isMobile &&
+                    <MobileNavigation
+                        headerTheme={theme}
+                        path={path}
+                    />
+                }
             </S.HeaderContainer>
         </S.Component>
     )

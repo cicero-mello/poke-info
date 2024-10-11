@@ -1,4 +1,4 @@
-import { dimensions } from "./container-dimensions"
+import { dimensions } from "./dimensions"
 import { transitionTime } from "./transition-time"
 import { color } from "./color"
 import { text } from "./text"

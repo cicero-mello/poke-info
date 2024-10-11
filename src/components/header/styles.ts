@@ -1,6 +1,6 @@
+import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 import { HeaderTheme } from "./types"
-import { pxToRem, styleGuide } from "@style-guide"
 
 export const Component = styled.header<{ $theme: HeaderTheme }>`${
 ({ $theme }) => css`
@@ -23,6 +23,7 @@ export const Component = styled.header<{ $theme: HeaderTheme }>`${
 
     ${$theme === "hidden" && css`
         transform: translateY(-4rem);
+        pointer-events: none;
     `}
 `}`
 
@@ -36,6 +37,10 @@ export const HeaderContainer = styled.div`
     max-width: ${styleGuide.dimensions.headerWidth};
     width: 100%;
     min-height: ${pxToRem("64px")};
-    padding: 0px ${styleGuide.dimensions.headerPaddingX};
+    padding: 0px ${styleGuide.dimensions.desktopHeaderPaddingX};
     align-items: center;
+
+    @media (max-width: ${styleGuide.dimensions.mobileWidth}){
+        padding: 0px ${styleGuide.dimensions.mobileHeaderPaddingX};
+    }
 `

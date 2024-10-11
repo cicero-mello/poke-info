@@ -79,7 +79,7 @@ ${({ $theme, $isMenuOpen }) => css`
     top: 100%;
     width: ${pxToRem("168px")};
     height: ${pxToRem("180px")};
-    right: -${styleGuide.dimensions.headerPaddingX};
+    right: -${styleGuide.dimensions.desktopHeaderPaddingX};
     border-radius: 0 0 0 100%;
     gap: ${pxToRem("8px")};
     padding:
@@ -122,4 +122,8 @@ ${({ $theme, $isMenuOpen }) => css`
             opacity: 0;
         }
     `}
+
+    @media (max-width: ${styleGuide.dimensions.mobileWidth}){
+        right: -${styleGuide.dimensions.mobileHeaderPaddingX};
+    }
 `}`

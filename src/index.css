@@ -28,4 +28,5 @@ body {
     display: flex;
     min-height: 100svh;
     background: var(--background-radient);
+    overflow-x: hidden;
 }

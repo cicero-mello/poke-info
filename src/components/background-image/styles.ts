@@ -11,7 +11,7 @@ export const Component = styled.img
 <{ $isLoaded?: boolean }>`${({ $isLoaded }) => css`
 
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
