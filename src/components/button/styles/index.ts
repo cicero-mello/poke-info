@@ -12,7 +12,7 @@ const buttonThemes = new Map([
 ])
 
 export const StyledButton = styled.button.attrs({
-    class: "styled-button"
+    className: "styled-button"
 })<StyledProps>`
     ${({ $theme, $emphasis }) => {
         if(!$theme) return
@@ -22,7 +22,7 @@ export const StyledButton = styled.button.attrs({
 `
 
 export const StyledAnchor = styled.a.attrs({
-    class: "styled-anchor"
+    className: "styled-anchor"
 })<StyledProps>`
     ${({ $theme, $emphasis }) => {
         if(!$theme) return

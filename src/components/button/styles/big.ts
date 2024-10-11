@@ -7,9 +7,10 @@ const bigBlue: ThemeFunction = ($emphasis) => css`
 
     font-family: Quantico, sans-serif;
     color: white;
-
+    text-align: center;
     background-color: ${styleGuide.color.skyBlueAlpha92};
-    padding: ${pxToRem("20px")};
+
+    padding: ${pxToRem("16px")} ${pxToRem("20px")};
     border-radius: ${pxToRem("12px")};
     border: ${pxToRem("2px")} solid ${styleGuide.color.whiteAlpha70};
 
@@ -23,6 +24,11 @@ const bigBlue: ThemeFunction = ($emphasis) => css`
     ${$emphasis && css`
         font-weight: 700;
     `}
+
+    @media(max-width: ${styleGuide.dimensions.mobileWidth}){
+        ${styleGuide.text.base}
+        padding: ${pxToRem("12px")} ${pxToRem("16px")};
+    }
 `
 
 export const bigThemes: Map<

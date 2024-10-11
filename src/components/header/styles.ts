@@ -34,9 +34,9 @@ export const Logo = styled.img`
 export const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
-    max-width: ${styleGuide.dimensions.headerWidth};
+    max-width: ${styleGuide.dimensions.headerContainerWidth};
     width: 100%;
-    min-height: ${pxToRem("64px")};
+    height: ${styleGuide.dimensions.headerHeight};
     padding: 0px ${styleGuide.dimensions.desktopHeaderPaddingX};
     align-items: center;
 

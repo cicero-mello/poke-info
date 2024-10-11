@@ -20,8 +20,7 @@ export const TransitionWrapper = styled.div.attrs({
     flex-direction: column;
     align-self: center;
 
-    max-width: 1920px;
-    width: calc(100% - 48px);
+    width: 100%;
     height: 100%;
 
     ${$state === "fadeIn" && css`
