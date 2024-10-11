@@ -29,7 +29,11 @@ export const Header = () => {
     return (
         <S.Component $theme={theme}>
             <S.HeaderContainer>
-                <Button navigate={{ path: PATHS.HOME }}>
+                <Button
+                    navigate={{ path: PATHS.HOME }}
+                    tabIndex={theme === "hidden" ? -1 : 0}
+                    aria-hidden={theme === "hidden"}
+                >
                     <S.Logo src={logo} alt="PokéInfo"/>
                 </Button>
                 {!headerMode.isMobile &&

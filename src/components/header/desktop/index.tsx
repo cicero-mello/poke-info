@@ -1,9 +1,9 @@
-import { Button } from "@components/button"
-import * as S from "./styles"
-import { PATHS } from "@types"
-import { FunctionComponent } from "preact"
-import { DesktopNavigationProps } from "./types"
 import { ButtonTheme } from "@components/button/types"
+import { DesktopNavigationProps } from "./types"
+import { Button } from "@components/button"
+import { FunctionComponent } from "preact"
+import { PATHS } from "@types"
+import * as S from "./styles"
 
 export const DesktopNavigation: FunctionComponent<DesktopNavigationProps> = ({
     headerTheme, path
@@ -12,36 +12,43 @@ export const DesktopNavigation: FunctionComponent<DesktopNavigationProps> = ({
         headerTheme === "dark" ? "lineWhite" : "lineGray"
     )
 
+    const ariaHidden = headerTheme === "hidden"
+    const tabIndex = ariaHidden ? -1 : 0
+
     return (
         <S.Nav>
             <Button
+                children="Find a Pokémon"
                 theme={buttonTheme}
                 navigate={{ path: PATHS.FIND_POKEMON }}
                 emphasis={path === PATHS.FIND_POKEMON}
-            >
-                Find a Pokémon
-            </Button>
+                tabIndex={tabIndex}
+                aria-hidden={ariaHidden}
+            />
             <Button
+                children="Pokédex"
                 theme={buttonTheme}
                 navigate={{ path: PATHS.POKEDEX }}
                 emphasis={path === PATHS.POKEDEX}
-            >
-                Pokédex
-            </Button>
+                tabIndex={tabIndex}
+                aria-hidden={ariaHidden}
+            />
             <Button
+                children="Berries"
                 theme={buttonTheme}
                 navigate={{ path: PATHS.BERRIES }}
                 emphasis={path === PATHS.BERRIES}
-            >
-                Berries
-            </Button>
+                tabIndex={tabIndex}
+                aria-hidden={ariaHidden}
+            />
             <Button
+                children="About"
                 theme={buttonTheme}
                 navigate={{ path: PATHS.ABOUT }}
                 emphasis={path === PATHS.ABOUT}
-            >
-                About
-            </Button>
+                tabIndex={tabIndex}
+                aria-hidden={ariaHidden}
+            />
         </S.Nav>
     )
 }

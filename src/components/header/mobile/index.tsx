@@ -24,11 +24,16 @@ export const MobileNavigation: FunctionComponent<MobileNavigationProps> = ({
         setIsMenuOpen(false)
     })
 
+    const linkAriaHidden = headerTheme === "hidden" || !isMenuOpen
+    const linkTabIndex = linkAriaHidden ? -1 : 0
+
     return (
         <S.Component ref={navigationRef}>
             <S.MenuButton
                 $isMenuOpen={isMenuOpen}
                 onClick={() => setIsMenuOpen(state => !state)}
+                aria-hidden={headerTheme === "hidden"}
+                tabIndex={headerTheme === "hidden" ? -1 : 0}
             >
                 <S.MenuLine $theme={headerTheme} />
                 <S.MenuLine $theme={headerTheme} />
@@ -39,33 +44,37 @@ export const MobileNavigation: FunctionComponent<MobileNavigationProps> = ({
                 $theme={headerTheme}
             >
                 <Button
+                    children="Find a Pokémon"
                     theme="boldWhite"
                     navigate={{ path: PATHS.FIND_POKEMON }}
                     emphasis={path === PATHS.FIND_POKEMON}
-                >
-                    Find a Pokémon
-                </Button>
+                    aria-hidden={linkAriaHidden}
+                    tabIndex={linkTabIndex}
+                />
                 <Button
+                    children="Pokédex"
                     theme="boldWhite"
                     navigate={{ path: PATHS.POKEDEX }}
                     emphasis={path === PATHS.POKEDEX}
-                >
-                    Pokédex
-                </Button>
+                    aria-hidden={linkAriaHidden}
+                    tabIndex={linkTabIndex}
+                />
                 <Button
+                    children="Berries"
                     theme="boldWhite"
                     navigate={{ path: PATHS.BERRIES }}
                     emphasis={path === PATHS.BERRIES}
-                >
-                    Berries
-                </Button>
+                    aria-hidden={linkAriaHidden}
+                    tabIndex={linkTabIndex}
+                />
                 <Button
+                    children="About"
                     theme="boldWhite"
                     navigate={{ path: PATHS.ABOUT }}
                     emphasis={path === PATHS.ABOUT}
-                >
-                    About
-                </Button>
+                    aria-hidden={linkAriaHidden}
+                    tabIndex={linkTabIndex}
+                />
             </S.Nav>
         </S.Component>
     )
