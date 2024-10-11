@@ -1,6 +1,7 @@
 export enum color {
     charcoal = "#242424",
     whiteAlpha94 = "#FFFFFFF0",
+    whiteAlpha70 = "#FFFFFFB2",
     lightGray = "#F1F1F1",
     cloudGrayAlpha92 = "#E9E9E9EB",
     stoneGray = "#7A7A7A",
@@ -9,5 +10,7 @@ export enum color {
     cornflower = "#84A4F8",
     azureBlue = "#507DF4",
     skyBlue = "#4274F3",
-    skyBlueAlpha92 = "#4274F3EB"
+    skyBlueAlpha92 = "#4274F3EB",
+    royalBlue = "#235CF0",
+    royalBlueAlpha92 = "#235CF0EB"
 }

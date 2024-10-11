@@ -3,9 +3,12 @@ import { StyledProps } from "../types"
 
 import { lineThemes } from "./line"
 import { boldThemes } from "./bold"
+import { bigThemes } from "./big"
 
 const buttonThemes = new Map([
-    ...lineThemes, ...boldThemes
+    ...lineThemes,
+    ...boldThemes,
+    ...bigThemes
 ])
 
 export const StyledButton = styled.button.attrs({

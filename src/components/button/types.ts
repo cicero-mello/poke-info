@@ -1,7 +1,9 @@
 import { HTMLAttributes } from "preact/compat"
 import { RuleSet } from "styled-components"
 
-export type ButtonTheme = "lineGray" | "lineWhite" | "boldWhite"
+export type ButtonTheme = (
+    "lineGray" | "lineWhite" | "boldWhite" | "bigBlue"
+)
 
 export interface ButtonProps extends Omit<
     HTMLAttributes<HTMLElement>,

@@ -14,7 +14,6 @@ export const useHeaderLayout = () => {
 
     useLayoutEffect(() => {
         const onResize = () => {
-            console.log(window.innerWidth)
             const browserRemValue = parseFloat(
                 getComputedStyle(document.documentElement).fontSize
             )
