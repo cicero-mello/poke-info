@@ -1,7 +1,10 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { LocationProvider, Router } from "preact-iso"
 import { Layout } from "@layout"
 import { PATHS } from "@types"
 import * as P from "@pages"
+
+const queryClient = new QueryClient()
 
 const AppRouter = () => (
     <Router>
@@ -15,10 +18,13 @@ const AppRouter = () => (
     </Router>
 )
 
+
 export const App = () => (
     <LocationProvider>
-        <Layout>
-            <AppRouter />
-        </Layout>
+         <QueryClientProvider client={queryClient}>
+            <Layout>
+                <AppRouter />
+            </Layout>
+         </QueryClientProvider>
 	</LocationProvider>
 )

@@ -1,11 +1,33 @@
-import { PATHS } from "@types"
+import { useInfiniteQuery } from "@tanstack/react-query"
+import { Button } from "@components"
+import * as S from "./styles"
+import * as api from "@api"
 
 export const Pokedex = () => {
+    const { data, fetchNextPage, isFetching, isLoading } = useInfiniteQuery({
+        queryKey: ['getPokemons'],
+        queryFn: ({ pageParam = 0 }) => api.getPokemons({page: pageParam, limit: 3}),
+        initialPageParam: 0,
+        getNextPageParam: (lastPage, pages) => {
+            if (lastPage.length === 0) return undefined
+            return pages.length
+        }
+    })
 
     return (
-        <>
-            <h1> Pokedex </h1>
-            <a href={PATHS.POKEDEX + "/bulbasaur"}> bulbasaur </a>
-        </>
+        <S.Screen>
+            <S.Window>
+                <Button
+                    children="Next page"
+                    theme="lineWhite"
+                    onClick={() => fetchNextPage()}
+                />
+                {isLoading ?
+                    <h3>isLoading...</h3> :
+                    <pre>{JSON.stringify(data?.pages, null, 2)}</pre>
+                }
+                {isFetching && <h3>Loading more pokemons...</h3> }
+            </S.Window>
+        </S.Screen>
     )
 }
