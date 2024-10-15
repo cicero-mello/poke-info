@@ -19,7 +19,6 @@ export const Window = styled.main`
     overflow: hidden;
     color: white;
     padding: 98px 6% 0 6%;
-    text-align: justify;
     aspect-ratio: 1248 / 860;
 
     background: linear-gradient(

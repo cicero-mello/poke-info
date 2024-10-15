@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query"
-import { Button } from "@components"
+import { Button, PokemonSearch } from "@components"
 import * as S from "./styles"
 import * as api from "@api"
 
@@ -17,6 +17,10 @@ export const Pokedex = () => {
     return (
         <S.Screen>
             <S.Window>
+                <PokemonSearch
+                    onFind={(pokemonId) => {console.log(pokemonId)}}
+                    label="Search a Pokémon by name or number"
+                />
                 <Button
                     children="Next page"
                     theme="lineWhite"
