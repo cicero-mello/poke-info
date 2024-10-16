@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query"
-import { Button, FavoriteCheckbox, PokemonSearch } from "@components"
+import { Button, FavoriteCheckbox, PokemonSearch, Switch } from "@components"
 import * as S from "./styles"
 import * as api from "@api"
 
@@ -22,10 +22,19 @@ export const Pokedex = () => {
                         onFind={(pokemonId) => {console.log(pokemonId)}}
                         label="Search a Pokémon by name or number"
                     />
-                    <FavoriteCheckbox
-                        label="Only Favorites"
-                        onChange={(checked) => console.log(checked)}
-                    />
+                    <S.RightFilters>
+                        <FavoriteCheckbox
+                            label="Only Favorites"
+                            onChange={(checked) => console.log(checked)}
+                        />
+                        <Switch
+                            label="View Mode"
+                            nameLeft="Simple"
+                            nameRight="Detailed"
+                            defaultValue="Detailed"
+                            onChange={(a) => console.log(a)}
+                        />
+                    </S.RightFilters>
                 </S.Filters>
                 <Button
                     children="Next page"

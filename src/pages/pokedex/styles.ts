@@ -38,3 +38,8 @@ export const Filters = styled.div`
     width: 100%;
     justify-content: space-between;
 `
+
+export const RightFilters = styled.span`
+    display: flex;
+    gap: 38px;
+`
