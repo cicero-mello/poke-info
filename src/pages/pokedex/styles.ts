@@ -32,3 +32,9 @@ export const Window = styled.main`
         height: 50%;
     }
 `
+
+export const Filters = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+`

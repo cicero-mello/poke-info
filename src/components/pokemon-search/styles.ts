@@ -6,7 +6,7 @@ export const Form = styled.form.attrs({
 })`
     display: flex;
     flex-direction: column;
-    gap: ${pxToRem("6px")};
+    gap: ${pxToRem("8px")};
 `
 
 export const Label = styled.label`

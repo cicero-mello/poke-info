@@ -18,6 +18,7 @@ export enum color {
     skyBlueAlpha92 = "#4274F3EB",
     royalBlue = "#235CF0",
     royalBlueAlpha92 = "#235CF0EB",
+    coralRed = "#FF4A4A",
 
     bug = "#A5A823",
     dark = "#505050",
