@@ -6,3 +6,5 @@ export enum PATHS {
     ABOUT = "/about",
     FIND_POKEMON = "/find-pokemon"
 }
+
+export * as PokeApi from "./poke-api"
