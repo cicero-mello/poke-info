@@ -66,7 +66,7 @@ export const Slider = styled.span.attrs({
     left: 0;
 
     transition:
-        ${styleGuide.transitionTime.slow}
+        ${styleGuide.transitionTime.medium}
         ease-in-out
     ;
 

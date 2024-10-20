@@ -1,4 +1,4 @@
-import { styleGuide } from "@style-guide"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled from "styled-components"
 
 export const Screen = styled.div`
@@ -18,7 +18,6 @@ export const Window = styled.main`
     border-radius: 40px;
     overflow: hidden;
     color: white;
-    padding: 98px 6% 0 6%;
     aspect-ratio: 1248 / 860;
 
     background: linear-gradient(
@@ -37,9 +36,23 @@ export const Filters = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-between;
+    padding: 98px 6% 0 6%;
 `
 
 export const RightFilters = styled.span`
     display: flex;
     gap: 38px;
+`
+
+export const PokeCardsContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+    gap: ${pxToRem("36px")} ${pxToRem("44px")};
+    padding: ${pxToRem("16px")} ${pxToRem("48px")};
+
+    margin-top: 28px;
+    padding-top: 32px;
+    overflow-y: scroll;
 `

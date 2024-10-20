@@ -14,6 +14,7 @@ export const getPokemon = async ({
         id: data.id,
         name: data.name,
         imageUrl: data.sprites.other?.["official-artwork"].front_default ?? "",
+        types: data.types.map(type => type.type.name),
         baseStats: data.stats.map((stat) => ({
             name: stat.stat.name,
             value: stat.base_stat

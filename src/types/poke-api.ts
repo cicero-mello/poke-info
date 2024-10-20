@@ -110,12 +110,24 @@ export interface Stat {
     }
 }
 
+export type PokemonType = (
+    "normal" | "fighting" | "flying" | "poison" |
+    "electric" | "psychic" | "ice" | "dragon" |
+    "dark" | "fairy" | "unknown" | "shadow" |
+    "steel" | "fire" | "water" | "grass" |
+    "ground" | "rock" | "bug" | "ghost"
+)
+
 export interface Type {
     slot: number
-    type: NamedAPIResource
+    type: {
+        name: PokemonType
+        url: string
+    }
 }
 
 export interface PastType {
     generation: NamedAPIResource
     types: Type[]
 }
+

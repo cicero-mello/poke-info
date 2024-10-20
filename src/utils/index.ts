@@ -14,3 +14,13 @@ export const normalizePokemonId = (pokemonId: string): string => (
         .replace(/[\u0300-\u036f]/g, "")    // Remove accentuation
         .replace(/[^\w\-]/g, "")            // Remove special characters
 )
+
+export const formatPokeNumber = (pokeNumber: number): string => (
+    "nº " + pokeNumber.toString().padStart(3, '0')
+)
+
+export const capitalize = (str: string): string => {
+    const strArray = str.toLowerCase().split("")
+    strArray[0] = strArray[0].toUpperCase()
+    return strArray.join("")
+}

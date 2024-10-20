@@ -1,5 +1,5 @@
 type validPx =
-    "1px" | "2px" | "3px" | "4px" | "6px" | "8px" | "10px" | "12px" |
+    "1px" | "2px" | "3px" | "4px" | "5px" | "6px" | "7px" | "8px" | "10px" | "12px" |
     "14px" | "16px" | "20px" | "24px" | "25px" | "26px" | "28px" | "30px" | "32px" |
     "36px" | "40px" | "44px" | "48px" | "56px" | "60px" | "64px" |
     "80px" | "96px" | "112px" | "128px" | "144px" | "160px" |

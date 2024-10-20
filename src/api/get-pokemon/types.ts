@@ -6,7 +6,7 @@ export interface GetPokemonParams {
 
 export type GetPokemonApiResponse = PokeApi.Pokemon
 
-export interface BaseStats {
+export interface BaseStat {
     name: PokeApi.StatName
     value: number
 }
@@ -14,6 +14,7 @@ export interface BaseStats {
 export interface GetPokemonResponse {
     id: number
     name: string
-    baseStats: BaseStats[]
+    baseStats: BaseStat[]
     imageUrl: string
+    types: PokeApi.PokemonType[]
 }
