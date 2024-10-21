@@ -21,12 +21,14 @@ export const StatBar: FC<StatBarProps> = ({
 
     return (
         <S.Component>
-            {label &&
-                <S.Label
-                    children={label}
-                    htmlFor={id}
-                />
-            }
+            <S.LabelWrapper $haveLabel={!!label}>
+                {label && (
+                    <label
+                        children={label}
+                        htmlFor={id}
+                    />
+                )}
+            </S.LabelWrapper>
             <S.Progress
                 id={id}
                 $statName={statName}

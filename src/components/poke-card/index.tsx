@@ -7,7 +7,7 @@ import * as S from "./styles"
 import * as api from "@api"
 
 export const PokeCard: FC<PokeCardProps> = ({
-    pokeId
+    pokeId, cardMode
 }) => {
     const { data } = useQuery({
         queryKey: ["getPokemon", pokeId],
@@ -18,7 +18,11 @@ export const PokeCard: FC<PokeCardProps> = ({
     const pokeName = capitalize(data?.name ?? " ")
 
     return (
-        <S.Card $pokemonType={data?.types[0]} id={pokeId}>
+        <S.Card
+            id={pokeId}
+            $cardMode={cardMode}
+            $pokemonType={data?.types[0]}
+        >
             <S.TopArea>
                 <S.PokeNumber children={pokeNumber}/>
                 <S.Image src={data?.imageUrl}/>
@@ -30,8 +34,10 @@ export const PokeCard: FC<PokeCardProps> = ({
                     <S.StatsContainer>
                         {data?.baseStats.map(stat => (
                             <StatBar
+                                key={pokeId + stat.name}
                                 statName={stat.name}
                                 value={stat.value}
+                                withLabel={cardMode === "Detailed"}
                             />
                         ))}
                     </S.StatsContainer>

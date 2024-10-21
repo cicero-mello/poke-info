@@ -1,9 +1,9 @@
 import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
-import { PokeApi } from "@types"
+import { StyledCardProps } from "./types"
 
-export const Card = styled.div<{ $pokemonType?: PokeApi.PokemonType }>`
-${({ $pokemonType = "normal" }) => css`
+export const Card = styled.div<StyledCardProps>`
+${({ $pokemonType = "normal", $cardMode = "Simple" }) => css`
     display: flex;
     position: relative;
     flex-direction: column;
@@ -22,6 +22,10 @@ ${({ $pokemonType = "normal" }) => css`
     user-select: none;
     cursor: pointer;
 
+    transition-property: transform, width, height;
+    transition-duration: ${styleGuide.transitionTime.medium};
+    transition-timing-function: ease-in-out;
+
     .card-content {
         transition-property: border-color, background-color;
         transition-duration: ${styleGuide.transitionTime.medium};
@@ -34,13 +38,13 @@ ${({ $pokemonType = "normal" }) => css`
         }
     }
 
-    transition-property: transform;
-    transition-duration: ${styleGuide.transitionTime.medium};
-    transition-timing-function: ease-in-out;
+
 
     &:hover {
         transform: scale(1.1);
-        .poke-name { color: white; }
+        .poke-name {
+            color: white;
+        }
         .card-content{
             background-color: ${styleGuide.getCardColors($pokemonType).background};
             border-color: ${styleGuide.getCardColors($pokemonType).border};
@@ -49,6 +53,31 @@ ${({ $pokemonType = "normal" }) => css`
             }
         }
     }
+
+    ${$cardMode === "Detailed" && css`
+        height: ${pxToRem("356px")};
+        width: ${pxToRem("210px")};
+
+        .card-content {
+            padding-top: 23%;
+        }
+
+        .stats-container {
+            margin-top: 2%;
+        }
+
+        .stat-bar {
+            transition-property: color;
+            transition-duration: ${styleGuide.transitionTime.medium};
+            transition-timing-function: ease-in-out;
+        }
+
+        &:hover{
+            .stat-bar {
+                color: white;
+            }
+        }
+    `}
 `}`
 
 export const TopArea = styled.div`
@@ -141,10 +170,13 @@ export const PokeName = styled.span.attrs({
     transition-timing-function: ease-out;
 `
 
-export const StatsContainer = styled.div`
+export const StatsContainer = styled.div.attrs({
+    className: "stats-container"
+})`
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     width: 100%;
-    gap: ${pxToRem("8px")};
     padding: 8px 16px;
+    gap: ${pxToRem(`8px`)};
 `

@@ -1,18 +1,26 @@
 import { FavoriteCheckbox, PokeCard, PokemonSearch, Switch } from "@components"
+import { PokeCardMode } from "@components/poke-card/types"
 import { useInfiniteQuery } from "@tanstack/react-query"
+import { useState } from "preact/hooks"
 import * as S from "./styles"
 import * as api from "@api"
 
 export const Pokedex = () => {
     const { data, fetchNextPage, isFetching, isLoading } = useInfiniteQuery({
         queryKey: ['getPokemons'],
-        queryFn: ({ pageParam = 0 }) => api.getPokemons({page: pageParam, limit: 16}),
+        queryFn: ({ pageParam = 0 }) => api.getPokemons({page: pageParam, limit: 1}),
         initialPageParam: 0,
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length === 0) return undefined
             return pages.length
         }
     })
+
+    const [cardMode, setCardMode] = useState<PokeCardMode>("Simple")
+
+    const handleChangeViewMode = (value: string) => {
+        setCardMode(value as PokeCardMode)
+    }
 
     return (
         <S.Screen>
@@ -33,7 +41,7 @@ export const Pokedex = () => {
                             nameLeft="Simple"
                             nameRight="Detailed"
                             defaultValue="Simple"
-                            onChange={(a) => console.log(a)}
+                            onChange={handleChangeViewMode}
                         />
                     </S.RightFilters>
                 </S.Filters>
@@ -42,7 +50,11 @@ export const Pokedex = () => {
                     <S.PokeCardsContainer>
                         {data?.pages.map(pageItems => (
                             pageItems.map(item => (
-                                <PokeCard pokeId={item.pokemonName} />
+                                <PokeCard
+                                    key={item.pokemonName}
+                                    pokeId={item.pokemonName}
+                                    cardMode={cardMode}
+                                />
                             ))
                         ))}
                     </S.PokeCardsContainer>
