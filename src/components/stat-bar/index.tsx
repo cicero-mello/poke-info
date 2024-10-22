@@ -16,13 +16,13 @@ export const StatBar: FC<StatBarProps> = ({
     const label = (
         withLabel ?
         statNameToStatLabel(statName, value, bigMode) :
-        ""
+        undefined
     )
 
     return (
         <S.Component>
             <S.LabelWrapper $haveLabel={!!label}>
-                {label && (
+                {withLabel && (
                     <label
                         children={label}
                         htmlFor={id}

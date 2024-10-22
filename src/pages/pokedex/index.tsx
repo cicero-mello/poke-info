@@ -8,7 +8,7 @@ import * as api from "@api"
 export const Pokedex = () => {
     const { data, fetchNextPage, isFetching, isLoading } = useInfiniteQuery({
         queryKey: ['getPokemons'],
-        queryFn: ({ pageParam = 0 }) => api.getPokemons({page: pageParam, limit: 1}),
+        queryFn: ({ pageParam = 0 }) => api.getPokemons({page: pageParam, limit: 16}),
         initialPageParam: 0,
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length === 0) return undefined

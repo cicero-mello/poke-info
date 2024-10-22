@@ -35,6 +35,12 @@ export const Component = styled.div.attrs({
             fill: ${styleGuide.color.coralRed};
         }
     }
+
+    animation:
+        ${styleGuide.keyframes.fadeIn}
+        ${styleGuide.transitionTime.slow}
+        linear forwards
+    ;
 `
 
 export const Input = styled.input`

@@ -15,11 +15,16 @@ export const normalizePokemonId = (pokemonId: string): string => (
         .replace(/[^\w\-]/g, "")            // Remove special characters
 )
 
-export const formatPokeNumber = (pokeNumber: number): string => (
+export const formatPokeNumber = (
+    pokeNumber?: number
+): string | undefined => (
+    !pokeNumber ? undefined :
     "nº " + pokeNumber.toString().padStart(3, '0')
 )
 
-export const capitalize = (str: string): string => {
+export const capitalize = (str?: string): string | undefined => {
+    if(!str) return undefined
+
     const strArray = str.toLowerCase().split("")
     strArray[0] = strArray[0].toUpperCase()
     return strArray.join("")

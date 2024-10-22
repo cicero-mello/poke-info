@@ -13,6 +13,7 @@ export const Component = styled.div.attrs({
     white-space: nowrap;
     line-height: 0;
     height: ${pxToRem("10px")};
+    border-radius: ${pxToRem("20px")};
 
     transition-property: height;
     transition-duration: ${styleGuide.transitionTime.slow};
@@ -20,6 +21,14 @@ export const Component = styled.div.attrs({
 
     &:has(label){
         height: ${pxToRem("20px")};
+    }
+
+    &:has(progress:not([value])){
+        background-color: ${styleGuide.color.silverGray};
+        animation:
+            ${styleGuide.keyframes.opacityLoading2}
+            1.3s ease-in-out infinite
+        ;
     }
 `
 
@@ -33,7 +42,7 @@ const colorPerStatName = new Map<PokeApi.StatName, string>([
 ])
 
 export const Progress = styled.progress
-<{ $statName: PokeApi.StatName }>`
+<{ $statName?: PokeApi.StatName }>`
 ${({ $statName }) => css`
 
     display: flex;
@@ -42,7 +51,11 @@ ${({ $statName }) => css`
     height: ${pxToRem("10px")};
     background-color: white;
     border-radius: ${pxToRem("20px")};
-    transition: ${styleGuide.transitionTime.medium};
+    transition: ${styleGuide.transitionTime.slow};
+
+    ${!$statName && css`
+        opacity: 0;
+    `}
 
     &::-webkit-progress-bar {
         overflow: hidden;
@@ -50,22 +63,23 @@ ${({ $statName }) => css`
         border-radius: ${pxToRem("20px")};
     }
 
-    &::-webkit-progress-value {
-        background-color: ${colorPerStatName.get($statName)};
-    }
+    ${$statName && css`
+        &::-webkit-progress-value {
+            background-color: ${colorPerStatName.get($statName)};
+        }
 
-    &::-moz-progress-bar {
-        background-color: ${colorPerStatName.get($statName)};
-    }
+        &::-moz-progress-bar {
+            background-color: ${colorPerStatName.get($statName)};
+        }
+    `}
 `}`
 
 export const LabelWrapper = styled.span
 <{ $haveLabel: boolean}>`
 ${({ $haveLabel }) => css`
 
-    transition-property: opacity, filter, width, min-width;
+    transition-property: opacity, width, min-width;
     transition-duration:
-        ${styleGuide.transitionTime.slow},
         ${styleGuide.transitionTime.slow},
         ${styleGuide.transitionTime.medium},
         ${styleGuide.transitionTime.medium}
@@ -75,7 +89,6 @@ ${({ $haveLabel }) => css`
     min-width: 0;
     opacity: 0;
     width: 0;
-    filter: blur(5px);
 
     ${$haveLabel && css`
         min-width: 60%;

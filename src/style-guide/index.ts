@@ -1,6 +1,7 @@
 import { transitionTime } from "./transition-time"
 import { getCardColors } from "./card-colors"
 import { dimensions } from "./dimensions"
+import * as keyframes from "./keyframes"
 import { color } from "./color"
 import { text } from "./text"
 export * from "./px-to-rem"
@@ -10,5 +11,6 @@ export const styleGuide = {
     text,
     dimensions,
     transitionTime,
-    getCardColors
+    getCardColors,
+    keyframes
 }

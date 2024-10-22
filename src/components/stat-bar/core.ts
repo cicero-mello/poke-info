@@ -1,10 +1,12 @@
 import { PokeApi } from "@types"
 
 export const statNameToStatLabel = (
-    statName: PokeApi.StatName,
+    statName?: PokeApi.StatName,
     statValue?: number,
     bigMode?: boolean
-) => {
+): string | undefined => {
+    if(!statName) return undefined
+
     if(statName === "hp"){
         return `HP: ${statValue}`
     }

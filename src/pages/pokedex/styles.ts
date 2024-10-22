@@ -55,4 +55,5 @@ export const PokeCardsContainer = styled.div`
     margin-top: 28px;
     padding-top: 32px;
     overflow-y: scroll;
+    overflow-x: hidden;
 `
