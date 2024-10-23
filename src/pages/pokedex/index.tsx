@@ -1,6 +1,7 @@
-import { FavoriteCheckbox, PokeCard, PokemonSearch, Switch } from "@components"
+import { FavoriteCheckbox, PokemonSearch, Switch } from "@components"
 import { PokeCardMode } from "@components/poke-card/types"
 import { useInfiniteQuery } from "@tanstack/react-query"
+import { VirtualizedList } from "./virtualized-list"
 import { useState } from "preact/hooks"
 import * as S from "./styles"
 import * as api from "@api"
@@ -8,7 +9,7 @@ import * as api from "@api"
 export const Pokedex = () => {
     const { data, fetchNextPage, isFetching, isLoading } = useInfiniteQuery({
         queryKey: ['getPokemons'],
-        queryFn: ({ pageParam = 0 }) => api.getPokemons({page: pageParam, limit: 16}),
+        queryFn: ({ pageParam = 0 }) => api.getPokemons({page: pageParam, limit: 19}),
         initialPageParam: 0,
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length === 0) return undefined
@@ -17,10 +18,7 @@ export const Pokedex = () => {
     })
 
     const [cardMode, setCardMode] = useState<PokeCardMode>("Simple")
-
-    const handleChangeViewMode = (value: string) => {
-        setCardMode(value as PokeCardMode)
-    }
+    const pokemons = data?.pages.flat() ?? []
 
     return (
         <S.Screen>
@@ -41,23 +39,25 @@ export const Pokedex = () => {
                             nameLeft="Simple"
                             nameRight="Detailed"
                             defaultValue="Simple"
-                            onChange={handleChangeViewMode}
+                            onChange={(value) => setCardMode(value as PokeCardMode)}
                         />
                     </S.RightFilters>
                 </S.Filters>
                 {isLoading && <h3>isLoading...</h3>}
                 {!isLoading && (
-                    <S.PokeCardsContainer>
-                        {data?.pages.map(pageItems => (
-                            pageItems.map(item => (
-                                <PokeCard
-                                    key={item.pokemonName}
-                                    pokeId={item.pokemonName}
-                                    cardMode={cardMode}
-                                />
-                            ))
-                        ))}
-                    </S.PokeCardsContainer>
+                    <VirtualizedList
+                        pokemons={pokemons}
+                        cardMode={cardMode}
+                    />
+                    // <S.PokeCardsContainer>
+                    //     {pokemonData.map(item => (
+                    //         <PokeCard
+                    //             key={item.pokemonName}
+                    //             pokeId={item.pokemonName}
+                    //             cardMode={cardMode}
+                    //         />
+                    //     ))}
+                    // </S.PokeCardsContainer>
                 )}
                 {isFetching && <h3>Loading more pokemons...</h3> }
             </S.Window>
