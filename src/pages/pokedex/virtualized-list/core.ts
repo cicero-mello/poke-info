@@ -1,49 +1,41 @@
-export interface VirtualStyleData {
-    pxItemWidth: string
-    percentLeftForEachItemInARow: string[]
-}
-
-export interface VirtualStyleDataParams {
-    pxScrollableElementWidth: number
-    pxScrollableElementPaddingX: number
-    pxCardWidth: number
-    pxCardPaddingX: number
-}
+import { VirtualStyleData, GetVirtualStyleDataParams } from "./types"
 
 export const getVirtualStyleData = ({
-    pxScrollableElementWidth,
-    pxScrollableElementPaddingX,
-    pxCardWidth,
-    pxCardPaddingX
-}: VirtualStyleDataParams): VirtualStyleData => {
-    const cardTotalWidth = pxCardWidth + pxCardPaddingX
+    virtualizedScroll, item
+}: GetVirtualStyleDataParams): VirtualStyleData => {
+    const cardTotalWidth = item.pxWidth + virtualizedScroll.pxGapX
 
     const totalScrollWidth = (
-        pxScrollableElementWidth - (pxScrollableElementPaddingX * 2)
+        virtualizedScroll.pxWidth - (virtualizedScroll.pxPaddingX * 2)
     )
 
-    const totalCardsByRow = Math.floor(
+    const totalItemsByRow = Math.floor(
         totalScrollWidth / cardTotalWidth
     )
 
     const freeScrollSpace = (
-        totalScrollWidth - (cardTotalWidth * totalCardsByRow)
+        totalScrollWidth - (cardTotalWidth * totalItemsByRow)
     )
 
-    const pxItemWidth = (
-        (freeScrollSpace / totalCardsByRow)
+    const virtualItemWidth = (
+        (freeScrollSpace / totalItemsByRow)
         + cardTotalWidth
     ).toFixed(3) + "px"
 
-    const percentLeftForEachItemInARow = Array.from(
-        { length: totalCardsByRow },
+    const percentLeftForEachVirtualItemInARow = Array.from(
+        { length: totalItemsByRow },
         (_, i) => (
-            ((100 / totalCardsByRow) * i).toFixed(3) + "%"
+            ((100 / totalItemsByRow) * i).toFixed(3) + "%"
         )
     )
 
+    const pxVirtualItemHeight = (
+        item.pxHeight + virtualizedScroll.pxGapY
+    )
+
     return {
-        pxItemWidth,
-        percentLeftForEachItemInARow
+        virtualItemWidth,
+        pxVirtualItemHeight,
+        percentLeftForEachVirtualItemInARow
     }
 }

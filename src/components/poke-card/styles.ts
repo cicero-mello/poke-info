@@ -1,6 +1,13 @@
-import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css, keyframes } from "styled-components"
+import { pxToRem, styleGuide } from "@style-guide"
 import { StyledCardProps } from "./types"
+
+export enum POKE_CARD_STYLE_DATA {
+    PX_SIMPLE_WIDTH = 160,
+    PX_SIMPLE_HEIGHT = 256,
+    PX_DETAILED_WIDTH = 210,
+    PX_DETAILED_HEIGHT = 356
+}
 
 const borderLoading = keyframes`
     0% {
@@ -20,8 +27,15 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
     position: relative;
     flex-direction: column;
 
-    height: ${pxToRem("256px")};
-    width: ${pxToRem("160px")};
+    height: ${
+        (POKE_CARD_STYLE_DATA.PX_SIMPLE_HEIGHT / 16).toFixed(5)
+        + "rem"
+    };
+    width: ${
+        (POKE_CARD_STYLE_DATA.PX_SIMPLE_WIDTH / 16).toFixed(5)
+        + "rem"
+    };
+
     border-radius: ${pxToRem("5px")};
     background-color: ${styleGuide.color.onyx};
     box-shadow:
@@ -116,8 +130,14 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
     `}
 
     ${$cardMode === "Detailed" && css`
-        height: ${pxToRem("356px")};
-        width: ${pxToRem("210px")};
+        height: ${
+            (POKE_CARD_STYLE_DATA.PX_DETAILED_HEIGHT / 16).toFixed(5)
+            + "rem"
+        };
+        width: ${
+            (POKE_CARD_STYLE_DATA.PX_DETAILED_WIDTH / 16).toFixed(5)
+            + "rem"
+        };
 
         .card-content {
             padding-top: 23%;

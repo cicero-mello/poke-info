@@ -1,6 +1,10 @@
 import { VirtualItem } from "@tanstack/react-virtual"
 import styled, { css } from "styled-components"
-import { VirtualStyleData } from "./core"
+import { VirtualStyleData } from "./types"
+
+export const PX_VIRTUALIZED_SCROLL_PADDING_X = 48
+export const PX_VIRTUALIZED_SCROLL_GAP_X = 36
+export const PX_VIRTUALIZED_SCROLL_GAP_Y = 36
 
 export const VirtualizedScroll = styled.div`
     display: flex;
@@ -17,9 +21,10 @@ export const VirtualizedScroll = styled.div`
 export const VirtualizedContainer = styled.div
 <{ $totalHeight: number }>`
 ${({ $totalHeight }) => css`
-
     height: ${$totalHeight}px;
-    width: calc(100% - 96px); // padingx de 48px
+    width: calc(
+        100% - (${PX_VIRTUALIZED_SCROLL_PADDING_X}px * 2)
+    );
     position: relative;
 `}`
 
@@ -31,7 +36,7 @@ ${({ $virtualRow, $virtualStyleData }) => css`
     justify-content: center;
     position: absolute;
     top: 0;
-    width: ${$virtualStyleData?.pxItemWidth ?? "0px"};
     transform: translateY(${$virtualRow.start}px);
-    left: ${$virtualStyleData?.percentLeftForEachItemInARow[$virtualRow.lane]};
+    width: ${$virtualStyleData?.virtualItemWidth ?? "0px"};
+    left: ${$virtualStyleData?.percentLeftForEachVirtualItemInARow[$virtualRow.lane]};
 `}`

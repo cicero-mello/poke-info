@@ -1,54 +1,35 @@
+import { useVirtualStyleData } from "./use-virtual-style-data"
 import { useVirtualizer } from "@tanstack/react-virtual"
+import {  useEffect, useRef } from "preact/hooks"
 import { FunctionComponent as FC } from "preact"
-import { useEffect, useRef, useState } from "preact/hooks"
 import { VirtualizedListProps } from "./types"
 import { PokeCard } from "@components"
 import * as S from "./styles"
-import { getVirtualStyleData, VirtualStyleData } from "./core"
-import { debounce } from "@utils"
 
 export const VirtualizedList: FC<VirtualizedListProps> = ({
     pokemons, cardMode
 }) => {
-    const [virtualStyleData, setVirtualStyleData] = useState<VirtualStyleData>()
+    const virtualizedScrollRef = useRef<HTMLDivElement>(null)
+    const virtualStyleData = useVirtualStyleData({
+        virtualizedScrollRef, cardMode
+    })
 
-    const parentRef = useRef<HTMLDivElement>(null)
     const rowVirtualizer = useVirtualizer({
         count: pokemons.length,
-        getScrollElement: () => parentRef.current,
-        estimateSize: () => 256 + 36, // 36 é o gap (margin-bottom)
+        getScrollElement: () => virtualizedScrollRef.current,
+        estimateSize: () => virtualStyleData?.pxVirtualItemHeight ?? 0,
         overscan: 5,
-        lanes: virtualStyleData?.percentLeftForEachItemInARow.length
+        lanes: virtualStyleData?.percentLeftForEachVirtualItemInARow.length
     })
 
     useEffect(() => {
-        const onResize = () => {
-            const newVirtualStyleData = getVirtualStyleData({
-                pxScrollableElementWidth: parentRef.current?.offsetWidth ?? 0,
-                pxScrollableElementPaddingX: 48,
-                pxCardWidth: 160,
-                pxCardPaddingX: 36
-            })
-            setVirtualStyleData(newVirtualStyleData)
-        }
-        const onResizeDebounced = debounce(onResize, 300)
-        onResizeDebounced()
-        window.addEventListener("resize", onResizeDebounced)
-        return () => window.removeEventListener("resize", onResizeDebounced)
-    }, [])
-
-    useEffect(() => {
-        if(virtualStyleData) {
-            console.log(virtualStyleData)
-            rowVirtualizer.measure()
-        }
+        rowVirtualizer.measure()
+        console.log(virtualStyleData)
     }, [virtualStyleData])
 
     return (
-        <S.VirtualizedScroll ref={parentRef}>
-            <S.VirtualizedContainer
-                $totalHeight={rowVirtualizer.getTotalSize()}
-            >
+        <S.VirtualizedScroll ref={virtualizedScrollRef}>
+            <S.VirtualizedContainer $totalHeight={rowVirtualizer.getTotalSize()}>
                 {rowVirtualizer.getVirtualItems().map((virtualRow) => (
                     <S.VirtualizedItem
                         $virtualStyleData={virtualStyleData}
