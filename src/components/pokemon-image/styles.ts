@@ -1,5 +1,5 @@
-import { styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
+import { styleGuide } from "@style-guide"
 
 export const Component = styled.div.attrs({
     className: "pokemon-image"
@@ -39,11 +39,7 @@ ${({ $isImageLoaded }) => css`
 
         ${$isImageLoaded && css`
             position: relative;
-            animation:
-                ${styleGuide.keyframes.popUp}
-                ${styleGuide.transitionTime.slow}
-                ease-out forwards
-            ;
+            opacity: 1;
         `}
     }
 `}`

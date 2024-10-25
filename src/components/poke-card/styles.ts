@@ -26,6 +26,8 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
     display: flex;
     position: relative;
     flex-direction: column;
+    user-select: none;
+    cursor: pointer;
 
     height: ${
         (POKE_CARD_STYLE_DATA.PX_SIMPLE_HEIGHT / 16).toFixed(5)
@@ -44,19 +46,6 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
         ${pxToRem("7px")}
         #00000033
     ;
-
-    user-select: none;
-    cursor: pointer;
-
-    animation:
-        ${styleGuide.keyframes.popUp}
-        ${styleGuide.transitionTime.slow}
-        ease-out
-    ;
-
-    transition-property: transform, width, height;
-    transition-duration: ${styleGuide.transitionTime.medium};
-    transition-timing-function: ease-in-out;
 
     .card-content {
         transition-property: border-color, background-color;
@@ -103,6 +92,10 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
         z-index: 1;
         pointer-events: none;
     }
+
+    transition-property: transform;
+    transition-duration: ${styleGuide.transitionTime.medium};
+    transition-timing-function: ease-in-out;
 
     ${$pokemonType && css`
         &:hover, &:has(:focus) {
@@ -170,8 +163,15 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
         margin: ${pxToRem("5px")};
         height: ${pxToRem("24px")};
         width: ${pxToRem("24px")};
-        transition: ${styleGuide.transitionTime.medium};
         z-index: 3;
+
+        transition-property: opacity, transform;
+        transition-duration:
+            ${styleGuide.transitionTime.slow},
+            ${styleGuide.transitionTime.medium}
+        ;
+
+        opacity: ${!!$pokemonType ? 1 : 0};
 
         &:hover, &:has(:focus) {
             transform: scale(2.5) rotate(25deg);
@@ -261,7 +261,6 @@ export const PokeName = styled.span.attrs({
 
     transition-property: color;
     transition-duration: ${styleGuide.transitionTime.slow};
-    transition-timing-function: ease-out;
 
     &:empty {
         background-color: ${styleGuide.color.silverGray};

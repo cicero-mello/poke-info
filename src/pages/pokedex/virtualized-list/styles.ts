@@ -1,12 +1,15 @@
 import { VirtualItem } from "@tanstack/react-virtual"
 import styled, { css } from "styled-components"
 import { VirtualStyleData } from "./types"
+import { styleGuide } from "@style-guide"
 
 export const PX_VIRTUALIZED_SCROLL_PADDING_X = 48
 export const PX_VIRTUALIZED_SCROLL_GAP_X = 36
 export const PX_VIRTUALIZED_SCROLL_GAP_Y = 36
 
-export const VirtualizedScroll = styled.div`
+export const VirtualizedScroll = styled.div
+<{ $hide?: boolean }>`
+${({ $hide }) => css`
     display: flex;
     justify-content: space-around;
     width: 100%;
@@ -17,7 +20,10 @@ export const VirtualizedScroll = styled.div`
 
     margin-top: 28px;
     padding-top: 32px;
-`
+
+    transition: ${styleGuide.transitionTime.mediumSlow} linear;
+    opacity: ${$hide ? 0 : 1};
+`}`
 
 export const VirtualizedContainer = styled.div
 <{ $totalHeight: number }>`

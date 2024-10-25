@@ -7,7 +7,7 @@ import { PokeCard } from "@components"
 import * as S from "./styles"
 
 export const VirtualizedList: FC<VirtualizedListProps> = ({
-    pokemons, cardMode
+    pokemons, cardMode, hide
 }) => {
     const virtualizedScrollRef = useRef<HTMLDivElement>(null)
 
@@ -18,9 +18,9 @@ export const VirtualizedList: FC<VirtualizedListProps> = ({
     const rowVirtualizer = useVirtualizer({
         count: pokemons.length,
         getScrollElement: () => virtualizedScrollRef.current,
-        estimateSize: () => virtualStyleData?.pxVirtualItemHeight ?? 0,
-        overscan: virtualStyleData?.overscan,
-        lanes: virtualStyleData?.lanes
+        estimateSize: () => virtualStyleData.pxVirtualItemHeight,
+        overscan: virtualStyleData.overscan,
+        lanes: virtualStyleData.lanes
     })
 
     useEffect(() => {
@@ -28,13 +28,13 @@ export const VirtualizedList: FC<VirtualizedListProps> = ({
     }, [virtualStyleData])
 
     return (
-        <S.VirtualizedScroll ref={virtualizedScrollRef}>
+        <S.VirtualizedScroll ref={virtualizedScrollRef} $hide={hide}>
             <S.VirtualizedContainer $totalHeight={rowVirtualizer.getTotalSize()}>
                 {rowVirtualizer.getVirtualItems().map((virtualRow) => (
                     <S.VirtualizedItem
                         $virtualStyleData={virtualStyleData}
                         $virtualRow={virtualRow}
-                        id={"virtualized-item-" + virtualRow.key.toString()}
+                        id={"virtualized-" + pokemons[virtualRow.index].pokemonName}
                         key={virtualRow.index}
                     >
                         <PokeCard

@@ -1,10 +1,11 @@
-import { GetPokemonsResponse } from "@api"
 import { PokeCardMode } from "@components/poke-card/types"
+import { GetPokemonsResponse } from "@api"
 import { RefObject } from "preact"
 
 export interface VirtualizedListProps {
     pokemons: GetPokemonsResponse[]
     cardMode: PokeCardMode
+    hide?: boolean
 }
 
 export interface useVirtualStyleDataParams {

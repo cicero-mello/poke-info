@@ -15,10 +15,6 @@ export const Component = styled.div.attrs({
     height: ${pxToRem("10px")};
     border-radius: ${pxToRem("20px")};
 
-    transition-property: height;
-    transition-duration: ${styleGuide.transitionTime.slow};
-    transition-timing-function: ease-in-out;
-
     &:has(label){
         height: ${pxToRem("20px")};
     }
@@ -77,15 +73,6 @@ ${({ $statName }) => css`
 export const LabelWrapper = styled.span
 <{ $haveLabel: boolean}>`
 ${({ $haveLabel }) => css`
-
-    transition-property: opacity, width, min-width;
-    transition-duration:
-        ${styleGuide.transitionTime.slow},
-        ${styleGuide.transitionTime.medium},
-        ${styleGuide.transitionTime.medium}
-    ;
-    transition-timing-function: ease-in-out;
-
     min-width: 0;
     opacity: 0;
     width: 0;

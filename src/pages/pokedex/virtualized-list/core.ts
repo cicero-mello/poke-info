@@ -34,7 +34,7 @@ export const getVirtualStyleData = ({
     )
 
     const lanes = percentLeftForEachVirtualItemInARow.length
-    const overscan = lanes * 2
+    const overscan = lanes * 1
 
     return {
         virtualItemWidth,

@@ -3,14 +3,17 @@ import { PokeCardMode } from "@components/poke-card/types"
 import { useInfiniteQuery } from "@tanstack/react-query"
 import { VirtualizedList } from "./virtualized-list"
 import { useState } from "preact/hooks"
+import { delay } from "@utils"
 import * as S from "./styles"
 import * as api from "@api"
 
 export const Pokedex = () => {
     const { data, fetchNextPage, isFetching, isLoading } = useInfiniteQuery({
         queryKey: ['getPokemons'],
-        queryFn: ({ pageParam = 0 }) => api.getPokemons({page: pageParam, limit: 19}),
         initialPageParam: 0,
+        queryFn: ({ pageParam = 0 }) => api.getPokemons({
+            page: pageParam, limit: 19
+        }),
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length === 0) return undefined
             return pages.length
@@ -18,7 +21,16 @@ export const Pokedex = () => {
     })
 
     const [cardMode, setCardMode] = useState<PokeCardMode>("Simple")
+    const [hideCards, setHideCards] = useState(false)
     const pokemons = data?.pages.flat() ?? []
+
+    const handleChangeSwitch = async (value: string) => {
+        setHideCards(true)
+        await delay(250)
+        setCardMode(value as PokeCardMode)
+        await delay(50)
+        setHideCards(false)
+    }
 
     return (
         <S.Screen>
@@ -39,7 +51,7 @@ export const Pokedex = () => {
                             nameLeft="Simple"
                             nameRight="Detailed"
                             defaultValue="Simple"
-                            onChange={(value) => setCardMode(value as PokeCardMode)}
+                            onChange={handleChangeSwitch}
                         />
                     </S.RightFilters>
                 </S.Filters>
@@ -48,16 +60,8 @@ export const Pokedex = () => {
                     <VirtualizedList
                         pokemons={pokemons}
                         cardMode={cardMode}
+                        hide={hideCards}
                     />
-                    // <S.PokeCardsContainer>
-                    //     {pokemonData.map(item => (
-                    //         <PokeCard
-                    //             key={item.pokemonName}
-                    //             pokeId={item.pokemonName}
-                    //             cardMode={cardMode}
-                    //         />
-                    //     ))}
-                    // </S.PokeCardsContainer>
                 )}
                 {isFetching && <h3>Loading more pokemons...</h3> }
             </S.Window>
