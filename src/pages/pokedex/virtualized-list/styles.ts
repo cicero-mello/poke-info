@@ -11,7 +11,8 @@ export const VirtualizedScroll = styled.div`
     justify-content: space-around;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
 
     margin-top: 28px;

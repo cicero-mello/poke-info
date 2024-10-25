@@ -3,23 +3,23 @@ import { VirtualStyleData, GetVirtualStyleDataParams } from "./types"
 export const getVirtualStyleData = ({
     virtualizedScroll, item
 }: GetVirtualStyleDataParams): VirtualStyleData => {
-    const cardTotalWidth = item.pxWidth + virtualizedScroll.pxGapX
+    const itemTotalWidth = item.pxWidth + virtualizedScroll.pxGapX
 
     const totalScrollWidth = (
         virtualizedScroll.pxWidth - (virtualizedScroll.pxPaddingX * 2)
     )
 
     const totalItemsByRow = Math.floor(
-        totalScrollWidth / cardTotalWidth
+        totalScrollWidth / itemTotalWidth
     )
 
     const freeScrollSpace = (
-        totalScrollWidth - (cardTotalWidth * totalItemsByRow)
+        totalScrollWidth - (itemTotalWidth * totalItemsByRow)
     )
 
     const virtualItemWidth = (
         (freeScrollSpace / totalItemsByRow)
-        + cardTotalWidth
+        + itemTotalWidth
     ).toFixed(3) + "px"
 
     const percentLeftForEachVirtualItemInARow = Array.from(
@@ -33,9 +33,14 @@ export const getVirtualStyleData = ({
         item.pxHeight + virtualizedScroll.pxGapY
     )
 
+    const lanes = percentLeftForEachVirtualItemInARow.length
+    const overscan = lanes * 2
+
     return {
         virtualItemWidth,
         pxVirtualItemHeight,
-        percentLeftForEachVirtualItemInARow
+        percentLeftForEachVirtualItemInARow,
+        lanes,
+        overscan
     }
 }

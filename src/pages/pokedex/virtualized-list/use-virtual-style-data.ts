@@ -7,14 +7,10 @@ import * as S from "./styles"
 
 export const useVirtualStyleData = ({
     virtualizedScrollRef, cardMode
-}: useVirtualStyleDataParams): VirtualStyleData | undefined => {
+}: useVirtualStyleDataParams): VirtualStyleData => {
     const cardModeRef = useRef<PokeCardMode>(cardMode)
-    const [
-        virtualStyleData,
-        setVirtualStyleData
-    ] = useState<VirtualStyleData>()
 
-    const setNewVirtualStyleData = useCallback(() => {
+    const getNewVirtualStyleData = useCallback(() => {
         const pxCardWidth = (
             cardModeRef.current === "Detailed" ?
                 POKE_CARD_STYLE_DATA.PX_DETAILED_WIDTH :
@@ -27,20 +23,37 @@ export const useVirtualStyleData = ({
                 POKE_CARD_STYLE_DATA.PX_SIMPLE_HEIGHT
         )
 
+        const rootFontSize = parseInt(
+            window.getComputedStyle(
+                document.documentElement
+            ).fontSize.slice(0, -2)
+        )
+
+        const pxToRemPx = (px: number): number => px * (rootFontSize/16)
+
         const newVirtualStyleData = getVirtualStyleData({
             virtualizedScroll: {
                 pxWidth: virtualizedScrollRef.current?.offsetWidth ?? 0,
-                pxGapX: S.PX_VIRTUALIZED_SCROLL_GAP_X,
-                pxGapY: S.PX_VIRTUALIZED_SCROLL_GAP_Y,
-                pxPaddingX: S.PX_VIRTUALIZED_SCROLL_PADDING_X
+                pxGapX: pxToRemPx(S.PX_VIRTUALIZED_SCROLL_GAP_X),
+                pxGapY: pxToRemPx(S.PX_VIRTUALIZED_SCROLL_GAP_Y),
+                pxPaddingX: pxToRemPx(S.PX_VIRTUALIZED_SCROLL_PADDING_X)
             },
             item: {
-                pxWidth: pxCardWidth,
-                pxHeight: pxCardHeight
+                pxWidth: pxToRemPx(pxCardWidth),
+                pxHeight: pxToRemPx(pxCardHeight)
             }
         })
 
-        setVirtualStyleData(newVirtualStyleData)
+        return newVirtualStyleData
+    }, [])
+
+    const [
+        virtualStyleData,
+        setVirtualStyleData
+    ] = useState<VirtualStyleData>(getNewVirtualStyleData())
+
+    const setNewVirtualStyleData = useCallback(() => {
+        setVirtualStyleData(getNewVirtualStyleData())
     }, [])
 
     useLayoutEffect(() => {

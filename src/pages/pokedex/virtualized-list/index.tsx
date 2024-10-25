@@ -10,6 +10,7 @@ export const VirtualizedList: FC<VirtualizedListProps> = ({
     pokemons, cardMode
 }) => {
     const virtualizedScrollRef = useRef<HTMLDivElement>(null)
+
     const virtualStyleData = useVirtualStyleData({
         virtualizedScrollRef, cardMode
     })
@@ -18,13 +19,12 @@ export const VirtualizedList: FC<VirtualizedListProps> = ({
         count: pokemons.length,
         getScrollElement: () => virtualizedScrollRef.current,
         estimateSize: () => virtualStyleData?.pxVirtualItemHeight ?? 0,
-        overscan: 5,
-        lanes: virtualStyleData?.percentLeftForEachVirtualItemInARow.length
+        overscan: virtualStyleData?.overscan,
+        lanes: virtualStyleData?.lanes
     })
 
     useEffect(() => {
         rowVirtualizer.measure()
-        console.log(virtualStyleData)
     }, [virtualStyleData])
 
     return (

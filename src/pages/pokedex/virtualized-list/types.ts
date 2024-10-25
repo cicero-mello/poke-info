@@ -29,4 +29,6 @@ export interface VirtualStyleData {
     virtualItemWidth: string
     pxVirtualItemHeight: number
     percentLeftForEachVirtualItemInARow: string[]
+    overscan: number
+    lanes: number
 }
