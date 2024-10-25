@@ -177,6 +177,11 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
             transform: scale(2.5) rotate(25deg);
         }
     }
+
+    .styled-anchor {
+        height: 100%;
+        width: 100%;
+    }
 `}`
 
 export const TopArea = styled.div`
@@ -209,6 +214,7 @@ export const CardContentContainer = styled.div`
     width: 100%;
     height: 100%;
     top: 22%;
+    pointer-events: none;
 `
 
 export const CardContent = styled.div.attrs({
