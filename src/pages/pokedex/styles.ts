@@ -25,11 +25,6 @@ export const Window = styled.main`
         ${styleGuide.color.pearlGray} 60px,
         ${styleGuide.color.onyxAlpha83} 60px
     );
-
-    pre {
-        overflow: scroll;
-        height: 50%;
-    }
 `
 
 export const Filters = styled.div`

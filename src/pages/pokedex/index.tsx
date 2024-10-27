@@ -1,7 +1,5 @@
-import { FavoriteCheckbox, PokemonSearch, Switch } from "@components"
-import { PokeCardMode } from "@components/poke-card/types"
+import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList } from "@components"
 import { useInfiniteQuery } from "@tanstack/react-query"
-import { VirtualizedList } from "./virtualized-list"
 import { useState } from "preact/hooks"
 import { delay } from "@utils"
 import * as S from "./styles"
@@ -57,7 +55,7 @@ export const Pokedex = () => {
                 </S.Filters>
                 {isLoading && <h3>isLoading...</h3>}
                 {!isLoading && (
-                    <VirtualizedList
+                    <PokemonsList
                         pokemons={pokemons}
                         cardMode={cardMode}
                         hide={hideCards}

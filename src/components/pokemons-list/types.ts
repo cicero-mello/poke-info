@@ -2,7 +2,7 @@ import { PokeCardMode } from "@components/poke-card/types"
 import { GetPokemonsResponse } from "@api"
 import { RefObject } from "preact"
 
-export interface VirtualizedListProps {
+export interface PokemonsListProps {
     pokemons: GetPokemonsResponse[]
     cardMode: PokeCardMode
     hide?: boolean
