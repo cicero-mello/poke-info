@@ -1,7 +1,8 @@
-import { useLayoutEffect, useMemo, useRef, useState } from "preact/hooks"
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "preact/hooks"
 import { FunctionComponent as FC } from "preact"
 import { MouseEvent } from "preact/compat"
 import { SwitchProps } from "./types"
+import { debounce } from "@utils"
 import { nanoid } from "nanoid"
 import * as S from "./styles"
 
@@ -20,20 +21,28 @@ export const Switch: FC<SwitchProps> = ({
         id ?? nanoid()
     ), [id])
 
-    const inputChange = () => {
+    const inputChange = useCallback(() => {
         if(!onChange || !inputRef?.current) return
         onChange(
             inputRef.current.checked ?
             nameRight : nameLeft
         )
-    }
+    }, [onChange])
 
-    const inputClick = (
+    const debouncedInputChange = useCallback(
+        debounce(inputChange, 220), [inputChange]
+    )
+
+    const inputClick = useCallback((
         event: MouseEvent<HTMLInputElement>
     ) => {
         event.stopPropagation()
         if(onClick) onClick(event)
-    }
+    }, [onClick])
+
+    const debouncedInputClick = useCallback(
+        debounce(inputClick, 220), []
+    )
 
     const sliderContainerClick = () => {
         if(inputRef.current) inputRef.current.click()
@@ -79,8 +88,8 @@ export const Switch: FC<SwitchProps> = ({
                 id={inputId}
                 type="checkbox"
                 ref={inputRef}
-                onClick={inputClick}
-                onChange={inputChange}
+                onClick={debouncedInputClick}
+                onChange={debouncedInputChange}
                 defaultChecked={defaultValue === nameRight}
                 {...rest}
             />
