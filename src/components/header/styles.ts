@@ -5,7 +5,7 @@ import { HeaderTheme } from "./types"
 export const Component = styled.header<{ $theme: HeaderTheme }>`${
 ({ $theme }) => css`
     display: flex;
-    z-index: 1;
+    z-index: 2;
     justify-content: center;
     transition-property: background-color, transform;
     transition-duration:
