@@ -1,6 +1,7 @@
 import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList } from "@components"
 import { useInfiniteQuery } from "@tanstack/react-query"
-import { useState } from "preact/hooks"
+import { useRef, useState } from "preact/hooks"
+import { useScrollDirection } from "@hooks"
 import { delay } from "@utils"
 import * as S from "./styles"
 import * as api from "@api"
@@ -20,7 +21,13 @@ export const Pokedex = () => {
 
     const [cardMode, setCardMode] = useState<PokeCardMode>("Simple")
     const [hideCards, setHideCards] = useState(false)
+
     const pokemons = data?.pages.flat() ?? []
+    const pokemonsListRef = useRef<HTMLDivElement>(null)
+    const filtersRef = useRef<HTMLDivElement>(null)
+
+    const scrollDirection = useScrollDirection(pokemonsListRef)
+    const hideFilters = scrollDirection === "down"
 
     const handleChangeSwitch = async (value: string) => {
         setHideCards(true)
@@ -33,7 +40,10 @@ export const Pokedex = () => {
     return (
         <S.Screen>
             <S.Window>
-                <S.Filters>
+                <S.Filters
+                    $hide={hideFilters}
+                    ref={filtersRef}
+                >
                     <PokemonSearch
                         onFind={(pokemonId) => {console.log(pokemonId)}}
                         label="Search a Pokémon by name or number"
@@ -56,6 +66,7 @@ export const Pokedex = () => {
                 {isLoading && <h3>isLoading...</h3>}
                 {!isLoading && (
                     <PokemonsList
+                        ref={pokemonsListRef}
                         pokemons={pokemons}
                         cardMode={cardMode}
                         hide={hideCards}

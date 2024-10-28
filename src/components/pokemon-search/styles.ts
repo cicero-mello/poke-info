@@ -12,7 +12,7 @@ export const Form = styled.form.attrs({
 export const Label = styled.label`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: fit-content;
 
     ${styleGuide.text.base}
 `

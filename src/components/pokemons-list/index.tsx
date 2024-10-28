@@ -1,15 +1,16 @@
 import { useVirtualStyleData } from "./use-virtual-style-data"
 import { useVirtualizer } from "@tanstack/react-virtual"
 import {  useEffect, useRef } from "preact/hooks"
-import { FunctionComponent as FC } from "preact"
+import { RefObject } from "preact"
 import { PokemonsListProps } from "./types"
 import { PokeCard } from "@components"
 import * as S from "./styles"
+import { forwardRef } from "preact/compat"
 
-export const PokemonsList: FC<PokemonsListProps> = ({
+export const PokemonsList = forwardRef<HTMLDivElement, PokemonsListProps>(({
     pokemons, cardMode, hide
-}) => {
-    const virtualizedScrollRef = useRef<HTMLDivElement>(null)
+}, ref) => {
+    const virtualizedScrollRef = ref as RefObject<HTMLDivElement> ?? useRef<HTMLDivElement>(null)
 
     const virtualStyleData = useVirtualStyleData({
         virtualizedScrollRef, cardMode
@@ -47,4 +48,4 @@ export const PokemonsList: FC<PokemonsListProps> = ({
             </S.VirtualizedContainer>
         </S.VirtualizedScroll>
     )
-}
+})

@@ -9,8 +9,9 @@ export const PX_VIRTUALIZED_SCROLL_GAP_Y = 36
 
 const isFirefox = navigator.userAgent.indexOf("Firefox") !== -1
 
-export const VirtualizedScroll = styled.div
-<{ $hide?: boolean }>`
+export const VirtualizedScroll = styled.div.attrs({
+    className: "pokemons-list"
+})<{ $hide?: boolean }>`
 ${({ $hide }) => css`
     display: flex;
     justify-content: space-around;
@@ -20,7 +21,6 @@ ${({ $hide }) => css`
     overflow-x: hidden;
     position: relative;
 
-    margin-top: 28px;
     padding-top: 32px;
 
     transition: ${styleGuide.transitionTime.mediumSlow} linear;
@@ -51,8 +51,9 @@ ${({ $hide }) => css`
     }
 `}`
 
-export const VirtualizedContainer = styled.div
-<{ $totalHeight: number }>`
+export const VirtualizedContainer = styled.div.attrs({
+    className: "virtualized-container"
+})<{ $totalHeight: number }>`
 ${({ $totalHeight }) => css`
     height: ${$totalHeight}px;
     width: calc(
