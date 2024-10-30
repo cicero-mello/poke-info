@@ -1,7 +1,7 @@
 import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList } from "@components"
 import { useInfiniteQuery } from "@tanstack/react-query"
 import { useRef, useState } from "preact/hooks"
-import { useScrollDirection } from "@hooks"
+import { useWindowResize } from "@hooks"
 import { delay } from "@utils"
 import * as S from "./styles"
 import * as api from "@api"
@@ -21,13 +21,23 @@ export const Pokedex = () => {
 
     const [cardMode, setCardMode] = useState<PokeCardMode>("Simple")
     const [hideCards, setHideCards] = useState(false)
+    const [hideFilters, setHideFilters] = useState(false)
 
     const pokemons = data?.pages.flat() ?? []
     const pokemonsListRef = useRef<HTMLDivElement>(null)
-    const filtersRef = useRef<HTMLDivElement>(null)
 
-    const scrollDirection = useScrollDirection(pokemonsListRef)
-    const hideFilters = scrollDirection === "down"
+    const windowDimensions = useWindowResize()
+
+    const rootFontSize = parseInt(
+        window.getComputedStyle(
+            document.documentElement
+        ).fontSize.slice(0, -2)
+    )
+
+    const showToggleFilterButton = (
+        (windowDimensions.height <= S.windowComponent.full.maxHeight/16 * rootFontSize)
+        || (windowDimensions.width <= S.windowComponent.full.maxWidth/16 * rootFontSize)
+    )
 
     const handleChangeSwitch = async (value: string) => {
         setHideCards(true)
@@ -42,7 +52,6 @@ export const Pokedex = () => {
             <S.Window>
                 <S.Filters
                     $hide={hideFilters}
-                    ref={filtersRef}
                 >
                     <PokemonSearch
                         onFind={(pokemonId) => {console.log(pokemonId)}}
@@ -63,6 +72,12 @@ export const Pokedex = () => {
                         />
                     </S.RightFilters>
                 </S.Filters>
+                {showToggleFilterButton &&
+                    <S.ToogleFilterButton
+                        $hide={hideFilters}
+                        onClick={() => setHideFilters(state => !state)}
+                    />
+                }
                 {isLoading && <h3>isLoading...</h3>}
                 {!isLoading && (
                     <PokemonsList
