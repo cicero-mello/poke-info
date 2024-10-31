@@ -19,7 +19,7 @@ export const formatPokeNumber = (
     pokeNumber?: number
 ): string | undefined => (
     !pokeNumber ? undefined :
-    "nº " + pokeNumber.toString().padStart(3, '0')
+    "nº " + pokeNumber.toString().padStart(3, "0")
 )
 
 export const capitalize = (str?: string): string | undefined => {

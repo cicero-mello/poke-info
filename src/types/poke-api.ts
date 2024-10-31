@@ -76,7 +76,7 @@ export interface Sprites {
             front_shiny: string | null
             front_shiny_female: string | null
         }
-        'official-artwork': {
+        "official-artwork": {
             front_default: string | null
         }
     }
