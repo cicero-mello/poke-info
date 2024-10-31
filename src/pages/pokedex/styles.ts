@@ -1,7 +1,7 @@
-import { pxToRem, styleGuide } from "@style-guide"
+import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 
-export const windowComponent = {
+export const window = {
     noWhiteLine: {
         maxHeight: 760
     },
@@ -11,16 +11,15 @@ export const windowComponent = {
     }
 }
 
-const windowComponentRem = {
+const windowRem = {
     noWhiteLine: {
-        maxHeight: (windowComponent.noWhiteLine.maxHeight / 16).toFixed(5) + "rem"
+        maxHeight: numbPxToRem(window.noWhiteLine.maxHeight)
     },
     full: {
-        maxWidth: (windowComponent.full.maxWidth / 16).toFixed(5) + "rem",
-        maxHeight: (windowComponent.full.maxHeight / 16).toFixed(5) + "rem"
+        maxWidth: numbPxToRem(window.full.maxWidth),
+        maxHeight: numbPxToRem(window.full.maxHeight)
     }
 }
-
 
 export const Screen = styled.div`
     display: flex;
@@ -32,7 +31,7 @@ export const Screen = styled.div`
     height: 100%;
     width: 100%;
 
-    @media(max-height: ${windowComponentRem.noWhiteLine.maxHeight}){
+    @media(max-height: ${windowRem.noWhiteLine.maxHeight}){
         padding: 12px 48px;
 
         > .window {
@@ -42,8 +41,8 @@ export const Screen = styled.div`
     }
 
     @media
-        (max-width: ${windowComponentRem.full.maxWidth}),
-        (max-height: ${windowComponentRem.full.maxHeight})
+        (max-width: ${windowRem.full.maxWidth}),
+        (max-height: ${windowRem.full.maxHeight})
     {
         padding: 0;
 
@@ -94,13 +93,13 @@ ${({ $hide }) => css`
     min-height: ${pxToRem("68px")};
     height: ${pxToRem("68px")};
 
-    @media(max-height: ${windowComponentRem.noWhiteLine.maxHeight}){
+    @media(max-height: ${windowRem.noWhiteLine.maxHeight}){
         margin-top: ${pxToRem("28px")};
     }
 
     @media
-        (max-width: ${windowComponentRem.full.maxWidth}),
-        (max-height: ${windowComponentRem.full.maxHeight})
+        (max-width: ${windowRem.full.maxWidth}),
+        (max-height: ${windowRem.full.maxHeight})
     {
         display: flex;
         flex-direction: column;
@@ -162,10 +161,10 @@ ${({ $hide }) => css`
 
     position: relative;
     width: 100%;
-    margin-bottom: ${pxToRem("42px")};
+    height: ${pxToRem("20px")};
+    margin-bottom: ${pxToRem(`42px`)};
     color: ${styleGuide.color.ashGray};
     -webkit-tap-highlight-color: transparent;
-    height: ${pxToRem("20px")};
 
     &::before {
         content: "${$hide ? "Show Filters" : "Hide Filters"}";

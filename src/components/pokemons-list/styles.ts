@@ -21,7 +21,7 @@ ${({ $hide }) => css`
     overflow-x: hidden;
     position: relative;
 
-    padding-top: 32px;
+    padding-top: ${pxToRem("32px")};
 
     transition: ${styleGuide.transitionTime.mediumSlow} linear;
     opacity: ${$hide ? 0 : 1};
@@ -64,13 +64,13 @@ ${({ $totalHeight }) => css`
 
 export const VirtualizedItem = styled.div.attrs({
     className: "virtualized-item"
-})<{ $virtualRow: VirtualItem, $virtualStyleData?: VirtualStyleData }>`
-${({ $virtualRow, $virtualStyleData }) => css`
+})<{ $virtualItem: VirtualItem, $virtualStyleData?: VirtualStyleData }>`
+${({ $virtualItem, $virtualStyleData }) => css`
     display: flex;
     justify-content: center;
     position: absolute;
     top: 0;
-    transform: translateY(${$virtualRow.start}px);
+    transform: translateY(${$virtualItem.start}px);
     width: ${$virtualStyleData?.virtualItemWidth ?? "0px"};
-    left: ${$virtualStyleData?.percentLeftForEachVirtualItemInARow[$virtualRow.lane]};
+    left: ${$virtualStyleData?.percentLeftForEachVirtualItemInARow[$virtualItem.lane]};
 `}`

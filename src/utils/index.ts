@@ -29,3 +29,11 @@ export const capitalize = (str?: string): string | undefined => {
     strArray[0] = strArray[0].toUpperCase()
     return strArray.join("")
 }
+
+export const getRootFontSize = () => (
+    parseInt(
+        window.getComputedStyle(
+            document.documentElement
+        ).fontSize.slice(0, -2)
+    )
+)

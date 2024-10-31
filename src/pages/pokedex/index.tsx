@@ -1,5 +1,6 @@
 import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList } from "@components"
 import { useInfiniteQuery } from "@tanstack/react-query"
+import { getShowToogleFilterButton } from "./core"
 import { useRef, useState } from "preact/hooks"
 import { useWindowResize } from "@hooks"
 import { delay } from "@utils"
@@ -27,16 +28,8 @@ export const Pokedex = () => {
     const pokemonsListRef = useRef<HTMLDivElement>(null)
 
     const windowDimensions = useWindowResize()
-
-    const rootFontSize = parseInt(
-        window.getComputedStyle(
-            document.documentElement
-        ).fontSize.slice(0, -2)
-    )
-
-    const showToggleFilterButton = (
-        (windowDimensions.height <= S.windowComponent.full.maxHeight/16 * rootFontSize)
-        || (windowDimensions.width <= S.windowComponent.full.maxWidth/16 * rootFontSize)
+    const showToggleFilterButton = getShowToogleFilterButton(
+        windowDimensions
     )
 
     const handleChangeSwitch = async (value: string) => {
@@ -50,9 +43,7 @@ export const Pokedex = () => {
     return (
         <S.Screen>
             <S.Window>
-                <S.Filters
-                    $hide={hideFilters}
-                >
+                <S.Filters $hide={hideFilters}>
                     <PokemonSearch
                         onFind={(pokemonId) => {console.log(pokemonId)}}
                         label="Search a Pokémon by name or number"

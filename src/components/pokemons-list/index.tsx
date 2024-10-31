@@ -1,11 +1,11 @@
 import { useVirtualStyleData } from "./use-virtual-style-data"
 import { useVirtualizer } from "@tanstack/react-virtual"
 import {  useEffect, useRef } from "preact/hooks"
-import { RefObject } from "preact"
 import { PokemonsListProps } from "./types"
-import { PokeCard } from "@components"
-import * as S from "./styles"
 import { forwardRef } from "preact/compat"
+import { PokeCard } from "@components"
+import { RefObject } from "preact"
+import * as S from "./styles"
 
 export const PokemonsList = forwardRef<HTMLDivElement, PokemonsListProps>(({
     pokemons, cardMode, hide
@@ -34,7 +34,7 @@ export const PokemonsList = forwardRef<HTMLDivElement, PokemonsListProps>(({
                 {rowVirtualizer.getVirtualItems().map((virtualItem) => (
                     <S.VirtualizedItem
                         $virtualStyleData={virtualStyleData}
-                        $virtualRow={virtualItem}
+                        $virtualItem={virtualItem}
                         id={"virtualized-" + pokemons[virtualItem.index].pokemonName}
                         key={virtualItem.index}
                     >
