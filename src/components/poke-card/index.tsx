@@ -25,7 +25,12 @@ export const PokeCard: FC<PokeCardProps> = ({
             $cardMode={cardMode}
             $pokemonType={data?.types[0]}
         >
-            <Button navigate={{path: PATHS.POKEDEX + `/${pokeId}`}}>
+            <Button
+                navigate={{
+                    path: PATHS.POKEDEX + `/${pokeId}`,
+                    transition: false
+                }}
+            >
                 <S.TopArea>
                     <S.PokeNumber children={pokeNumber}/>
                     <PokemonImage

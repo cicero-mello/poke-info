@@ -1,7 +1,7 @@
-import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList } from "@components"
-import { getShowToogleFilterButton } from "./core"
+import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList, PokeWindow } from "@components"
 import { useEffect, useMemo, useRef, useState } from "preact/hooks"
 import { useInfiniteQuery } from "@tanstack/react-query"
+import { getShowToogleFilterButton } from "./core"
 import { customLocalStorage } from "@stores"
 import { useWindowResize } from "@hooks"
 import { delay } from "@utils"
@@ -68,7 +68,7 @@ export const Pokedex = () => {
 
     return (
         <S.Screen>
-            <S.Window>
+            <PokeWindow>
                 <S.Filters $hide={hideFilters}>
                     <PokemonSearch
                         onFind={(pokemonId) => {console.log(pokemonId)}}
@@ -105,7 +105,7 @@ export const Pokedex = () => {
                         isFetchingNextPage={infiniteQuery.isFetchingNextPage}
                     />
                 )}
-            </S.Window>
+            </PokeWindow>
         </S.Screen>
     )
 }

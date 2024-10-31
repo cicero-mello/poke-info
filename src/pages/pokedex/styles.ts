@@ -1,25 +1,6 @@
-import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
-
-export const window = {
-    noWhiteLine: {
-        maxHeight: 760
-    },
-    full: {
-        maxWidth: 860,
-        maxHeight: 624
-    }
-}
-
-const windowRem = {
-    noWhiteLine: {
-        maxHeight: numbPxToRem(window.noWhiteLine.maxHeight)
-    },
-    full: {
-        maxWidth: numbPxToRem(window.full.maxWidth),
-        maxHeight: numbPxToRem(window.full.maxHeight)
-    }
-}
+import { pokeWindowRem } from "@components"
 
 export const Screen = styled.div`
     display: flex;
@@ -31,48 +12,16 @@ export const Screen = styled.div`
     height: 100%;
     width: 100%;
 
-    @media(max-height: ${windowRem.noWhiteLine.maxHeight}){
+    @media(max-height: ${pokeWindowRem.noWhiteLine.maxHeight}){
         padding: 12px 48px;
-
-        > .window {
-            background: ${styleGuide.color.onyxAlpha83};
-            border-radius: 12px;
-        }
     }
 
     @media
-        (max-width: ${windowRem.full.maxWidth}),
-        (max-height: ${windowRem.full.maxHeight})
+        (max-width: ${pokeWindowRem.full.maxWidth}),
+        (max-height: ${pokeWindowRem.full.maxHeight})
     {
         padding: 0;
-
-        > .window {
-            background: ${styleGuide.color.onyxAlpha83};
-            border-radius: 12px;
-            padding: 0px;
-            border-radius: 0;
-            width: 100%;
-            aspect-ratio: unset;
-        }
     }
-`
-
-export const Window = styled.main.attrs({
-    className: "window"
-})`
-    display: flex;
-    flex-direction: column;
-    border-radius: 40px;
-    overflow: hidden;
-    color: white;
-    aspect-ratio: 1248 / 860;
-    height: 100%;
-
-    background: linear-gradient(
-        to bottom,
-        ${styleGuide.color.pearlGray} 60px,
-        ${styleGuide.color.onyxAlpha83} 60px
-    );
 `
 
 export const Filters = styled.div.attrs({
@@ -93,13 +42,13 @@ ${({ $hide }) => css`
     min-height: ${pxToRem("68px")};
     height: ${pxToRem("68px")};
 
-    @media(max-height: ${windowRem.noWhiteLine.maxHeight}){
+    @media(max-height: ${pokeWindowRem.noWhiteLine.maxHeight}){
         margin-top: ${pxToRem("28px")};
     }
 
     @media
-        (max-width: ${windowRem.full.maxWidth}),
-        (max-height: ${windowRem.full.maxHeight})
+        (max-width: ${pokeWindowRem.full.maxWidth}),
+        (max-height: ${pokeWindowRem.full.maxHeight})
     {
         display: flex;
         flex-direction: column;

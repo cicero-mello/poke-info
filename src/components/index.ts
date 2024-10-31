@@ -12,3 +12,4 @@ export type { PokeCardMode, PokeCardProps } from "./poke-card/types"
 export { POKE_CARD_STYLE_DATA } from "./poke-card/styles"
 
 export * from "./pokemons-list"
+export * from "./poke-window"

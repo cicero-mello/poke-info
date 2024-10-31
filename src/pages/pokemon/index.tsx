@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query"
 import { useDocumentTitle } from "@hooks"
+import { PokeWindow } from "@components"
 import { useRoute } from "preact-iso"
+import * as S from "./styles"
 import * as api from "@api"
 
 export const Pokemon = () => {
     const  { params } = useRoute()
-    const { data, isLoading } = useQuery({
+    const { data } = useQuery({
         queryKey: ["getPokemon", params.id],
         queryFn: () => api.getPokemon({ idOrName: params.id }),
     })
@@ -13,12 +15,10 @@ export const Pokemon = () => {
     useDocumentTitle(data?.name ??  "Loading Pokemon...")
 
     return (
-        <div>
-            <h1> Pokemon: { data?.name ??  "??"} </h1>
-            {isLoading ?
-                <h3>Loading...</h3> :
-                <pre>{JSON.stringify(data, null, 2)}</pre>
-            }
-        </div>
+        <S.Screen>
+            <PokeWindow>
+
+            </PokeWindow>
+        </S.Screen>
     )
 }
