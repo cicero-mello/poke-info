@@ -235,7 +235,7 @@ export const CardContent = styled.div.attrs({
     ;
 
     &::before {
-        content: '';
+        content: "";
         position: absolute;
         transform: translateX(-50%);
         top: -10%;
@@ -258,6 +258,12 @@ export const PokeName = styled.span.attrs({
 })`
     ${styleGuide.text.lg}
     color: ${styleGuide.color.steelGray};
+
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-align: center;
 
     transition-property: color;
     transition-duration: ${styleGuide.transitionTime.slow};
