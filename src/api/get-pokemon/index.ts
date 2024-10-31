@@ -4,10 +4,10 @@ import axios from "axios"
 const url = "https://pokeapi.co/api/v2/pokemon/"
 
 export const getPokemon = async ({
-    id
+    idOrName
 }: GetPokemonParams): Promise<GetPokemonResponse> => {
     const { data } = await axios.get<GetPokemonApiResponse>(
-        url + id
+        url + idOrName
     )
 
     return {

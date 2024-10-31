@@ -5,6 +5,7 @@ export interface GetPokemonsParams {
 
 export interface GetPokemonsResponse {
     pokemonName: string
+    pokemonId: number
 }
 
 export interface GetPokemonsApiResponse {

@@ -1,7 +1,8 @@
 import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList } from "@components"
-import { useEffect, useRef, useState } from "preact/hooks"
-import { useInfiniteQuery } from "@tanstack/react-query"
 import { getShowToogleFilterButton } from "./core"
+import { useEffect, useMemo, useRef, useState } from "preact/hooks"
+import { useInfiniteQuery } from "@tanstack/react-query"
+import { customLocalStorage } from "@stores"
 import { useWindowResize } from "@hooks"
 import { delay } from "@utils"
 import * as S from "./styles"
@@ -20,12 +21,24 @@ export const Pokedex = () => {
         }
     })
 
+    const pokemonsListRef = useRef<HTMLDivElement>(null)
     const [cardMode, setCardMode] = useState<PokeCardMode>("Simple")
     const [hideCards, setHideCards] = useState(true)
     const [hideFilters, setHideFilters] = useState(false)
+    const [showOnlyFavorites, setShowOnlyFavorites] = useState(false)
 
-    const pokemons = infiniteQuery.data?.pages.flat() ?? []
-    const pokemonsListRef = useRef<HTMLDivElement>(null)
+    const lastFavoritePokemons = useMemo(() => (
+        customLocalStorage.getFavoritePokemons()
+    ), [showOnlyFavorites])
+
+    const pokemons = useMemo(() => {
+        const queryPokemons = infiniteQuery.data?.pages.flat() ?? []
+        if(!showOnlyFavorites) return queryPokemons
+
+        return queryPokemons.filter(
+            ({ pokemonId }) => lastFavoritePokemons.includes(pokemonId)
+        )
+    }, [showOnlyFavorites, infiniteQuery.data?.pages])
 
     const windowDimensions = useWindowResize()
     const showToggleFilterButton = getShowToogleFilterButton(
@@ -36,7 +49,15 @@ export const Pokedex = () => {
         setHideCards(true)
         await delay(250)
         setCardMode(value as PokeCardMode)
-        await delay(50)
+        await delay(100)
+        setHideCards(false)
+    }
+
+    const handleChangeFavorite = async (checked: boolean) => {
+        setHideCards(true)
+        await delay(250)
+        setShowOnlyFavorites(checked)
+        await delay(100)
         setHideCards(false)
     }
 
@@ -56,8 +77,7 @@ export const Pokedex = () => {
                     <S.RightFilters>
                         <FavoriteCheckbox
                             label="Only Favorites"
-                            onChange={(checked) => console.log(checked)}
-                            onClick={() => infiniteQuery.fetchNextPage()}
+                            onChange={handleChangeFavorite}
                         />
                         <Switch
                             label="View Mode"

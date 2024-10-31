@@ -1,7 +1,7 @@
 import { PokeApi } from "@types"
 
 export interface GetPokemonParams {
-    id: string
+    idOrName: string
 }
 
 export type GetPokemonApiResponse = PokeApi.Pokemon

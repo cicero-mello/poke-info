@@ -172,6 +172,7 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
         ;
 
         opacity: ${!!$pokemonType ? 1 : 0};
+        pointer-events: ${!!$pokemonType ? "unset" : "none"};
 
         &:hover, &:has(:focus) {
             transform: scale(2.5) rotate(25deg);

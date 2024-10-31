@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "preact/hooks"
 import { useQuery } from "@tanstack/react-query"
 import { PokemonSearchProps } from "./types"
 import { SearchPokeballIco } from "@assets"
-import { normalizePokemonId } from "@utils"
+import { normalizePokemonName } from "@utils"
 import { FunctionComponent as FC } from "preact"
 import * as S from "./styles"
 import * as api from "@api"
@@ -11,12 +11,12 @@ export const PokemonSearch: FC<PokemonSearchProps> = ({
     label, onFind
 }) => {
     const inputRef = useRef<HTMLInputElement>(null)
-    const [pokemonId, setPokemonId] = useState("")
+    const [pokemonSearchText, setPokemonSearchText] = useState("")
     const [showNotFound, setShowNotFound] = useState(false)
 
     const { refetch, isLoading } = useQuery({
-        queryKey: ["getPokemon", pokemonId],
-        queryFn: () => api.getPokemon({ id: pokemonId }),
+        queryKey: ["getPokemon", pokemonSearchText],
+        queryFn: () => api.getPokemon({ idOrName: pokemonSearchText }),
         enabled: false,
         retry: false
     })
@@ -24,22 +24,22 @@ export const PokemonSearch: FC<PokemonSearchProps> = ({
     const handleSubmit = async (e: SubmitEvent) => {
         e.preventDefault()
         setShowNotFound(false)
-        const newPokemonId = normalizePokemonId(
+        const newPokemonId = normalizePokemonName(
             inputRef?.current?.value ?? ""
         )
-        setPokemonId(newPokemonId)
+        setPokemonSearchText(newPokemonId)
     }
 
     const searchPokemon = async () => {
         const { isError } = await refetch()
         if(isError) setShowNotFound(true)
-        else onFind(pokemonId)
-        setPokemonId("")
+        else onFind(pokemonSearchText)
+        setPokemonSearchText("")
     }
 
     useEffect(() => {
-        if(pokemonId) searchPokemon()
-    }, [pokemonId])
+        if(pokemonSearchText) searchPokemon()
+    }, [pokemonSearchText])
 
     return (
         <S.Form onSubmit={handleSubmit}>

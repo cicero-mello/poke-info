@@ -7,7 +7,7 @@ export const Pokemon = () => {
     const  { params } = useRoute()
     const { data, isLoading } = useQuery({
         queryKey: ["getPokemon", params.id],
-        queryFn: () => api.getPokemon({id: params.id }),
+        queryFn: () => api.getPokemon({ idOrName: params.id }),
     })
 
     useDocumentTitle(data?.name ??  "Loading Pokemon...")

@@ -20,19 +20,21 @@ export const Component = styled.div.attrs({
 
         & > * {
             opacity: 1;
-            transition: ${styleGuide.transitionTime.fast};
+            transition: ${styleGuide.transitionTime.medium};
         }
     }
 
     &:has(input:not(:checked)){
         .checkbox-pokeball > * {
             opacity: 0.32;
+            transition: ${styleGuide.transitionTime.medium} linear;
         }
     }
 
     &:has(input:checked){
         .cp-top {
             fill: ${styleGuide.color.coralRed};
+            transition: ${styleGuide.transitionTime.medium} linear;
         }
     }
 `

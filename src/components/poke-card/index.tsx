@@ -2,6 +2,7 @@ import { FavoriteCheckbox, StatBar, PokemonImage, Button } from "@components"
 import { capitalize, formatPokeNumber } from "@utils"
 import { FunctionComponent as FC } from "preact"
 import { useQuery } from "@tanstack/react-query"
+import { customLocalStorage } from "@stores"
 import { PokeCardProps } from "./types"
 import { PATHS } from "@types"
 import * as S from "./styles"
@@ -12,7 +13,7 @@ export const PokeCard: FC<PokeCardProps> = ({
 }) => {
     const { data } = useQuery({
         queryKey: ["getPokemon", pokeId],
-        queryFn: () => api.getPokemon({id: pokeId })
+        queryFn: () => api.getPokemon({ idOrName: pokeId })
     })
 
     const pokeNumber = formatPokeNumber(data?.id)
@@ -48,7 +49,12 @@ export const PokeCard: FC<PokeCardProps> = ({
                     </S.CardContent>
                 </S.CardContentContainer>
             </Button>
-            {pokeName && <FavoriteCheckbox />}
+            <FavoriteCheckbox
+                checked={customLocalStorage.getIsPokemonFavorited(data?.id ?? 0)}
+                onClick={() => {
+                    customLocalStorage.toogleFavoriteOfPokemon(data?.id ?? 0)
+                }}
+            />
         </S.Card>
     )
 }
