@@ -6,6 +6,9 @@ export interface PokemonsListProps {
     pokemons: GetPokemonsResponse[]
     cardMode: PokeCardMode
     hide?: boolean
+    isFetchingNextPage: boolean
+    hasNextPage: boolean
+    fetchNextPage: () => void
 }
 
 export interface useVirtualStyleDataParams {

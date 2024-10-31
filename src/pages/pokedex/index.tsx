@@ -1,18 +1,18 @@
 import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList } from "@components"
+import { useEffect, useRef, useState } from "preact/hooks"
 import { useInfiniteQuery } from "@tanstack/react-query"
 import { getShowToogleFilterButton } from "./core"
-import { useRef, useState } from "preact/hooks"
 import { useWindowResize } from "@hooks"
 import { delay } from "@utils"
 import * as S from "./styles"
 import * as api from "@api"
 
 export const Pokedex = () => {
-    const { data, fetchNextPage, isFetching, isLoading } = useInfiniteQuery({
-        queryKey: ['getPokemons'],
+    const infiniteQuery = useInfiniteQuery({
+        queryKey: ["getPokemons"],
         initialPageParam: 0,
         queryFn: ({ pageParam = 0 }) => api.getPokemons({
-            page: pageParam, limit: 19
+            page: pageParam, limit: 20
         }),
         getNextPageParam: (lastPage, pages) => {
             if (lastPage.length === 0) return undefined
@@ -21,10 +21,10 @@ export const Pokedex = () => {
     })
 
     const [cardMode, setCardMode] = useState<PokeCardMode>("Simple")
-    const [hideCards, setHideCards] = useState(false)
+    const [hideCards, setHideCards] = useState(true)
     const [hideFilters, setHideFilters] = useState(false)
 
-    const pokemons = data?.pages.flat() ?? []
+    const pokemons = infiniteQuery.data?.pages.flat() ?? []
     const pokemonsListRef = useRef<HTMLDivElement>(null)
 
     const windowDimensions = useWindowResize()
@@ -40,6 +40,11 @@ export const Pokedex = () => {
         setHideCards(false)
     }
 
+    useEffect(() => {
+        if(infiniteQuery.isLoading) setHideCards(true)
+        else setHideCards(false)
+    }, [infiniteQuery.isLoading])
+
     return (
         <S.Screen>
             <S.Window>
@@ -52,7 +57,7 @@ export const Pokedex = () => {
                         <FavoriteCheckbox
                             label="Only Favorites"
                             onChange={(checked) => console.log(checked)}
-                            onClick={() => fetchNextPage()}
+                            onClick={() => infiniteQuery.fetchNextPage()}
                         />
                         <Switch
                             label="View Mode"
@@ -69,16 +74,17 @@ export const Pokedex = () => {
                         onClick={() => setHideFilters(state => !state)}
                     />
                 }
-                {isLoading && <h3>isLoading...</h3>}
-                {!isLoading && (
+                {!infiniteQuery.isLoading && (
                     <PokemonsList
                         ref={pokemonsListRef}
                         pokemons={pokemons}
                         cardMode={cardMode}
                         hide={hideCards}
+                        hasNextPage={infiniteQuery.hasNextPage}
+                        fetchNextPage={infiniteQuery.fetchNextPage}
+                        isFetchingNextPage={infiniteQuery.isFetchingNextPage}
                     />
                 )}
-                {isFetching && <h3>Loading more pokemons...</h3> }
             </S.Window>
         </S.Screen>
     )
