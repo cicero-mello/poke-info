@@ -11,6 +11,7 @@ export interface ButtonProps extends Omit<
 >{
     theme?: ButtonTheme
     emphasis?: boolean
+    preventNavOnClick?: boolean
     navigate?: {
         path: string,
         transition?: boolean

@@ -26,21 +26,34 @@ export const PokeWindow = styled.main.attrs({
 })`
     display: flex;
     flex-direction: column;
+    position: relative;
     border-radius: 40px;
     overflow: hidden;
     color: white;
     aspect-ratio: 1248 / 860;
     height: 100%;
+    padding-top: 60px;
 
-    background: linear-gradient(
-        to bottom,
-        ${styleGuide.color.pearlGray} 60px,
-        ${styleGuide.color.onyxAlpha83} 60px
-    );
+    background: ${styleGuide.color.onyxAlpha83};
+
+    &::before{
+        position: absolute;
+        content: "";
+        width: 100%;
+        top: 0;
+        height: 60px;
+        background-color: ${styleGuide.color.pearlGray};
+        z-index: 2;
+        pointer-events: none;
+    }
 
     @media(max-height: ${pokeWindowRem.noWhiteLine.maxHeight}){
         background: ${styleGuide.color.onyxAlpha83};
         border-radius: 12px;
+
+        &::before {
+            content: unset;
+        }
     }
 
     @media
@@ -53,5 +66,9 @@ export const PokeWindow = styled.main.attrs({
         border-radius: 0;
         width: 100%;
         aspect-ratio: unset;
+
+        &::before {
+            content: unset;
+        }
     }
 `

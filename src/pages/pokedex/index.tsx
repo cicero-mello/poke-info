@@ -1,9 +1,10 @@
-import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList, PokeWindow } from "@components"
+import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList, PokeWindow, PokemonData } from "@components"
 import { useEffect, useMemo, useRef, useState } from "preact/hooks"
 import { useInfiniteQuery } from "@tanstack/react-query"
+import { useNavigation, useWindowResize } from "@hooks"
 import { getShowToogleFilterButton } from "./core"
 import { customLocalStorage } from "@stores"
-import { useWindowResize } from "@hooks"
+import { PATHS } from "@types"
 import { delay } from "@utils"
 import * as S from "./styles"
 import * as api from "@api"
@@ -21,11 +22,13 @@ export const Pokedex = () => {
         }
     })
 
+    const { navigate } = useNavigation()
     const pokemonsListRef = useRef<HTMLDivElement>(null)
     const [cardMode, setCardMode] = useState<PokeCardMode>("Simple")
     const [hideCards, setHideCards] = useState(true)
     const [hideFilters, setHideFilters] = useState(false)
     const [showOnlyFavorites, setShowOnlyFavorites] = useState(false)
+    const [chosePokemon, setChosePokemon] = useState(0)
 
     const lastFavoritePokemons = useMemo(() => (
         customLocalStorage.getFavoritePokemons()
@@ -61,13 +64,22 @@ export const Pokedex = () => {
         setHideCards(false)
     }
 
+    const handleClickPokeCard = async (pokemonId: number) => {
+        setChosePokemon(pokemonId)
+        await delay(720)
+        navigate(
+            PATHS.POKEDEX + "/" + pokemonId,
+            false
+        )
+    }
+
     useEffect(() => {
         if(infiniteQuery.isLoading) setHideCards(true)
         else setHideCards(false)
     }, [infiniteQuery.isLoading])
 
     return (
-        <S.Screen>
+        <S.Screen $chosePokemon={chosePokemon}>
             <PokeWindow>
                 <S.Filters $hide={hideFilters}>
                     <PokemonSearch
@@ -89,7 +101,7 @@ export const Pokedex = () => {
                     </S.RightFilters>
                 </S.Filters>
                 {showToggleFilterButton &&
-                    <S.ToogleFilterButton
+                    <S.ToggleFilterButton
                         $hide={hideFilters}
                         onClick={() => setHideFilters(state => !state)}
                     />
@@ -103,8 +115,15 @@ export const Pokedex = () => {
                         hasNextPage={infiniteQuery.hasNextPage}
                         fetchNextPage={infiniteQuery.fetchNextPage}
                         isFetchingNextPage={infiniteQuery.isFetchingNextPage}
+                        handleClickPokeCard={handleClickPokeCard}
                     />
                 )}
+                {chosePokemon &&
+                    <PokemonData
+                        showOnlyTop
+                        pokemonId={chosePokemon}
+                    />
+                }
             </PokeWindow>
         </S.Screen>
     )

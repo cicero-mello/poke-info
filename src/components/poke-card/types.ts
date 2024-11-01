@@ -3,7 +3,7 @@ import { PokeApi } from "@types"
 export type PokeCardMode = "Simple" | "Detailed"
 
 export interface PokeCardProps {
-    pokeId: string
+    pokeId: number
     cardMode?: PokeCardMode
     onClick?: () => void
 }

@@ -55,7 +55,7 @@ export const MobileNavigation: FunctionComponent<MobileNavigationProps> = ({
                     children="Pokédex"
                     theme="boldWhite"
                     navigate={{ path: PATHS.POKEDEX }}
-                    emphasis={path === PATHS.POKEDEX}
+                    emphasis={path.includes(PATHS.POKEDEX)}
                     aria-hidden={linkAriaHidden}
                     tabIndex={linkTabIndex}
                 />

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { useDocumentTitle } from "@hooks"
-import { PokeWindow } from "@components"
+import { PokemonData, PokeWindow } from "@components"
 import { useRoute } from "preact-iso"
 import * as S from "./styles"
 import * as api from "@api"
@@ -17,7 +17,7 @@ export const Pokemon = () => {
     return (
         <S.Screen>
             <PokeWindow>
-
+                <PokemonData pokemonId={+params.id}/>
             </PokeWindow>
         </S.Screen>
     )

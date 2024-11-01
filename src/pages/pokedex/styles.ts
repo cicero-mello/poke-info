@@ -2,7 +2,8 @@ import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 import { pokeWindowRem } from "@components"
 
-export const Screen = styled.div`
+export const Screen = styled.div<{ $chosePokemon: number }>`
+${({ $chosePokemon }) => css`
     display: flex;
     align-self: center;
     justify-content: center;
@@ -11,6 +12,16 @@ export const Screen = styled.div`
     max-height: calc(100svh - ${styleGuide.dimensions.headerHeight});
     height: 100%;
     width: 100%;
+
+    ${!!$chosePokemon && css`
+        pointer-events: none;
+        .filters, .pokemons-list, .toggle-filter-button {
+            animation:
+                ${styleGuide.keyframes.blurFadeOut}
+                700ms ease-out forwards
+            ;
+        }
+    `}
 
     @media(max-height: ${pokeWindowRem.noWhiteLine.maxHeight}){
         padding: 12px 48px;
@@ -22,7 +33,7 @@ export const Screen = styled.div`
     {
         padding: 0;
     }
-`
+`}`
 
 export const Filters = styled.div.attrs({
     className: "filters"
@@ -33,7 +44,7 @@ ${({ $hide }) => css`
     justify-content: space-between;
 
     width: 100%;
-    margin-top: 98px;
+    margin-top: 38px;
     margin-bottom: ${pxToRem("28px")};
     padding: 0 clamp(36px, 6%, 100%);
     overflow: hidden;
@@ -104,8 +115,9 @@ export const RightFilters = styled.span.attrs({
     gap: 38px;
 `
 
-export const ToogleFilterButton = styled.button
-<{ $hide: boolean }>`
+export const ToggleFilterButton = styled.button.attrs({
+    className: "toggle-filter-button"
+})<{ $hide: boolean }>`
 ${({ $hide }) => css`
 
     position: relative;

@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { useResetSessionStorageOnRefresh } from "@hooks"
 import { LocationProvider, Router } from "preact-iso"
 import { Layout } from "@layout"
 import { PATHS } from "@types"
@@ -19,12 +20,16 @@ const AppRouter = () => (
 )
 
 
-export const App = () => (
-    <LocationProvider>
-         <QueryClientProvider client={queryClient}>
-            <Layout>
-                <AppRouter />
-            </Layout>
-         </QueryClientProvider>
-	</LocationProvider>
-)
+export const App = () => {
+    useResetSessionStorageOnRefresh()
+
+    return (
+        <LocationProvider>
+            <QueryClientProvider client={queryClient}>
+                <Layout>
+                    <AppRouter />
+                </Layout>
+            </QueryClientProvider>
+        </LocationProvider>
+    )
+}

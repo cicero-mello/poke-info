@@ -10,6 +10,17 @@ export const fadeOut = keyframes`
     to { opacity: 0; }
 `
 
+export const blurFadeOut = keyframes`
+    from {
+        opacity: 1;
+        filter: blur(0px);
+    }
+    to {
+        opacity: 0;
+        filter: blur(10px);
+    }
+`
+
 export const opacityLoading = keyframes`
     0% { opacity: 1; }
     50% { opacity: 0.4; }

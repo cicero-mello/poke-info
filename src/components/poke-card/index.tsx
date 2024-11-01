@@ -9,11 +9,11 @@ import * as S from "./styles"
 import * as api from "@api"
 
 export const PokeCard: FC<PokeCardProps> = ({
-    pokeId, cardMode
+    pokeId, cardMode, onClick
 }) => {
     const { data } = useQuery({
         queryKey: ["getPokemon", pokeId],
-        queryFn: () => api.getPokemon({ idOrName: pokeId })
+        queryFn: () => api.getPokemon({ idOrName: pokeId.toString() })
     })
 
     const pokeNumber = formatPokeNumber(data?.id)
@@ -21,21 +21,23 @@ export const PokeCard: FC<PokeCardProps> = ({
 
     return (
         <S.Card
-            id={pokeId}
             $cardMode={cardMode}
             $pokemonType={data?.types[0]}
         >
             <Button
+                preventNavOnClick
                 navigate={{
                     path: PATHS.POKEDEX + `/${pokeId}`,
                     transition: false
                 }}
+                onClick={onClick}
             >
                 <S.TopArea>
                     <S.PokeNumber children={pokeNumber}/>
                     <PokemonImage
-                        imageUrl={data?.imageUrl}
+                        imageUrl={data?.imageUrl ?? ""}
                         alt={pokeName}
+                        pokemonId={pokeId}
                     />
                 </S.TopArea>
                 <S.CardContentContainer>

@@ -6,7 +6,7 @@ import { FC } from "preact/compat"
 
 export const Button: FC<ButtonProps> = ({
     theme, emphasis, navigate: navigateProps,
-    onClick, ...rest
+    preventNavOnClick, onClick, ...rest
 }) => {
     const { navigate } = useNavigation()
     const styledLinkRef = useRef<any>(null)
@@ -23,10 +23,12 @@ export const Button: FC<ButtonProps> = ({
     const handleAnchorClick = (event: MouseEvent) => {
         event.preventDefault()
         event.stopPropagation()
-        navigate(
-            navigateProps.path,
-            navigateProps.transition
-        )
+        if(!preventNavOnClick){
+            navigate(
+                navigateProps.path,
+                navigateProps.transition
+            )
+        }
         if(onClick) onClick(event as any)
     }
 

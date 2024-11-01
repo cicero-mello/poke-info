@@ -29,7 +29,7 @@ export const DesktopNavigation: FunctionComponent<DesktopNavigationProps> = ({
                 children="Pokédex"
                 theme={buttonTheme}
                 navigate={{ path: PATHS.POKEDEX }}
-                emphasis={path === PATHS.POKEDEX}
+                emphasis={path.includes(PATHS.POKEDEX)}
                 tabIndex={tabIndex}
                 aria-hidden={ariaHidden}
             />

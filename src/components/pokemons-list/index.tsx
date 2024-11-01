@@ -9,7 +9,8 @@ import { RefObject } from "preact"
 import * as S from "./styles"
 
 export const PokemonsList = forwardRef<HTMLDivElement, PokemonsListProps>(({
-    pokemons, cardMode, hide, fetchNextPage, isFetchingNextPage, hasNextPage
+    pokemons, cardMode, hide, handleClickPokeCard,
+    fetchNextPage, isFetchingNextPage, hasNextPage
 }, ref) => {
     const virtualizedScrollRef = (
         ref as RefObject<HTMLDivElement> ?? useRef<HTMLDivElement>(null)
@@ -50,8 +51,11 @@ export const PokemonsList = forwardRef<HTMLDivElement, PokemonsListProps>(({
                     >
                         <PokeCard
                             key={virtualItem.key}
-                            pokeId={pokemons[virtualItem.index].pokemonName}
+                            pokeId={pokemons[virtualItem.index].pokemonId}
                             cardMode={cardMode}
+                            onClick={() => handleClickPokeCard(
+                                pokemons[virtualItem.index].pokemonId
+                            )}
                         />
                     </S.VirtualizedItem>
                 ))}
