@@ -11,6 +11,12 @@
     box-sizing: border-box;
     outline: none;
     border: none;
+
+    /* &:focus-visible {
+        outline: 4px solid #f34343;
+        outline-offset: 4px;
+        border-radius: 2px;
+    } */
 }
 
 h1 {

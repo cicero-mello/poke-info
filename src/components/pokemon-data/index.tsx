@@ -1,4 +1,4 @@
-import { PokemonImage } from "@components/pokemon-image"
+import { PokemonImage, TypeTag } from "@components"
 import { FunctionComponent as FC } from "preact"
 import { useQuery } from "@tanstack/react-query"
 import { PokemonDataProps } from "./types"
@@ -26,6 +26,11 @@ export const PokemonData: FC<PokemonDataProps> = ({
                     alt={data?.name ?? ""}
                     pokemonId={pokemonId}
                 />
+                <S.TypeTagContainer>
+                    {data?.types.map(type => (
+                        <TypeTag pokemonType={type}/>
+                    ))}
+                </S.TypeTagContainer>
             </S.TopArea>
             <S.ContentContainer>
                 <S.Content $pokemonType={data?.types[0] ?? "normal"}>

@@ -16,10 +16,12 @@ export const Component = styled.div.attrs({
 })<{ $showOnlyTop: boolean }>`
 ${({ $showOnlyTop }) => css`
     display: flex;
-    position: absolute;
+    position: relative;
     width: 100%;
+    height: 100%;
 
     ${$showOnlyTop && css`
+        position: absolute;
         animation: ${descend} 700ms ease-out forwards;
     `}
 `}`
@@ -88,3 +90,10 @@ ${({ $pokemonType }) => css`
         border-top: none;
     }
 `}`
+
+export const TypeTagContainer = styled.div`
+    display: flex;
+    gap: ${pxToRem("20px")};
+
+    margin: 20px;
+`
