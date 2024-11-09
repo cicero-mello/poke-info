@@ -8,7 +8,7 @@ import * as api from "@api"
 
 export const PokemonData: FC<PokemonDataProps> = ({
     pokemonId,
-    showOnlyTop
+    withEntryAnimation
 }) => {
     const  { params } = useRoute()
     const pokeId = pokemonId ?? params.id
@@ -19,7 +19,7 @@ export const PokemonData: FC<PokemonDataProps> = ({
     })
 
     return (
-        <S.Component $showOnlyTop={!!showOnlyTop}>
+        <S.Component $withEntryAnimation={!!withEntryAnimation}>
             <S.TopArea>
                 <PokemonImage
                     imageUrl={data?.imageUrl ?? ""}
@@ -33,7 +33,10 @@ export const PokemonData: FC<PokemonDataProps> = ({
                 </S.TypeTagContainer>
             </S.TopArea>
             <S.ContentContainer>
-                <S.Content $pokemonType={data?.types[0] ?? "normal"}>
+                <S.Content
+                    $withEntryAnimation={!!withEntryAnimation}
+                    $pokemonType={data?.types[0] ?? "normal"}
+                >
                 </S.Content>
             </S.ContentContainer>
         </S.Component>

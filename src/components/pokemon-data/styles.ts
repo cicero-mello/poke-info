@@ -2,27 +2,39 @@ import styled, { css, keyframes } from "styled-components"
 import { pxToRem, styleGuide } from "@style-guide"
 import { PokeApi } from "@types"
 
-const descend = keyframes`
+const descendHeader = keyframes`
     from {
-        transform: translateY(-${pxToRem("256px")});
+        height: calc(100% + 16rem);
+        transform: translateY(-16rem);
     }
     to {
+        height: 100%;
         transform: translateY(0);
+    }
+`
+
+const descendContent = keyframes`
+    from {
+        background-color: transparent;
     }
 `
 
 export const Component = styled.div.attrs({
     className: "pokemon-data"
-})<{ $showOnlyTop: boolean }>`
-${({ $showOnlyTop }) => css`
+})<{ $withEntryAnimation: boolean }>`
+${({ $withEntryAnimation }) => css`
     display: flex;
     position: relative;
     width: 100%;
     height: 100%;
+    position: absolute;
 
-    ${$showOnlyTop && css`
-        position: absolute;
-        animation: ${descend} 700ms ease-out forwards;
+    ${$withEntryAnimation && css`
+        animation:
+            ${descendHeader}
+            ${styleGuide.transitionTime.moreSlow}
+            ease-out forwards
+        ;
     `}
 `}`
 
@@ -56,14 +68,13 @@ export const ContentContainer = styled.div`
 
 export const Content = styled.div.attrs({
     className: "content"
-})<{ $pokemonType: PokeApi.PokemonType }>`
-${({ $pokemonType }) => css`
+})<{ $pokemonType: PokeApi.PokemonType, $withEntryAnimation: boolean }>`
+${({ $pokemonType, $withEntryAnimation }) => css`
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     width: 100%;
-    height: 0%;
     background-color: ${styleGuide.getCardColors($pokemonType).background};
     border-radius: ${pxToRem("5px")};
     border-top:
@@ -89,11 +100,18 @@ ${({ $pokemonType }) => css`
         ;
         border-top: none;
     }
+
+    ${$withEntryAnimation && css`
+        animation:
+            ${descendContent}
+            ${styleGuide.transitionTime.medium}
+            ease forwards
+        ;
+    `}
 `}`
 
 export const TypeTagContainer = styled.div`
     display: flex;
     gap: ${pxToRem("20px")};
-
     margin: 20px;
 `

@@ -66,7 +66,7 @@ export const Pokedex = () => {
 
     const handleClickPokeCard = async (pokemonId: number) => {
         setChosePokemon(pokemonId)
-        await delay(720)
+        await delay(420)
         navigate(
             PATHS.POKEDEX + "/" + pokemonId,
             false
@@ -118,9 +118,9 @@ export const Pokedex = () => {
                         handleClickPokeCard={handleClickPokeCard}
                     />
                 )}
-                {chosePokemon &&
+                {!!chosePokemon &&
                     <PokemonData
-                        showOnlyTop
+                        withEntryAnimation
                         pokemonId={chosePokemon}
                     />
                 }

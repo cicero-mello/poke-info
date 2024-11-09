@@ -16,10 +16,8 @@ ${({ $chosePokemon }) => css`
     ${!!$chosePokemon && css`
         pointer-events: none;
         .filters, .pokemons-list, .toggle-filter-button {
-            animation:
-                ${styleGuide.keyframes.blurFadeOut}
-                700ms ease-out forwards
-            ;
+            transition: 400ms;
+            opacity: 0.5;
         }
     `}
 
