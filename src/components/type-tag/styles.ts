@@ -19,7 +19,7 @@ ${({ $pokemonType, $size }) => css`
     width: ${pxToRem("92px")};
     padding: ${pxToRem("7px")} 0;
     border-radius: ${pxToRem(`8px`)};
-
+    color: ${styleGuide.color.pearlGray};
 
     ${$size == "small" && css`
         ${styleGuide.text.sm}

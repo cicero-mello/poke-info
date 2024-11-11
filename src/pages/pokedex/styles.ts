@@ -41,11 +41,16 @@ ${({ $hide }) => css`
     position: relative;
     justify-content: space-between;
 
+    animation:
+        ${styleGuide.keyframes.fadeIn}
+        ${styleGuide.transitionTime.medium}
+        linear forwards
+    ;
+
     width: 100%;
     margin-top: 38px;
     margin-bottom: ${pxToRem("28px")};
     padding: 0 clamp(36px, 6%, 100%);
-    overflow: hidden;
 
     opacity: 1;
     min-height: ${pxToRem("68px")};
@@ -66,6 +71,7 @@ ${({ $hide }) => css`
 
         min-height: ${pxToRem("150px")};
         height: ${pxToRem("150px")};
+        overflow: hidden;
 
         margin-top: ${pxToRem("32px")};
         gap: ${pxToRem("24px")};
@@ -88,11 +94,9 @@ ${({ $hide }) => css`
         transition: 300ms ease-out;
 
         ${$hide && css`
-            opacity: 0;
             min-height: 0;
             height: 0;
             margin-bottom: 0;
-            filter: blur(15px);
             margin-top: ${pxToRem("34px")};
         `}
     }
