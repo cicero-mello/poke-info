@@ -49,13 +49,16 @@ export const PokemonData: FC<PokemonDataProps> = ({
                 </Button>
             </S.TopArea>
 
-            <S.ContentContainer>
-                <S.Content
+            <S.DownAreaContainer>
+                <S.DownArea
                     $withEntryAnimation={!!withEntryAnimation}
                     $pokemonType={data?.types[0] ?? "normal"}
                 >
-                </S.Content>
-            </S.ContentContainer>
+                    <S.Content>
+                        {/* <PokemonNameAndStats pokeId={pokeId} bigMode /> */}
+                    </S.Content>
+                </S.DownArea>
+            </S.DownAreaContainer>
 
         </S.Component>
     )

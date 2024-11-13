@@ -1,4 +1,4 @@
-import { FavoriteCheckbox, StatBar, PokemonImage, Button } from "@components"
+import { FavoriteCheckbox, PokemonImage, Button, PokemonNameAndStats } from "@components"
 import { capitalize, formatPokeNumber } from "@utils"
 import { FunctionComponent as FC } from "preact"
 import { useQuery } from "@tanstack/react-query"
@@ -18,6 +18,14 @@ export const PokeCard: FC<PokeCardProps> = ({
 
     const pokeNumber = formatPokeNumber(data?.id)
     const pokeName = capitalize(data?.name)
+
+    const isFavorite = (
+        customLocalStorage.getIsPokemonFavorited(data?.id ?? 0)
+    )
+
+    const handleClickFavorite = () => {
+        customLocalStorage.toogleFavoriteOfPokemon(data?.id ?? 0)
+    }
 
     return (
         <S.Card
@@ -40,27 +48,18 @@ export const PokeCard: FC<PokeCardProps> = ({
                         pokemonId={pokeId}
                     />
                 </S.TopArea>
-                <S.CardContentContainer>
-                    <S.CardContent>
-                        <S.PokeName children={pokeName} />
-                        <S.StatsContainer>
-                            {[0,1,2,3,4,5].map((n) => (
-                                <StatBar
-                                    key={pokeId + `stat-${n}`}
-                                    statName={data?.baseStats[n].name}
-                                    value={data?.baseStats[n].value}
-                                    withLabel={cardMode === "Detailed"}
-                                />
-                            ))}
-                        </S.StatsContainer>
-                    </S.CardContent>
-                </S.CardContentContainer>
+                <S.DownAreaContainer>
+                    <S.DownArea>
+                        <PokemonNameAndStats
+                            pokeId={pokeId}
+                            statsWithLabel={cardMode === "Detailed"}
+                        />
+                    </S.DownArea>
+                </S.DownAreaContainer>
             </Button>
             <FavoriteCheckbox
-                checked={customLocalStorage.getIsPokemonFavorited(data?.id ?? 0)}
-                onClick={() => {
-                    customLocalStorage.toogleFavoriteOfPokemon(data?.id ?? 0)
-                }}
+                checked={isFavorite}
+                onClick={handleClickFavorite}
             />
         </S.Card>
     )

@@ -95,7 +95,7 @@ export const TypeTags = styled.div`
     gap: ${pxToRem("20px")};
 `
 
-export const ContentContainer = styled.div`
+export const DownAreaContainer = styled.div`
     display: flex;
     position: absolute;
     overflow: hidden;
@@ -105,13 +105,10 @@ export const ContentContainer = styled.div`
     pointer-events: none;
 `
 
-export const Content = styled.div.attrs({
-    className: "content"
-})<{ $pokemonType: PokeApi.PokemonType, $withEntryAnimation: boolean }>`
+export const DownArea = styled.div
+<{ $pokemonType: PokeApi.PokemonType, $withEntryAnimation: boolean }>`
 ${({ $pokemonType, $withEntryAnimation }) => css`
     display: flex;
-    flex-direction: column;
-    align-items: center;
     position: relative;
     width: 100%;
     background-color: ${styleGuide.getCardColors($pokemonType).background};
@@ -149,3 +146,7 @@ ${({ $pokemonType, $withEntryAnimation }) => css`
     `}
 `}`
 
+export const Content = styled.div`
+    width: 500px;
+    margin-top: 80px;
+`

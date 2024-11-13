@@ -47,7 +47,7 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
         #00000033
     ;
 
-    .card-content {
+    .down-area {
         transition-property: border-color, background-color;
         transition-duration: ${styleGuide.transitionTime.medium};
         transition-timing-function: ease-in-out;
@@ -105,7 +105,7 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
                 color: white;
             }
 
-            .card-content {
+            .down-area {
                 background-color: ${
                     styleGuide.getCardColors($pokemonType).background
                 };
@@ -114,7 +114,7 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
                 };
             }
 
-            .card-content::before {
+            .down-area::before {
                 border-color: ${
                     styleGuide.getCardColors($pokemonType).border
                 };
@@ -132,7 +132,7 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
             + "rem"
         };
 
-        .card-content {
+        .down-area {
             padding-top: 23%;
         }
 
@@ -208,7 +208,7 @@ export const PokeNumber = styled.span`
     }
 `
 
-export const CardContentContainer = styled.div`
+export const DownAreaContainer = styled.div`
     display: flex;
     position: absolute;
     overflow: hidden;
@@ -218,12 +218,10 @@ export const CardContentContainer = styled.div`
     pointer-events: none;
 `
 
-export const CardContent = styled.div.attrs({
-    className: "card-content"
+export const DownArea = styled.div.attrs({
+    className: "down-area"
 })`
     display: flex;
-    flex-direction: column;
-    align-items: center;
     position: relative;
     width: 100%;
     height: 78%;
@@ -252,44 +250,4 @@ export const CardContent = styled.div.attrs({
         ;
         border-top: none;
     }
-`
-
-export const PokeName = styled.span.attrs({
-    className: "poke-name"
-})`
-    ${styleGuide.text.lg}
-    color: ${styleGuide.color.steelGray};
-
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-align: center;
-
-    transition-property: color;
-    transition-duration: ${styleGuide.transitionTime.slow};
-
-    &:empty {
-        background-color: ${styleGuide.color.silverGray};
-        color: transparent;
-        width: 54%;
-        height: ${pxToRem(`16px`)};
-        margin: ${pxToRem(`6px`)} 0;
-        border-radius: ${pxToRem("4px")};
-        animation:
-            ${styleGuide.keyframes.opacityLoading2}
-            1.3s ease-in-out infinite
-        ;
-    }
-`
-
-export const StatsContainer = styled.div.attrs({
-    className: "stats-container"
-})`
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    width: 100%;
-    padding: 8px 16px;
-    gap: ${pxToRem(`8px`)};
 `
