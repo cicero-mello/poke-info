@@ -4,7 +4,7 @@ import { PATHS } from "@types"
 
 const staticTitlesByPath = new Map<string, string>([
     [PATHS.HOME, "Home"],
-    [PATHS.POKEDEX, "Pokedex"],
+    [PATHS.POKEDEX, "Pokédex"],
     [PATHS.BERRIES, "Berries"],
     [PATHS.ABOUT, "About"],
     [PATHS.FIND_POKEMON, "Find Pokémon"]
