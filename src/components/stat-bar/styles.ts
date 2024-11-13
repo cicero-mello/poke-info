@@ -4,7 +4,8 @@ import { PokeApi } from "@types"
 
 export const Component = styled.div.attrs({
     className: "stat-bar"
-})`
+})<{ $bigMode?: boolean }>`
+${({ $bigMode }) => css`
     display: flex;
     align-items: center;
 
@@ -26,7 +27,24 @@ export const Component = styled.div.attrs({
             1.3s ease-in-out infinite
         ;
     }
-`
+
+    ${$bigMode && css`
+        ${styleGuide.text.base}
+        flex-direction: column;
+        border-radius: unset;
+        align-items: unset;
+        height: unset;
+        color: white;
+
+        &:has(label){
+            height: unset;
+        }
+
+        progress {
+            height: ${pxToRem("12px")};
+        }
+    `}
+`}`
 
 const colorPerStatName = new Map<PokeApi.StatName, string>([
     ["hp", styleGuide.color.hp],

@@ -50,6 +50,7 @@ export const PokeWindow = styled.main.attrs({
     @media(max-height: ${pokeWindowRem.noWhiteLine.maxHeight}){
         background: ${styleGuide.color.onyxAlpha83};
         border-radius: 12px;
+        padding-top: 0;
 
         &::before {
             content: unset;
@@ -65,6 +66,7 @@ export const PokeWindow = styled.main.attrs({
         padding: 0px;
         border-radius: 0;
         width: 100%;
+        height: 100%;
         aspect-ratio: unset;
 
         &::before {

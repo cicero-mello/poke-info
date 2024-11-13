@@ -1,28 +1,13 @@
-import styled, { css, keyframes } from "styled-components"
-import { pxToRem, styleGuide } from "@style-guide"
+import { descendHeader, fanRotate, revealContent } from "./animations"
+import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
+import styled, { css } from "styled-components"
+import { pokeWindowRem } from "@components"
 import { PokeApi } from "@types"
-
-const descendHeader = keyframes`
-    from {
-        height: calc(100% + 16rem);
-        transform: translateY(-16rem);
-    }
-    to {
-        height: 100%;
-        transform: translateY(0);
-    }
-`
-
-const descendContent = keyframes`
-    from {
-        background-color: transparent;
-    }
-`
 
 export const Component = styled.div.attrs({
     className: "pokemon-data"
-})<{ $withEntryAnimation: boolean }>`
-${({ $withEntryAnimation }) => css`
+})<{ $previewMode: boolean }>`
+${({ $previewMode }) => css`
     display: flex;
     position: relative;
     width: 100%;
@@ -30,7 +15,7 @@ ${({ $withEntryAnimation }) => css`
     position: absolute;
     z-index: 2;
 
-    ${$withEntryAnimation && css`
+    ${$previewMode && css`
         animation:
             ${descendHeader}
             ${styleGuide.transitionTime.moreSlow}
@@ -47,6 +32,7 @@ export const TopArea = styled.div.attrs({
     width: 100%;
     height: ${pxToRem("154px")};
     background-color: ${styleGuide.color.onyx};
+    z-index: 2;
 
     .pokemon-image {
         height: ${pxToRem("210px")};
@@ -100,14 +86,27 @@ export const DownAreaContainer = styled.div`
     position: absolute;
     overflow: hidden;
     width: 100%;
-    height: 100%;
+    height: calc(100% - ${pxToRem("154px")} - 60px);
     margin-top: ${pxToRem("154px")};
-    pointer-events: none;
+
+    @media
+        (max-height: ${pokeWindowRem.noWhiteLine.maxHeight}),
+        (max-width: ${pokeWindowRem.full.maxWidth})
+    {
+        height: calc(100% - ${pxToRem("154px")});
+    }
+
+    @media
+        (max-width: ${pokeWindowRem.full.maxWidth}),
+        (max-height: ${pokeWindowRem.full.maxHeight})
+    {
+        height: calc(100% - ${pxToRem("154px")});
+    }
 `
 
 export const DownArea = styled.div
-<{ $pokemonType: PokeApi.PokemonType, $withEntryAnimation: boolean }>`
-${({ $pokemonType, $withEntryAnimation }) => css`
+<{ $pokemonType: PokeApi.PokemonType, $previewMode: boolean }>`
+${({ $pokemonType, $previewMode }) => css`
     display: flex;
     position: relative;
     width: 100%;
@@ -120,6 +119,7 @@ ${({ $pokemonType, $withEntryAnimation }) => css`
 
     &::before {
         content: "";
+        z-index: 1;
         position: absolute;
         transform: translateX(-50%);
         left: ${pxToRem("210px")};
@@ -137,9 +137,9 @@ ${({ $pokemonType, $withEntryAnimation }) => css`
         border-top: none;
     }
 
-    ${$withEntryAnimation && css`
+    ${$previewMode && css`
         animation:
-            ${descendContent}
+            ${revealContent}
             ${styleGuide.transitionTime.medium}
             ease forwards
         ;
@@ -147,6 +147,49 @@ ${({ $pokemonType, $withEntryAnimation }) => css`
 `}`
 
 export const Content = styled.div`
-    width: 500px;
-    margin-top: 80px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: ${pxToRem("420px")};
+
+    animation:
+        ${styleGuide.keyframes.fadeIn}
+        ${styleGuide.transitionTime.medium}
+        ease forwards
+    ;
+`
+
+export const RightSide = styled.div`
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: ${pxToRem("420px")};
+
+    .pokemon-name-and-stats {
+        padding-top: ${numbPxToRem(88)};
+    }
+
+    .stats-container {
+        max-width: ${numbPxToRem(270)};
+        padding: ${numbPxToRem(0)} ${numbPxToRem(44)} ${numbPxToRem(2)} ${numbPxToRem(44)};
+        margin: ${numbPxToRem(20)} 0 ${numbPxToRem(48)} 0;
+    }
+
+    animation:
+        ${fanRotate}
+        ${styleGuide.transitionTime.moreSlow}
+        ease-in-out forwards
+    ;
+`
+
+export const Fan = styled.div`
+    width: ${numbPxToRem(470)};
+    height:  ${numbPxToRem(470)};
+    position: absolute;
+
+    border-radius: ${numbPxToRem(10)} 100% ${numbPxToRem(27)} ${numbPxToRem(45)};
+    transform: rotate(45deg);
+    background-color: ${styleGuide.color.ironGray};
+    top: ${numbPxToRem(30)};
+    left: ${numbPxToRem(5)};
 `

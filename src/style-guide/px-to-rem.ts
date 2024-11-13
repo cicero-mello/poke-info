@@ -5,7 +5,7 @@ type validPx =
     "56px" | "60px" | "64px" | "68px" | "80px" | "96px" | "112px" | "128px" | "130px" |
     "144px" | "150px" | "154px" | "160px" | "168px" | "176px" | "180px" | "192px" |
     "204px" |"208px" | "210px" | "224px" | "240px" | "256px" | "260px" | "268px" |
-    "288px" | "320px" | "356px" | "370px" | "384px" | "400px" | "550px" |
+    "288px" | "320px" | "356px" | "370px" | "384px" | "400px" | "550px" | "420px" |
     "624px" | "760px" | "860px" | "1120px" | "105px" | "92px" | "78px"
 
 export const pxToRem = (px: validPx): string => {

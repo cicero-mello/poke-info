@@ -1,4 +1,4 @@
 export interface PokemonDataProps {
-    withEntryAnimation?: boolean
+    previewMode?: boolean
     pokemonId: number
 }

@@ -18,9 +18,9 @@ export const PokemonNameAndStats: FC<PokemonNameAndStatsProps> = ({
 
     return (
         <S.Component>
-            <S.PokeName children={pokeName} />
-            <S.StatsContainer>
-                {[0,1,2,3,4,5].map((n) => (
+            <S.PokeName children={pokeName} $bigMode={bigMode} />
+            <S.StatsContainer $bigMode={bigMode}>
+                {[0, 1, 2, 3, 4, 5].map((n) => (
                     <StatBar
                         key={pokeId + `stat-${n}`}
                         statName={data?.baseStats[n].name}

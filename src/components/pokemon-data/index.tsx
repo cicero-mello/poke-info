@@ -1,4 +1,4 @@
-import { Button, FavoriteCheckbox, PokemonImage, TypeTag } from "@components"
+import { Button, FavoriteCheckbox, PokemonImage, PokemonNameAndStats, TypeTag } from "@components"
 import { FunctionComponent as FC } from "preact"
 import { useQuery } from "@tanstack/react-query"
 import { customLocalStorage } from "@stores"
@@ -12,7 +12,7 @@ import * as api from "@api"
 
 export const PokemonData: FC<PokemonDataProps> = ({
     pokemonId,
-    withEntryAnimation
+    previewMode
 }) => {
     const  { params } = useRoute()
     const pokeId = pokemonId ?? params.id
@@ -24,7 +24,7 @@ export const PokemonData: FC<PokemonDataProps> = ({
     })
 
     return (
-        <S.Component $withEntryAnimation={!!withEntryAnimation}>
+        <S.Component $previewMode={!!previewMode}>
 
             <S.TopArea>
                 <S.PokeNumber children={pokeNumber}/>
@@ -51,12 +51,17 @@ export const PokemonData: FC<PokemonDataProps> = ({
 
             <S.DownAreaContainer>
                 <S.DownArea
-                    $withEntryAnimation={!!withEntryAnimation}
+                    $previewMode={!!previewMode}
                     $pokemonType={data?.types[0] ?? "normal"}
                 >
-                    <S.Content>
-                        {/* <PokemonNameAndStats pokeId={pokeId} bigMode /> */}
-                    </S.Content>
+                    {!previewMode && !!data && (
+                        <S.Content>
+                            <S.RightSide>
+                                <S.Fan />
+                                <PokemonNameAndStats pokeId={pokeId} bigMode />
+                            </S.RightSide>
+                        </S.Content>
+                    )}
                 </S.DownArea>
             </S.DownAreaContainer>
 

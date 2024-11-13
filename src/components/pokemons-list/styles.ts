@@ -7,8 +7,6 @@ export const PX_VIRTUALIZED_SCROLL_PADDING_X = 48
 export const PX_VIRTUALIZED_SCROLL_GAP_X = 36
 export const PX_VIRTUALIZED_SCROLL_GAP_Y = 36
 
-const isFirefox = navigator.userAgent.indexOf("Firefox") !== -1
-
 export const VirtualizedScroll = styled.div.attrs({
     className: "pokemons-list"
 })<{ $hide?: boolean }>`
@@ -26,29 +24,7 @@ ${({ $hide }) => css`
     transition: ${styleGuide.transitionTime.mediumSlow} linear;
     opacity: ${$hide ? 0 : 1};
 
-    ${isFirefox && css`
-        scrollbar-color: ${styleGuide.color.mistGray} transparent;
-        scrollbar-width: thin;
-    `}
-
-    &::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    &::-webkit-scrollbar-track {
-        background-color: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        cursor: grab;
-        border-radius: 6px;
-        background: ${styleGuide.color.mistGray};
-        min-height: ${pxToRem("112px")};
-    }
-
-    &::-webkit-scrollbar-thumb:active {
-        cursor: grabbing;
-    }
+    ${styleGuide.scrollbar.white}
 `}`
 
 export const VirtualizedContainer = styled.div.attrs({

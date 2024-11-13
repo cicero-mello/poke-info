@@ -1,5 +1,5 @@
 import { pxToRem, styleGuide } from "@style-guide"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const Component = styled.div.attrs({
     className: "pokemon-name-and-stats"
@@ -14,19 +14,39 @@ export const Component = styled.div.attrs({
 
 export const StatsContainer = styled.div.attrs({
     className: "stats-container"
-})`
+})<{ $bigMode?: boolean }>`
+${({ $bigMode }) => css`
     display: flex;
     flex-direction: column;
     overflow: hidden;
     width: 100%;
     padding: 8px 16px;
-    gap: ${pxToRem(`8px`)};
-`
+    gap: ${pxToRem("8px")};
 
+    overflow-y: auto;
+
+    ${styleGuide.scrollbar.white}
+
+    &::-webkit-scrollbar-thumb {
+        min-height: ${pxToRem("12px")};
+    }
+
+    ${$bigMode && css`
+        gap: ${pxToRem("14px")};
+
+        progress {
+            background-color: ${styleGuide.color.pearlGray};
+            &::-webkit-progress-bar {
+                background-color: ${styleGuide.color.pearlGray};
+            }
+        }
+    ` }
+`}`
 
 export const PokeName = styled.span.attrs({
      className: "poke-name"
-})`
+})<{ $bigMode?: boolean }>`
+${({ $bigMode }) => css`
     ${styleGuide.text.lg}
     color: ${styleGuide.color.steelGray};
 
@@ -51,4 +71,11 @@ export const PokeName = styled.span.attrs({
             1.3s ease-in-out infinite
         ;
     }
-`
+
+    ${$bigMode && css`
+        ${styleGuide.text["2xl"]}
+        color: white;
+        font-weight: bold;
+        min-height: ${pxToRem("32px")};
+    `}
+`}`

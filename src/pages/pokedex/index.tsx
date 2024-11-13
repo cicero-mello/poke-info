@@ -120,7 +120,7 @@ export const Pokedex = () => {
                 )}
                 {!!chosePokemon &&
                     <PokemonData
-                        withEntryAnimation
+                        previewMode
                         pokemonId={chosePokemon}
                     />
                 }
