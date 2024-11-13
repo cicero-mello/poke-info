@@ -1,8 +1,8 @@
-import { Button, FavoriteCheckbox, PokemonImage, PokemonNameAndStats, TypeTag } from "@components"
+import { Button, FavoriteCheckbox, PokemonImage, TypeTag } from "@components"
 import { FunctionComponent as FC } from "preact"
 import { useQuery } from "@tanstack/react-query"
 import { customLocalStorage } from "@stores"
-import { PokemonDataProps } from "./types"
+import { PokemonLayoutProps } from "./types"
 import { formatPokeNumber } from "@utils"
 import { ArrowReturnIco } from "@assets"
 import { useRoute } from "preact-iso"
@@ -10,9 +10,8 @@ import { PATHS } from "@types"
 import * as S from "./styles"
 import * as api from "@api"
 
-export const PokemonData: FC<PokemonDataProps> = ({
-    pokemonId,
-    previewMode
+export const PokemonLayout: FC<PokemonLayoutProps> = ({
+    pokemonId, children
 }) => {
     const  { params } = useRoute()
     const pokeId = pokemonId ?? params.id
@@ -24,7 +23,7 @@ export const PokemonData: FC<PokemonDataProps> = ({
     })
 
     return (
-        <S.Component $previewMode={!!previewMode}>
+        <S.Component $previewMode={!children}>
 
             <S.TopArea>
                 <S.PokeNumber children={pokeNumber}/>
@@ -51,17 +50,10 @@ export const PokemonData: FC<PokemonDataProps> = ({
 
             <S.DownAreaContainer>
                 <S.DownArea
-                    $previewMode={!!previewMode}
+                    $previewMode={!children}
                     $pokemonType={data?.types[0] ?? "normal"}
                 >
-                    {!previewMode && !!data && (
-                        <S.Content>
-                            <S.RightSide>
-                                <S.Fan />
-                                <PokemonNameAndStats pokeId={pokeId} bigMode />
-                            </S.RightSide>
-                        </S.Content>
-                    )}
+                    {children && <S.Content>{children}</S.Content>}
                 </S.DownArea>
             </S.DownAreaContainer>
 

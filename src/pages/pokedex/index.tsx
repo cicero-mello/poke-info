@@ -1,4 +1,4 @@
-import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList, PokeWindow, PokemonData } from "@components"
+import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList, PokeWindow, PokemonLayout } from "@components"
 import { useEffect, useMemo, useRef, useState } from "preact/hooks"
 import { useInfiniteQuery } from "@tanstack/react-query"
 import { useNavigation, useWindowResize } from "@hooks"
@@ -119,10 +119,7 @@ export const Pokedex = () => {
                     />
                 )}
                 {!!chosePokemon &&
-                    <PokemonData
-                        previewMode
-                        pokemonId={chosePokemon}
-                    />
+                    <PokemonLayout pokemonId={chosePokemon} />
                 }
             </PokeWindow>
         </S.Screen>

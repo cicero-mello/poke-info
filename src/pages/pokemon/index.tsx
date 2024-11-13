@@ -1,6 +1,6 @@
+import { PokemonLayout, PokemonNameAndStats, PokeWindow } from "@components"
 import { useQuery } from "@tanstack/react-query"
 import { useDocumentTitle } from "@hooks"
-import { PokemonData, PokeWindow } from "@components"
 import { useRoute } from "preact-iso"
 import { capitalize } from "@utils"
 import * as S from "./styles"
@@ -21,7 +21,12 @@ export const Pokemon = () => {
     return (
         <S.Screen>
             <PokeWindow>
-                <PokemonData pokemonId={+params.id}/>
+                <PokemonLayout pokemonId={+params.id}>
+                    <S.RightSide>
+                        <S.Fan />
+                        <PokemonNameAndStats pokeId={+params.id} bigMode />
+                    </S.RightSide>
+                </PokemonLayout>
             </PokeWindow>
         </S.Screen>
     )

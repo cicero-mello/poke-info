@@ -14,6 +14,6 @@ export { POKE_CARD_STYLE_DATA } from "./poke-card/styles"
 
 export * from "./pokemons-list"
 export * from "./poke-window"
-export * from "./pokemon-data"
+export * from "./pokemon-layout"
 export * from "./type-tag"
 export * from "./pokemon-name-and-stats"

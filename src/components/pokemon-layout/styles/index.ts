@@ -1,5 +1,5 @@
-import { descendHeader, fanRotate, revealContent } from "./animations"
-import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
+import { descendHeader, revealContent } from "./animations"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 import { pokeWindowRem } from "@components"
 import { PokeApi } from "@types"
@@ -149,47 +149,10 @@ ${({ $pokemonType, $previewMode }) => css`
 export const Content = styled.div`
     display: flex;
     position: relative;
-    justify-content: center;
-    width: ${pxToRem("420px")};
 
     animation:
         ${styleGuide.keyframes.fadeIn}
         ${styleGuide.transitionTime.medium}
         ease forwards
     ;
-`
-
-export const RightSide = styled.div`
-    display: flex;
-    position: relative;
-    justify-content: center;
-    width: ${pxToRem("420px")};
-
-    .pokemon-name-and-stats {
-        padding-top: ${numbPxToRem(88)};
-    }
-
-    .stats-container {
-        max-width: ${numbPxToRem(270)};
-        padding: ${numbPxToRem(0)} ${numbPxToRem(44)} ${numbPxToRem(2)} ${numbPxToRem(44)};
-        margin: ${numbPxToRem(20)} 0 ${numbPxToRem(48)} 0;
-    }
-
-    animation:
-        ${fanRotate}
-        ${styleGuide.transitionTime.moreSlow}
-        ease-in-out forwards
-    ;
-`
-
-export const Fan = styled.div`
-    width: ${numbPxToRem(470)};
-    height:  ${numbPxToRem(470)};
-    position: absolute;
-
-    border-radius: ${numbPxToRem(10)} 100% ${numbPxToRem(27)} ${numbPxToRem(45)};
-    transform: rotate(45deg);
-    background-color: ${styleGuide.color.ironGray};
-    top: ${numbPxToRem(30)};
-    left: ${numbPxToRem(5)};
 `
