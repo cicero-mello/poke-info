@@ -83,7 +83,7 @@ export const Pokedex = () => {
             <PokeWindow>
                 <S.Filters $hide={hideFilters}>
                     <PokemonSearch
-                        onFind={(pokemonId) => {console.log(pokemonId)}}
+                        onFind={handleClickPokeCard}
                         label="Search a Pokémon by name or number"
                     />
                     <S.RightFilters>

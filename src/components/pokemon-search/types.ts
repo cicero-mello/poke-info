@@ -1,4 +1,4 @@
 export interface PokemonSearchProps {
-    onFind: (pokemonId: string) => void
+    onFind: (pokemonId: number) => void
     label?: string
 }

@@ -31,9 +31,9 @@ export const PokemonSearch: FC<PokemonSearchProps> = ({
     }
 
     const searchPokemon = async () => {
-        const { isError } = await refetch()
-        if(isError) setShowNotFound(true)
-        else onFind(pokemonSearchText)
+        const { isError, data } = await refetch()
+        if(isError || !data?.id) setShowNotFound(true)
+        else onFind(data.id)
         setPokemonSearchText("")
     }
 
