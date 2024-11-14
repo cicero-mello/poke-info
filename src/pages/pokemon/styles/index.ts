@@ -1,6 +1,6 @@
 import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
+import { fanRotate, slideFromLeft } from "./animations"
 import { pokeWindowRem } from "@components"
-import { fanRotate } from "./animations"
 import styled from "styled-components"
 
 export const Screen = styled.div`
@@ -29,7 +29,7 @@ export const RightSide = styled.div`
     display: flex;
     position: relative;
     justify-content: center;
-    width: ${pxToRem("420px")};
+    min-width: ${pxToRem("420px")};
 
     .pokemon-name-and-stats {
         padding-top: ${numbPxToRem(88)};
@@ -58,4 +58,17 @@ export const Fan = styled.div`
     background-color: ${styleGuide.color.ironGray};
     top: ${numbPxToRem(30)};
     left: ${numbPxToRem(5)};
+`
+
+export const LeftSide = styled.div`
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 24px 24px 24px 0;
+
+    animation:
+        ${slideFromLeft}
+        ${styleGuide.transitionTime.moreSlow}
+        ease-in-out forwards
+    ;
 `

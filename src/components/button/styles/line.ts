@@ -51,9 +51,44 @@ const lineWhite: ThemeFunction = ($emphasis) => css`
     `}
 `
 
+const linePokemon: ThemeFunction = ($emphasis, $pokemonType) => css`
+    ${line($emphasis)}
+
+    font-size: 1.375rem;
+    line-height: 1.75rem;
+
+    color: white;
+
+    justify-content: center;
+
+    &::before {
+        transition: ${styleGuide.transitionTime.medium} ease-in-out;
+    }
+
+    transition-property: opacity, transform;
+    transition-duration: ${styleGuide.transitionTime.mediumSlow};
+    transition-timing-function: ease-out;
+
+    ${!$emphasis && css`
+        opacity: 0.8;
+        transform: scale(0.8);
+    `}
+
+    ${$emphasis && css`
+        &::before {
+            height: 2px;
+            border-radius: 4px;
+            background-color:
+                ${styleGuide.getCardColors($pokemonType ?? "normal").border}
+            ;
+        }
+    `}
+`
+
 export const lineThemes: Map<
     ButtonTheme, ThemeFunction
 > = new Map ([
     ["lineGray", lineGray],
-    ["lineWhite", lineWhite]
+    ["lineWhite", lineWhite],
+    ["linePokemon", linePokemon]
 ])

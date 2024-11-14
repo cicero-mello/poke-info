@@ -1,8 +1,10 @@
+import { PokeApi } from "@types"
 import { HTMLAttributes } from "preact/compat"
 import { RuleSet } from "styled-components"
 
 export type ButtonTheme = (
-    "lineGray" | "lineWhite" | "boldWhite" | "bigBlue"
+    "lineGray" | "lineWhite" | "linePokemon" |
+    "boldWhite" | "bigBlue"
 )
 
 export interface ButtonProps extends Omit<
@@ -11,6 +13,7 @@ export interface ButtonProps extends Omit<
 >{
     theme?: ButtonTheme
     emphasis?: boolean
+    pokemonType?: PokeApi.PokemonType
     preventNavOnClick?: boolean
     navigate?: {
         path: string,
@@ -21,6 +24,10 @@ export interface ButtonProps extends Omit<
 export interface StyledProps {
     $theme?: ButtonTheme
     $emphasis?: boolean
+    $pokemonType?: PokeApi.PokemonType
 }
 
-export type ThemeFunction = ($emphasis?: boolean) => RuleSet<object>
+export type ThemeFunction = (
+    $emphasis?: boolean,
+    $pokemonType?: PokeApi.PokemonType
+) => RuleSet<object>

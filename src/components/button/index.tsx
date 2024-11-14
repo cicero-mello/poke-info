@@ -5,7 +5,7 @@ import { ButtonProps } from "./types"
 import { FC } from "preact/compat"
 
 export const Button: FC<ButtonProps> = ({
-    theme, emphasis, navigate: navigateProps,
+    theme, emphasis, pokemonType, navigate: navigateProps,
     preventNavOnClick, onClick, ...rest
 }) => {
     const { navigate } = useNavigation()
@@ -15,6 +15,7 @@ export const Button: FC<ButtonProps> = ({
         <StyledButton
             $theme={theme}
             $emphasis={emphasis}
+            $pokemonType={pokemonType}
             onClick={onClick}
             {...rest}
         />
@@ -44,6 +45,7 @@ export const Button: FC<ButtonProps> = ({
             {...rest}
             $theme={theme}
             $emphasis={emphasis}
+            $pokemonType={pokemonType}
             ref={styledLinkRef}
             onClick={handleAnchorClick}
             onKeyDown={handleKeyDown}

@@ -12,3 +12,14 @@ export const fanRotate = keyframes`
         transform: rotate(0) translateY(0);
     }
 `
+
+export const slideFromLeft = keyframes`
+    from {
+        opacity: 0;
+        transform: translateX(400px);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0) translateX(0);
+    }
+`

@@ -11,6 +11,7 @@ export enum color {
     silverGray = "#C4C4C4",
     stoneGray = "#7A7A7A",
     ironGray = "#303030",
+    ironGrayAlpha30 = "#3030304D",
     smokyGray = "#393939",
     steelGray = "#595959",
     graphite = "#2D2D2D",

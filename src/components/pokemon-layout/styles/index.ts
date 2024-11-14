@@ -149,6 +149,7 @@ ${({ $pokemonType, $previewMode }) => css`
 export const Content = styled.div`
     display: flex;
     position: relative;
+    width: 100%;
 
     animation:
         ${styleGuide.keyframes.fadeIn}
