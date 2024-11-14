@@ -21,7 +21,7 @@ ${({ $hide }) => css`
 
     padding-top: ${pxToRem("32px")};
 
-    transition: ${styleGuide.transitionTime.mediumSlow} linear;
+    transition: ${styleGuide.transitionTime.medium} linear;
     opacity: ${$hide ? 0 : 1};
 
     ${styleGuide.scrollbar.white}

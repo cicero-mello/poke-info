@@ -1,7 +1,8 @@
 import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import { fanRotate, slideFromLeft } from "./animations"
 import { pokeWindowRem } from "@components"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
+import { AnimationType } from "../types"
 
 export const Screen = styled.div`
     display: flex;
@@ -25,7 +26,9 @@ export const Screen = styled.div`
     }
 `
 
-export const RightSide = styled.div`
+export const RightSide = styled.div
+<{ $animationType: AnimationType }>`
+${({ $animationType }) => css`
     display: flex;
     position: relative;
     justify-content: center;
@@ -41,34 +44,58 @@ export const RightSide = styled.div`
         margin: ${numbPxToRem(20)} 0 ${numbPxToRem(48)} 0;
     }
 
-    animation:
-        ${fanRotate}
-        ${styleGuide.transitionTime.moreSlow}
-        ease-in-out forwards
-    ;
-`
+    ${$animationType === "init" && css`
+        animation:
+            ${fanRotate}
+            ${styleGuide.transitionTime.moreSlow}
+            ease-in-out forwards
+        ;
+    `}
+
+    ${$animationType === "returning" && css`
+        pointer-events: none;
+        animation:
+            ${fanRotate}
+            ${styleGuide.transitionTime.moreSlow}
+            ease-in-out forwards reverse
+        ;
+    `}
+`}`
 
 export const Fan = styled.div`
     width: ${numbPxToRem(470)};
     height:  ${numbPxToRem(470)};
     position: absolute;
 
-    border-radius: ${numbPxToRem(10)} 100% ${numbPxToRem(27)} ${numbPxToRem(45)};
+    border-radius: ${numbPxToRem(27)} 100% ${numbPxToRem(27)} ${numbPxToRem(45)};
     transform: rotate(45deg);
     background-color: ${styleGuide.color.ironGray};
     top: ${numbPxToRem(30)};
     left: ${numbPxToRem(5)};
 `
 
-export const LeftSide = styled.div`
+export const LeftSide = styled.div
+<{ $animationType: AnimationType }>`
+${({ $animationType }) => css`
     display: flex;
     width: 100%;
     height: 100%;
     padding: 24px 24px 24px 0;
 
-    animation:
-        ${slideFromLeft}
-        ${styleGuide.transitionTime.moreSlow}
-        ease-in-out forwards
-    ;
-`
+    ${$animationType === "init" && css`
+        animation:
+            ${slideFromLeft}
+            ${styleGuide.transitionTime.moreSlow}
+            ease-in-out forwards
+        ;
+    `}
+
+    ${$animationType === "returning" && css`
+        pointer-events: none;
+        animation:
+            ${slideFromLeft}
+            ${styleGuide.transitionTime.moreSlow}
+            ease-in-out forwards reverse
+        ;
+    `}
+`}`

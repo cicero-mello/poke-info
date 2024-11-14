@@ -59,16 +59,19 @@ export const SliderValue = styled.span`
 
 export const Slider = styled.span.attrs({
     className: "slider"
-})`
+})<{ $withTransition: boolean }>`
+${({ $withTransition }) => css`
     display: flex;
     height: 100%;
     top: 0;
     left: 0;
 
-    transition:
-        ${styleGuide.transitionTime.medium}
-        ease-in-out
-    ;
+    ${$withTransition && css`
+        transition:
+            ${styleGuide.transitionTime.medium}
+            ease-in-out
+        ;
+    `}
 
     position: absolute;
     border-radius: ${pxToRem("56px")};
@@ -77,7 +80,7 @@ export const Slider = styled.span.attrs({
         ${styleGuide.color.pastelBlueAlpha30},
         ${styleGuide.color.pastelBlue}
     );
-`
+`}`
 
 export const Input = styled.input`
     appearance: none;

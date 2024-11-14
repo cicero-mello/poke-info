@@ -37,3 +37,15 @@ export const getRootFontSize = () => (
         ).fontSize.slice(0, -2)
     )
 )
+
+/**
+ * If is pokemon path, returns the pokemonId,
+ * else, returns undefined
+ * @param path
+ * @returns pokemonId | undefined
+ */
+export const isPokemonPath = (path: string): number | undefined => {
+    const regex = /^\/pokedex\/\d+$/
+    if(!regex.test(path)) return
+    return +path.split("/")[2]
+}

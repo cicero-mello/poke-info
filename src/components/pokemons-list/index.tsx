@@ -1,6 +1,6 @@
 import { useVirtualStyleData } from "./use-virtual-style-data"
-import { useVirtualizer } from "@tanstack/react-virtual"
 import { useFetchNextPage } from "./use-fetch-next-page"
+import { useVirtualizer } from "@tanstack/react-virtual"
 import { useEffect, useRef } from "preact/hooks"
 import { PokemonsListProps } from "./types"
 import { forwardRef } from "preact/compat"
@@ -9,7 +9,7 @@ import { RefObject } from "preact"
 import * as S from "./styles"
 
 export const PokemonsList = forwardRef<HTMLDivElement, PokemonsListProps>(({
-    pokemons, cardMode, hide, handleClickPokeCard,
+    pokemons, cardMode, hide, handleClickPokeCard, scrollTop,
     fetchNextPage, isFetchingNextPage, hasNextPage
 }, ref) => {
     const virtualizedScrollRef = (
@@ -30,7 +30,9 @@ export const PokemonsList = forwardRef<HTMLDivElement, PokemonsListProps>(({
 
     useEffect(() => {
         rowVirtualizer.measure()
-    }, [virtualStyleData])
+        if(!virtualizedScrollRef.current) return
+        virtualizedScrollRef.current.scrollTop = scrollTop ?? 0
+    }, [virtualStyleData, scrollTop])
 
     useFetchNextPage(
         virtualizedScrollRef,

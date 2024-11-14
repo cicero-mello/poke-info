@@ -1,19 +1,22 @@
 import { Evolution, Moves, PokemonLayout, PokemonMoreInfo, PokemonNameAndStats, PokeWindow, TabViewer } from "@components"
 import { useDocumentTitle, useNavigation } from "@hooks"
+import { useEffect, useState } from "preact/hooks"
 import { useQuery } from "@tanstack/react-query"
-import { useEffect } from "preact/hooks"
+import { capitalize, delay } from "@utils"
+import { AnimationType } from "./types"
 import { useRoute } from "preact-iso"
-import { capitalize } from "@utils"
 import * as S from "./styles"
 import * as api from "@api"
 
 export const Pokemon = () => {
     const { navigate } = useNavigation()
-    const  { params } = useRoute()
+    const { params } = useRoute()
     const { data } = useQuery({
         queryKey: ["getPokemon", params.id],
         queryFn: () => api.getPokemon({ idOrName: params.id }),
     })
+
+    const [animation, setAnimation] = useState<AnimationType>("init")
 
     useEffect(() => {
         if(!+params.id) navigate("notfound", false)
@@ -24,15 +27,27 @@ export const Pokemon = () => {
     )
     useDocumentTitle(titleName)
 
+    const revertAnimations = async () => {
+        setAnimation("none")
+        await delay(10)
+        requestAnimationFrame(() => {
+            setAnimation("returning")
+        })
+        await delay(400)
+    }
+
     return (
         <S.Screen>
             <PokeWindow>
-                <PokemonLayout pokemonId={+params.id}>
-                    <S.RightSide>
+                <PokemonLayout
+                    pokemonId={+params.id}
+                    beforeReturnPokedex={revertAnimations}
+                >
+                    <S.RightSide $animationType={animation}>
                         <S.Fan />
                         <PokemonNameAndStats pokeId={+params.id} bigMode />
                     </S.RightSide>
-                    <S.LeftSide>
+                    <S.LeftSide $animationType={animation}>
                         <TabViewer
                             pokemonType={data?.types[0] ?? "normal"}
                             tabNames={["More Info", "Evolution", "Moves"]}

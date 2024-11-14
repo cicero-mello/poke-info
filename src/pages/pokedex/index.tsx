@@ -1,11 +1,11 @@
 import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList, PokeWindow, PokemonLayout } from "@components"
 import { useEffect, useMemo, useRef, useState } from "preact/hooks"
+import { customLocalStorage, customSessionStorage } from "@stores"
 import { useInfiniteQuery } from "@tanstack/react-query"
 import { useNavigation, useWindowResize } from "@hooks"
 import { getShowToogleFilterButton } from "./core"
-import { customLocalStorage } from "@stores"
+import { delay, isPokemonPath } from "@utils"
 import { PATHS } from "@types"
-import { delay } from "@utils"
 import * as S from "./styles"
 import * as api from "@api"
 
@@ -22,13 +22,29 @@ export const Pokedex = () => {
         }
     })
 
-    const { navigate } = useNavigation()
+    const { navigate, getPreviusPath } = useNavigation()
+
+    const userWasInThisPokemonIdPage = useMemo(() => {
+        return isPokemonPath(getPreviusPath())
+    }, [])
+
+    const pokedexRestorationData = useMemo(() => (
+        customSessionStorage.getPokedexRestorationData()
+    ), [])
+
     const pokemonsListRef = useRef<HTMLDivElement>(null)
-    const [cardMode, setCardMode] = useState<PokeCardMode>("Simple")
+
     const [hideCards, setHideCards] = useState(true)
     const [hideFilters, setHideFilters] = useState(false)
-    const [showOnlyFavorites, setShowOnlyFavorites] = useState(false)
     const [chosePokemon, setChosePokemon] = useState(0)
+
+    const [cardMode, setCardMode] = useState<PokeCardMode>(
+        pokedexRestorationData?.cardMode ?? "Simple"
+    )
+
+    const [showOnlyFavorites, setShowOnlyFavorites] = useState(
+        !!pokedexRestorationData?.onlyFavorites
+    )
 
     const lastFavoritePokemons = useMemo(() => (
         customLocalStorage.getFavoritePokemons()
@@ -78,6 +94,16 @@ export const Pokedex = () => {
         else setHideCards(false)
     }, [infiniteQuery.isLoading])
 
+    useEffect(() => {
+        return () => {
+            customSessionStorage.addPokedexRestorationData({
+                scrollTop: pokemonsListRef.current?.scrollTop ?? 0,
+                onlyFavorites: showOnlyFavorites,
+                cardMode: cardMode
+            })
+        }
+    }, [showOnlyFavorites, cardMode])
+
     return (
         <S.Screen $chosePokemon={chosePokemon}>
             <PokeWindow>
@@ -90,12 +116,13 @@ export const Pokedex = () => {
                         <FavoriteCheckbox
                             label="Only Favorites"
                             onChange={handleChangeFavorite}
+                            defaultChecked={showOnlyFavorites}
                         />
                         <Switch
                             label="View Mode"
                             nameLeft="Simple"
                             nameRight="Detailed"
-                            defaultValue="Simple"
+                            defaultValue={cardMode}
                             onChange={handleChangeSwitch}
                         />
                     </S.RightFilters>
@@ -112,14 +139,21 @@ export const Pokedex = () => {
                         pokemons={pokemons}
                         cardMode={cardMode}
                         hide={hideCards}
+                        handleClickPokeCard={handleClickPokeCard}
                         hasNextPage={infiniteQuery.hasNextPage}
                         fetchNextPage={infiniteQuery.fetchNextPage}
                         isFetchingNextPage={infiniteQuery.isFetchingNextPage}
-                        handleClickPokeCard={handleClickPokeCard}
+                        scrollTop={pokedexRestorationData?.scrollTop ?? 0}
                     />
                 )}
                 {!!chosePokemon &&
                     <PokemonLayout pokemonId={chosePokemon} />
+                }
+                {!!userWasInThisPokemonIdPage && !!pokedexRestorationData &&
+                    <PokemonLayout
+                        pokemonId={userWasInThisPokemonIdPage}
+                        reverseAnimation
+                    />
                 }
             </PokeWindow>
         </S.Screen>

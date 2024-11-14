@@ -10,6 +10,7 @@ export interface PokemonsListProps {
     hasNextPage: boolean
     fetchNextPage: () => void
     handleClickPokeCard: (pokemonId: number) => void | Promise<void>
+    scrollTop?: number
 }
 
 export interface useVirtualStyleDataParams {

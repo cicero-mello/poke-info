@@ -1,13 +1,16 @@
 import { ButtonTheme } from "@components/button/types"
 import { DesktopNavigationProps } from "./types"
+import { customSessionStorage } from "@stores"
 import { Button } from "@components/button"
 import { FunctionComponent } from "preact"
+import { useNavigation } from "@hooks"
 import { PATHS } from "@types"
 import * as S from "./styles"
 
 export const DesktopNavigation: FunctionComponent<DesktopNavigationProps> = ({
     headerTheme, path
 }) => {
+    const { navigate } = useNavigation()
     const buttonTheme: ButtonTheme = (
         headerTheme === "dark" ? "lineWhite" : "lineGray"
     )
@@ -28,10 +31,15 @@ export const DesktopNavigation: FunctionComponent<DesktopNavigationProps> = ({
             <Button
                 children="Pokédex"
                 theme={buttonTheme}
+                preventNavOnClick
                 navigate={{ path: PATHS.POKEDEX }}
                 emphasis={path.includes(PATHS.POKEDEX)}
                 tabIndex={tabIndex}
                 aria-hidden={ariaHidden}
+                onClick={() => {
+                    customSessionStorage.resetPokedexRestorationData()
+                    navigate(PATHS.POKEDEX)
+                }}
             />
             <Button
                 children="Berries"

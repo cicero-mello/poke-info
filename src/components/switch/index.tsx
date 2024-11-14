@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "preact/hooks"
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "preact/hooks"
 import { FunctionComponent as FC } from "preact"
 import { MouseEvent } from "preact/compat"
 import { SwitchProps } from "./types"
@@ -12,6 +12,7 @@ export const Switch: FC<SwitchProps> = ({
 }) => {
     const [nameLeftWidth, setNameLeftWidth] = useState("")
     const [nameRightWidth, setNameRightWidth] = useState("")
+    const [withTransition, setWithTransition] = useState(false)
 
     const leftValueRef = useRef<HTMLSpanElement>(null)
     const rightValueRef = useRef<HTMLSpanElement>(null)
@@ -62,6 +63,12 @@ export const Switch: FC<SwitchProps> = ({
         )
     }, [nameRight])
 
+    useEffect(() => {
+        setTimeout(() => {
+            setWithTransition(true)
+        }, 20)
+    }, [])
+
     return (
         <S.Component
             $nameLeftWidth={nameLeftWidth}
@@ -82,7 +89,7 @@ export const Switch: FC<SwitchProps> = ({
                     children={nameRight}
                     ref={rightValueRef}
                 />
-                <S.Slider />
+                <S.Slider $withTransition={withTransition} />
             </S.SliderContainer>
             <S.Input
                 id={inputId}

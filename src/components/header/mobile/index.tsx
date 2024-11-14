@@ -1,6 +1,7 @@
+import { useNavigation, useOutsideClick, useOutsideFocus } from "@hooks"
 import { useLayoutEffect, useRef, useState } from "preact/hooks"
-import { useOutsideClick, useOutsideFocus } from "@hooks"
 import { MobileNavigationProps } from "./types"
+import { customSessionStorage } from "@stores"
 import { FunctionComponent } from "preact"
 import { Button } from "@components"
 import { PATHS } from "@types"
@@ -9,6 +10,7 @@ import * as S from "./styles"
 export const MobileNavigation: FunctionComponent<MobileNavigationProps> = ({
     headerTheme, path
 }) => {
+    const { navigate } = useNavigation()
     const navigationRef = useRef(null)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -54,10 +56,15 @@ export const MobileNavigation: FunctionComponent<MobileNavigationProps> = ({
                 <Button
                     children="Pokédex"
                     theme="boldWhite"
+                    preventNavOnClick
                     navigate={{ path: PATHS.POKEDEX }}
                     emphasis={path.includes(PATHS.POKEDEX)}
                     aria-hidden={linkAriaHidden}
                     tabIndex={linkTabIndex}
+                    onClick={() => {
+                        customSessionStorage.resetPokedexRestorationData()
+                        navigate(PATHS.POKEDEX)
+                    }}
                 />
                 <Button
                     children="Berries"

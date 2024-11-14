@@ -1,13 +1,13 @@
+import { StyledComponentProps, StyledDownAreaProps } from "../types"
 import { descendHeader, revealContent } from "./animations"
 import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 import { pokeWindowRem } from "@components"
-import { PokeApi } from "@types"
 
 export const Component = styled.div.attrs({
     className: "pokemon-data"
-})<{ $previewMode: boolean }>`
-${({ $previewMode }) => css`
+})<StyledComponentProps>`
+${({ $previewMode, $reverseAnimation, $removePointerEvents }) => css`
     display: flex;
     position: relative;
     width: 100%;
@@ -15,12 +15,25 @@ ${({ $previewMode }) => css`
     position: absolute;
     z-index: 2;
 
-    ${$previewMode && css`
+    ${$previewMode && !$reverseAnimation && css`
         animation:
             ${descendHeader}
             ${styleGuide.transitionTime.moreSlow}
             ease-out forwards
         ;
+    `}
+
+    ${$previewMode && $reverseAnimation && css`
+        animation:
+            ${descendHeader}
+            ${styleGuide.transitionTime.moreSlow}
+            ${styleGuide.transitionTime.medium}
+            ease-in-out forwards reverse
+        ;
+    `}
+
+    ${$removePointerEvents && css`
+        pointer-events: none;
     `}
 `}`
 
@@ -104,9 +117,8 @@ export const DownAreaContainer = styled.div`
     }
 `
 
-export const DownArea = styled.div
-<{ $pokemonType: PokeApi.PokemonType, $previewMode: boolean }>`
-${({ $pokemonType, $previewMode }) => css`
+export const DownArea = styled.div<StyledDownAreaProps>`
+${({ $pokemonType, $previewMode, $reverseAnimation }) => css`
     display: flex;
     position: relative;
     width: 100%;
@@ -137,11 +149,20 @@ ${({ $pokemonType, $previewMode }) => css`
         border-top: none;
     }
 
-    ${$previewMode && css`
+    ${$previewMode && !$reverseAnimation && css`
         animation:
             ${revealContent}
             ${styleGuide.transitionTime.medium}
             ease forwards
+        ;
+    `}
+
+    ${$previewMode && $reverseAnimation && css`
+        animation:
+            ${revealContent}
+            ${styleGuide.transitionTime.moreSlow}
+            ${styleGuide.transitionTime.medium}
+            ease-in-out forwards reverse
         ;
     `}
 `}`
