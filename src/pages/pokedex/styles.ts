@@ -1,4 +1,4 @@
-import { pxToRem, styleGuide } from "@style-guide"
+import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 import { pokeWindowRem } from "@components"
 
@@ -48,7 +48,7 @@ ${({ $hide }) => css`
     ;
 
     width: 100%;
-    margin-top: 38px;
+    margin-top: ${numbPxToRem(38)};
     margin-bottom: ${pxToRem("28px")};
     padding: 0 clamp(36px, 6%, 100%);
 

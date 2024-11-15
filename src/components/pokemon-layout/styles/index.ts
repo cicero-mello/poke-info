@@ -99,7 +99,7 @@ export const DownAreaContainer = styled.div`
     position: absolute;
     overflow: hidden;
     width: 100%;
-    height: calc(100% - ${pxToRem("154px")} - 60px);
+    height: calc(100% - ${pxToRem("154px")} - ${pxToRem("60px")});
     margin-top: ${pxToRem("154px")};
 
     @media

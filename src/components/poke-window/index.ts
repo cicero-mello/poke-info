@@ -27,12 +27,14 @@ export const PokeWindow = styled.main.attrs({
     display: flex;
     flex-direction: column;
     position: relative;
-    border-radius: 40px;
+    border-radius: ${numbPxToRem(40)};
     overflow: hidden;
     color: white;
     aspect-ratio: 1248 / 860;
     height: 100%;
-    padding-top: 60px;
+    max-height: ${numbPxToRem(812)};
+    align-self: center;
+    padding-top: ${numbPxToRem(60)};
 
     background: ${styleGuide.color.onyxAlpha83};
 
@@ -41,7 +43,7 @@ export const PokeWindow = styled.main.attrs({
         content: "";
         width: 100%;
         top: 0;
-        height: 60px;
+        height: ${numbPxToRem(60)};
         background-color: ${styleGuide.color.pearlGray};
         z-index: 3;
         pointer-events: none;
@@ -49,7 +51,7 @@ export const PokeWindow = styled.main.attrs({
 
     @media(max-height: ${pokeWindowRem.noWhiteLine.maxHeight}){
         background: ${styleGuide.color.onyxAlpha83};
-        border-radius: 12px;
+        border-radius: ${numbPxToRem(12)};
         padding-top: 0;
 
         &::before {
@@ -62,12 +64,13 @@ export const PokeWindow = styled.main.attrs({
         (max-height: ${pokeWindowRem.full.maxHeight})
     {
         background: ${styleGuide.color.onyxAlpha83};
-        border-radius: 12px;
+        border-radius: ${numbPxToRem(12)};
         padding: 0px;
         border-radius: 0;
         width: 100%;
         height: 100%;
         aspect-ratio: unset;
+        max-height: unset;
 
         &::before {
             content: unset;
