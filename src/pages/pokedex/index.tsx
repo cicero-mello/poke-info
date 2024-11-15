@@ -51,8 +51,8 @@ export const Pokedex = () => {
     ), [showOnlyFavorites])
 
     const pokemonsIds = useMemo(() => {
-        const queryPokemons = infiniteQuery.data?.pages.flat() ?? []
         if(!showOnlyFavorites) {
+            const queryPokemons = infiniteQuery.data?.pages.flat() ?? []
             return queryPokemons.map((pokemons) => pokemons.pokemonId)
         }
 

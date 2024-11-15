@@ -26,7 +26,7 @@ export const Screen = styled.div`
     }
 `
 
-export const RightSide = styled.div
+export const LeftSide = styled.div
 <{ $animationType: AnimationType }>`
 ${({ $animationType }) => css`
     display: flex;
@@ -74,13 +74,13 @@ export const Fan = styled.div`
     left: ${numbPxToRem(5)};
 `
 
-export const LeftSide = styled.div
+export const RightSide = styled.div
 <{ $animationType: AnimationType }>`
 ${({ $animationType }) => css`
     display: flex;
     width: 100%;
+    padding: ${pxToRem("24px")} ${pxToRem("24px")} ${pxToRem("24px")} 0;
     height: 100%;
-    padding: 24px 24px 24px 0;
 
     ${$animationType === "init" && css`
         animation:

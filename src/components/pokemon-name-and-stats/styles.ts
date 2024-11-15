@@ -25,7 +25,7 @@ ${({ $bigMode }) => css`
 
     overflow-y: auto;
 
-    ${styleGuide.scrollbar.white}
+    ${styleGuide.scrollbar.whiteSmall}
 
     &::-webkit-scrollbar-thumb {
         min-height: ${pxToRem("12px")};

@@ -24,7 +24,9 @@ export const TabViewer: FC<TabViewerProps> = ({
                 ))}
             </S.TabList>
             <S.TabPanel>
-                {tabPanels[currentTabPanelIndex]}
+                <S.Content>
+                    {tabPanels[currentTabPanelIndex]}
+                </S.Content>
             </S.TabPanel>
         </S.Component>
     )

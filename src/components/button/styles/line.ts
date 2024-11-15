@@ -56,6 +56,7 @@ const linePokemon: ThemeFunction = ($emphasis, $pokemonType) => css`
 
     font-size: 1.375rem;
     line-height: 1.75rem;
+    white-space: nowrap;
 
     color: white;
 

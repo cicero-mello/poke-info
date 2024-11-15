@@ -43,11 +43,11 @@ export const Pokemon = () => {
                     pokemonId={+params.id}
                     beforeReturnPokedex={revertAnimations}
                 >
-                    <S.RightSide $animationType={animation}>
+                    <S.LeftSide $animationType={animation}>
                         <S.Fan />
                         <PokemonNameAndStats pokeId={+params.id} bigMode />
-                    </S.RightSide>
-                    <S.LeftSide $animationType={animation}>
+                    </S.LeftSide>
+                    <S.RightSide $animationType={animation}>
                         <TabViewer
                             pokemonType={data?.types[0] ?? "normal"}
                             tabNames={["More Info", "Evolution", "Moves"]}
@@ -57,7 +57,7 @@ export const Pokemon = () => {
                                 <Moves />
                             ]}
                         />
-                    </S.LeftSide>
+                    </S.RightSide>
                 </PokemonLayout>
             </PokeWindow>
         </S.Screen>
