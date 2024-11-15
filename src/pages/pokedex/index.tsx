@@ -75,6 +75,9 @@ export const Pokedex = () => {
     const handleChangeFavorite = async (checked: boolean) => {
         setHideCards(true)
         await delay(250)
+        if(pokemonsListRef.current){
+            pokemonsListRef.current.scrollTop = 0
+        }
         setShowOnlyFavorites(checked)
         await delay(100)
         setHideCards(false)
