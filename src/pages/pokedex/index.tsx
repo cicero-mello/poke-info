@@ -50,13 +50,13 @@ export const Pokedex = () => {
         customLocalStorage.getFavoritePokemons()
     ), [showOnlyFavorites])
 
-    const pokemons = useMemo(() => {
+    const pokemonsIds = useMemo(() => {
         const queryPokemons = infiniteQuery.data?.pages.flat() ?? []
-        if(!showOnlyFavorites) return queryPokemons
+        if(!showOnlyFavorites) {
+            return queryPokemons.map((pokemons) => pokemons.pokemonId)
+        }
 
-        return queryPokemons.filter(
-            ({ pokemonId }) => lastFavoritePokemons.includes(pokemonId)
-        )
+        return lastFavoritePokemons
     }, [showOnlyFavorites, infiniteQuery.data?.pages])
 
     const windowDimensions = useWindowResize()
@@ -139,7 +139,7 @@ export const Pokedex = () => {
                 {!infiniteQuery.isLoading && (
                     <PokemonsList
                         ref={pokemonsListRef}
-                        pokemons={pokemons}
+                        pokemonsIds={pokemonsIds}
                         cardMode={cardMode}
                         hide={hideCards}
                         handleClickPokeCard={handleClickPokeCard}

@@ -28,7 +28,7 @@ export const toogleFavoriteOfPokemon = (pokemonId: number) => {
     if(isPokemonAlreadyFavorite){
         favoritePokemons.splice(indexOfFavoritePokemon, 1)
     } else {
-        favoritePokemons.push(pokemonId)
+        favoritePokemons.unshift(pokemonId)
     }
 
     const jsonStringified = JSON.stringify(favoritePokemons)

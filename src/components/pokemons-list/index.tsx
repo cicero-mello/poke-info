@@ -9,7 +9,7 @@ import { RefObject } from "preact"
 import * as S from "./styles"
 
 export const PokemonsList = forwardRef<HTMLDivElement, PokemonsListProps>(({
-    pokemons, cardMode, hide, handleClickPokeCard, scrollTop,
+    pokemonsIds, cardMode, hide, handleClickPokeCard, scrollTop,
     fetchNextPage, isFetchingNextPage, hasNextPage
 }, ref) => {
     const virtualizedScrollRef = (
@@ -21,7 +21,7 @@ export const PokemonsList = forwardRef<HTMLDivElement, PokemonsListProps>(({
     })
 
     const rowVirtualizer = useVirtualizer({
-        count: pokemons.length,
+        count: pokemonsIds.length,
         getScrollElement: () => virtualizedScrollRef.current,
         estimateSize: () => virtualStyleData.pxVirtualItemHeight,
         overscan: virtualStyleData.overscan,
@@ -48,15 +48,15 @@ export const PokemonsList = forwardRef<HTMLDivElement, PokemonsListProps>(({
                     <S.VirtualizedItem
                         $virtualStyleData={virtualStyleData}
                         $virtualItem={virtualItem}
-                        id={"virtualized-" + pokemons[virtualItem.index].pokemonName}
+                        id={"virtualized-" + pokemonsIds[virtualItem.index]}
                         key={virtualItem.index}
                     >
                         <PokeCard
                             key={virtualItem.key}
-                            pokeId={pokemons[virtualItem.index].pokemonId}
+                            pokeId={pokemonsIds[virtualItem.index]}
                             cardMode={cardMode}
                             onClick={() => handleClickPokeCard(
-                                pokemons[virtualItem.index].pokemonId
+                                pokemonsIds[virtualItem.index]
                             )}
                         />
                     </S.VirtualizedItem>

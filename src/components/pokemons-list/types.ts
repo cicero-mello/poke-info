@@ -1,9 +1,8 @@
 import { PokeCardMode } from "@components/poke-card/types"
-import { GetPokemonsResponse } from "@api"
 import { RefObject } from "preact"
 
 export interface PokemonsListProps {
-    pokemons: GetPokemonsResponse[]
+    pokemonsIds: number[]
     cardMode: PokeCardMode
     hide?: boolean
     isFetchingNextPage: boolean
