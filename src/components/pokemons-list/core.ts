@@ -5,9 +5,13 @@ export const getVirtualStyleData = ({
 }: GetVirtualStyleDataParams): VirtualStyleData => {
     const itemTotalWidth = item.pxWidth + virtualizedScroll.pxGapX
 
-    const totalScrollWidth = (
+    let totalScrollWidth = (
         virtualizedScroll.pxWidth - (virtualizedScroll.pxPaddingX * 2)
     )
+
+    if(totalScrollWidth < itemTotalWidth){
+        totalScrollWidth = itemTotalWidth
+    }
 
     const totalItemsByRow = Math.floor(
         totalScrollWidth / itemTotalWidth
