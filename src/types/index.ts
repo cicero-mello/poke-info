@@ -8,3 +8,8 @@ export enum PATHS {
 }
 
 export * as PokeApi from "./poke-api"
+
+export interface NameAndNumberId {
+    name: string
+    id: number
+}

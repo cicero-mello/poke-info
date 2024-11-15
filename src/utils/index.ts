@@ -49,3 +49,27 @@ export const isPokemonPath = (path: string): number | undefined => {
     if(!regex.test(path)) return
     return +path.split("/")[2]
 }
+
+export const extractIdFromUrl = (url: string): number => {
+    const match = url.match(/\/(\d+)\/$/)
+    return match ? Number(match[1]) : 0
+}
+
+export const removeEscapeSequences = (
+    string: string
+): string => {
+    const escapeSequences = [
+        "\n", "\r", "\t", "\b", "\f",
+        "\v", "\\", "\a", "\0",
+    ]
+
+    let result = string
+
+    escapeSequences.forEach(escapeSequence => {
+        if(result.includes(escapeSequence)){
+            result = result.replace(escapeSequence, " ")
+        }
+    })
+
+    return string.replace(/\n|\f/g, " ")
+}

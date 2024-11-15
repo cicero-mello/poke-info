@@ -11,10 +11,20 @@ export interface BaseStat {
     value: number
 }
 
+export interface Ability {
+    name: string
+    id: number
+    isHidden: boolean
+    slot: number
+}
+
 export interface GetPokemonResponse {
     id: number
     name: string
     baseStats: BaseStat[]
     imageUrl: string
     types: PokeApi.PokemonType[]
+    abilities: Ability[]
+    mHeight: number
+    kgWeight: number
 }

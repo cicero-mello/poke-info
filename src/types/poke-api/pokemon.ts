@@ -1,3 +1,5 @@
+import { NamedAPIResource } from "./common"
+
 export interface Pokemon {
     id: number
     name: string
@@ -23,11 +25,6 @@ export interface Ability {
     ability: NamedAPIResource
     is_hidden: boolean
     slot: number
-}
-
-export interface NamedAPIResource {
-    name: string
-    url: string
 }
 
 export interface GameIndex {
