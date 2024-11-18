@@ -1,5 +1,5 @@
-import { extractIdFromUrl } from "@utils"
 import { GetPokemonParams, GetPokemonApiResponse, GetPokemonResponse } from "./types"
+import { capitalize, extractIdFromUrl } from "@utils"
 import axios from "axios"
 
 const url = "https://pokeapi.co/api/v2/pokemon/"
@@ -23,7 +23,7 @@ export const getPokemon = async ({
             value: stat.base_stat
         })),
         abilities: data.abilities.map((ability) => ({
-            name: ability.ability.name,
+            name: ability.ability.name.split("-").map(v => capitalize(v)).join(" "),
             id: extractIdFromUrl(ability.ability.url),
             isHidden: ability.is_hidden,
             slot: ability.slot

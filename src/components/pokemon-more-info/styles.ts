@@ -1,20 +1,45 @@
 import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 
-export const Component = styled.div`
+export const Component = styled.div<{ $isLoading: boolean }>`
+${({ $isLoading }) => css`
     display: flex;
+    position: relative;
     flex-direction: column;
     width: 100%;
     height: 100%;
 
     ${styleGuide.text.base}
     color: ${styleGuide.color.pearlGray};
-
     gap: ${pxToRem("24px")};
-`
+
+    animation:
+        ${styleGuide.keyframes.fadeIn}
+        ${styleGuide.transitionTime.medium}
+        linear forwards
+    ;
+
+    .spinner {
+        right: -${pxToRem("12px")};
+    }
+
+    > *:not(.spinner){
+        transition-property: opacity;
+        transition-duration: ${styleGuide.transitionTime.medium};
+    }
+
+    ${$isLoading && css`
+        > *:not(.spinner){
+            opacity: 0;
+        }
+    `}
+`}`
 
 export const Description = styled.p`
     display: flex;
+    flex-direction: column;
+    ${styleGuide.text.lg}
+    line-height: ${pxToRem("24px")};
 `
 
 export const Proportions = styled.span`
@@ -23,20 +48,3 @@ export const Proportions = styled.span`
     gap: ${pxToRem("24px")};
     flex-wrap: wrap;
 `
-
-export const LineInfo = styled.span<{ $title: string }>`
-${({ $title }) => css`
-    display: flex;
-    flex-wrap: wrap;
-
-    &::before {
-        content: "${$title}: ";
-        font-weight: bold;
-        margin-right: 0.5ch;
-    }
-
-    button {
-        text-decoration: underline;
-        text-decoration-color: ${styleGuide.color.pearlGray};
-    }
-`}`

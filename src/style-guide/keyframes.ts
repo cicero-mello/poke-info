@@ -46,3 +46,9 @@ export const popUp = keyframes`
         transform: scale(1);
     }
 `
+
+export const rotate = keyframes`
+    to {
+        transform: rotate(1turn);
+    }
+`

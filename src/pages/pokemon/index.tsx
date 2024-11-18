@@ -52,7 +52,7 @@ export const Pokemon = () => {
                             pokemonType={data?.types[0] ?? "normal"}
                             tabNames={["More Info", "Evolution", "Moves"]}
                             tabPanels={[
-                                <PokemonMoreInfo />,
+                                <PokemonMoreInfo pokemonId={+params.id}/>,
                                 <Evolution />,
                                 <Moves />
                             ]}

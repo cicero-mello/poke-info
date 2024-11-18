@@ -1,52 +1,57 @@
-import { Button } from "@components/button"
+import { FunctionalComponent as FC } from "preact"
+import { PokemonMoreInfoProps } from "./types"
+import { useQueries } from "./use-queries"
+import { InfoButton, InfoLine, Spinner } from "@components"
 import * as S from "./styles"
 
-const description1 = "A strange seed was planted on its back at birth."
-const description2 = "The plant sprouts and grows with this POKéMON."
-
-export const PokemonMoreInfo = () => {
+export const PokemonMoreInfo: FC<PokemonMoreInfoProps> = ({
+    pokemonId
+}) => {
+    const { data, isLoading } = useQueries(pokemonId)
 
     return (
-        <S.Component>
+        <S.Component $isLoading={isLoading}>
+            {isLoading && <Spinner />}
+
             <S.Description>
-                {description1} <br />
-                {description2}
+                {data.description}
             </S.Description>
 
-            <S.LineInfo $title="Abilities">
-                <Button children="Overgrow" />,&nbsp;
-                <Button children="Chlorophyll" />
-            </S.LineInfo>
+            <InfoLine title="Abilities">
+                {data.abilities.map((ability) => (
+                    <InfoButton children={ability.name} />
+                ))}
+            </InfoLine>
 
             <S.Proportions>
-                <S.LineInfo
-                    $title="Weight"
-                    children="6.9 kg"
+                <InfoLine
+                    title="Weight"
+                    children={data.weight + "kg"}
                 />
-                <S.LineInfo
-                    $title="Height"
-                    children="0.7 m"
+                <InfoLine
+                    title="Height"
+                    children={data.height + "m"}
                 />
             </S.Proportions>
 
-            <S.LineInfo
-                $title="Genera"
-                children="Seed Pokémon asdas dasd asd"
+            <InfoLine
+                title="Genera"
+                children={data.genera}
             />
 
-            <S.LineInfo
-                $title="Shape"
-                children="Quadruped"
+            <InfoLine
+                title="Shape"
+                children={data.shape}
             />
 
-            <S.LineInfo
-                $title="Habitat"
-                children="Grassland"
+            <InfoLine
+                title="Habitat"
+                children={data.habitat}
             />
 
-            <S.LineInfo
-                $title="Egg Groups"
-                children="Plant, Monster"
+            <InfoLine
+                title="Egg Groups"
+                children={data.eggGroups}
             />
         </S.Component>
     )
