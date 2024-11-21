@@ -5,7 +5,7 @@ import { Ability } from "@api"
 
 export interface MainSectionProps {
     setCurrentSection: Dispatch<StateUpdater<CurrentSection>>
-    data: MainSectionData
+    queryData: MainSectionData
 }
 
 interface MainSectionData {

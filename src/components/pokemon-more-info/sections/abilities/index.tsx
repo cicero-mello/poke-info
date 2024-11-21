@@ -1,24 +1,23 @@
 import { FunctionComponent as FC } from "preact/compat"
 import { AbilitiesSectionProps } from "./types"
-import * as S from "./styles"
 import { InfoButton } from "@components"
 import { useNavigation } from "@hooks"
 import { PATHS } from "@types"
+import * as S from "./styles"
 
 export const AbilitiesSection: FC<AbilitiesSectionProps> = ({
-    pokemonName, description, isHidden, name,
-    otherPokemonsWithThisAbility
+    pokemonName, queryData
 }) => {
     const {navigate} = useNavigation()
 
-    const hiddenAbilityText = isHidden && (
+    const hiddenAbilityText = queryData.isHidden && (
         `In ${pokemonName}, is a Hidden Ability.`
     )
 
     return (
         <S.Section>
-            <S.Title> {name} </S.Title>
-            <S.Text> {description} </S.Text>
+            <S.Title> {queryData.name} </S.Title>
+            <S.Text> {queryData.description} </S.Text>
 
             {hiddenAbilityText &&
                 <S.Text> {hiddenAbilityText} </S.Text>
@@ -31,7 +30,7 @@ export const AbilitiesSection: FC<AbilitiesSectionProps> = ({
             </S.Title>
 
             <S.List>
-                {otherPokemonsWithThisAbility.map((pokemon) => (
+                {queryData.otherPokemonsWithThisAbility.map((pokemon) => (
                     <S.ListItem>
                         <InfoButton
                             children={pokemon.name}

@@ -5,15 +5,15 @@ import { MainSectionProps } from "./types"
 import * as S from "./styles"
 
 export const MainSection: FC<MainSectionProps> = ({
-    data, setCurrentSection
+    queryData, setCurrentSection
 }) => (
     <S.Section>
         <S.Description>
-            {data.description}
+            {queryData.description}
         </S.Description>
 
         <InfoLine title="Abilities">
-            {data.abilities.map((ability: any) => (
+            {queryData.abilities.map((ability) => (
                 <InfoButton
                     children={ability.name}
                     onClick={() => setCurrentSection({
@@ -27,32 +27,32 @@ export const MainSection: FC<MainSectionProps> = ({
         <S.Proportions>
             <InfoLine
                 title="Weight"
-                children={data.weight + "kg"}
+                children={queryData.weight + "kg"}
             />
             <InfoLine
                 title="Height"
-                children={data.height + "m"}
+                children={queryData.height + "m"}
             />
         </S.Proportions>
 
         <InfoLine
             title="Genera"
-            children={data.genera}
+            children={queryData.genera}
         />
 
         <InfoLine
             title="Shape"
-            children={data.shape}
+            children={queryData.shape}
         />
 
         <InfoLine
             title="Habitat"
-            children={data.habitat}
+            children={queryData.habitat}
         />
 
         <InfoLine
             title="Egg Groups"
-            children={data.eggGroups}
+            children={queryData.eggGroups}
         />
     </S.Section>
 )

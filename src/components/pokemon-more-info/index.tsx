@@ -13,16 +13,16 @@ export const PokemonMoreInfo: FC<PokemonMoreInfoProps> = ({
         name: "main"
     })
 
-    const mainSection = useMainSectionQueries(pokemonId)
-    const abilitySection = (
+    const mainSectionQueries = useMainSectionQueries(pokemonId)
+    const abilitySectionQueries = (
         currentSection.name === "abilities" ?
         useAbilitySectionQueries(pokemonId, currentSection.abilityId)
         : undefined
     )
 
     const isLoading = (
-        mainSection.isLoading
-        || !!abilitySection?.isLoading
+        mainSectionQueries.isLoading
+        || !!abilitySectionQueries?.isLoading
     )
 
     const showMainSection = (
@@ -32,32 +32,34 @@ export const PokemonMoreInfo: FC<PokemonMoreInfoProps> = ({
 
     const showAbilitiesSection = (
         currentSection.name === "abilities"
-        && !!abilitySection
+        && !!abilitySectionQueries
         && !isLoading
     )
+
+    const handleClickReturn = () => {
+        setCurrentSection({name: "main"})
+    }
 
     return (
         <S.Component $isLoading={isLoading}>
             {isLoading && <Spinner />}
-            {currentSection.name !== "main" &&
-                <S.ReturnToMain
-                    onClick={() => setCurrentSection({name: "main"})}
-                >
+            {currentSection.name !== "main" && !isLoading &&
+                <S.ReturnToMain onClick={handleClickReturn}>
                     <ArrowReturnIco />
                 </S.ReturnToMain>
             }
 
             {showMainSection &&
                 <MainSection
-                    data={mainSection.data}
+                    queryData={mainSectionQueries.data}
                     setCurrentSection={setCurrentSection}
                 />
             }
 
-            {showAbilitiesSection && abilitySection.data &&
+            {showAbilitiesSection && abilitySectionQueries.data &&
                 <AbilitiesSection
                     pokemonName={pokemonName}
-                    {...abilitySection.data}
+                    queryData={abilitySectionQueries.data}
                 />
             }
 
