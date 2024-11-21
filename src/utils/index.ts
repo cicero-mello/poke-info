@@ -73,3 +73,7 @@ export const removeEscapeSequences = (
 
     return string.replace(/\n|\f/g, " ")
 }
+
+export const capitalizeApiName = (name: string): string => (
+    name.split("-").map(text => capitalize(text)).join(" ")
+)

@@ -1,5 +1,5 @@
 import { GetAbilityOfPokemonApiResponse, GetAbilityOfPokemonParams, GetAbilityOfPokemonResponse } from "./types"
-import { capitalize, extractIdFromUrl } from "@utils"
+import { capitalize, capitalizeApiName, extractIdFromUrl } from "@utils"
 import axios from "axios"
 
 const url = "https://pokeapi.co/api/v2/ability/"
@@ -26,13 +26,15 @@ export const getAbilityOfPokemon = async ({
     )
 
     return {
-        name: data.name,
+        name: capitalizeApiName(data.name),
         isHidden: isHidden,
         description: data.effect_entries.find(
             description => description.language.name === "en"
-        )?.effect ?? "",
+        )?.effect ?? data.flavor_text_entries.find(
+            description => description.language.name === "en"
+        )?.flavor_text ?? "",
         otherPokemonsWithThisAbility: otherPokemonsWithThisAbility.map(pokemonInfo => ({
-            name: pokemonInfo.pokemon.name,
+            name: capitalizeApiName(pokemonInfo.pokemon.name),
             id: extractIdFromUrl(pokemonInfo.pokemon.url)
         }))
     }

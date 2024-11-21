@@ -1,5 +1,5 @@
 import { GetPokemonSpeciesParams, GetPokemonSpeciesResponse, GetPokemonSpeciesApiResponse } from "./types"
-import { extractIdFromUrl, removeEscapeSequences } from "@utils"
+import { capitalize, extractIdFromUrl, removeEscapeSequences } from "@utils"
 import axios from "axios"
 
 const url = "https://pokeapi.co/api/v2/pokemon-species/"
@@ -29,7 +29,7 @@ export const getPokemonSpecies = async ({
             id: extractIdFromUrl(eggGroup.url)
         })),
         habitat: data.habitat ? {
-            name: data.habitat.name,
+            name: data.habitat.name.split("-").map(text => capitalize(text)).join(" "),
             id: extractIdFromUrl(data.habitat.url)
         } : undefined
     }

@@ -3,7 +3,7 @@ import { UseQueriesReponse } from "./types"
 import { capitalize } from "@utils"
 import * as api from "@api"
 
-export const useQueries = (
+export const useMainSectionQueries = (
     pokemonId: number
 ): UseQueriesReponse => {
     const queryPokemon = useQuery({
@@ -26,7 +26,7 @@ export const useQueries = (
             height: queryPokemon.data?.mHeight ?? 0,
             genera: queryPokemonSpecies.data?.genera ?? "",
             shape: capitalize(queryPokemonSpecies.data?.shape.name) ?? "",
-            habitat: capitalize(queryPokemonSpecies.data?.habitat?.name) ?? "",
+            habitat: queryPokemonSpecies.data?.habitat?.name ?? "",
             eggGroups: queryPokemonSpecies.data?.eggGroups.map(
                 eggGroup => capitalize(eggGroup.name)
             ).join(", ") ?? ""

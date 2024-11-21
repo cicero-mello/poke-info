@@ -1,4 +1,4 @@
-import { pxToRem, styleGuide } from "@style-guide"
+import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 
 export const Component = styled.div<{ $isLoading: boolean }>`
@@ -11,7 +11,6 @@ ${({ $isLoading }) => css`
 
     ${styleGuide.text.base}
     color: ${styleGuide.color.pearlGray};
-    gap: ${pxToRem("24px")};
 
     animation:
         ${styleGuide.keyframes.fadeIn}
@@ -35,16 +34,17 @@ ${({ $isLoading }) => css`
     `}
 `}`
 
-export const Description = styled.p`
-    display: flex;
-    flex-direction: column;
-    ${styleGuide.text.lg}
-    line-height: ${pxToRem("24px")};
-`
+export const ReturnToMain = styled.button`
+    position: fixed;
+    right: ${numbPxToRem(80)};
 
-export const Proportions = styled.span`
-    display: flex;
-    width: 100%;
-    gap: ${pxToRem("24px")};
-    flex-wrap: wrap;
+    width: ${numbPxToRem(24)};
+    position: fixed;
+    right: ${numbPxToRem(40)};
+    top: ${numbPxToRem(65)};
+
+    svg > path {
+        fill: white;
+        opacity: 0.5;
+    }
 `

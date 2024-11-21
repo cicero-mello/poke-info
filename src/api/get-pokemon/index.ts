@@ -1,5 +1,5 @@
 import { GetPokemonParams, GetPokemonApiResponse, GetPokemonResponse } from "./types"
-import { capitalize, extractIdFromUrl } from "@utils"
+import { capitalize, capitalizeApiName, extractIdFromUrl } from "@utils"
 import axios from "axios"
 
 const url = "https://pokeapi.co/api/v2/pokemon/"
@@ -13,7 +13,7 @@ export const getPokemon = async ({
 
     return {
         id: data.id,
-        name: data.name,
+        name: capitalizeApiName(data.name),
         imageUrl: data.sprites.other?.["official-artwork"].front_default ?? "",
         types: data.types.map(type => type.type.name),
         mHeight: +(data.height/10).toFixed(1),
@@ -23,7 +23,7 @@ export const getPokemon = async ({
             value: stat.base_stat
         })),
         abilities: data.abilities.map((ability) => ({
-            name: ability.ability.name.split("-").map(v => capitalize(v)).join(" "),
+            name: ability.ability.name.split("-").map(text => capitalize(text)).join(" "),
             id: extractIdFromUrl(ability.ability.url),
             isHidden: ability.is_hidden,
             slot: ability.slot
