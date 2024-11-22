@@ -12,29 +12,25 @@ ${({ $isLoading }) => css`
     ${styleGuide.text.base}
     color: ${styleGuide.color.pearlGray};
 
-    animation:
-        ${styleGuide.keyframes.fadeIn}
-        ${styleGuide.transitionTime.medium}
-        linear forwards
-    ;
+    section {
+        animation:
+            ${styleGuide.keyframes.fadeIn}
+            ${styleGuide.transitionTime.medium}
+            linear forwards
+        ;
+    }
 
     .spinner {
-        right: -${pxToRem("12px")};
+        position: fixed;
+        transition: ${styleGuide.transitionTime.medium};
+        right: ${pxToRem("56px")};
+        opacity: ${$isLoading ? 1 : 0};
+        pointer-events: none;
     }
-
-    > *:not(.spinner){
-        transition-property: opacity;
-        transition-duration: ${styleGuide.transitionTime.medium};
-    }
-
-    ${$isLoading && css`
-        > *:not(.spinner){
-            opacity: 0;
-        }
-    `}
 `}`
 
-export const ReturnToMain = styled.button`
+export const ReturnToMainSection = styled.button<{ $hide: boolean }>`
+${({ $hide }) => css`
     position: fixed;
     right: ${numbPxToRem(80)};
 
@@ -46,5 +42,20 @@ export const ReturnToMain = styled.button`
     svg > path {
         fill: white;
         opacity: 0.5;
+        transition: ${styleGuide.transitionTime.fast};
     }
-`
+
+    &:hover {
+        svg > path {
+            opacity: 0.8;
+        }
+    }
+
+    transition-property: opacity;
+    transition-duration: ${styleGuide.transitionTime.medium};
+
+    ${$hide && css`
+        opacity: 0;
+        pointer-events: none;
+    `}
+`}`

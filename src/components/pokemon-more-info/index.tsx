@@ -42,12 +42,13 @@ export const PokemonMoreInfo: FC<PokemonMoreInfoProps> = ({
 
     return (
         <S.Component $isLoading={isLoading}>
-            {isLoading && <Spinner />}
-            {currentSection.name !== "main" && !isLoading &&
-                <S.ReturnToMain onClick={handleClickReturn}>
-                    <ArrowReturnIco />
-                </S.ReturnToMain>
-            }
+            <Spinner />
+            <S.ReturnToMainSection
+                onClick={handleClickReturn}
+                $hide={currentSection.name === "main" || isLoading}
+            >
+                <ArrowReturnIco />
+            </S.ReturnToMainSection>
 
             {showMainSection &&
                 <MainSection

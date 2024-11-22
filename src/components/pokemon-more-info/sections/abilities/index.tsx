@@ -26,7 +26,7 @@ export const AbilitiesSection: FC<AbilitiesSectionProps> = ({
             <S.Line />
 
             <S.Title>
-                Other Pokémons with {name}:
+                Other Pokémons with {queryData.name}:
             </S.Title>
 
             <S.List>
