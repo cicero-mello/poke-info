@@ -13,14 +13,16 @@ export const TabViewer: FC<TabViewerProps> = ({
         <S.Component>
             <S.TabList>
                 {tabNames.map((tabName, index) => (
-                    <Button
-                        role="tab"
-                        theme="linePokemon"
-                        pokemonType={pokemonType}
-                        children={tabName}
-                        onClick={() => setCurrentTabPanelIndex(index)}
-                        emphasis={currentTabPanelIndex === index}
-                    />
+                    <h2>
+                        <Button
+                            role="tab"
+                            theme="linePokemon"
+                            pokemonType={pokemonType}
+                            children={tabName}
+                            onClick={() => setCurrentTabPanelIndex(index)}
+                            emphasis={currentTabPanelIndex === index}
+                        />
+                    </h2>
                 ))}
             </S.TabList>
             <S.TabPanel>

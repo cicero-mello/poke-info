@@ -44,9 +44,8 @@ ${({ $bigMode }) => css`
 `}`
 
 export const PokeName = styled.span.attrs({
-     className: "poke-name"
-})<{ $bigMode?: boolean }>`
-${({ $bigMode }) => css`
+    className: "poke-name"
+})`
     ${styleGuide.text.lg}
     color: ${styleGuide.color.steelGray};
 
@@ -71,11 +70,14 @@ ${({ $bigMode }) => css`
             1.3s ease-in-out infinite
         ;
     }
+`
 
-    ${$bigMode && css`
-        ${styleGuide.text["2xl"]}
-        color: white;
-        font-weight: bold;
-        min-height: ${pxToRem("32px")};
-    `}
-`}`
+export const BigPokeName = styled(PokeName).attrs({
+    as: "h1",
+    className: "poke-name"
+})`
+    ${styleGuide.text["2xl"]}
+    color: white;
+    font-weight: bold;
+    min-height: ${pxToRem("32px")};
+`

@@ -20,6 +20,10 @@ export const TabList = styled.div.attrs({
     gap: ${numbPxToRem(18)};
 
     ${styleGuide.text.xl}
+
+    h2 {
+        font-weight: normal;
+    }
 `
 
 export const TabPanel = styled.div.attrs({
