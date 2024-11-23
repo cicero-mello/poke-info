@@ -4,7 +4,7 @@ import { capitalize } from "@utils"
 import * as api from "@api"
 
 export const useMainSectionQueries = (
-    pokemonId: number, specieId: number
+    pokemonId: number
 ): UseQueriesReponse => {
     const queryPokemon = useQuery({
         queryKey: ["getPokemon", pokemonId],
@@ -12,8 +12,9 @@ export const useMainSectionQueries = (
     })
 
     const queryPokemonSpecies = useQuery({
-        queryKey: ["getPokemonSpecies", specieId],
-        queryFn: () => api.getPokemonSpecies({ idOrName: specieId+"" }),
+        queryKey: ["getPokemonSpecies", queryPokemon.data?.specieId ?? ""],
+        queryFn: () => api.getPokemonSpecies({ idOrName: queryPokemon.data?.specieId+"" }),
+        enabled: !!queryPokemon.data
     })
 
     return {

@@ -7,13 +7,13 @@ import { Spinner } from "@components"
 import * as S from "./styles"
 
 export const PokemonMoreInfo: FC<PokemonMoreInfoProps> = ({
-    pokemonId, pokemonName, specieId
+    pokemonId
 }) => {
     const [currentSection, setCurrentSection] = useState<CurrentSection>({
         name: "main"
     })
 
-    const mainSectionQueries = useMainSectionQueries(pokemonId, specieId)
+    const mainSectionQueries = useMainSectionQueries(pokemonId)
 
     const abilitySectionQueries = (
         currentSection.name === "abilities" ?
@@ -59,10 +59,7 @@ export const PokemonMoreInfo: FC<PokemonMoreInfoProps> = ({
             }
 
             {showAbilitiesSection && abilitySectionQueries.data &&
-                <AbilitiesSection
-                    pokemonName={pokemonName}
-                    queryData={abilitySectionQueries.data}
-                />
+                <AbilitiesSection queryData={abilitySectionQueries.data} />
             }
 
         </S.Component>

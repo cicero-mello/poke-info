@@ -5,6 +5,11 @@ import * as api from "@api"
 export const useAbilitySectionQueries = (
     pokemonId: number, abilityId: number
 ): UseQueriesResponse => {
+    const queryPokemon = useQuery({
+        queryKey: ["getPokemon", pokemonId],
+        queryFn: () => api.getPokemon({ idOrName: pokemonId+"" }),
+    })
+
     const { data, isLoading } = useQuery({
         queryKey: ["getAbility", abilityId],
         queryFn: () => api.getAbility({ idOrName: abilityId+""}),
@@ -24,6 +29,7 @@ export const useAbilitySectionQueries = (
             isHidden: isHidden,
             name: data?.name ?? "",
             description: data?.description ?? "",
+            pokemonName: queryPokemon.data?.name ?? "",
             otherPokemonsWithThisAbility: otherPokemonsWithThisAbility
         }
     }

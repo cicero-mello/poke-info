@@ -6,12 +6,12 @@ import { PATHS } from "@types"
 import * as S from "./styles"
 
 export const AbilitiesSection: FC<AbilitiesSectionProps> = ({
-    pokemonName, queryData
+    queryData
 }) => {
-    const {navigate} = useNavigation()
+    const { navigate } = useNavigation()
 
     const hiddenAbilityText = queryData.isHidden && (
-        `In ${pokemonName}, is a Hidden Ability.`
+        `In ${queryData.pokemonName}, is a Hidden Ability.`
     )
 
     return (
