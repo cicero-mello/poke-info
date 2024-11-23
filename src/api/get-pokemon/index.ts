@@ -18,6 +18,7 @@ export const getPokemon = async ({
         types: data.types.map(type => type.type.name),
         mHeight: +(data.height/10).toFixed(1),
         kgWeight: +(data.weight/10).toFixed(1),
+        specieId: extractIdFromUrl(data.species.url),
         baseStats: data.stats.map((stat) => ({
             name: stat.stat.name,
             value: stat.base_stat

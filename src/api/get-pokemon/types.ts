@@ -27,4 +27,5 @@ export interface GetPokemonResponse {
     abilities: Ability[]
     mHeight: number
     kgWeight: number
+    specieId: number
 }

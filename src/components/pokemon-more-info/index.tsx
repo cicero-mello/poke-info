@@ -7,13 +7,14 @@ import { Spinner } from "@components"
 import * as S from "./styles"
 
 export const PokemonMoreInfo: FC<PokemonMoreInfoProps> = ({
-    pokemonId, pokemonName
+    pokemonId, pokemonName, specieId
 }) => {
     const [currentSection, setCurrentSection] = useState<CurrentSection>({
         name: "main"
     })
 
-    const mainSectionQueries = useMainSectionQueries(pokemonId)
+    const mainSectionQueries = useMainSectionQueries(pokemonId, specieId)
+
     const abilitySectionQueries = (
         currentSection.name === "abilities" ?
         useAbilitySectionQueries(pokemonId, currentSection.abilityId)

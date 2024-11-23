@@ -45,10 +45,12 @@ export const MainSection: FC<MainSectionProps> = ({
             children={queryData.shape}
         />
 
-        <InfoLine
-            title="Habitat"
-            children={queryData.habitat}
-        />
+        {queryData.habitat &&
+            <InfoLine
+                title="Habitat"
+                children={queryData.habitat}
+            />
+        }
 
         <InfoLine
             title="Breeding Groups"
