@@ -61,7 +61,6 @@ export const PokemonMoreInfo: FC<PokemonMoreInfoProps> = ({
             {showAbilitiesSection && abilitySectionQueries.data &&
                 <AbilitiesSection queryData={abilitySectionQueries.data} />
             }
-
         </S.Component>
     )
 }
