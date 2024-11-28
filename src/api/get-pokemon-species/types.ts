@@ -10,6 +10,7 @@ export interface GetPokemonSpeciesResponse {
     shape: NameAndNumberId
     eggGroups: NameAndNumberId[]
     habitat?: NameAndNumberId
+    evolutionChainId: number
 }
 
 export type GetPokemonSpeciesApiResponse = (

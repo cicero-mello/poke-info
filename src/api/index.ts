@@ -9,3 +9,6 @@ export * from "./get-pokemon-species/types"
 
 export * from "./get-ability"
 export * from "./get-ability/types"
+
+export * from "./get-evolution"
+export * from "./get-evolution/types"

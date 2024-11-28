@@ -31,6 +31,7 @@ export const getPokemonSpecies = async ({
         habitat: data.habitat ? {
             name: data.habitat.name.split("-").map(text => capitalize(text)).join(" "),
             id: extractIdFromUrl(data.habitat.url)
-        } : undefined
+        } : undefined,
+        evolutionChainId: extractIdFromUrl(data.evolution_chain.url)
     }
 }
