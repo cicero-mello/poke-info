@@ -12,7 +12,7 @@ export const Pokemon = () => {
     const { navigate } = useNavigation()
     const { params } = useRoute()
     const { data } = useQuery({
-        queryKey: ["getPokemon", params.id],
+        queryKey: ["getPokemon", +params.id],
         queryFn: () => api.getPokemon({ idOrName: params.id }),
     })
 
@@ -53,7 +53,7 @@ export const Pokemon = () => {
                             tabNames={["More Info", "Evolution", "Moves"]}
                             tabPanels={[
                                 <PokemonMoreInfo pokemonId={+params.id}/>,
-                                <Evolution />,
+                                <Evolution pokemonId={+params.id}/>,
                                 <Moves />
                             ]}
                         />

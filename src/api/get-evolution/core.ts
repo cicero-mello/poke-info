@@ -8,8 +8,8 @@ export const convertDataToPokemonsEvolution = (
     const chain = flatEvolutionChain([data.chain])
 
     const result: PokemonEvolution[] = chain.map((item) => ({
-        name: capitalizeApiName(item.species.name),
-        id: extractIdFromUrl(item.species.url),
+        specieName: capitalizeApiName(item.species.name),
+        specieId: extractIdFromUrl(item.species.url),
         evolvesFrom: item.evolvesFrom,
         isBaby: !!item.is_baby,
         incenseToGetBaby: !!item.is_baby ?
@@ -65,8 +65,8 @@ const flatEvolutionChain = (
                 item.evolves_to.map(chain => ({
                     ...chain,
                     evolvesFrom: {
-                        pokemonName: capitalizeApiName(item.species.name),
-                        pokemonId: extractIdFromUrl(item.species.url)
+                        specieName: capitalizeApiName(item.species.name),
+                        specieId: extractIdFromUrl(item.species.url)
                     }
                 }))
             )

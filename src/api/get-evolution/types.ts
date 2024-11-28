@@ -11,14 +11,14 @@ export interface GetEvolutionResponse {
 export type GetEvolutionApiResponse = PokeApi.EvolutionChain
 
 export interface PokemonEvolution {
-    name: string
-    id: number
+    specieName: string
+    specieId: number
     isBaby: boolean
     incenseToGetBaby?: string
     requirements: EvolutionRequirements[]
     evolvesFrom?: {
-        pokemonName: string
-        pokemonId: number
+        specieName: string
+        specieId: number
     }
 }
 
@@ -51,7 +51,7 @@ export type RelativePhysicalStats = (
 
 export interface FlatChain extends PokeApi.Chain{
     evolvesFrom?: {
-        pokemonName: string
-        pokemonId: number
+        specieName: string
+        specieId: number
     }
 }

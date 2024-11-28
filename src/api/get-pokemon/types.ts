@@ -23,6 +23,7 @@ export interface GetPokemonResponse {
     name: string
     baseStats: BaseStat[]
     imageUrl: string
+    pixelArtUrl: string
     types: PokeApi.PokemonType[]
     abilities: Ability[]
     mHeight: number

@@ -15,6 +15,7 @@ export const getPokemon = async ({
         id: data.id,
         name: capitalizeApiName(data.name),
         imageUrl: data.sprites.other?.["official-artwork"].front_default ?? "",
+        pixelArtUrl: data.sprites.front_default ?? "",
         types: data.types.map(type => type.type.name),
         mHeight: +(data.height/10).toFixed(1),
         kgWeight: +(data.weight/10).toFixed(1),
