@@ -53,6 +53,7 @@ ${({ $hide }) => css`
     padding: 0 clamp(36px, 6%, 100%);
 
     opacity: 1;
+    z-index: 1;
     min-height: ${pxToRem("68px")};
     height: ${pxToRem("68px")};
 
