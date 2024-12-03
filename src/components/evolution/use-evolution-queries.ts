@@ -19,14 +19,14 @@ export const useEvolutionQueries = (
     })
 
     const evolution = useQuery({
-        queryKey: ["getPokemonSpecies", specie.data?.evolutionChainId],
+        queryKey: ["getEvolution", specie.data?.evolutionChainId],
         queryFn: () => api.getEvolution({
             evolutionChainId: specie.data?.evolutionChainId ?? 0
         }),
         enabled: !!specie?.data
     })
 
-    const specieIds = !evolution.data ? [] : evolution.data?.pokemons.map((item) => item.specieId)
+    const specieIds = !evolution.data ? [] : evolution.data.pokemons.map((item) => item.specieId)
 
     const pokemonsToGetPixelArt = useQueries({
         queries: specieIds.map((pokemonId) => ({
@@ -38,6 +38,7 @@ export const useEvolutionQueries = (
 
     const dataNotReady = (
         !evolution.data
+        || !specie.data?.evolutionChainId
         || evolution.data.pokemons.length === 0
         || pokemonsToGetPixelArt.length === 0
     )
@@ -45,6 +46,7 @@ export const useEvolutionQueries = (
     if(dataNotReady) return
 
     return {
+        evolutionChainId: specie.data?.evolutionChainId as number,
         pokemons: evolution.data.pokemons.map((item) => ({
             ...item,
             pixelArtUrl: pokemonsToGetPixelArt.find(pokemonQuery => (

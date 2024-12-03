@@ -9,7 +9,9 @@ export const Component = styled.div.attrs({
     justify-content: center;
     align-items: center;
     height: ${numbPxToRem(140)};
+    min-height: ${numbPxToRem(140)};
     width: ${numbPxToRem(140)};
+    min-width: ${numbPxToRem(140)};
     cursor: pointer;
     user-select: none;
 
@@ -60,7 +62,7 @@ export const Component = styled.div.attrs({
         ${styleGuide.transitionTime.fast}
     ;
 
-    &:hover, &:has(*:focus) {
+    &:hover, &:has(*:focus-visible) {
         box-shadow: inset 0 0 0 ${styleGuide.color.blackAlpha25};
         background-color: ${styleGuide.color.whiteAlpha05};
 

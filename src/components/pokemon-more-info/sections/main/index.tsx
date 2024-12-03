@@ -53,7 +53,7 @@ export const MainSection: FC<MainSectionProps> = ({
         }
 
         <InfoLine
-            title="Breeding Groups"
+            title="Egg Groups"
             children={queryData.eggGroups}
         />
     </S.Section>

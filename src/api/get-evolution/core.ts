@@ -23,15 +23,19 @@ export const convertDataToPokemonsEvolution = (
             item: capitalizeApiName(detail.item?.name ?? ""),
             knowMoveType: detail.known_move_type?.name,
             location: capitalizeApiName(detail.location?.name ?? ""),
+            minLevel: detail.min_level,
             minAffection: detail.min_affection,
             minBeauty: detail.min_beauty,
             minHappiness: detail.min_happiness,
             needsOverworldRain: detail.needs_overworld_rain,
             partySpecies: capitalizeApiName(detail.party_species?.name ?? ""),
-            partyType: detail.party_type,
+            partyType: detail.party_type?.name as PokeApi.PokemonType,
             relativePhysicalStats: getRelativePhysicalStats(detail.relative_physical_stats),
             timeOfDay: capitalizeApiName(detail.time_of_day ?? ""),
-            tradeSpecies: capitalizeApiName(detail.trade_species?.name ?? ""),
+            tradeSpecie: !!detail?.trade_species ? {
+                name: capitalizeApiName(detail.trade_species.name),
+                id: extractIdFromUrl(detail.trade_species.url)
+            } : undefined,
             turnUpsideDown3DS: detail.turn_upside_down
         } as EvolutionRequirements))
     }))

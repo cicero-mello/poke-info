@@ -34,12 +34,16 @@ export interface EvolutionRequirements {
     minAffection?: number
     minBeauty?: number
     minHappiness?: number
+    minLevel?: number
     needsOverworldRain?: boolean
     partySpecies?: string
     partyType?: PokeApi.PokemonType
     relativePhysicalStats?: RelativePhysicalStats
     timeOfDay?: string
-    tradeSpecies?: string
+    tradeSpecie?: {
+        name: string
+        id: number
+    }
     turnUpsideDown3DS?: boolean
 }
 

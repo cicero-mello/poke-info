@@ -49,4 +49,5 @@ ${({ $virtualItem, $virtualStyleData }) => css`
     transform: translateY(${$virtualItem.start}px);
     width: ${$virtualStyleData?.virtualItemWidth ?? "0px"};
     left: ${$virtualStyleData?.percentLeftForEachVirtualItemInARow[$virtualItem.lane]};
+    z-index: 0;
 `}`

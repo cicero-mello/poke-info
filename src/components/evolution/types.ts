@@ -6,6 +6,7 @@ export interface EvolutionProps {
 
 export interface EvolutionQueryData {
     pokemons: CustomPokemonEvolution[]
+    evolutionChainId: number
 }
 
 export interface CustomPokemonEvolution extends PokemonEvolution {
