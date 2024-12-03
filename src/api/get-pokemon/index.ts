@@ -1,5 +1,6 @@
 import { GetPokemonParams, GetPokemonApiResponse, GetPokemonResponse } from "./types"
 import { capitalize, capitalizeApiName, extractIdFromUrl } from "@utils"
+import { moveIdsPerVersionGroupId } from "./core"
 import axios from "axios"
 
 const url = "https://pokeapi.co/api/v2/pokemon/"
@@ -24,6 +25,7 @@ export const getPokemon = async ({
             name: stat.stat.name,
             value: stat.base_stat
         })),
+        moveIdsPerVersionGroupId: moveIdsPerVersionGroupId(data.moves),
         abilities: data.abilities.map((ability) => ({
             name: ability.ability.name.split("-").map(text => capitalize(text)).join(" "),
             id: extractIdFromUrl(ability.ability.url),
