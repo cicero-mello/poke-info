@@ -1,7 +1,6 @@
 import { InfoButton, InfoLine, PokemonPixelArt } from "@components"
 import { FunctionComponent as FC } from "preact"
 import { EvolutionItemProps } from "./types"
-import { useNavigation } from "@hooks"
 import { capitalize } from "@utils"
 import { PATHS } from "@types"
 import * as S from "./styles"
@@ -10,8 +9,6 @@ export const EvolutionItem: FC<EvolutionItemProps> = ({
     specieName, specieId, isBaby, incenseToGetBaby,
     requirements, evolvesFrom, pixelArtUrl, onPixelArtLoad
 }) => {
-    const { navigate } = useNavigation()
-
     const getPokemonOriginText = () => {
         if(!!isBaby) return "It's a Baby Pokémon"
         if(!evolvesFrom) return "First of evolution chain"
@@ -133,15 +130,14 @@ export const EvolutionItem: FC<EvolutionItemProps> = ({
                             </InfoLine>
                         }
 
-                        {/* TODO prop anchor no info button */}
                         {!!requirement.tradeSpecie &&
                             <InfoLine title="Pokémon to trade">
                                 <InfoButton
                                     children={requirement.tradeSpecie.name}
-                                    onClick={() => navigate(
-                                        PATHS.POKEDEX + "/" + requirement.tradeSpecie?.id+"",
-                                        false
-                                    )}
+                                    navigate={{
+                                        path: PATHS.POKEDEX + "/" + requirement.tradeSpecie?.id+"",
+                                        transition: false
+                                    }}
                                 />
                             </InfoLine>
                         }

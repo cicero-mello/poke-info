@@ -1,9 +1,7 @@
 import { numbPxToRem, styleGuide } from "@style-guide"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
-export const Component = styled.button.attrs({
-    className: "info-button"
-})`
+const componentCss = css`
     position: relative;
     border-bottom: 2px solid ${styleGuide.color.whiteAlpha49};
     color: ${styleGuide.color.pearlGray};
@@ -14,6 +12,18 @@ export const Component = styled.button.attrs({
             transform: translateY(-${numbPxToRem(3)});
         }
     }
+`
+
+export const StyledButton = styled.button.attrs({
+    className: "info-button"
+})`
+    ${componentCss}
+`
+
+export const StyledAnchor = styled.a.attrs({
+    className: "info-button"
+})`
+    ${componentCss}
 `
 
 export const Text = styled.span.attrs({

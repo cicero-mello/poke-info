@@ -1,15 +1,12 @@
 import { FunctionComponent as FC } from "preact/compat"
 import { AbilitiesSectionProps } from "./types"
 import { InfoButton } from "@components"
-import { useNavigation } from "@hooks"
 import { PATHS } from "@types"
 import * as S from "./styles"
 
 export const AbilitiesSection: FC<AbilitiesSectionProps> = ({
     queryData
 }) => {
-    const { navigate } = useNavigation()
-
     const hiddenAbilityText = queryData.isHidden && (
         `In ${queryData.pokemonName}, is a Hidden Ability.`
     )
@@ -34,10 +31,10 @@ export const AbilitiesSection: FC<AbilitiesSectionProps> = ({
                     <S.ListItem>
                         <InfoButton
                             children={pokemon.name}
-                            onClick={() => navigate(
-                                PATHS.POKEDEX + "/" + pokemon.id,
-                                false
-                            )}
+                            navigate={{
+                                path: PATHS.POKEDEX + "/" + pokemon.id,
+                                transition: false
+                            }}
                         />
                     </S.ListItem>
                 ))}
