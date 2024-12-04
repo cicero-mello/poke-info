@@ -1,4 +1,5 @@
 export * from "./debounce"
+export * from "./poke-api"
 
 export const delay = (time: number) => new Promise((resolve) => {
     setTimeout(() => resolve(true), time)

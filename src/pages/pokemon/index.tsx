@@ -54,7 +54,7 @@ export const Pokemon = () => {
                             tabPanels={[
                                 <PokemonMoreInfo pokemonId={+params.id}/>,
                                 <Evolution pokemonId={+params.id}/>,
-                                <Moves />
+                                <Moves pokemonId={+params.id}/>
                             ]}
                         />
                     </S.RightSide>

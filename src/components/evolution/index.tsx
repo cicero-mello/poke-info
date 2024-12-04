@@ -1,10 +1,9 @@
 import { useEffect, useLayoutEffect, useMemo, useState } from "preact/hooks"
 import { CustomPokemonEvolution, EvolutionProps } from "./types"
 import { useEvolutionQueries } from "./use-evolution-queries"
-import { EvolutionItem } from "../evolution-item"
+import { Spinner, EvolutionItem } from "@components"
 import { FunctionComponent as FC } from "preact"
 import { customSessionStorage } from "@stores"
-import { Spinner } from "@components"
 import * as S from "./styles"
 
 export const Evolution: FC<EvolutionProps> = ({

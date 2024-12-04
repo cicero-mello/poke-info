@@ -5,6 +5,7 @@ export enum color {
     whiteAlpha94 = "#FFFFFFF0",
     whiteAlpha70 = "#FFFFFFB2",
     whiteAlpha49 = "#FFFFFF7D",
+    whiteAlpha14 = "#FFFFFF24",
     whiteAlpha05 = "#FFFFFF0D",
     frostGray = "#F0F0F0",
     pearlGray = "#F3F3F3",

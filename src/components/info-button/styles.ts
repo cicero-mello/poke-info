@@ -3,6 +3,7 @@ import styled, { css } from "styled-components"
 
 const componentCss = css`
     position: relative;
+    height: fit-content;
     border-bottom: 2px solid ${styleGuide.color.whiteAlpha49};
     color: ${styleGuide.color.pearlGray};
     ${styleGuide.text.base}
