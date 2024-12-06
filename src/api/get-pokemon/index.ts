@@ -25,7 +25,7 @@ export const getPokemon = async ({
             name: stat.stat.name,
             value: stat.base_stat
         })),
-        moveIdsPerVersionGroupId: moveIdsPerVersionGroupId(data.moves),
+        movesPerVersionGroupId: moveIdsPerVersionGroupId(data.moves),
         abilities: data.abilities.map((ability) => ({
             name: ability.ability.name.split("-").map(text => capitalize(text)).join(" "),
             id: extractIdFromUrl(ability.ability.url),

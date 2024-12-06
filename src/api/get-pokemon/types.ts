@@ -29,8 +29,17 @@ export interface GetPokemonResponse {
     mHeight: number
     kgWeight: number
     specieId: number
-    moveIdsPerVersionGroupId: Map<VersionGroupId, MoveId[]>
+    movesPerVersionGroupId: Map<VersionGroupId, Move[]>
 }
 
 export type VersionGroupId = number
-export type MoveId = number
+
+export interface Move {
+    name: string
+    id: number
+    learnMethod: {
+        name: string
+        id: number
+        level?: number
+    }
+}
