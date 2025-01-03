@@ -13,7 +13,7 @@ export interface Pokemon {
     game_indices: GameIndex[]
     held_items: HeldItem[]
     location_area_encounters: string
-    moves: Move[]
+    moves: PokemonMove[]
     species: NamedAPIResource
     sprites: Sprites
     stats: Stat[]
@@ -42,7 +42,7 @@ export interface VersionDetail {
     version: NamedAPIResource
 }
 
-export interface Move {
+export interface PokemonMove {
     move: NamedAPIResource
     version_group_details: VersionGroupDetail[]
 }

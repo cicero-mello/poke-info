@@ -8,6 +8,34 @@ export interface NamedLanguageAPIResource {
     url: string
 }
 
+export interface FlavorText {
+    flavor_text: string
+    language: NamedLanguageAPIResource
+    version: NamedAPIResource
+}
+
+export interface Name {
+    name: string
+    language: NamedLanguageAPIResource
+}
+
+export interface EffectEntry {
+    effect: string
+    short_effect: string
+    language: NamedAPIResource
+}
+
+export interface EffectChange {
+    version_group: NamedAPIResource
+    effect_entries: EffectEntry[]
+}
+
+export interface FlavorTextEntry {
+    flavor_text: string
+    language: NamedAPIResource
+    version_group: NamedAPIResource
+}
+
 export type LanguageAbbreviations = (
     "en" | "ja" | "ko" | "fr" | "de" |
     "es" | "it" | "pt" | "ru" | "pl" |

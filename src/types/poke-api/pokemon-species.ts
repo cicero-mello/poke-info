@@ -1,4 +1,4 @@
-import { NamedAPIResource, NamedLanguageAPIResource } from "./common"
+import { FlavorText, Name, NamedAPIResource, NamedLanguageAPIResource } from "./common"
 
 export interface PokemonSpecies {
     base_happiness: number
@@ -30,12 +30,6 @@ export interface PokemonSpecies {
     varieties: PokemonSpeciesVariety
 }
 
-export interface FlavorText {
-    flavor_text: string
-    language: NamedLanguageAPIResource
-    version: NamedAPIResource
-}
-
 export interface Description {
     description: string
     language: NamedLanguageAPIResource
@@ -43,11 +37,6 @@ export interface Description {
 
 export interface Genus {
     genus: string
-    language: NamedLanguageAPIResource
-}
-
-export interface Name {
-    name: string
     language: NamedLanguageAPIResource
 }
 

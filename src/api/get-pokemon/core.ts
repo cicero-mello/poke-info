@@ -3,7 +3,7 @@ import { Move, VersionGroupId } from "./types"
 import { PokeApi } from "@types"
 
 export const moveIdsPerVersionGroupId = (
-    moves: PokeApi.Move[]
+    moves: PokeApi.PokemonMove[]
 ): Map<VersionGroupId, Move[]> => {
     const result = new Map<VersionGroupId, Move[]>()
 

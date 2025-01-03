@@ -12,3 +12,12 @@ export * from "./get-ability/types"
 
 export * from "./get-evolution"
 export * from "./get-evolution/types"
+
+export * from "./get-move"
+export * from "./get-move/types"
+
+export * from "./get-move-target"
+export * from "./get-move-target/types"
+
+export * from "./get-move-learn-method"
+export * from "./get-move-learn-method/types"
