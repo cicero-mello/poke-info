@@ -13,6 +13,7 @@ export const getMoveTarget = async ({
     )
 
     return {
+        id: data.id,
         moveTargetName: (
             data.names.find(({language}) => language.name === "en")?.name
             ?? capitalizeApiName(data.name)

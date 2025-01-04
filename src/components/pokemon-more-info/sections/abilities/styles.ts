@@ -1,4 +1,4 @@
-import { pxToRem, styleGuide } from "@style-guide"
+import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import styled from "styled-components"
 
 export const Section = styled.section`
@@ -27,7 +27,7 @@ export const Line = styled.div`
 export const List = styled.ul`
     display: flex;
     flex-wrap: wrap;
-    gap: 18px;
+    gap: ${numbPxToRem(18)};
     padding-left: ${pxToRem("8px")};
 `
 

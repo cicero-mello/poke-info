@@ -9,4 +9,5 @@ export type GetMoveLearnMethodApiResponse = PokeApi.MoveLearnMethod
 export interface GetMoveLearnMethodResponse {
     name: string
     description: string
+    id: number
 }

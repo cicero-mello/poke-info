@@ -22,6 +22,7 @@ export const getMoveLearnMethod = async ({
     )
 
     return {
+        id: data.id,
         name: name,
         description: description
     }

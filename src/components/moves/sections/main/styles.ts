@@ -1,7 +1,7 @@
 import { numbPxToRem, styleGuide } from "@style-guide"
 import styled from "styled-components"
 
-export const Component = styled.section`
+export const Section = styled.section`
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -28,7 +28,7 @@ export const List = styled.ul`
     display: flex;
     flex-wrap: wrap;
     gap: ${numbPxToRem(18)};
-    padding: 0;
+    padding: ${numbPxToRem(8)};
     list-style: none;
 `
 

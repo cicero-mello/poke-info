@@ -30,11 +30,12 @@ export const getMove = async ({
     )
 
     const name = (
-        data.names.find(({language}) => language.name === "en")!.name
+        data.names.find(({language}) => language.name === "en")?.name
         ?? capitalizeApiName(data.name)
     )
 
     return {
+        id: data.id,
         name: name,
         description: removeEscapeSequences(effectEntry.effect),
         versionGroupIdAdditionalDescription: additionalEffectEntryOfThisVersionGroup?.effect,

@@ -78,3 +78,15 @@ export const removeEscapeSequences = (
 export const capitalizeApiName = (name: string): string => (
     name.split("-").map(text => capitalize(text)).join(" ")
 )
+
+export const removeDuplicatesById = <T extends { id: number | string }>(
+    list: T[]
+): T[] => {
+    const ids = new Set()
+
+    return list.filter(item => {
+        if(ids.has(item.id)) return false
+        ids.add(item.id)
+        return true
+    })
+}

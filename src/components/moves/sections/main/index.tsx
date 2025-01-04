@@ -5,14 +5,14 @@ import { MainSectionProps } from "./types"
 import * as S from "./styles"
 
 export const MainSection: FC<MainSectionProps> = ({
-    versionGroupIds
+    versionGroupIds, setCurrentSection
 }) => {
     const getVersionNames = (versionGroupId: number) => (
         versionNamesPerVersionGroupId.get(versionGroupId)!.flat()
     )
 
     return (
-        <S.Component>
+        <S.Section>
             <S.Title>
                 Choose a game or expansion:
             </S.Title>
@@ -23,7 +23,11 @@ export const MainSection: FC<MainSectionProps> = ({
                             <InfoButton
                                 children={versionName}
                                 onClick={() => {
-                                    console.log(versionGroupId)
+                                    setCurrentSection({
+                                        name: "moves",
+                                        versionName: versionName,
+                                        versionGroupId: versionGroupId
+                                    })
                                 }}
                             />
                         </S.ListItem>
@@ -36,6 +40,6 @@ export const MainSection: FC<MainSectionProps> = ({
                 Additionally, the move itself may also be
                 different between versions.
             </S.InfoBubble>
-        </S.Component>
+        </S.Section>
     )
 }

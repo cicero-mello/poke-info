@@ -8,4 +8,5 @@ export type GetMoveTargetApiResponse = PokeApi.MoveTarget
 
 export interface GetMoveTargetResponse {
     moveTargetName: string
+    id: number
 }

@@ -8,6 +8,7 @@ export interface GetMoveParams {
 export type MoveApiResponse = PokeApi.Move
 
 export interface MoveResponse {
+    id: number
     name: string
     description: string
     versionGroupIdAdditionalDescription?: string
