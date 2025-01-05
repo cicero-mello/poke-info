@@ -3,10 +3,11 @@ import { TypeTagProps } from "./types"
 import * as S from "./styles"
 
 export const TypeTag: FC<TypeTagProps> = ({
-    pokemonType, size
+    pokemonType, size, cleanMode
 }) => (
     <S.Component
         $pokemonType={pokemonType}
+        $cleanMode={cleanMode}
         $size={size}
     >
         {pokemonType.toUpperCase()}

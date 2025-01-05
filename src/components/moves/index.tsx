@@ -1,9 +1,11 @@
-import { useMovesSectionQueries } from "./sections/moves/user-queries"
-import { MainSection, MovesSection } from "./sections"
+import { useMovesSectionQueries } from "./sections/move-list/use-queries"
+import { MainSection, MoveListSection } from "./sections"
 import { CurrentSection, MovesProps } from "./types"
 import { FunctionComponent as FC } from "preact"
 import { useQuery } from "@tanstack/react-query"
+import { ArrowReturnIco } from "@assets"
 import { useState } from "preact/hooks"
+import { Spinner } from "@components"
 import * as S from "./styles"
 import * as api from "@api"
 
@@ -26,8 +28,10 @@ export const Moves: FC<MovesProps> = ({
         )!
     )
 
-    const movesSectionData = (
-        moves ? useMovesSectionQueries(moves) : undefined
+    const movesSectionQuery = (
+        (moves && currentSection.name === "moves") ?
+        useMovesSectionQueries(moves, currentSection.versionGroupId)
+        : undefined
     )
 
     const showMainSection = (
@@ -38,8 +42,8 @@ export const Moves: FC<MovesProps> = ({
 
     const showMovesSection = (
         currentSection.name === "moves"
-        && !!movesSectionData
-        && !movesSectionData.isLoading
+        && !!movesSectionQuery
+        && !movesSectionQuery.isLoading
     )
 
     const versionGroupIds = (
@@ -48,8 +52,24 @@ export const Moves: FC<MovesProps> = ({
         : []
     )
 
+    const isLoading = (
+        pokemonQuery.isLoading
+        || !!movesSectionQuery?.isLoading
+    )
+
+    const handleClickReturn = () => {
+        setCurrentSection({name: "main"})
+    }
+
     return (
-        <S.Component>
+        <S.Component $isLoading={isLoading}>
+            <Spinner />
+            <S.ReturnToMainSection
+                onClick={handleClickReturn}
+                $hide={currentSection.name === "main" || isLoading}
+            >
+                <ArrowReturnIco />
+            </S.ReturnToMainSection>
             {showMainSection &&
                 <MainSection
                     versionGroupIds={versionGroupIds}
@@ -57,9 +77,9 @@ export const Moves: FC<MovesProps> = ({
                 />
             }
             {showMovesSection &&
-                <MovesSection
+                <MoveListSection
                     versionName={currentSection.versionName}
-                    moves={movesSectionData.moves}
+                    moves={movesSectionQuery.moves}
                 />
             }
         </S.Component>

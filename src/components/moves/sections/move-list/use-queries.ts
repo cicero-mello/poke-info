@@ -3,12 +3,14 @@ import { removeDuplicatesById } from "@utils"
 import { UseQueriesResponse } from "./types"
 import * as api from "@api"
 
-export const useMovesSectionQueries = (moves: api.Move[]): UseQueriesResponse => {
-
+export const useMovesSectionQueries = (
+    moves: api.Move[],
+    versionGroupId: number
+): UseQueriesResponse => {
     const movesQueries = useQueries({
         queries: moves.map((move) => ({
-            queryKey: ["getMove", move.id],
-            queryFn: () => api.getMove({ idOrName: move.id + "" })
+            queryKey: ["getMove", move.id, versionGroupId],
+            queryFn: () => api.getMove({ idOrName: move.id + "", versionGroupId })
         }))
     })
 

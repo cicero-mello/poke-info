@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components"
 import { TypeTagSize } from "./types"
 import { PokeApi } from "@types"
-import { pxToRem, styleGuide } from "@style-guide"
+import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 
 export const Component = styled.div.attrs({
     className: "type-tag"
-})<{ $pokemonType: PokeApi.PokemonType, $size?: TypeTagSize }>`
-${({ $pokemonType, $size }) => css`
+})<{ $pokemonType: PokeApi.PokemonType, $size?: TypeTagSize, $cleanMode?: boolean }>`
+${({ $pokemonType, $size, $cleanMode }) => css`
 
     background-color:
         ${styleGuide.color[$pokemonType as keyof typeof styleGuide.color]}
@@ -25,5 +25,14 @@ ${({ $pokemonType, $size }) => css`
         ${styleGuide.text.sm}
         padding: ${pxToRem("5px")} 0;
         width: ${pxToRem("78px")};
+    `}
+
+    ${$cleanMode && css`
+        ${styleGuide.text.xs}
+        width: fit-content;
+        background-color: unset;
+        padding: ${numbPxToRem(3)} ${numbPxToRem(10)};
+        color: ${styleGuide.color.pearlGray};
+        border: ${numbPxToRem(2)} solid ${styleGuide.color.whiteAlpha49};
     `}
 `}`

@@ -1,2 +1,2 @@
 export * from "./main"
-export * from "./moves"
+export * from "./move-list"

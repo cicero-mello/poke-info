@@ -22,11 +22,11 @@ export const getMove = async ({
 
     const effectEntry = (
         data.effect_entries.find(({language}) => language.name === "en")
-    )!
+    )
 
     const additionalEffectEntryOfThisVersionGroup = (
         !effectChange ? undefined :
-        effectChange.effect_entries.find(({language}) => language.name === "en")!
+        effectChange.effect_entries.find(({language}) => language.name === "en")
     )
 
     const name = (
@@ -37,7 +37,7 @@ export const getMove = async ({
     return {
         id: data.id,
         name: name,
-        description: removeEscapeSequences(effectEntry.effect),
+        description: !effectEntry ? undefined : removeEscapeSequences(effectEntry.short_effect),
         versionGroupIdAdditionalDescription: additionalEffectEntryOfThisVersionGroup?.effect,
         accuracy: pastValue?.accuracy ?? data.accuracy,
         pp: pastValue?.pp ?? data.pp,

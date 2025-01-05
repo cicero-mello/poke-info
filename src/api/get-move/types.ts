@@ -10,7 +10,7 @@ export type MoveApiResponse = PokeApi.Move
 export interface MoveResponse {
     id: number
     name: string
-    description: string
+    description?: string
     versionGroupIdAdditionalDescription?: string
     accuracy: number | null
     pp: number

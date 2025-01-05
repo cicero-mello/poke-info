@@ -30,6 +30,7 @@ export const Component = styled.div.attrs({
     }
 
     img {
+        filter: contrast(0.9);
         width: 96%;
         height: 96%;
         image-rendering: pixelated;
