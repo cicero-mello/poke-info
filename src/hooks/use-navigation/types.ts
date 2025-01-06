@@ -7,7 +7,7 @@ export type Navigate = (
 
 export interface UseNavigation {
     navigate: Navigate
-    getPreviusPath: () => string
+    getPreviousPath: () => string
 }
 
 export type TransitionState = "fadeIn" | "fadeOut" | undefined

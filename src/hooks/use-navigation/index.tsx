@@ -8,7 +8,7 @@ import { delay } from "@utils"
 
 const NavigationContext = createContext<UseNavigation>({
     navigate: async () => {},
-    getPreviusPath: () => ""
+    getPreviousPath: () => ""
 })
 
 /**
@@ -21,10 +21,10 @@ export const NavigationProvider: FunctionComponent<NavigationProviderProps> = ({
 }) => {
     const { route, path } = useLocation()
     const [transitionState, setTransitionState] = useState<TransitionState>()
-    const previusPath = useRef(path)
+    const PreviousPath = useRef(path)
 
     const navigate: Navigate = async (targetPath, transition = true) => {
-        previusPath.current = path
+        PreviousPath.current = path
         if(!transition){
             route(targetPath)
             return
@@ -35,10 +35,10 @@ export const NavigationProvider: FunctionComponent<NavigationProviderProps> = ({
         setTransitionState("fadeIn")
     }
 
-    const getPreviusPath = (): string => previusPath.current
+    const getPreviousPath = (): string => PreviousPath.current
 
     return (
-        <NavigationContext.Provider value={{ navigate, getPreviusPath }}>
+        <NavigationContext.Provider value={{ navigate, getPreviousPath }}>
             {staticChildren && staticChildren}
             <TransitionWrapper $state={transitionState}>
                 {children}

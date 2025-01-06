@@ -22,10 +22,10 @@ export const Pokedex = () => {
         }
     })
 
-    const { navigate, getPreviusPath } = useNavigation()
+    const { navigate, getPreviousPath } = useNavigation()
 
     const userWasInThisPokemonIdPage = useMemo(() => {
-        return isPokemonPath(getPreviusPath())
+        return isPokemonPath(getPreviousPath())
     }, [])
 
     const pokedexRestorationData = useMemo(() => (
