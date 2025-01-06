@@ -1,5 +1,5 @@
 export interface PokemonImageProps {
     pokemonId: number
-    imageUrl: string
+    imageUrl?: string | null
     alt?: string
 }

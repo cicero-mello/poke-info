@@ -1,8 +1,8 @@
+import { useEffect, useState } from "preact/hooks"
 import { FunctionComponent as FC } from "preact"
 import { customSessionStorage } from "@stores"
 import { PokemonImageProps } from "./types"
 import { PikachuShadowIco } from "@assets"
-import { useState } from "preact/hooks"
 import * as S from "./styles"
 
 export const PokemonImage: FC<PokemonImageProps> = ({
@@ -21,15 +21,26 @@ export const PokemonImage: FC<PokemonImageProps> = ({
         customSessionStorage.addLoadedPokemonArtworkIds(pokemonId)
     }
 
+    useEffect(() => {
+        if(imageUrl === null){
+            customSessionStorage.addLoadedPokemonArtworkIds(pokemonId)
+        }
+    }, [imageUrl])
+
     return (
-        <S.Component $isImageLoaded={!isLoading}>
+        <S.Component
+            $isImageLoaded={!isLoading}
+            $nullImage={imageUrl === null}
+        >
             <S.RelativeWrapper>
-                {isLoading && <PikachuShadowIco />}
-                <img
-                    alt={alt ?? "Loading Pokemon..."}
-                    src={imageUrl}
-                    onLoad={onLoad}
-                />
+                {(isLoading || !imageUrl) && <PikachuShadowIco />}
+                {!!imageUrl && (
+                    <img
+                        alt={alt ?? "Loading Pokemon..."}
+                        src={imageUrl}
+                        onLoad={onLoad}
+                    />
+                )}
             </S.RelativeWrapper>
         </S.Component>
     )

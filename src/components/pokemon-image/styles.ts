@@ -3,8 +3,8 @@ import { styleGuide } from "@style-guide"
 
 export const Component = styled.div.attrs({
     className: "pokemon-image"
-})<{ $isImageLoaded: boolean }>`
-${({ $isImageLoaded }) => css`
+})<{ $isImageLoaded: boolean, $nullImage: boolean }>`
+${({ $isImageLoaded, $nullImage }) => css`
     display: flex;
     width: fit-content;
     height: 100%;
@@ -16,17 +16,22 @@ ${({ $isImageLoaded }) => css`
         width: fit-content;
         pointer-events: none;
 
-        animation:
-            ${styleGuide.keyframes.fadeIn} 340ms
-            ease-in forwards
-        ;
+        ${!$nullImage && css`
+            animation:
+                ${styleGuide.keyframes.fadeIn} 340ms
+                ease-in forwards
+            ;
+        `}
 
         > path {
             fill: ${styleGuide.color.stoneGray};
-            animation:
-                ${styleGuide.keyframes.opacityLoading}
-                1.3s ease-in-out infinite
-            ;
+
+            ${!$nullImage && css`
+                animation:
+                    ${styleGuide.keyframes.opacityLoading}
+                    1.3s ease-in-out infinite
+                ;
+            `}
         }
     }
 

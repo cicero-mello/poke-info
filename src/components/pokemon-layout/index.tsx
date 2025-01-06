@@ -57,7 +57,7 @@ export const PokemonLayout: FC<PokemonLayoutProps> = ({
                     </S.SparklesContainer>
                 )}
                 <PokemonImage
-                    imageUrl={data?.imageUrl ?? ""}
+                    imageUrl={data?.imageUrl}
                     alt={data?.name ?? ""}
                     pokemonId={pokemonId}
                 />

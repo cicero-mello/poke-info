@@ -50,7 +50,7 @@ export const PokeCard: FC<PokeCardProps> = ({
                     )}
 
                     <PokemonImage
-                        imageUrl={data?.imageUrl ?? ""}
+                        imageUrl={data?.imageUrl}
                         alt={pokeName}
                         pokemonId={pokeId}
                     />
