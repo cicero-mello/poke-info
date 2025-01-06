@@ -1,12 +1,12 @@
 import { StyledComponentProps, StyledDownAreaProps } from "../types"
 import { descendHeader, revealContent } from "./animations"
-import { pxToRem, styleGuide } from "@style-guide"
+import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 import { pokeWindowRem } from "@components"
 
 export const Component = styled.div.attrs({
     className: "pokemon-data"
-})<StyledComponentProps>`
+}) <StyledComponentProps>`
 ${({ $previewMode, $reverseAnimation, $removePointerEvents }) => css`
     display: flex;
     position: relative;
@@ -65,6 +65,15 @@ export const TopArea = styled.div.attrs({
         &:hover {
             opacity: 1;
         }
+    }
+`
+
+export const SparklesContainer = styled.div`
+    padding: ${numbPxToRem(12)} 0 0 ${numbPxToRem(16)};
+    min-width: ${numbPxToRem(105)};
+    .sparkles-ico {
+        width: ${numbPxToRem(42)};
+        height: ${numbPxToRem(42)};
     }
 `
 

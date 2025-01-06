@@ -1,11 +1,11 @@
 import { Button, FavoriteCheckbox, PokemonImage, TypeTag } from "@components"
+import { ArrowReturnIco, SparklesIco } from "@assets"
 import { useEffect, useState } from "preact/hooks"
 import { FunctionComponent as FC } from "preact"
 import { useQuery } from "@tanstack/react-query"
 import { customLocalStorage } from "@stores"
 import { PokemonLayoutProps } from "./types"
 import { formatPokeNumber } from "@utils"
-import { ArrowReturnIco } from "@assets"
 import { useNavigation } from "@hooks"
 import { useRoute } from "preact-iso"
 import { PATHS } from "@types"
@@ -50,7 +50,12 @@ export const PokemonLayout: FC<PokemonLayoutProps> = ({
         >
 
             <S.TopArea>
-                <S.PokeNumber children={pokeNumber}/>
+                {pokeId < 10000 && <S.PokeNumber children={pokeNumber}/>}
+                {pokeId >= 10000 && (
+                    <S.SparklesContainer>
+                        <SparklesIco />
+                    </S.SparklesContainer>
+                )}
                 <PokemonImage
                     imageUrl={data?.imageUrl ?? ""}
                     alt={data?.name ?? ""}

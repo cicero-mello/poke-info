@@ -4,6 +4,7 @@ import { FunctionComponent as FC } from "preact"
 import { useQuery } from "@tanstack/react-query"
 import { customLocalStorage } from "@stores"
 import { PokeCardProps } from "./types"
+import { SparklesIco } from "@assets"
 import { PATHS } from "@types"
 import * as S from "./styles"
 import * as api from "@api"
@@ -41,7 +42,13 @@ export const PokeCard: FC<PokeCardProps> = ({
                 onClick={onClick}
             >
                 <S.TopArea>
-                    <S.PokeNumber children={pokeNumber}/>
+                    {!!data?.id && data.id < 10000 && (
+                        <S.PokeNumber children={pokeNumber}/>
+                    )}
+                    {!!data?.id && data.id >= 10000 && (
+                        <SparklesIco />
+                    )}
+
                     <PokemonImage
                         imageUrl={data?.imageUrl ?? ""}
                         alt={pokeName}
