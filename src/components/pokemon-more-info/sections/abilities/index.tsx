@@ -11,6 +11,10 @@ export const AbilitiesSection: FC<AbilitiesSectionProps> = ({
         `In ${queryData.pokemonName}, is a Hidden Ability.`
     )
 
+    const exclusiveAbility = queryData.otherPokemonsWithThisAbility.length === 0 && (
+        `Only ${queryData.pokemonName} have ${queryData.name}!`
+    )
+
     return (
         <S.Section>
             <S.Title> {queryData.name} </S.Title>
@@ -20,25 +24,33 @@ export const AbilitiesSection: FC<AbilitiesSectionProps> = ({
                 <S.Text> {hiddenAbilityText} </S.Text>
             }
 
-            <S.Line />
+            {exclusiveAbility &&
+                <S.Text>{exclusiveAbility}</S.Text>
+            }
 
-            <S.Title>
-                Other Pokémons with {queryData.name}:
-            </S.Title>
+            {!exclusiveAbility && (
+                <>
+                    <S.Line />
 
-            <S.List>
-                {queryData.otherPokemonsWithThisAbility.map((pokemon) => (
-                    <S.ListItem>
-                        <InfoButton
-                            children={pokemon.name}
-                            navigate={{
-                                path: PATHS.POKEDEX + "/" + pokemon.id,
-                                transition: false
-                            }}
-                        />
-                    </S.ListItem>
-                ))}
-            </S.List>
+                    <S.Title>
+                        Other Pokémons with {queryData.name}:
+                    </S.Title>
+
+                    <S.List>
+                        {queryData.otherPokemonsWithThisAbility.map((pokemon) => (
+                            <S.ListItem>
+                                <InfoButton
+                                    children={pokemon.name}
+                                    navigate={{
+                                        path: PATHS.POKEDEX + "/" + pokemon.id,
+                                        transition: false
+                                    }}
+                                />
+                            </S.ListItem>
+                        ))}
+                    </S.List>
+                </>
+            )}
         </S.Section>
     )
 }
