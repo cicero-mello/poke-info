@@ -25,7 +25,7 @@ export const PokemonSearch: FC<PokemonSearchProps> = ({
         e.preventDefault()
         setShowNotFound(false)
         const newPokemonId = normalizePokemonName(
-            inputRef?.current?.value ?? ""
+            inputRef?.current?.value.trimEnd()  ?? ""
         )
         setPokemonSearchText(newPokemonId)
     }
