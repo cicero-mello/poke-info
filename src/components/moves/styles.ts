@@ -60,4 +60,10 @@ export const NoMovesMessage = styled.h3`
     align-self: center;
     font-weight: normal;
     text-align: center;
+
+    animation:
+        ${styleGuide.keyframes.fadeIn}
+        ${styleGuide.transitionTime.medium}
+        linear forwards
+    ;
 `
