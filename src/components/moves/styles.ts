@@ -54,3 +54,10 @@ ${({ $hide }) => css`
         pointer-events: none;
     `}
 `}`
+
+export const NoMovesMessage = styled.h3`
+    margin-top: ${numbPxToRem(24)};
+    align-self: center;
+    font-weight: normal;
+    text-align: center;
+`

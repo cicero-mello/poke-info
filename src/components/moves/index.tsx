@@ -18,20 +18,25 @@ export const Moves: FC<MovesProps> = ({
 
     const pokemonQuery = useQuery({
         queryKey: ["getPokemon", pokemonId],
-        queryFn: () => api.getPokemon({ idOrName: pokemonId+"" })
+        queryFn: () => api.getPokemon({ idOrName: pokemonId + "" })
     })
 
+    const pokemonDoesntHaveMoves = (
+        !!pokemonQuery.data?.movesPerVersionGroupId
+        && pokemonQuery.data?.movesPerVersionGroupId.size === 0
+    )
+
     const moves = (
-        (currentSection.name != "moves" || !pokemonQuery.data ) ? undefined :
-        pokemonQuery.data.movesPerVersionGroupId.get(
-            currentSection.versionGroupId
-        )!
+        (currentSection.name != "moves" || !pokemonQuery.data) ? undefined :
+            pokemonQuery.data.movesPerVersionGroupId.get(
+                currentSection.versionGroupId
+            )!
     )
 
     const movesSectionQuery = (
         (moves && currentSection.name === "moves") ?
-        useMovesSectionQueries(moves, currentSection.versionGroupId)
-        : undefined
+            useMovesSectionQueries(moves, currentSection.versionGroupId)
+            : undefined
     )
 
     const showMainSection = (
@@ -48,8 +53,8 @@ export const Moves: FC<MovesProps> = ({
 
     const versionGroupIds = (
         pokemonQuery.data ?
-        [...pokemonQuery.data.movesPerVersionGroupId.keys()]
-        : []
+            [...pokemonQuery.data.movesPerVersionGroupId.keys()]
+            : []
     )
 
     const isLoading = (
@@ -58,30 +63,42 @@ export const Moves: FC<MovesProps> = ({
     )
 
     const handleClickReturn = () => {
-        setCurrentSection({name: "main"})
+        setCurrentSection({ name: "main" })
     }
 
     return (
         <S.Component $isLoading={isLoading}>
-            <Spinner />
-            <S.ReturnToMainSection
-                onClick={handleClickReturn}
-                $hide={currentSection.name === "main" || isLoading}
-            >
-                <ArrowReturnIco />
-            </S.ReturnToMainSection>
-            {showMainSection &&
-                <MainSection
-                    versionGroupIds={versionGroupIds}
-                    setCurrentSection={setCurrentSection}
-                />
-            }
-            {showMovesSection &&
-                <MoveListSection
-                    versionName={currentSection.versionName}
-                    moves={movesSectionQuery.moves}
-                />
-            }
+            {pokemonDoesntHaveMoves && (
+                <S.NoMovesMessage>
+                    Wow, it seems like this Pokémon
+                    doesn't have moves...
+                    <br/><br/>
+                    Impressive :o
+                </S.NoMovesMessage>
+            )}
+            {!pokemonDoesntHaveMoves && (
+                <>
+                    <Spinner />
+                    <S.ReturnToMainSection
+                        onClick={handleClickReturn}
+                        $hide={currentSection.name === "main" || isLoading}
+                    >
+                        <ArrowReturnIco />
+                    </S.ReturnToMainSection>
+                    {showMainSection &&
+                        <MainSection
+                            versionGroupIds={versionGroupIds}
+                            setCurrentSection={setCurrentSection}
+                        />
+                    }
+                    {showMovesSection &&
+                        <MoveListSection
+                            versionName={currentSection.versionName}
+                            moves={movesSectionQuery.moves}
+                        />
+                    }
+                </>
+            )}
         </S.Component>
     )
 }
