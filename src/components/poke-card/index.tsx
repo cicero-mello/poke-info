@@ -25,7 +25,7 @@ export const PokeCard: FC<PokeCardProps> = ({
     )
 
     const handleClickFavorite = () => {
-        customLocalStorage.toogleFavoriteOfPokemon(data?.id ?? 0)
+        customLocalStorage.toggleFavoriteOfPokemon(data?.id ?? 0)
     }
 
     return (

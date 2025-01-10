@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "preact/hooks"
 import { customLocalStorage, customSessionStorage } from "@stores"
 import { useInfiniteQuery } from "@tanstack/react-query"
 import { useNavigation, useWindowResize } from "@hooks"
-import { getShowToogleFilterButton } from "./core"
+import { getShowToggleFilterButton } from "./core"
 import { delay, isPokemonPath } from "@utils"
 import { PATHS } from "@types"
 import * as S from "./styles"
@@ -60,7 +60,7 @@ export const Pokedex = () => {
     }, [showOnlyFavorites, infiniteQuery.data?.pages])
 
     const windowDimensions = useWindowResize()
-    const showToggleFilterButton = getShowToogleFilterButton(
+    const showToggleFilterButton = getShowToggleFilterButton(
         windowDimensions
     )
 

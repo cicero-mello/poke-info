@@ -16,7 +16,7 @@ export const getIsPokemonFavorited = (pokemonId: number): boolean => {
     )
 }
 
-export const toogleFavoriteOfPokemon = (pokemonId: number) => {
+export const toggleFavoriteOfPokemon = (pokemonId: number) => {
     const favoritePokemons = getFavoritePokemons()
 
     const indexOfFavoritePokemon = favoritePokemons.findIndex(

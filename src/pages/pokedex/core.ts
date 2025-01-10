@@ -2,7 +2,7 @@ import { WindowDimensions } from "@hooks"
 import { getRootFontSize } from "@utils"
 import { pokeWindow } from "@components"
 
-export const getShowToogleFilterButton = (
+export const getShowToggleFilterButton = (
     { height, width }: WindowDimensions
 ): boolean => {
     const rootFontSize = getRootFontSize()

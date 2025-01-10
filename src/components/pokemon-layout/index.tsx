@@ -68,7 +68,7 @@ export const PokemonLayout: FC<PokemonLayoutProps> = ({
                     <FavoriteCheckbox
                         checked={customLocalStorage.getIsPokemonFavorited(data?.id ?? 0)}
                         onClick={() => {
-                            customLocalStorage.toogleFavoriteOfPokemon(data?.id ?? 0)
+                            customLocalStorage.toggleFavoriteOfPokemon(data?.id ?? 0)
                         }}
                     />
                 </S.TagsAndFavorite>
