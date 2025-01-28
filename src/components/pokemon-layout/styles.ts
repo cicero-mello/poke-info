@@ -1,6 +1,6 @@
 import { StyledComponentProps, StyledDownAreaProps } from "./types"
+import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import styled, { css, keyframes } from "styled-components"
-import { pxToRem, styleGuide } from "@style-guide"
 import { pokeWindowRem } from "@components"
 
 export const descendHeader = keyframes`
@@ -77,7 +77,7 @@ export const DownAreaContainer = styled.div`
 `
 
 export const DownArea = styled.div<StyledDownAreaProps>`
-${({ $pokemonType, $previewMode, $reverseAnimation }) => css`
+${({ $pokemonType, $previewMode, $reverseAnimation, $isMobileMode }) => css`
     display: flex;
     position: relative;
     width: 100%;
@@ -106,6 +106,13 @@ ${({ $pokemonType, $previewMode, $reverseAnimation }) => css`
             ${styleGuide.getCardColors($pokemonType).border}
         ;
         border-top: none;
+
+        ${$isMobileMode && css`
+            left: 50%;
+            top: -${numbPxToRem(134)};
+            width: ${numbPxToRem(194)};
+            height: ${numbPxToRem(188)};
+        `}
     }
 
     ${$previewMode && !$reverseAnimation && css`

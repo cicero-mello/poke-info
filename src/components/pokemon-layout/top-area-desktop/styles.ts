@@ -1,7 +1,7 @@
 import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import styled from "styled-components"
 
-export const TopArea = styled.div.attrs({
+export const Component = styled.div.attrs({
     className: "top-area"
 })`
     display: flex;

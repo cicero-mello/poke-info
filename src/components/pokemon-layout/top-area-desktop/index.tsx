@@ -22,7 +22,7 @@ export const TopAreaDesktop: FC<TopAreaDesktopProps> = ({
     }
 
     return (
-        <S.TopArea>
+        <S.Component>
             {pokemonId < 10000 && <S.PokeNumber children={pokeNumber}/>}
             {pokemonId >= 10000 && (
                 <S.SparklesContainer>
@@ -52,6 +52,6 @@ export const TopAreaDesktop: FC<TopAreaDesktopProps> = ({
             >
                 <ArrowReturnIco />
             </Button>
-        </S.TopArea>
+        </S.Component>
     )
 }

@@ -1,36 +1,56 @@
 import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import styled from "styled-components"
 
-export const TopArea = styled.div.attrs({
+export const Component = styled.div.attrs({
     className: "top-area"
 })`
-    display: flex;
-    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
     width: 100%;
     height: ${pxToRem("154px")};
     background-color: ${styleGuide.color.onyx};
-    background-color: red;
     z-index: 2;
+    align-items: center;
+`
+
+export const Center = styled.div`
+    display: flex;
+    position: relative;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: unset;
 
     .pokemon-image {
-        height: ${pxToRem("210px")};
-        width: ${pxToRem("210px")};
-        margin-top: 6px;
-        z-index: 1;
-    }
-
-    .styled-anchor {
+        height: ${numbPxToRem(154)};
+        width: ${numbPxToRem(154)};
         position: absolute;
-        right: ${pxToRem("16px")};
-        top: ${pxToRem("10px")};
-
-        opacity: 0.6;
-        transition: ${styleGuide.transitionTime.fast};
-
-        &:hover {
-            opacity: 1;
-        }
+        top: ${numbPxToRem(46)};
     }
+`
+
+export const PokemonName = styled.h1`
+    ${styleGuide.text["2xl"]}
+    height: fit-content;
+    padding: ${numbPxToRem(10)} 0 ${numbPxToRem(4)} 0;
+`
+
+export const LeftSide = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    left: ${numbPxToRem(12)};
+    gap: ${numbPxToRem(8)};
+    padding: ${numbPxToRem(38)} 0 0 ${numbPxToRem(4)};
+`
+
+export const PokeNumber = styled.span`
+    ${styleGuide.text.base}
+    color: ${styleGuide.color.pearlGray};
+    font-weight: bold;
+    white-space: nowrap;
+    padding-bottom: ${numbPxToRem(2)};
 `
 
 export const SparklesContainer = styled.div`
@@ -42,28 +62,20 @@ export const SparklesContainer = styled.div`
     }
 `
 
-export const PokeNumber = styled.span`
-    ${styleGuide.text.lg}
-    color: ${styleGuide.color.pearlGray};
-    font-weight: 700;
-    white-space: nowrap;
-    min-width: ${pxToRem("105px")};
-    padding: ${pxToRem("12px")} 0 0 ${pxToRem("16px")};
-`
-
-export const TagsAndFavorite = styled.div`
+export const RightSide = styled.div`
     display: flex;
-    margin-left: ${pxToRem("28px")};
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    padding: ${numbPxToRem(40)} 0 ${numbPxToRem(24)} 0;
+
+    .arrow-return-ico {
+        height: ${numbPxToRem(24)};
+    }
 
     .checkbox-pokeball {
-        width: ${pxToRem("44px")};
-        height: ${pxToRem("44px")};
+        width: ${numbPxToRem(34)};
+        height: ${numbPxToRem(34)};
     }
-`
-
-export const TypeTags = styled.div`
-    display: flex;
-    gap: ${pxToRem("20px")};
 `

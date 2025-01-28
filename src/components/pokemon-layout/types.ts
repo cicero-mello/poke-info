@@ -8,13 +8,14 @@ export interface PokemonLayoutProps {
 }
 
 export interface StyledComponentProps {
-    $previewMode: boolean,
-    $reverseAnimation: boolean,
+    $previewMode: boolean
+    $reverseAnimation: boolean
     $removePointerEvents: boolean
 }
 
 export interface StyledDownAreaProps {
-    $pokemonType: PokeApi.PokemonType,
-    $previewMode: boolean,
+    $pokemonType: PokeApi.PokemonType
+    $previewMode: boolean
     $reverseAnimation: boolean
+    $isMobileMode: boolean
 }

@@ -22,36 +22,40 @@ export const TopAreaMobile: FC<TopAreaDesktopProps> = ({
     }
 
     return (
-        <S.TopArea>
-            {pokemonId < 10000 && <S.PokeNumber children={pokeNumber}/>}
-            {pokemonId >= 10000 && (
-                <S.SparklesContainer>
-                    <SparklesIco />
-                </S.SparklesContainer>
-            )}
-            <PokemonImage
-                imageUrl={pokemonData?.imageUrl}
-                alt={pokemonData?.name ?? ""}
-                pokemonId={pokemonId}
-            />
-            <S.TagsAndFavorite>
-                <S.TypeTags>
-                    {pokemonData?.types.map(type => <TypeTag pokemonType={type}/>)}
-                </S.TypeTags>
+        <S.Component>
+            <S.LeftSide>
+                {pokemonId < 10000 ?
+                    <S.PokeNumber children={pokeNumber}/> :
+                    <S.SparklesContainer children={<SparklesIco />}/>
+                }
+                {pokemonData?.types.map(
+                    type => <TypeTag pokemonType={type} size="smaller"/>
+                )}
+            </S.LeftSide>
+            <S.Center>
+                <S.PokemonName>
+                    {pokemonData?.name ?? ""}
+                </S.PokemonName>
+                <PokemonImage
+                    imageUrl={pokemonData?.imageUrl}
+                    alt={pokemonData?.name ?? ""}
+                    pokemonId={pokemonId}
+                />
+            </S.Center>
+            <S.RightSide>
+                <Button
+                    preventNavOnClick
+                    navigate={{ path: PATHS.POKEDEX, transition: false }}
+                    onClick={handleClickReturnPokedex}
+                    children={<ArrowReturnIco />}
+                />
                 <FavoriteCheckbox
                     checked={customLocalStorage.getIsPokemonFavorited(pokemonData?.id ?? 0)}
                     onClick={() => {
                         customLocalStorage.toogleFavoriteOfPokemon(pokemonData?.id ?? 0)
                     }}
                 />
-            </S.TagsAndFavorite>
-            <Button
-                preventNavOnClick
-                navigate={{ path: PATHS.POKEDEX, transition: false }}
-                onClick={handleClickReturnPokedex}
-            >
-                <ArrowReturnIco />
-            </Button>
-        </S.TopArea>
+            </S.RightSide>
+        </S.Component>
     )
 }

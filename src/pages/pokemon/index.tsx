@@ -1,13 +1,13 @@
 import { useDocumentTitle, useNavigation, useWindowResize } from "@hooks"
-import { pokeWindow, PokeWindow } from "@components"
+import { capitalize, getRootFontSize } from "@utils"
 import { useQuery } from "@tanstack/react-query"
+import { PokeWindow } from "@components"
 import { useEffect } from "preact/hooks"
 import { useRoute } from "preact-iso"
-import { capitalize } from "@utils"
+import { Desktop } from "./desktop"
+import { Mobile } from "./mobile"
 import * as S from "./styles"
 import * as api from "@api"
-import { Mobile } from "./mobile"
-import { Desktop } from "./desktop"
 
 export const Pokemon = () => {
     const { navigate } = useNavigation()
@@ -21,16 +21,12 @@ export const Pokemon = () => {
         if(!+params.id) navigate("notfound", false)
     }, [])
 
-    const titleName = (
-        data?.name ? capitalize(data.name) : "Pokédex"
-    )
+    const titleName = data?.name ? capitalize(data.name) : "Pokédex"
     useDocumentTitle(titleName)
 
     const windowDimensions = useWindowResize()
-    const isMobile = (
-        windowDimensions.width <= pokeWindow.full.maxWidth
-    )
-    console.log(isMobile)
+    const rootFontSize = getRootFontSize()
+    const isMobile = windowDimensions.width <= 760/16 * rootFontSize
 
     return (
         <S.Screen>

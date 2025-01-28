@@ -31,8 +31,6 @@ export const PokemonLayout: FC<PokemonLayoutProps> = ({
 
     if(reverseAnimationEnded) return <></>
 
-    console.log(isMobileMode)
-
     return (
         <S.Component
             $previewMode={!children}
@@ -55,6 +53,7 @@ export const PokemonLayout: FC<PokemonLayoutProps> = ({
             }
             <S.DownAreaContainer>
                 <S.DownArea
+                    $isMobileMode={!!isMobileMode}
                     $previewMode={!children}
                     $reverseAnimation={!!reverseAnimation}
                     $pokemonType={data?.types[0] ?? "normal"}

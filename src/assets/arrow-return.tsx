@@ -9,6 +9,7 @@ export const ArrowReturnIco: FC<HTMLAttributes<SVGElement>> = (props) => (
         viewBox="0 0 68 38"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className="arrow-return-ico"
         {...props}
     >
         <path
