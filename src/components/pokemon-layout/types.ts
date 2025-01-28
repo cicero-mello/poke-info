@@ -4,6 +4,7 @@ export interface PokemonLayoutProps {
     pokemonId: number
     reverseAnimation?: boolean
     beforeReturnPokedex?: () => Promise<void>
+    isMobileMode?: boolean
 }
 
 export interface StyledComponentProps {

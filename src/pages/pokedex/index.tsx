@@ -1,4 +1,4 @@
-import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList, PokeWindow, PokemonLayout } from "@components"
+import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList, PokeWindow, PokemonLayout, pokeWindow } from "@components"
 import { useEffect, useMemo, useRef, useState } from "preact/hooks"
 import { customLocalStorage, customSessionStorage } from "@stores"
 import { useInfiniteQuery } from "@tanstack/react-query"
@@ -150,10 +150,14 @@ export const Pokedex = () => {
                     />
                 )}
                 {!!chosePokemon &&
-                    <PokemonLayout pokemonId={chosePokemon} />
+                    <PokemonLayout
+                        isMobileMode={windowDimensions.width <= pokeWindow.full.maxWidth}
+                        pokemonId={chosePokemon}
+                    />
                 }
                 {!!userWasInThisPokemonIdPage && !!pokedexRestorationData &&
                     <PokemonLayout
+                        isMobileMode={windowDimensions.width <= pokeWindow.full.maxWidth}
                         pokemonId={userWasInThisPokemonIdPage}
                         reverseAnimation
                     />

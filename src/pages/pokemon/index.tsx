@@ -1,12 +1,13 @@
-import { Evolution, Moves, PokemonLayout, PokemonMoreInfo, PokemonNameAndStats, PokeWindow, TabViewer } from "@components"
-import { useDocumentTitle, useNavigation } from "@hooks"
-import { useEffect, useState } from "preact/hooks"
+import { useDocumentTitle, useNavigation, useWindowResize } from "@hooks"
+import { pokeWindow, PokeWindow } from "@components"
 import { useQuery } from "@tanstack/react-query"
-import { capitalize, delay } from "@utils"
-import { AnimationType } from "./types"
+import { useEffect } from "preact/hooks"
 import { useRoute } from "preact-iso"
+import { capitalize } from "@utils"
 import * as S from "./styles"
 import * as api from "@api"
+import { Mobile } from "./mobile"
+import { Desktop } from "./desktop"
 
 export const Pokemon = () => {
     const { navigate } = useNavigation()
@@ -15,8 +16,6 @@ export const Pokemon = () => {
         queryKey: ["getPokemon", +params.id],
         queryFn: () => api.getPokemon({ idOrName: params.id }),
     })
-
-    const [animation, setAnimation] = useState<AnimationType>("init")
 
     useEffect(() => {
         if(!+params.id) navigate("notfound", false)
@@ -27,38 +26,19 @@ export const Pokemon = () => {
     )
     useDocumentTitle(titleName)
 
-    const revertAnimations = async () => {
-        setAnimation("none")
-        await delay(10)
-        requestAnimationFrame(() => {
-            setAnimation("returning")
-        })
-        await delay(400)
-    }
+    const windowDimensions = useWindowResize()
+    const isMobile = (
+        windowDimensions.width <= pokeWindow.full.maxWidth
+    )
+    console.log(isMobile)
 
     return (
         <S.Screen>
             <PokeWindow>
-                <PokemonLayout
-                    pokemonId={+params.id}
-                    beforeReturnPokedex={revertAnimations}
-                >
-                    <S.LeftSide $animationType={animation}>
-                        <S.Fan />
-                        <PokemonNameAndStats pokeId={+params.id} bigMode />
-                    </S.LeftSide>
-                    <S.RightSide $animationType={animation}>
-                        <TabViewer
-                            pokemonType={data?.types[0] ?? "normal"}
-                            tabNames={["More Info", "Evolution", "Moves"]}
-                            tabPanels={[
-                                <PokemonMoreInfo pokemonId={+params.id}/>,
-                                <Evolution pokemonId={+params.id}/>,
-                                <Moves pokemonId={+params.id}/>
-                            ]}
-                        />
-                    </S.RightSide>
-                </PokemonLayout>
+                {isMobile ?
+                    <Mobile pokemonMainType={data?.types[0] ?? "normal"}/> :
+                    <Desktop pokemonMainType={data?.types[0] ?? "normal" }/>
+                }
             </PokeWindow>
         </S.Screen>
     )

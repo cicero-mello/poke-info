@@ -1,30 +1,31 @@
-import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
-import { fanRotate, slideFromLeft } from "./animations"
-import { pokeWindowRem } from "@components"
-import styled, { css } from "styled-components"
-import { AnimationType } from "../types"
+import styled, { css, keyframes } from "styled-components"
+import { numbPxToRem, styleGuide } from "@style-guide"
+import { AnimationType } from "./types"
 
-export const Screen = styled.div`
-    display: flex;
-    align-self: center;
-    justify-content: center;
-    padding: 48px;
-
-    max-height: calc(100svh - ${styleGuide.dimensions.headerHeight});
-    height: 100%;
-    width: 100%;
-
-    @media(max-height: ${pokeWindowRem.noWhiteLine.maxHeight}){
-        padding: 12px 48px;
+export const fanRotate = keyframes`
+    from {
+        opacity: 0;
+        transform-origin: 0% 50%;
+        transform: rotate(80deg);
     }
-
-    @media
-        (max-width: ${pokeWindowRem.full.maxWidth}),
-        (max-height: ${pokeWindowRem.full.maxHeight})
-    {
-        padding: 0;
+    to {
+        opacity: 1;
+        transform-origin: 0% 50%;
+        transform: rotate(0) translateY(0);
     }
 `
+
+export const slideFromLeft = keyframes`
+    from {
+        opacity: 0;
+        transform: translateX(400px);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0) translateX(0);
+    }
+`
+
 
 export const LeftSide = styled.div
 <{ $animationType: AnimationType }>`
@@ -32,7 +33,7 @@ ${({ $animationType }) => css`
     display: flex;
     position: relative;
     justify-content: center;
-    min-width: ${pxToRem("420px")};
+    min-width: ${numbPxToRem(420)};
 
     .pokemon-name-and-stats {
         padding-top: ${numbPxToRem(88)};
@@ -79,7 +80,7 @@ export const RightSide = styled.div
 ${({ $animationType }) => css`
     display: flex;
     width: 100%;
-    padding: ${pxToRem("24px")} ${pxToRem("24px")} ${pxToRem("24px")} 0;
+    padding: ${numbPxToRem(24)} ${numbPxToRem(24)} ${numbPxToRem(24)} 0;
     height: 100%;
 
     ${$animationType === "init" && css`
