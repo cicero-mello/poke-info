@@ -2,6 +2,7 @@ import { useVirtualStyleData } from "./use-virtual-style-data"
 import { useFetchNextPage } from "./use-fetch-next-page"
 import { useVirtualizer } from "@tanstack/react-virtual"
 import { useEffect, useRef } from "preact/hooks"
+import { CheckboxPokeballIco } from "@assets"
 import { PokemonsListProps } from "./types"
 import { forwardRef } from "preact/compat"
 import { PokeCard } from "@components"
@@ -61,6 +62,13 @@ export const PokemonsList = forwardRef<HTMLDivElement, PokemonsListProps>(({
                         />
                     </S.VirtualizedItem>
                 ))}
+                {!!pokemonsIds && pokemonsIds.length === 0 &&
+                    <S.NoFavoritePokemons>
+                        <p>You don't have any favorite Pokémon yet.</p>
+                        <p>Use the Poké Ball to catch them!</p>
+                        <p>(<CheckboxPokeballIco/>)</p>
+                    </S.NoFavoritePokemons>
+                }
             </S.VirtualizedContainer>
         </S.VirtualizedScroll>
     )

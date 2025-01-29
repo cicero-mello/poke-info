@@ -1,5 +1,5 @@
+import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import { VirtualItem } from "@tanstack/react-virtual"
-import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 import { VirtualStyleData } from "./types"
 
@@ -51,3 +51,32 @@ ${({ $virtualItem, $virtualStyleData }) => css`
     left: ${$virtualStyleData?.percentLeftForEachVirtualItemInARow[$virtualItem.lane]};
     z-index: 0;
 `}`
+
+export const NoFavoritePokemons = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: ${numbPxToRem(4)};
+    color: ${styleGuide.color.pearlGray};
+    ${styleGuide.text.lg}
+
+    p {
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+
+    .checkbox-pokeball {
+        margin: 0 ${numbPxToRem(1)};
+        height: ${numbPxToRem(22)};
+        width: ${numbPxToRem(22)};
+
+        > path {
+            fill: ${styleGuide.color.pearlGray};
+        }
+    }
+
+    @media (max-width: ${numbPxToRem(400)}){
+        ${styleGuide.text.base}
+    }
+`
