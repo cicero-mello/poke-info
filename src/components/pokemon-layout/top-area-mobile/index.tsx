@@ -52,7 +52,7 @@ export const TopAreaMobile: FC<TopAreaDesktopProps> = ({
                 <FavoriteCheckbox
                     checked={customLocalStorage.getIsPokemonFavorited(pokemonData?.id ?? 0)}
                     onClick={() => {
-                        customLocalStorage.toogleFavoriteOfPokemon(pokemonData?.id ?? 0)
+                        customLocalStorage.toggleFavoriteOfPokemon(pokemonData?.id ?? 0)
                     }}
                 />
             </S.RightSide>
