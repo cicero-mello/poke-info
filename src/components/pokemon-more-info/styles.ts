@@ -29,7 +29,9 @@ ${({ $isLoading }) => css`
     }
 `}`
 
-export const ReturnToMainSection = styled.button<{ $hide: boolean }>`
+export const ReturnToMainSection = styled.button.attrs({
+    className: "return-main-section"
+})<{ $hide: boolean }>`
 ${({ $hide }) => css`
     position: fixed;
     right: ${numbPxToRem(80)};

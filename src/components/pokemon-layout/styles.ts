@@ -1,4 +1,4 @@
-import { StyledComponentProps, StyledDownAreaProps } from "./types"
+import { StyledComponentProps, StyledContent, StyledDownAreaProps } from "./types"
 import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import styled, { css, keyframes } from "styled-components"
 import { pokeWindowRem } from "@components"
@@ -29,7 +29,7 @@ ${({ $previewMode, $reverseAnimation, $removePointerEvents }) => css`
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index: 2;
+    z-index: 3;
 
     ${$previewMode && !$reverseAnimation && css`
         animation:
@@ -90,7 +90,7 @@ ${({ $pokemonType, $previewMode, $reverseAnimation, $isMobileMode }) => css`
 
     &::before {
         content: "";
-        z-index: 1;
+        z-index: 2;
         position: absolute;
         transform: translateX(-50%);
         left: ${pxToRem("210px")};
@@ -133,8 +133,8 @@ ${({ $pokemonType, $previewMode, $reverseAnimation, $isMobileMode }) => css`
     `}
 `}`
 
-export const Content = styled.div<{$isMobileMode?: boolean}>`
-${({ $isMobileMode }) => css`
+export const Content = styled.div<StyledContent>`
+${({ $isMobileMode, $pokemonType }) => css`
     display: flex;
     position: relative;
     width: 100%;
@@ -147,5 +147,20 @@ ${({ $isMobileMode }) => css`
 
     ${$isMobileMode && css`
         flex-direction: column;
+        overflow-y: scroll;
+        ${styleGuide.scrollbar.hidden}
+
+        &::before {
+            content: "";
+            pointer-events: none;
+            position: fixed;
+            width: calc(100%);
+            height: ${numbPxToRem(70)};
+            z-index: 1;
+            background: linear-gradient(
+                ${styleGuide.getCardColors($pokemonType).background}  ${numbPxToRem(8)},
+                transparent
+            );
+        }
     `}
 `}`

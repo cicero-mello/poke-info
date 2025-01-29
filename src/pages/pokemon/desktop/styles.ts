@@ -1,31 +1,7 @@
-import styled, { css, keyframes } from "styled-components"
+import styled, { css } from "styled-components"
 import { numbPxToRem, styleGuide } from "@style-guide"
 import { AnimationType } from "./types"
-
-export const fanRotate = keyframes`
-    from {
-        opacity: 0;
-        transform-origin: 0% 50%;
-        transform: rotate(80deg);
-    }
-    to {
-        opacity: 1;
-        transform-origin: 0% 50%;
-        transform: rotate(0) translateY(0);
-    }
-`
-
-export const slideFromLeft = keyframes`
-    from {
-        opacity: 0;
-        transform: translateX(400px);
-    }
-    to {
-        opacity: 1;
-        transform: rotate(0) translateX(0);
-    }
-`
-
+import { fanRotate, slideFromRight } from "@style-guide/keyframes"
 
 export const LeftSide = styled.div
 <{ $animationType: AnimationType }>`
@@ -85,7 +61,7 @@ ${({ $animationType }) => css`
 
     ${$animationType === "init" && css`
         animation:
-            ${slideFromLeft}
+            ${slideFromRight}
             ${styleGuide.transitionTime.moreSlow}
             ease-in-out forwards
         ;
@@ -94,7 +70,7 @@ ${({ $animationType }) => css`
     ${$animationType === "returning" && css`
         pointer-events: none;
         animation:
-            ${slideFromLeft}
+            ${slideFromRight}
             ${styleGuide.transitionTime.moreSlow}
             ease-in-out forwards reverse
         ;

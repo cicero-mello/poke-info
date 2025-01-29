@@ -11,7 +11,9 @@ export const Section = styled.section`
     }
 `
 
-export const Title = styled.h3`
+export const Title = styled.h3.attrs({
+    className: "moves-in"
+})`
     ${styleGuide.text.base}
 
     font-weight: normal;

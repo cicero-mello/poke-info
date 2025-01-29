@@ -59,7 +59,10 @@ export const PokemonLayout: FC<PokemonLayoutProps> = ({
                     $pokemonType={data?.types[0] ?? "normal"}
                 >
                     {children &&
-                        <S.Content $isMobileMode={isMobileMode}>
+                        <S.Content
+                            $isMobileMode={!!isMobileMode}
+                            $pokemonType={data?.types[0] ?? "normal"}
+                        >
                                 {children}
                         </S.Content>
                     }

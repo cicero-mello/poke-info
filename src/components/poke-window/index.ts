@@ -45,7 +45,7 @@ export const PokeWindow = styled.main.attrs({
         top: 0;
         height: ${numbPxToRem(60)};
         background-color: ${styleGuide.color.pearlGray};
-        z-index: 3;
+        z-index: 5;
         pointer-events: none;
     }
 

@@ -6,7 +6,7 @@ import * as S from "./styles"
 import * as api from "@api"
 
 export const PokemonNameAndStats: FC<PokemonNameAndStatsProps> = ({
-    pokeId, statsWithLabel, bigMode
+    pokeId, statsWithLabel, bigMode, noName
 }) => {
     const { data } = useQuery({
         queryKey: ["getPokemon", pokeId],
@@ -15,10 +15,10 @@ export const PokemonNameAndStats: FC<PokemonNameAndStatsProps> = ({
 
     return (
         <S.Component>
-            {bigMode ?
+            {!noName && (bigMode ?
                 <S.BigPokeName children={data?.name}/> :
                 <S.PokeName children={data?.name}/>
-            }
+            )}
             <S.StatsContainer $bigMode={bigMode}>
                 {[0, 1, 2, 3, 4, 5].map((n) => (
                     <StatBar

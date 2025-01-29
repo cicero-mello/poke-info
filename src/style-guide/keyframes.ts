@@ -52,3 +52,49 @@ export const rotate = keyframes`
         transform: rotate(1turn);
     }
 `
+
+export const slideFromRight = keyframes`
+    from {
+        opacity: 0;
+        transform: translateX(400px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+`
+
+export const slideFromLeft = keyframes`
+    from {
+        opacity: 0;
+        transform: translateX(-400px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+`
+
+export const slideFromBottom = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(400px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+`
+
+export const fanRotate = keyframes`
+    from {
+        opacity: 0;
+        transform-origin: 0% 50%;
+        transform: rotate(80deg);
+    }
+    to {
+        opacity: 1;
+        transform-origin: 0% 50%;
+        transform: rotate(0) translateY(0);
+    }
+`

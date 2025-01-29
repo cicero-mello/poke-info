@@ -43,7 +43,27 @@ const whiteSmall = css`
     }
 `
 
+const hidden = css`
+    ${isFirefox && css`
+        scrollbar-color: transparent transparent;
+        scrollbar-width: thin;
+    `}
+
+    &::-webkit-scrollbar {
+        width: 0px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: transparent;
+    }
+`
+
 export const scrollbar = {
     white,
-    whiteSmall
+    whiteSmall,
+    hidden
 }

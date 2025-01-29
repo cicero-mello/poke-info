@@ -19,3 +19,8 @@ export interface StyledDownAreaProps {
     $reverseAnimation: boolean
     $isMobileMode: boolean
 }
+
+export interface StyledContent {
+    $pokemonType: PokeApi.PokemonType
+    $isMobileMode: boolean
+}

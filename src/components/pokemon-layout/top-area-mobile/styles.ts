@@ -9,7 +9,7 @@ export const Component = styled.div.attrs({
     width: 100%;
     height: ${pxToRem("154px")};
     background-color: ${styleGuide.color.onyx};
-    z-index: 2;
+    z-index: 3;
     align-items: center;
 `
 
