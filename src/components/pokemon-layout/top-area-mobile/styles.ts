@@ -33,6 +33,8 @@ export const PokemonName = styled.h1`
     ${styleGuide.text["2xl"]}
     height: fit-content;
     padding: ${numbPxToRem(10)} 0 ${numbPxToRem(4)} 0;
+    white-space: nowrap;
+    position: absolute;
 `
 
 export const LeftSide = styled.div`
@@ -54,11 +56,10 @@ export const PokeNumber = styled.span`
 `
 
 export const SparklesContainer = styled.div`
-    padding: ${numbPxToRem(12)} 0 0 ${numbPxToRem(16)};
-    min-width: ${numbPxToRem(105)};
+    height: ${numbPxToRem(28)};
     .sparkles-ico {
-        width: ${numbPxToRem(42)};
-        height: ${numbPxToRem(42)};
+        width: ${numbPxToRem(28)};
+        height: ${numbPxToRem(28)};
     }
 `
 
