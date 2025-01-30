@@ -41,7 +41,9 @@ export const SparklesContainer = styled.div`
     }
 `
 
-export const PokeNumber = styled.span`
+export const PokeNumber = styled.span.attrs({
+    className: "layout-poke-number"
+})`
     ${styleGuide.text.lg}
     color: ${styleGuide.color.pearlGray};
     font-weight: 700;

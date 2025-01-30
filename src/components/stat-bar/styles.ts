@@ -21,6 +21,7 @@ ${({ $bigMode }) => css`
     }
 
     &:has(progress:not([value])){
+        border-radius: ${pxToRem("20px")};
         background-color: ${styleGuide.color.silverGray};
         animation:
             ${styleGuide.keyframes.opacityLoading2}

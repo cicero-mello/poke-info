@@ -6,4 +6,5 @@ export interface TopAreaDesktopProps {
     setRemovePointerEvents: Dispatch<StateUpdater<boolean>>
     beforeReturnPokedex?: () => Promise<void>
     pokemonData?: GetPokemonResponse
+    onLoadImage?: () => void
 }

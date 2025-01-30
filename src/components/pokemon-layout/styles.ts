@@ -23,7 +23,12 @@ export const revealContent = keyframes`
 export const Component = styled.div.attrs({
     className: "pokemon-data"
 }) <StyledComponentProps>`
-${({ $previewMode, $reverseAnimation, $removePointerEvents }) => css`
+${({
+    $previewMode,
+    $reverseAnimation,
+    $removePointerEvents,
+    $prepareToChangePokemon
+}) => css`
     display: flex;
     position: relative;
     width: 100%;
@@ -50,6 +55,30 @@ ${({ $previewMode, $reverseAnimation, $removePointerEvents }) => css`
 
     ${$removePointerEvents && css`
         pointer-events: none;
+    `}
+
+    .pokemon-image,
+    .pokemon-name-and-stats,
+    .type-tag,
+    .checkbox-pokeball,
+    .layout-poke-number,
+    .sparkles-ico,
+    .tab-viewer > div[role="tabpanel"] > div {
+        transition: 300ms ease-in-out;
+    }
+
+    ${$prepareToChangePokemon && css`
+        pointer-events: none;
+
+        .pokemon-image,
+        .pokemon-name-and-stats,
+        .type-tag,
+        .checkbox-pokeball,
+        .layout-poke-number,
+        .sparkles-ico,
+        .tab-viewer > div[role="tabpanel"] > div {
+            opacity: 0;
+        }
     `}
 `}`
 
@@ -88,6 +117,10 @@ ${({ $pokemonType, $previewMode, $reverseAnimation, $isMobileMode }) => css`
         ${styleGuide.getCardColors($pokemonType).border}
     ;
 
+    transition-property: background-color, border-color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+
     &::before {
         content: "";
         z-index: 2;
@@ -106,6 +139,10 @@ ${({ $pokemonType, $previewMode, $reverseAnimation, $isMobileMode }) => css`
             ${styleGuide.getCardColors($pokemonType).border}
         ;
         border-top: none;
+
+        transition-property: border-color;
+        transition-duration: 300ms;
+        transition-timing-function: ease-in-out;
 
         ${$isMobileMode && css`
             left: 50%;

@@ -6,7 +6,7 @@ import { PikachuShadowIco } from "@assets"
 import * as S from "./styles"
 
 export const PokemonImage: FC<PokemonImageProps> = ({
-    imageUrl, alt, pokemonId
+    imageUrl, alt, pokemonId, onLoad: onLoadProp
 }) => {
     const startLoading = !(
         customSessionStorage.getIsPokemonArtworkLoaded(pokemonId)
@@ -19,6 +19,7 @@ export const PokemonImage: FC<PokemonImageProps> = ({
     const onLoad = () => {
         setIsLoading(false)
         customSessionStorage.addLoadedPokemonArtworkIds(pokemonId)
+        if(onLoadProp) onLoadProp()
     }
 
     useEffect(() => {

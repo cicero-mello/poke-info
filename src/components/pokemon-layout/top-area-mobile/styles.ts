@@ -47,7 +47,9 @@ export const LeftSide = styled.div`
     padding: ${numbPxToRem(38)} 0 0 ${numbPxToRem(4)};
 `
 
-export const PokeNumber = styled.span`
+export const PokeNumber = styled.span.attrs({
+    className: "layout-poke-number"
+})`
     ${styleGuide.text.base}
     color: ${styleGuide.color.pearlGray};
     font-weight: bold;

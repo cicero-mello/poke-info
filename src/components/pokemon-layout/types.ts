@@ -11,6 +11,7 @@ export interface StyledComponentProps {
     $previewMode: boolean
     $reverseAnimation: boolean
     $removePointerEvents: boolean
+    $prepareToChangePokemon: boolean
 }
 
 export interface StyledDownAreaProps {
@@ -23,4 +24,8 @@ export interface StyledDownAreaProps {
 export interface StyledContent {
     $pokemonType: PokeApi.PokemonType
     $isMobileMode: boolean
+}
+
+export interface PokemonLayoutContextProps {
+    changePokemon: (id: number) => Promise<void> | void
 }

@@ -9,7 +9,8 @@ import { PATHS } from "@types"
 import * as S from "./styles"
 
 export const TopAreaMobile: FC<TopAreaDesktopProps> = ({
-    pokemonId, setRemovePointerEvents, beforeReturnPokedex, pokemonData
+    pokemonId, setRemovePointerEvents, beforeReturnPokedex, pokemonData,
+    onLoadImage
 }) => {
 
     const { navigate } = useNavigation()
@@ -40,6 +41,7 @@ export const TopAreaMobile: FC<TopAreaDesktopProps> = ({
                     imageUrl={pokemonData?.imageUrl}
                     alt={pokemonData?.name ?? ""}
                     pokemonId={pokemonId}
+                    onLoad={onLoadImage}
                 />
             </S.Center>
             <S.RightSide>
