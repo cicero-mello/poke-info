@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { StyledProps } from "../types"
 
+import { shadowThemes } from "./shadow"
 import { lineThemes } from "./line"
 import { boldThemes } from "./bold"
 import { bigThemes } from "./big"
@@ -8,7 +9,8 @@ import { bigThemes } from "./big"
 const buttonThemes = new Map([
     ...lineThemes,
     ...boldThemes,
-    ...bigThemes
+    ...bigThemes,
+    ...shadowThemes
 ])
 
 export const StyledButton = styled.button.attrs({
