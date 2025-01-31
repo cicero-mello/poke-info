@@ -21,3 +21,6 @@ export * from "./get-move-target/types"
 
 export * from "./get-move-learn-method"
 export * from "./get-move-learn-method/types"
+
+export * from "./get-berry"
+export * from "./get-berry/types"
