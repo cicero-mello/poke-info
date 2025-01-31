@@ -1,6 +1,5 @@
 import { numbPxToRem, styleGuide } from "@style-guide"
 import { color } from "@style-guide/color"
-import { text } from "@style-guide/text"
 import styled from "styled-components"
 
 export const Screen = styled.div`
@@ -32,23 +31,6 @@ export const BerryWindow = styled.main`
     outline: 4px solid ${color.ashGrayAlpha75};
     border-radius: ${numbPxToRem(20)};
     overflow: hidden;
-`
-
-export const TopWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background-color: ${color.berry};
-    padding: 38px 48px;
-    gap: 18px;
-    height: fit-content;
-`
-
-export const Title = styled.h1`
-`
-
-export const Description = styled.p`
-    ${text.xl}
 `
 
 export const BerryData = styled.div`
