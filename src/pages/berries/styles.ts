@@ -35,6 +35,8 @@ export const BerryData = styled.div`
     display: flex;
     height: 100%;
     padding-bottom: ${numbPxToRem(60)};
+    justify-content: center;
+    align-items: center;
 `
 
 export const Footer = styled.div`

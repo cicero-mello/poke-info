@@ -15,6 +15,7 @@ export enum color {
     ashGrayAlpha75 = "#E1E1E1BF",
     mistGray = "#E3E3E3",
     cloudGrayAlpha92 = "#E9E9E9EB",
+    silver = "#C0C0C0",
     silverGray = "#C4C4C4",
     stoneGray = "#7A7A7A",
     ironGray = "#303030",
@@ -136,5 +137,11 @@ export enum color {
     water = "#5198EB",
     waterCard = "#628CBD",
     waterCardBorder = "#8BB2E1",
-    waterCardBorderStrong = "#4E8BD1"
+    waterCardBorderStrong = "#4E8BD1",
+
+    spicy = "#754242",
+    dry = "#365D8A",
+    sweet = "#975A8D",
+    bitter = "#3C724B",
+    sour = "#798147"
 }

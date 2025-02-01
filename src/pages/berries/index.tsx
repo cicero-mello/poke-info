@@ -1,4 +1,4 @@
-import { BerriesComponents, Button } from "@components"
+import { BerriesComponents, Button, FlavorsGraph } from "@components"
 import { DiceIco, DoubleArrowIco } from "@assets"
 import { useQuery } from "@tanstack/react-query"
 import { useState } from "preact/hooks"
@@ -7,7 +7,7 @@ import * as S from "./styles"
 import * as api from "@api"
 
 export const Berries = () => {
-    const [berryId] = useState(4)
+    const [berryId] = useState(33)
 
     const { data } = useQuery({
         queryKey: ["getBerry", berryId],
@@ -19,7 +19,8 @@ export const Berries = () => {
             <S.BerryWindow>
                 <BerriesComponents.Header />
                 <S.BerryData>
-                    {JSON.stringify(data, null, 4)}
+                    {/* {JSON.stringify(data, null, 4)} */}
+                    <FlavorsGraph flavors={data?.flavors}/>
                 </S.BerryData>
                 <S.Footer>
                     <Button
