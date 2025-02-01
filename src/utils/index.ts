@@ -90,3 +90,7 @@ export const removeDuplicatesById = <T extends { id: number | string }>(
         return true
     })
 }
+
+export const updateUrl = (newUrl: string) => {
+    window.history.replaceState({}, "", newUrl)
+}

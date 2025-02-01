@@ -1,50 +1,42 @@
-import { BerryComponents, Button, FlavorsGraph } from "@components"
-import { DiceIco, DoubleArrowIco } from "@assets"
-import { useQuery } from "@tanstack/react-query"
+import { BerryComponents, FlavorsGraph } from "@components"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useState } from "preact/hooks"
 import { useRoute } from "preact-iso"
+import { updateUrl } from "@utils"
 import { PATHS } from "@types"
 import * as S from "./styles"
 import * as api from "@api"
 
 export const Berry = () => {
     const { params } = useRoute()
-    const [berryId] = useState(params.id)
+    const [berryId, setBerryId] = useState(+params.id)
 
-    const { data } = useQuery({
+    const queryClient = useQueryClient()
+    const berryQuery = useQuery({
         queryKey: ["getBerry", berryId],
         queryFn: () => api.getBerry({ idOrName: berryId })
     })
+
+    const changeBerry = async (newBerryId: number) => {
+        await queryClient.fetchQuery({
+            queryKey: ["getBerry", newBerryId],
+            queryFn: () => api.getBerry({ idOrName: newBerryId })
+        })
+        updateUrl(PATHS.BERRIES + "/" + newBerryId)
+        setBerryId(newBerryId)
+    }
 
     return (
         <S.Screen>
             <S.BerryWindow>
                 <BerryComponents.Header />
                 <S.BerryData>
-                    {/* {JSON.stringify(data, null, 4)} */}
-                    <FlavorsGraph flavors={data?.flavors}/>
+                    <FlavorsGraph flavors={berryQuery.data?.flavors} />
                 </S.BerryData>
-                <S.Footer>
-                    <Button
-                        theme="shadow"
-                        preventNavOnClick
-                        navigate={{path: PATHS.HOME}}
-                        children={<DoubleArrowIco />}
-                    />
-                    <Button
-                        theme="shadow"
-                        preventNavOnClick
-                        navigate={{path: PATHS.HOME}}
-                    >
-                        <DiceIco /> Random
-                    </Button>
-                    <Button
-                        theme="shadow"
-                        preventNavOnClick
-                        navigate={{path: PATHS.HOME}}
-                        children={<DoubleArrowIco />}
-                    />
-                </S.Footer>
+                <BerryComponents.Footer
+                    berryId={berryId}
+                    changeBerry={changeBerry}
+                />
             </S.BerryWindow>
         </S.Screen>
     )
