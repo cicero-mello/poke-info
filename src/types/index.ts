@@ -3,6 +3,7 @@ export enum PATHS {
     POKEDEX = "/pokedex",
     POKEMON = "/pokedex/:id",
     BERRIES = "/berries",
+    BERRY = "/berries/:id",
     ABOUT = "/about",
     FIND_POKEMON = "/find-pokemon"
 }

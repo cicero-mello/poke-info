@@ -13,12 +13,11 @@ const AppRouter = () => (
         <P.Pokedex path={PATHS.POKEDEX} />
         <P.Pokemon path={PATHS.POKEMON} />
         <P.FindPokemon path={PATHS.FIND_POKEMON} />
-        <P.Berries path={PATHS.BERRIES} />
+        <P.Berry path={PATHS.BERRY} />
         <P.About path={PATHS.ABOUT} />
         <P.NotFound default />
     </Router>
 )
-
 
 export const App = () => {
     useResetSessionStorageOnRefresh()

@@ -20,7 +20,7 @@ export const Home = () => (
             />
             <Button
                 theme="bigBlue"
-                navigate={{ path: PATHS.BERRIES }}
+                navigate={{ path: PATHS.BERRIES + "/1" }}
                 children="Berries"
             />
         </S.Navigation>

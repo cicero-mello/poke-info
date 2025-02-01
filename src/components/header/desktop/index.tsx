@@ -44,8 +44,8 @@ export const DesktopNavigation: FunctionComponent<DesktopNavigationProps> = ({
             <Button
                 children="Berries"
                 theme={buttonTheme}
-                navigate={{ path: PATHS.BERRIES }}
-                emphasis={path === PATHS.BERRIES}
+                navigate={{ path: PATHS.BERRIES + "/1" }}
+                emphasis={path === PATHS.BERRIES + "/1"}
                 tabIndex={tabIndex}
                 aria-hidden={ariaHidden}
             />

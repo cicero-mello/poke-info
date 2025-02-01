@@ -1,5 +1,5 @@
 import { Header } from "./header"
 
-export const BerriesComponents = {
+export const BerryComponents = {
     Header
 }

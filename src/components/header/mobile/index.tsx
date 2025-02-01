@@ -69,8 +69,8 @@ export const MobileNavigation: FunctionComponent<MobileNavigationProps> = ({
                 <Button
                     children="Berries"
                     theme="boldWhite"
-                    navigate={{ path: PATHS.BERRIES }}
-                    emphasis={path === PATHS.BERRIES}
+                    navigate={{ path: PATHS.BERRIES + "/1" }}
+                    emphasis={path === PATHS.BERRIES + "/1"}
                     aria-hidden={linkAriaHidden}
                     tabIndex={linkTabIndex}
                 />
