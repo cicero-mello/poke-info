@@ -22,7 +22,7 @@ export interface Name {
 export interface EffectEntry {
     effect: string
     short_effect: string
-    language: NamedAPIResource
+    language: NamedLanguageAPIResource
 }
 
 export interface EffectChange {
@@ -34,6 +34,11 @@ export interface FlavorTextEntry {
     flavor_text: string
     language: NamedAPIResource
     version_group: NamedAPIResource
+}
+
+export interface GameIndex {
+    game_index: number
+    version: NamedAPIResource
 }
 
 export type LanguageAbbreviations = (
