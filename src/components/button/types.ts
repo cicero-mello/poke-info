@@ -4,7 +4,7 @@ import { RuleSet } from "styled-components"
 
 export type ButtonTheme = (
     "lineGray" | "lineWhite" | "linePokemon" |
-    "boldWhite" | "bigBlue" | "shadow"
+    "boldWhite" | "bigBlue" | "shadow" | "smallTag"
 )
 
 export interface ButtonProps extends Omit<

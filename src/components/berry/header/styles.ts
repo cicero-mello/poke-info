@@ -4,7 +4,7 @@ import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
 
-export const Component = styled.div.attrs({
+export const Component = styled.header.attrs({
     className: "berries-header"
 })<{$retract: boolean}>`
 ${({$retract}) => css`

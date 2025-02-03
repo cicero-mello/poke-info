@@ -1,9 +1,7 @@
 import { pxToRem, styleGuide } from "@style-guide"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
-export const Component = styled.div.attrs({
-    className: "info-line"
-})`
+const componentCss = css`
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -11,11 +9,27 @@ export const Component = styled.div.attrs({
     ${styleGuide.text.base}
 `
 
-export const Title = styled.span`
+export const Component = styled.div.attrs({
+    className: "info-line"
+})`
+    ${componentCss}
+`
+
+export const LiComponent = styled.li.attrs({
+    className: "info-line"
+})`
+    ${componentCss}
+`
+
+export const Title = styled.span.attrs({
+    className: "info-line-title"
+})`
     font-weight: bold;
 `
 
-export const Info = styled.span`
+export const Info = styled.span.attrs({
+     className: "info-line-data"
+})`
     display: flex;
     flex-wrap: wrap;
     gap: ${pxToRem("16px")} ${pxToRem("8px")};

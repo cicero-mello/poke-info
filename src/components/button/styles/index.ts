@@ -5,12 +5,14 @@ import { shadowThemes } from "./shadow"
 import { lineThemes } from "./line"
 import { boldThemes } from "./bold"
 import { bigThemes } from "./big"
+import { tagThemes } from "./small-tag"
 
 const buttonThemes = new Map([
     ...lineThemes,
     ...boldThemes,
     ...bigThemes,
-    ...shadowThemes
+    ...shadowThemes,
+    ...tagThemes
 ])
 
 export const StyledButton = styled.button.attrs({

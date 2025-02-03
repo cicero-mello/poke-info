@@ -1,5 +1,6 @@
 import { numbPxToRem, styleGuide } from "@style-guide"
 import { color } from "@style-guide/color"
+import { text } from "@style-guide/text"
 import styled from "styled-components"
 
 export const Screen = styled.div`
@@ -19,8 +20,6 @@ export const BerryWindow = styled.main`
     display: flex;
     position: relative;
     flex-direction: column;
-    aspect-ratio: 1248 / 737;
-    height: 100%;
     width: 100%;
     max-width: ${numbPxToRem(1162)};
     max-height: ${numbPxToRem(812)};
@@ -33,35 +32,22 @@ export const BerryWindow = styled.main`
 
 export const BerryData = styled.div`
     display: flex;
+    flex-direction: column;
     height: 100%;
     padding-bottom: ${numbPxToRem(60)};
-    justify-content: center;
-    align-items: center;
+    padding: ${numbPxToRem(38)} ${numbPxToRem(48)};
+    margin-bottom: ${numbPxToRem(35)};
 `
 
-export const Footer = styled.div`
+export const TitleWrapper = styled.header`
     display: flex;
-    position: absolute;
-    bottom: 0;
-    height: ${numbPxToRem(60)};
-    max-height: ${numbPxToRem(90)};
     width: 100%;
-    background-color: ${color.berry};
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0 ${numbPxToRem(24)};
-    gap: ${numbPxToRem(8)};
+    padding-bottom: ${numbPxToRem(36)};
+    flex-wrap: wrap;
+    gap: ${numbPxToRem(12)};
+    ${text.xl}
 
     .styled-anchor {
-        &:first-child > svg{
-            transform: rotate(180deg);
-        }
-        &:nth-child(2) {
-            padding-top: ${numbPxToRem(5)};
-            padding-bottom: ${numbPxToRem(5)};
-            > svg {
-                filter: contrast(0.95);
-            }
-        }
+        top: 0px;
     }
 `

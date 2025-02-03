@@ -2,7 +2,7 @@ import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import styled from "styled-components"
 
-export const Component = styled.div`
+export const Component = styled.footer`
     display: flex;
     position: absolute;
     bottom: 0;

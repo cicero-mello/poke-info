@@ -11,7 +11,7 @@ export const Component = styled.div`
     height: 100%;
 
     > span:nth-child(1){
-        top: -${numbPxToRem(32)};
+        top: -${numbPxToRem(28)};
         left: 50%;
         right: 50%;
         justify-self: center;
@@ -70,7 +70,8 @@ ${({ $potency }) => css`
     position: absolute;
     width: fit-content;
     user-select: none;
-    ${text.lg}
+    ${text.base}
+    color: ${color.pearlGray};
 
     &:hover {
         &::before {
@@ -80,10 +81,11 @@ ${({ $potency }) => css`
 
     &::before {
         content: "${$potency}";
+        ${text.base}
         position: absolute;
         margin-left: ${numbPxToRem(60)};
         background-color: red;
-        width: ${numbPxToRem(60)};
+        width: ${numbPxToRem(54)};
         display: flex;
         justify-content: center;
         border-radius: ${numbPxToRem(30)} 0 ${numbPxToRem(30)} 0;
