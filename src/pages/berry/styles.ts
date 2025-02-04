@@ -1,3 +1,4 @@
+import { transitionTime } from "@style-guide/transition-time"
 import { numbPxToRem, styleGuide } from "@style-guide"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
@@ -34,14 +35,15 @@ export const BerryData = styled.div`
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding-bottom: ${numbPxToRem(60)};
-    padding: ${numbPxToRem(38)} ${numbPxToRem(48)};
-    margin-bottom: ${numbPxToRem(35)};
+    min-height: ${numbPxToRem(315)};
+    padding: ${numbPxToRem(38)} ${numbPxToRem(48)} ${numbPxToRem(13)} ${numbPxToRem(48)};
+    margin-bottom: ${numbPxToRem(60)};
 `
 
 export const TitleWrapper = styled.header`
     display: flex;
     width: 100%;
+    min-height: ${numbPxToRem(28)};
     padding-bottom: ${numbPxToRem(36)};
     flex-wrap: wrap;
     gap: ${numbPxToRem(12)};
@@ -49,5 +51,22 @@ export const TitleWrapper = styled.header`
 
     .styled-anchor {
         top: 0px;
+        height: fit-content;
+        width: fit-content;
+
+        &:hover {
+            .arrow-return-ico > path {
+                fill: white;
+            }
+        }
+    }
+
+    .arrow-return-ico {
+        height: ${numbPxToRem(13)};
+        width: fit-content;
+        path {
+            transition: ${transitionTime.fast} linear;
+            fill: ${color.platinum};
+        }
     }
 `

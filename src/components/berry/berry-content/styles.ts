@@ -44,6 +44,7 @@ export const DataList = styled.ul`
 
     .info-line-data {
         font-weight: bold;
+        white-space: nowrap;
         color: ${color.softSilver};
     }
 `
