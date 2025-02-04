@@ -16,11 +16,15 @@ export const Component = styled.footer`
     gap: ${numbPxToRem(8)};
     user-select: none;
 
+    .search-input {
+        margin: 0 ${numbPxToRem(24)} ${numbPxToRem(2)} 0;
+    }
+
     .styled-anchor {
-        &:first-child > svg{
+        &:nth-child(2) > svg{
             transform: rotate(180deg);
         }
-        &:nth-child(2) {
+        &:nth-child(3) {
             padding-top: ${numbPxToRem(5)};
             padding-bottom: ${numbPxToRem(5)};
             > svg {

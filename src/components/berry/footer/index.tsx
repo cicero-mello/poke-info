@@ -1,7 +1,7 @@
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { FunctionComponent as FC } from "preact"
 import { DiceIco, DoubleArrowIco } from "@assets"
-import { useQuery } from "@tanstack/react-query"
-import { Button } from "@components/button"
+import { Button, SearchInput } from "@components"
 import { FooterProps } from "./types"
 import { PATHS } from "@types"
 import * as S from "./styles"
@@ -10,6 +10,7 @@ import * as api from "@api"
 export const Footer: FC<FooterProps> = ({
     berryId, changeBerry
 }) => {
+    const queryClient = useQueryClient()
     const { data } = useQuery({
         queryKey: ["getBerries"],
         queryFn: () => api.getBerries()
@@ -33,8 +34,22 @@ export const Footer: FC<FooterProps> = ({
 
     const randomBerryId = getRandomBerryId()
 
+    const onSearch = async (value: string) => {
+        try {
+            const { id } = await queryClient.fetchQuery({
+                queryKey: ["getBerry", value],
+                queryFn: () => api.getBerry({ idOrName: value })
+            })
+            if(id) changeBerry(id)
+            return { notFound: !id }
+        } catch (error) {
+            return { notFound: true }
+        }
+    }
+
     return (
         <S.Component>
+            <SearchInput onSearch={onSearch}/>
             <Button
                 theme="shadow"
                 preventNavOnClick

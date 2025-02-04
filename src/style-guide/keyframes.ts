@@ -98,3 +98,14 @@ export const fanRotate = keyframes`
         transform: rotate(0) translateY(0);
     }
 `
+
+export const crashZoom = keyframes`
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+`
