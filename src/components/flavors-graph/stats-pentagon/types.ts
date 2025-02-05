@@ -5,6 +5,8 @@ export interface StatsPentagonProps {
     sweet?: number
     bitter?: number
     sour?: number
+    animationTime?: number
+    animationDelay?: number
 }
 
 export interface GetPointsValuesParams {

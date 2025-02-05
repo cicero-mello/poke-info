@@ -40,7 +40,7 @@ export const Footer: FC<FooterProps> = ({
                 queryKey: ["getBerry", value],
                 queryFn: () => api.getBerry({ idOrName: value })
             })
-            if(id) changeBerry(id)
+            if(id) changeBerry(id, "bottom")
             return { notFound: !id }
         } catch (error) {
             return { notFound: true }
@@ -54,14 +54,14 @@ export const Footer: FC<FooterProps> = ({
                 theme="shadow"
                 preventNavOnClick
                 navigate={{path: PATHS.BERRIES + "/" + previousBerryId}}
-                onClick={() => changeBerry(previousBerryId)}
+                onClick={() => changeBerry(previousBerryId, "left")}
                 children={<DoubleArrowIco />}
             />
             <Button
                 theme="shadow"
                 preventNavOnClick
                 navigate={{path: PATHS.BERRIES + "/" + randomBerryId}}
-                onClick={() => changeBerry(randomBerryId)}
+                onClick={() => changeBerry(randomBerryId, "bottom")}
             >
                 <DiceIco /> Random
             </Button>
@@ -69,7 +69,7 @@ export const Footer: FC<FooterProps> = ({
                 theme="shadow"
                 preventNavOnClick
                 navigate={{path: PATHS.BERRIES + "/" + nextBerryId}}
-                onClick={() => changeBerry(nextBerryId)}
+                onClick={() => changeBerry(nextBerryId, "right")}
                 children={<DoubleArrowIco />}
             />
         </S.Component>

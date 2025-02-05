@@ -86,6 +86,17 @@ export const slideFromBottom = keyframes`
     }
 `
 
+export const getSlideFromBottom = (pxOrRem: string) => keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(${pxOrRem});
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+`
+
 export const fanRotate = keyframes`
     from {
         opacity: 0;

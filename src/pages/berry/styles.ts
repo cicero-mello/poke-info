@@ -1,8 +1,9 @@
 import { transitionTime } from "@style-guide/transition-time"
 import { numbPxToRem, styleGuide } from "@style-guide"
+import { berryAnimationClasses } from "./animation"
+import styled, { css } from "styled-components"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
-import styled from "styled-components"
 
 export const Screen = styled.div`
     display: flex;
@@ -31,14 +32,28 @@ export const BerryWindow = styled.main`
     overflow: hidden;
 `
 
-export const BerryData = styled.div`
+export const BerryData = styled.div
+<{$showLoading: boolean}>`
+${({$showLoading}) => css`
     display: flex;
     flex-direction: column;
     height: 100%;
     min-height: ${numbPxToRem(315)};
     padding: ${numbPxToRem(38)} ${numbPxToRem(48)} ${numbPxToRem(13)} ${numbPxToRem(48)};
     margin-bottom: ${numbPxToRem(60)};
-`
+
+    .spinner {
+        position: absolute;
+        right: ${numbPxToRem(24)};
+        margin-top: -${numbPxToRem(16)};
+        opacity: 0;
+        transition: ${transitionTime.medium} linear;
+
+        ${$showLoading && css`
+            opacity: 1;
+        `}
+    }
+`}`
 
 export const TitleWrapper = styled.header`
     display: flex;
@@ -49,10 +64,14 @@ export const TitleWrapper = styled.header`
     gap: ${numbPxToRem(12)};
     ${text.xl}
 
+    ${berryAnimationClasses}
+
     .styled-anchor {
         top: 0px;
         height: fit-content;
         width: fit-content;
+
+        transition: 120ms linear;
 
         &:hover {
             .arrow-return-ico > path {

@@ -1,4 +1,5 @@
 import { Flavor } from "@api"
+import { Ref } from "preact"
 
 export interface BerryContentProps {
     naturalGiftType?: string
@@ -11,4 +12,5 @@ export interface BerryContentProps {
     maxHarvest?: number
     flavors?: Flavor[]
     pentagonSize?: number
+    componentRef?: Ref<HTMLDivElement>
 }

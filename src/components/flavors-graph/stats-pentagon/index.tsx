@@ -6,7 +6,8 @@ import * as S from "./styles"
 
 export const StatsPentagon: FC<StatsPentagonProps> = ({
     pentagonSize,
-    spicy = 0, dry = 0, sweet = 0, bitter = 0, sour = 0
+    spicy = 0, dry = 0, sweet = 0, bitter = 0, sour = 0,
+    animationTime, animationDelay
 }) => {
     const polygonRef = useRef<SVGPolygonElement>(null)
     const previousPointsValues = useRef<number[]>([])
@@ -51,13 +52,23 @@ export const StatsPentagon: FC<StatsPentagonProps> = ({
         const newPointsValues = getPointsValues({
             pentagonSize, spicy, dry, sweet, bitter, sour
         })
-        animatePoints(previousPointsValues.current, newPointsValues, 240)
+
+        if(animationDelay){
+            setTimeout(() => {
+                animatePoints(previousPointsValues.current, newPointsValues, animationTime)
+            }, animationDelay)
+            return
+        }
+
+        animatePoints(previousPointsValues.current, newPointsValues, animationTime)
     }, [pentagonSize, spicy, dry, sweet, bitter, sour])
 
     useLayoutEffect(() => {
-        previousPointsValues.current = getPointsValues({
+        const initialPointsValues = getPointsValues({
             pentagonSize, spicy, dry, sweet, bitter, sour
         })
+        previousPointsValues.current = initialPointsValues
+        animatePoints(previousPointsValues.current, initialPointsValues, animationTime)
     }, [])
 
     return (

@@ -1,3 +1,4 @@
+import { berryAnimationClasses } from "@pages/berry/animation"
 import { scrollbar } from "@style-guide/scrollbar"
 import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
@@ -9,6 +10,8 @@ export const Component = styled.div`
     justify-content: space-between;
     width: 100%;
     gap: 0 ${numbPxToRem(108)};
+
+    ${berryAnimationClasses}
 
     .flavors-graph {
         margin-right: ${numbPxToRem(84)};

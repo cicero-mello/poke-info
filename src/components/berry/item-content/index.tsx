@@ -7,7 +7,7 @@ import * as S from "./styles"
 import * as api from "@api"
 
 export const ItemContent: FC<ItemContentProps> = ({
-    itemId
+    itemId, componentRef
 }) => {
     const [imageIsLoaded, setImageIsLoaded] = useState(false)
 
@@ -21,7 +21,7 @@ export const ItemContent: FC<ItemContentProps> = ({
     }, [itemId])
 
     return (
-        <S.Component>
+        <S.Component ref={componentRef} className={"come-from-bottom"}>
             <S.Descriptions>
                 <S.ShortEffectWrapper $imageIsLoaded={imageIsLoaded}>
                     <img

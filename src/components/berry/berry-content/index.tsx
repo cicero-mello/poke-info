@@ -6,9 +6,10 @@ import * as S from "./styles"
 export const BerryContent: FC<BerryContentProps> = ({
     naturalGiftType, smoothness, firmness, size,
     naturalGiftPower, soilDryness, grownTime,
-    maxHarvest, flavors, pentagonSize
+    maxHarvest, flavors, pentagonSize,
+    componentRef
 }) => (
-    <S.Component>
+    <S.Component ref={componentRef} className="come-from-bottom">
         <S.DataList>
             <InfoLine
                 title="Natural gift type"
@@ -54,6 +55,8 @@ export const BerryContent: FC<BerryContentProps> = ({
         <FlavorsGraph
             flavors={flavors}
             pentagonSize={pentagonSize}
+            animationTime={240}
+            animationDelay={300}
         />
     </S.Component>
 )

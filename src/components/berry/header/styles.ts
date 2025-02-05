@@ -17,6 +17,7 @@ ${({$retract}) => css`
     padding: ${numbPxToRem(38)} ${numbPxToRem(48)};
     gap: ${numbPxToRem(18)};
     transition: ${transitionTime.slow} ease-in-out;
+    z-index: 1;
 
     ${$retract && css`
         gap: 0;

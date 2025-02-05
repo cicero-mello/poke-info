@@ -1,3 +1,4 @@
+import { berryAnimationClasses } from "@pages/berry/animation"
 import { transitionTime } from "@style-guide/transition-time"
 import styled, { css } from "styled-components"
 import { numbPxToRem } from "@style-guide"
@@ -9,6 +10,8 @@ export const Component = styled.div`
     justify-content: space-between;
     flex-grow: 1;
     color: ${color.pearlGray};
+
+    ${berryAnimationClasses}
 `
 
 export const Descriptions = styled.div`

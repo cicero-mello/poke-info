@@ -9,7 +9,7 @@ import * as S from "./styles"
 
 export const FlavorsGraph: FC<FlavorsGraphProps> = ({
     pentagonSize = 170,
-    flavors
+    flavors, animationTime, animationDelay
 }) => {
     const spicy = flavors?.find(item => item.name === "spicy")?.potency
     const dry = flavors?.find(item => item.name === "dry")?.potency
@@ -31,6 +31,8 @@ export const FlavorsGraph: FC<FlavorsGraphProps> = ({
                 sweet={sweet}
                 bitter={bitter}
                 sour={sour}
+                animationTime={animationTime}
+                animationDelay={animationDelay}
             />
             <FlavorText
                 spicy={spicy}
