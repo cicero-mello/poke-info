@@ -9,7 +9,7 @@ import * as S from "./styles"
 
 export const FlavorsGraph: FC<FlavorsGraphProps> = ({
     pentagonSize = 170,
-    flavors, animationTime, animationDelay
+    flavors, alwaysShowStatsValue, animationTime, animationDelay
 }) => {
     const spicy = flavors?.find(item => item.name === "spicy")?.potency
     const dry = flavors?.find(item => item.name === "dry")?.potency
@@ -19,7 +19,7 @@ export const FlavorsGraph: FC<FlavorsGraphProps> = ({
 
     const pentagonSizePxLikeRem = useMemo(() => (
         pentagonSize / 16 * getRootFontSize()
-    ), [])
+    ), [pentagonSize])
 
     return (
         <S.Component>
@@ -40,6 +40,7 @@ export const FlavorsGraph: FC<FlavorsGraphProps> = ({
                 sweet={sweet}
                 bitter={bitter}
                 sour={sour}
+                alwaysShowStatsValue={alwaysShowStatsValue}
             />
         </S.Component>
     )

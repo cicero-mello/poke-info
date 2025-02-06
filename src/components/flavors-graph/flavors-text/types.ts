@@ -4,4 +4,5 @@ export interface FlavorsTextProps {
     sweet?: number
     bitter?: number
     sour?: number
+    alwaysShowStatsValue?: boolean
 }

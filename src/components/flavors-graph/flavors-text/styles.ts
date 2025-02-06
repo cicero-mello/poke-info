@@ -1,10 +1,12 @@
+import { transitionTime } from "@style-guide/transition-time"
 import styled, { css } from "styled-components"
 import { color } from "@style-guide/color"
 import { numbPxToRem } from "@style-guide"
 import { text } from "@style-guide/text"
-import { transitionTime } from "@style-guide/transition-time"
 
-export const Component = styled.div`
+export const Component = styled.div
+<{ $alwaysShowStatsValue?: boolean }>`
+${({ $alwaysShowStatsValue }) => css`
     position: absolute;
     top: 0;
     width: 100%;
@@ -60,7 +62,30 @@ export const Component = styled.div`
         }
     }
 
-`
+    ${$alwaysShowStatsValue && css`
+        > span::before {
+            width: fit-content;
+            transform: scale(1);
+            margin-left: unset;
+            background-color: unset !important;
+            top: ${numbPxToRem(16)} !important;
+            width: 100% !important;
+            left: 0 !important;
+            right: unset !important;
+        }
+
+        > span:nth-child(1){
+            top: -${numbPxToRem(42)};
+        }
+        > span:nth-child(2){
+            top: 21%;
+        }
+        > span:nth-child(5){
+            top: 21%;
+            left: -${numbPxToRem(51)};
+        }
+    `}
+`}`
 
 export const Flavor = styled.span.attrs({
     className: "flavor-text-in-graph"
@@ -84,7 +109,6 @@ ${({ $potency }) => css`
         ${text.base}
         position: absolute;
         margin-left: ${numbPxToRem(60)};
-        background-color: red;
         width: ${numbPxToRem(54)};
         display: flex;
         justify-content: center;

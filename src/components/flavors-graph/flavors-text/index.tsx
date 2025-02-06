@@ -3,9 +3,10 @@ import { FlavorsTextProps } from "./types"
 import * as S from "./styles"
 
 export const FlavorText: FC<FlavorsTextProps> = ({
-    spicy = 0, dry = 0, sweet = 0, bitter = 0, sour = 0
+    spicy = 0, dry = 0, sweet = 0, bitter = 0, sour = 0,
+    alwaysShowStatsValue
 }) => (
-    <S.Component>
+    <S.Component $alwaysShowStatsValue={alwaysShowStatsValue}>
         <S.Flavor
             children="SPICY"
             $potency={spicy}

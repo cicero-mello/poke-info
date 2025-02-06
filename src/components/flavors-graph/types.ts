@@ -5,4 +5,5 @@ export interface FlavorsGraphProps {
     pentagonSize?: number
     animationTime?: number
     animationDelay?: number
+    alwaysShowStatsValue?: boolean
 }
