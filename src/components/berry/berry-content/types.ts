@@ -13,4 +13,5 @@ export interface BerryContentProps {
     flavors?: Flavor[]
     pentagonSize?: number
     componentRef?: Ref<HTMLDivElement>
+    pentagonAlwaysShowStatsValue?: boolean
 }

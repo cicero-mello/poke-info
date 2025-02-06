@@ -7,6 +7,7 @@ export const BerryContent: FC<BerryContentProps> = ({
     naturalGiftType, smoothness, firmness, size,
     naturalGiftPower, soilDryness, grownTime,
     maxHarvest, flavors, pentagonSize,
+    pentagonAlwaysShowStatsValue,
     componentRef
 }) => (
     <S.Component ref={componentRef} className="come-from-bottom">
@@ -57,6 +58,7 @@ export const BerryContent: FC<BerryContentProps> = ({
             pentagonSize={pentagonSize}
             animationTime={240}
             animationDelay={300}
+            alwaysShowStatsValue={pentagonAlwaysShowStatsValue}
         />
     </S.Component>
 )

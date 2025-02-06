@@ -2,7 +2,9 @@ import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import styled from "styled-components"
 
-export const Component = styled.footer`
+export const Component = styled.footer.attrs({
+    className: "berries-footer"
+})`
     display: flex;
     position: absolute;
     bottom: 0;
@@ -13,18 +15,25 @@ export const Component = styled.footer`
     justify-content: flex-end;
     align-items: center;
     padding: 0 ${numbPxToRem(24)};
-    gap: ${numbPxToRem(8)};
     user-select: none;
+    gap: ${numbPxToRem(24)};
 
     .search-input {
-        margin: 0 ${numbPxToRem(24)} ${numbPxToRem(2)} 0;
+        margin-bottom: ${numbPxToRem(2)};
     }
+`
+
+export const ButtonsWrapper = styled.div.attrs({
+    className: "buttons-wrapper"
+})`
+    display: flex;
+    gap: ${numbPxToRem(8)};
 
     .styled-anchor {
-        &:nth-child(2) > svg{
+        &:nth-child(1) > svg{
             transform: rotate(180deg);
         }
-        &:nth-child(3) {
+        &:nth-child(2) {
             padding-top: ${numbPxToRem(5)};
             padding-bottom: ${numbPxToRem(5)};
             > svg {

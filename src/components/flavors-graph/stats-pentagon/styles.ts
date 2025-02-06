@@ -8,8 +8,8 @@ ${({ $pentagonSize }) => css`
     display: flex;
     top: 2.5%;
 
-    width: ${$pentagonSize};
-    height: ${$pentagonSize};
+    width: ${$pentagonSize}px;
+    height: ${$pentagonSize}px;
 
     > polygon {
         fill: ${color.blueBerryAlpha80};

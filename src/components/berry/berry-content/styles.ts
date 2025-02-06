@@ -5,7 +5,9 @@ import { color } from "@style-guide/color"
 import { text } from  "@style-guide/text"
 import styled from "styled-components"
 
-export const Component = styled.div`
+export const Component = styled.div.attrs({
+    className: "berry-content"
+})`
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -28,6 +30,7 @@ export const DataList = styled.ul`
     width: 100%;
     overflow-x: scroll;
     padding-bottom: ${numbPxToRem(24)};
+    height: auto;
 
     ${scrollbar.whiteSmall}
     &::-webkit-scrollbar {

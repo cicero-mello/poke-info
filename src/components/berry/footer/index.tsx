@@ -50,28 +50,30 @@ export const Footer: FC<FooterProps> = ({
     return (
         <S.Component>
             <SearchInput onSearch={onSearch}/>
-            <Button
-                theme="shadow"
-                preventNavOnClick
-                navigate={{path: PATHS.BERRIES + "/" + previousBerryId}}
-                onClick={() => changeBerry(previousBerryId, "left")}
-                children={<DoubleArrowIco />}
-            />
-            <Button
-                theme="shadow"
-                preventNavOnClick
-                navigate={{path: PATHS.BERRIES + "/" + randomBerryId}}
-                onClick={() => changeBerry(randomBerryId, "bottom")}
-            >
-                <DiceIco /> Random
-            </Button>
-            <Button
-                theme="shadow"
-                preventNavOnClick
-                navigate={{path: PATHS.BERRIES + "/" + nextBerryId}}
-                onClick={() => changeBerry(nextBerryId, "right")}
-                children={<DoubleArrowIco />}
-            />
+            <S.ButtonsWrapper>
+                <Button
+                    theme="shadow"
+                    preventNavOnClick
+                    navigate={{path: PATHS.BERRIES + "/" + previousBerryId}}
+                    onClick={() => changeBerry(previousBerryId, "left")}
+                    children={<DoubleArrowIco />}
+                />
+                <Button
+                    theme="shadow"
+                    preventNavOnClick
+                    navigate={{path: PATHS.BERRIES + "/" + randomBerryId}}
+                    onClick={() => changeBerry(randomBerryId, "bottom")}
+                >
+                    <DiceIco /> Random
+                </Button>
+                <Button
+                    theme="shadow"
+                    preventNavOnClick
+                    navigate={{path: PATHS.BERRIES + "/" + nextBerryId}}
+                    onClick={() => changeBerry(nextBerryId, "right")}
+                    children={<DoubleArrowIco />}
+                />
+            </S.ButtonsWrapper>
         </S.Component>
     )
 }
