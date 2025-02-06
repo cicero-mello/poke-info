@@ -77,7 +77,6 @@ export const Screen = styled.div`
                     gap: ${numbPxToRem(8)};
                     column-gap: ${numbPxToRem(32)};
                     padding: ${numbPxToRem(24)} ${numbPxToRem(12)} ${numbPxToRem(18)} ${numbPxToRem(12)};
-                    overflow-y: visible;
 
                     .info-line {
                         ${text.lg}

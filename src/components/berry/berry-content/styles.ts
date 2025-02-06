@@ -3,7 +3,7 @@ import { scrollbar } from "@style-guide/scrollbar"
 import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import { text } from  "@style-guide/text"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const Component = styled.div.attrs({
     className: "berry-content"
@@ -20,7 +20,9 @@ export const Component = styled.div.attrs({
     }
 `
 
-export const DataList = styled.ul`
+export const DataList = styled.ul
+<{$hasScrollX?: boolean}>`
+${({$hasScrollX}) => css`
     list-style: none;
     gap: ${numbPxToRem(20)};
     display: grid;
@@ -30,11 +32,18 @@ export const DataList = styled.ul`
     width: 100%;
     overflow-x: scroll;
     padding-bottom: ${numbPxToRem(24)};
-    height: auto;
+
+    ${$hasScrollX && css`
+        user-select: none;
+        cursor: grab;
+        &:active {
+            cursor: grabbing;
+        }
+    `}
 
     ${scrollbar.whiteSmall}
     &::-webkit-scrollbar {
-        height: ${numbPxToRem(4)};
+        height: ${numbPxToRem(2)};
     }
 
     .info-line {
@@ -53,4 +62,4 @@ export const DataList = styled.ul`
         white-space: nowrap;
         color: ${color.softSilver};
     }
-`
+`}`
