@@ -50,6 +50,7 @@ export const MobileNavigation: FunctionComponent<MobileNavigationProps> = ({
                     theme="boldWhite"
                     navigate={{ path: PATHS.FIND_POKEMON }}
                     emphasis={path === PATHS.FIND_POKEMON}
+                    onClick={() => setIsMenuOpen(false)}
                     aria-hidden={linkAriaHidden}
                     tabIndex={linkTabIndex}
                 />
@@ -64,6 +65,7 @@ export const MobileNavigation: FunctionComponent<MobileNavigationProps> = ({
                     onClick={() => {
                         customSessionStorage.resetPokedexRestorationData()
                         navigate(PATHS.POKEDEX)
+                        setIsMenuOpen(false)
                     }}
                 />
                 <Button
@@ -71,6 +73,7 @@ export const MobileNavigation: FunctionComponent<MobileNavigationProps> = ({
                     theme="boldWhite"
                     navigate={{ path: PATHS.BERRIES + "/1" }}
                     emphasis={path === PATHS.BERRIES + "/1"}
+                    onClick={() => setIsMenuOpen(false)}
                     aria-hidden={linkAriaHidden}
                     tabIndex={linkTabIndex}
                 />
@@ -79,6 +82,7 @@ export const MobileNavigation: FunctionComponent<MobileNavigationProps> = ({
                     theme="boldWhite"
                     navigate={{ path: PATHS.ABOUT }}
                     emphasis={path === PATHS.ABOUT}
+                    onClick={() => setIsMenuOpen(false)}
                     aria-hidden={linkAriaHidden}
                     tabIndex={linkTabIndex}
                 />
