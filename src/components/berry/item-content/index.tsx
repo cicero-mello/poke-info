@@ -65,7 +65,11 @@ export const ItemContent: FC<ItemContentProps> = ({
                     />
                 }
                 {data?.isHoldableActive &&
-                    <li> Holdable Active </li>
+                   <InfoLine
+                        title="Holdable Active"
+                        children={"Yes"}
+                        asListItem
+                    />
                 }
             </S.List>
         </S.Component>

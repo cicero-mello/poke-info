@@ -5,7 +5,9 @@ import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
 
-export const Component = styled.div`
+export const Component = styled.div.attrs({
+    className: "item-content"
+})`
     display: flex;
     justify-content: space-between;
     flex-grow: 1;
@@ -14,14 +16,20 @@ export const Component = styled.div`
     ${berryAnimationClasses}
 `
 
-export const Descriptions = styled.div`
+export const Descriptions = styled.div.attrs({
+    className: "descriptions"
+})`
     display: flex;
     flex-direction: column;
     width: 64%;
     gap: ${numbPxToRem(5)};
+
+    color: ${color.pearlGray};
 `
 
-export const ShortEffectWrapper = styled.div
+export const ShortEffectWrapper = styled.div.attrs({
+    className: "short-effect-wrapper"
+})
 <{$imageIsLoaded: boolean}>`
 ${({ $imageIsLoaded }) => css`
     display: flex;
@@ -52,7 +60,7 @@ ${({ $imageIsLoaded }) => css`
 `}`
 
 export const Description = styled.p`
-    ${text.lg}
+    ${text.base}
     margin-left: ${numbPxToRem(12 + 30)};
     line-height: ${numbPxToRem(22)};
 `
@@ -78,12 +86,14 @@ export const List = styled.ul`
     .info-line-title {
         font-weight: normal;
         white-space: nowrap;
+        color: ${color.platinum};
     }
 
     .info-line-data {
         font-weight: bold;
         white-space: nowrap;
         line-height: ${numbPxToRem(18)};
+        color: ${color.softSilver};
     }
 
     li {
@@ -93,15 +103,5 @@ export const List = styled.ul`
         font-weight: bold;
         white-space: nowrap;
         ${text.lg}
-
-        &::before {
-            content: "";
-            position: absolute;
-            width: ${numbPxToRem(6)};
-            height: ${numbPxToRem(6)};
-            border-radius: 50%;
-            left: -${numbPxToRem(12)};
-            background-color: white;
-        }
     }
 `
