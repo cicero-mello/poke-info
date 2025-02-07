@@ -160,7 +160,7 @@ export const Pokedex = () => {
                         pokemonId={chosePokemon}
                     />
                 }
-                {!!userWasInThisPokemonIdPage && !!pokedexRestorationData &&
+                {!!userWasInThisPokemonIdPage &&
                     <PokemonLayout
                         isMobileMode={isPokemonPageAnimationPreviewMobile}
                         pokemonId={userWasInThisPokemonIdPage}
