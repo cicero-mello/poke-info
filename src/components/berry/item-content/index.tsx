@@ -3,6 +3,7 @@ import { FunctionComponent as FC } from "preact"
 import { useQuery } from "@tanstack/react-query"
 import { ItemContentProps } from "./types"
 import { InfoLine } from "@components"
+import { PokeDollar } from "@assets"
 import * as S from "./styles"
 import * as api from "@api"
 
@@ -46,9 +47,10 @@ export const ItemContent: FC<ItemContentProps> = ({
                 {data?.cost &&
                     <InfoLine
                         title="Cost"
-                        children={data?.cost}
                         asListItem
-                    />
+                    >
+                        {data?.cost} <PokeDollar />
+                    </InfoLine>
                 }
                 {data?.flingPower &&
                     <InfoLine

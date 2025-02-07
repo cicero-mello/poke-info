@@ -79,6 +79,7 @@ export const List = styled.ul`
     padding-left: ${numbPxToRem(44)};
 
     .info-line {
+        width: fit-content;
         ${text.lg}
         gap: 0 ${numbPxToRem(5)};
     }
@@ -103,5 +104,14 @@ export const List = styled.ul`
         font-weight: bold;
         white-space: nowrap;
         ${text.lg}
+    }
+
+    .poke-dollar-ico {
+        position: absolute;
+        right: -${numbPxToRem(23)};
+        height: ${numbPxToRem(20)};
+        path {
+            fill: ${color.softSilver};
+        }
     }
 `
