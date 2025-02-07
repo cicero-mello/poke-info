@@ -1,10 +1,10 @@
-import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList, PokeWindow, PokemonLayout, pokeWindow } from "@components"
+import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList, PokeWindow, PokemonLayout } from "@components"
 import { useEffect, useMemo, useRef, useState } from "preact/hooks"
 import { customLocalStorage, customSessionStorage } from "@stores"
+import { delay, getRootFontSize, isPokemonPath } from "@utils"
 import { useInfiniteQuery } from "@tanstack/react-query"
 import { useNavigation, useWindowResize } from "@hooks"
 import { getShowToggleFilterButton } from "./core"
-import { delay, isPokemonPath } from "@utils"
 import { PATHS } from "@types"
 import * as S from "./styles"
 import * as api from "@api"
@@ -107,6 +107,11 @@ export const Pokedex = () => {
         }
     }, [showOnlyFavorites, cardMode])
 
+    const rootFontSize = getRootFontSize()
+    const isPokemonPageAnimationPreviewMobile = (
+        windowDimensions.width <= 760/16 * rootFontSize
+    )
+
     return (
         <S.Screen $chosePokemon={chosePokemon}>
             <PokeWindow>
@@ -151,13 +156,13 @@ export const Pokedex = () => {
                 )}
                 {!!chosePokemon &&
                     <PokemonLayout
-                        isMobileMode={windowDimensions.width <= pokeWindow.full.maxWidth}
+                        isMobileMode={isPokemonPageAnimationPreviewMobile}
                         pokemonId={chosePokemon}
                     />
                 }
                 {!!userWasInThisPokemonIdPage && !!pokedexRestorationData &&
                     <PokemonLayout
-                        isMobileMode={windowDimensions.width <= pokeWindow.full.maxWidth}
+                        isMobileMode={isPokemonPageAnimationPreviewMobile}
                         pokemonId={userWasInThisPokemonIdPage}
                         reverseAnimation
                     />
