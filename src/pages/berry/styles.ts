@@ -1,10 +1,10 @@
 import { transitionTime } from "@style-guide/transition-time"
 import { numbPxToRem, styleGuide } from "@style-guide"
 import { berryAnimationClasses } from "./animation"
+import { scrollbar } from "@style-guide/scrollbar"
 import styled, { css } from "styled-components"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
-import { scrollbar } from "@style-guide/scrollbar"
 
 export const Screen = styled.div`
     display: flex;
@@ -18,8 +18,11 @@ export const Screen = styled.div`
     align-self: center;
     color: white;
 
-    @media (max-width: ${numbPxToRem(860)}){
+    @media (max-width: ${numbPxToRem(860)}), (max-height: ${numbPxToRem(680)}){
         padding: 0;
+        main {
+            max-width: unset;
+        }
 
         .berry-window {
             border-radius: 0;
