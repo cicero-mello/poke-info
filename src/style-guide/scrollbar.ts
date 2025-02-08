@@ -1,5 +1,5 @@
+import { numbPxToRem, pxToRem } from "./px-to-rem"
 import { css } from "styled-components"
-import { pxToRem } from "./px-to-rem"
 import { color } from "./color"
 
 const isFirefox = navigator.userAgent.indexOf("Firefox") !== -1
@@ -62,8 +62,33 @@ const hidden = css`
     }
 `
 
+const tinyGray = css`
+    ${isFirefox && css`
+        scrollbar-color: ${color.cloudGray} transparent;
+        scrollbar-width: thin;
+    `}
+
+    &::-webkit-scrollbar-track {
+        margin-top: ${numbPxToRem(30)};
+        margin-bottom: ${numbPxToRem(30)};
+    }
+    &::-webkit-scrollbar-thumb {
+        cursor: grab;
+        background-color: ${color.cloudGray};
+        border-radius: ${numbPxToRem(6)};
+    }
+    &::-webkit-scrollbar-thumb:active {
+        cursor: grabbing;
+    }
+    &::-webkit-scrollbar {
+        width: ${numbPxToRem(3)};
+    }
+
+`
+
 export const scrollbar = {
     white,
     whiteSmall,
-    hidden
+    hidden,
+    tinyGray
 }

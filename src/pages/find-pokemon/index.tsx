@@ -1,6 +1,12 @@
+import { FloatingCard } from "@components"
+import * as S from "./styles"
+
 export const FindPokemon = () => {
 
     return (
-        <h1> FindPokemon </h1>
+        <S.Screen>
+            <FloatingCard title="Pokémon">
+            </FloatingCard>
+        </S.Screen>
     )
 }
