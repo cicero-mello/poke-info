@@ -1,5 +1,5 @@
 import { PokeApi } from "@types"
-import { HTMLAttributes } from "preact/compat"
+import { HTMLAttributes, RefObject } from "preact/compat"
 import { RuleSet } from "styled-components"
 
 export type ButtonTheme = (
@@ -19,6 +19,7 @@ export interface ButtonProps extends Omit<
         path: string,
         transition?: boolean
     }
+    componentRef?: RefObject<HTMLButtonElement>
 }
 
 export interface StyledProps {

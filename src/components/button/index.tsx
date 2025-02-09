@@ -6,7 +6,7 @@ import { FC } from "preact/compat"
 
 export const Button: FC<ButtonProps> = ({
     theme, emphasis, pokemonType, navigate: navigateProps,
-    preventNavOnClick, onClick, tabIndex, ...rest
+    preventNavOnClick, onClick, tabIndex, componentRef, ...rest
 }) => {
     const { navigate } = useNavigation()
     const styledLinkRef = useRef<any>(null)
@@ -18,6 +18,7 @@ export const Button: FC<ButtonProps> = ({
             $pokemonType={pokemonType}
             onClick={onClick}
             tabIndex={tabIndex}
+            ref={componentRef}
             {...rest}
         />
     )

@@ -1,9 +1,11 @@
 import { pxToRem, styleGuide } from "@style-guide"
-import styled from "styled-components"
+import { transitionTime } from "@style-guide/transition-time"
+import styled, { css } from "styled-components"
 
 export const Spinner = styled.div.attrs({
     className: "spinner"
-})`
+})<{ $hide?: boolean }>`
+${({ $hide }) => css`
     position: absolute;
     width: ${pxToRem("24px")};
     height: ${pxToRem("24px")};
@@ -18,4 +20,9 @@ export const Spinner = styled.div.attrs({
     -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 0.25rem),#000 0);
 
     animation: ${styleGuide.keyframes.rotate} 600ms infinite linear;
-`
+
+    transition: ${transitionTime.medium} linear;
+    ${$hide && css`
+        opacity: 0;
+    `}
+`}`

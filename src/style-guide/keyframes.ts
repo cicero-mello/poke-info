@@ -1,8 +1,14 @@
 import { keyframes } from "styled-components"
 
 export const fadeIn = keyframes`
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+        pointer-events: none;
+    }
+    to {
+        opacity: 1;
+        pointer-events: all;
+    }
 `
 
 export const fadeOut = keyframes`
@@ -118,5 +124,16 @@ export const crashZoom = keyframes`
     to {
         opacity: 1;
         transform: scale(1);
+    }
+`
+
+export const spinZoom = keyframes`
+    from {
+        transform: scale(0) rotate(140deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
     }
 `

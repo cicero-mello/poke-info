@@ -33,3 +33,6 @@ export * from "./berry"
 export * from "./flavors-graph"
 export * from "./search-input"
 export * from "./floating-card"
+export * from "./circle-pokemon-image"
+export * from "./circle-pokemon-image/types"
+

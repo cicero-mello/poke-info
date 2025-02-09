@@ -54,6 +54,9 @@ export const PokemonSearch: FC<PokemonSearchProps> = ({
                     ref={inputRef}
                     id="pokemon-search-input"
                     spellcheck={false}
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="off"
                 />
                 <S.Button $isLoading={isLoading}>
                     <SearchPokeballIco />
