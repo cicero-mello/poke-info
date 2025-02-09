@@ -3,7 +3,7 @@ import { BerryComponents, Button, Spinner } from "@components"
 import { getRootFontSize, updateUrl } from "@utils"
 import { useAnimation } from "./animation"
 import { ArrowReturnIco } from "@assets"
-import { useWindowResize } from "@hooks"
+import { useDocumentTitle, useWindowResize } from "@hooks"
 import { useState } from "preact/hooks"
 import { useRoute } from "preact-iso"
 import { PATHS } from "@types"
@@ -11,6 +11,8 @@ import * as S from "./styles"
 import * as api from "@api"
 
 export const Berry = () => {
+    useDocumentTitle("Berries")
+
     const { refs, animations } = useAnimation()
 
     const { params } = useRoute()

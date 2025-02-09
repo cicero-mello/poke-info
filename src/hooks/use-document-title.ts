@@ -14,7 +14,7 @@ const staticTitlesByPath = new Map<string, string>([
  * - Use in layout to automatically update document title
  * of static paths.
  *
- * - Use inside dinamic paths pages to update document
+ * - Use inside dynamic paths pages to update document
  * title with a custom text.
  *
  * @function
