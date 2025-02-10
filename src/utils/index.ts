@@ -1,5 +1,6 @@
 export * from "./debounce"
 export * from "./poke-api"
+export * from "./games-images"
 
 export const delay = (time: number) => new Promise((resolve) => {
     setTimeout(() => resolve(true), time)

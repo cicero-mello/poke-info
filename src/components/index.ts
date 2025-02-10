@@ -35,4 +35,4 @@ export * from "./search-input"
 export * from "./floating-card"
 export * from "./circle-pokemon-image"
 export * from "./circle-pokemon-image/types"
-
+export * from "./version-image"
