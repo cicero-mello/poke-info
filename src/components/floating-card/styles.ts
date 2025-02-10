@@ -51,6 +51,7 @@ export const Content = styled.div.attrs({
     overflow-x: hidden;
     padding: ${numbPxToRem(24)} ${numbPxToRem(13)} ${numbPxToRem(24)} ${numbPxToRem(24)};
     height: 100%;
+    width: 100%;
 `
 
 export const Title = styled.h2.attrs({

@@ -6,7 +6,7 @@ import { Button } from "@components"
 import * as S from "./styles"
 
 export const VersionImage: FC<VersionImageProps> = ({
-    versionName, componentRef, onClick
+    id, versionName, componentRef, onClick
 }) => {
     const [imageLoaded, setImageLoaded] = useState(false)
     const url = (
@@ -15,7 +15,7 @@ export const VersionImage: FC<VersionImageProps> = ({
     )
 
     return (
-        <S.Component ref={componentRef}>
+        <S.Component ref={componentRef} id={id}>
             <S.Title
                 htmlFor={versionName+"-version-image"}
                 children={versionName}

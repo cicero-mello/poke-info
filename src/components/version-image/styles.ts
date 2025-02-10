@@ -13,6 +13,7 @@ export const Component = styled.div.attrs({
     flex-direction: column;
     align-items: center;
     width: fit-content;
+    gap: ${numbPxToRem(10)};
 
     &:has(label:hover),
     &:has(button:hover) {
@@ -29,11 +30,8 @@ export const Component = styled.div.attrs({
 
 export const Title = styled.label`
     ${text.xl}
-    font-weight: bold;
     width: fit-content;
     min-height: ${numbPxToRem(28)};
-
-    padding-bottom: ${numbPxToRem(8)};
     cursor: pointer;
     transition: ${transitionTime.fast} linear;
     opacity: 0.7;

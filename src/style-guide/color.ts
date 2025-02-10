@@ -30,6 +30,7 @@ export enum color {
     carbonAlpha80 = "#1F1F1FCC",
     smokyGray = "#393939",
     steelGray = "#595959",
+    shadowGray = "#686868",
     graphite = "#2D2D2D",
     onyx = "#282828",
     onyxAlpha83 = "#282828D4",
