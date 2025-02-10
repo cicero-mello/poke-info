@@ -10,7 +10,9 @@ import * as api from "@api"
 
 export const PokemonFloatingCard: FC<PokemonFloatingCardProps> = ({
     pokemonId,
-    setPokemonId
+    setPokemonId,
+    hideVersionFloatingCard,
+    showVersionFloatingCard
 }) => {
     const pokeImgRef = useRef<CirclePokemonImageRef>(null)
     const [hideSpinner, setHideSpinner] = useState(true)
@@ -39,11 +41,13 @@ export const PokemonFloatingCard: FC<PokemonFloatingCardProps> = ({
         clearTimeout(showSpinnerTimeout)
         setHideSpinner(true)
         await animations.showPokemon()
+        showVersionFloatingCard()
         animations.showReturnButton()
     }
 
     const onReturnToSearch = async () => {
         const hidingReturnButtonPromise = animations.hideReturnButton()
+        await hideVersionFloatingCard()
         await animations.hidePokemon()
         await hidingReturnButtonPromise
         setPokemonId(0)

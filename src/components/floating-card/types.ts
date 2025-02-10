@@ -1,6 +1,8 @@
-import { HTMLAttributes } from "preact/compat"
+import { ComponentChildren } from "preact"
+import { RefObject } from "preact/compat"
 
-export interface FloatingCardProps
-extends HTMLAttributes<HTMLDivElement>{
+export interface FloatingCardProps {
     title: string
+    children: ComponentChildren
+    componentRef?: RefObject<HTMLDivElement>
 }

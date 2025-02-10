@@ -11,7 +11,6 @@ export const ANIMATION_CLASSES: AnimationClass[] = [
     "fade-out"
 ]
 
-
 export const ANIMATION_TIME = {
     goLeft: 400,
     comeFromLeft: 400,
@@ -23,21 +22,45 @@ export const ANIMATION_TIME = {
 
 export const versionFloatingCardAnimationClasses = css`
     &.go-left{
-        animation: ${slideFromLeft} ${ANIMATION_TIME.goLeft}ms ease-out forwards reverse;
+        animation:
+            ${slideFromLeft}
+            ${ANIMATION_TIME.goLeft}ms
+            ease-out forwards reverse
+        ;
     }
     &.come-from-left{
-        animation: ${slideFromLeft} ${ANIMATION_TIME.comeFromLeft}ms ease-out forwards;
+        animation:
+            ${slideFromLeft}
+            ${ANIMATION_TIME.comeFromLeft}ms
+            ease-out forwards
+        ;
     }
     &.spin-zoom-in{
-        animation: ${spinZoom} ${ANIMATION_TIME.spinZoomIn}ms ease-in-out forwards;
+        animation:
+            ${spinZoom}
+            ${ANIMATION_TIME.spinZoomIn}ms
+            ease-in-out forwards
+        ;
     }
     &.spin-zoom-out{
-        animation: ${spinZoom} ${ANIMATION_TIME.spinZoomOut}ms ease-in-out reverse forwards;
+        animation:
+            ${spinZoom}
+            ${ANIMATION_TIME.spinZoomOut}ms
+            ease-in-out reverse forwards
+        ;
     }
     &.fade-in {
-        animation: ${fadeIn} ${ANIMATION_TIME.fadeIn}ms linear forwards;
+        animation:
+            ${fadeIn}
+            ${ANIMATION_TIME.fadeIn}ms
+            linear forwards
+        ;
     }
     &.fade-out {
-        animation: ${fadeIn} ${ANIMATION_TIME.fadeOut}ms linear forwards reverse;
+        animation:
+            ${fadeIn}
+            ${ANIMATION_TIME.fadeOut}ms
+            linear forwards reverse
+        ;
     }
 `

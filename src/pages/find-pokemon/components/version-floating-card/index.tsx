@@ -11,7 +11,8 @@ import * as S from "./styles"
 export const VersionFloatingCard: FC<VersionFloatingCardProps> = ({
     pokemonId,
     versionGroupId,
-    setVersionGroupId
+    setVersionGroupId,
+    componentRef
 }) => {
     const { refs, animations } = useAnimation()
 
@@ -43,7 +44,10 @@ export const VersionFloatingCard: FC<VersionFloatingCardProps> = ({
     }, [isToShowSettedVersion])
 
     return (
-        <FloatingCard title="Version">
+        <FloatingCard
+            title="Version"
+            componentRef={componentRef}
+        >
             <S.ContentWrapper>
                 {isToShowSettedVersion ?
                     <>

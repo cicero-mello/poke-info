@@ -1,11 +1,9 @@
+import { versionFloatingCardAnimationClasses } from "./animations/animation-classes"
 import { dimensions } from "@style-guide/dimensions"
-import styled, { css } from "styled-components"
 import { numbPxToRem } from "@style-guide"
-import { PageStep } from "./types"
+import styled from "styled-components"
 
-export const Screen = styled.div
-<{$pageStep: PageStep}>`
-${({ $pageStep }) => css`
+export const Screen = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,19 +14,14 @@ ${({ $pageStep }) => css`
     padding: ${numbPxToRem(52)};
     align-self: center;
     color: white;
+    overflow: hidden;
 
     > div:nth-child(2) {
         max-width: 0;
+        max-height: 0;
         margin-left: 0;
+        padding-right: 0;
         opacity: 0;
-        transition: 400ms ease-in-out;
+        ${versionFloatingCardAnimationClasses}
     }
-
-    ${($pageStep === "2" || $pageStep === "3") && css`
-        > div:nth-child(2) {
-            max-width: ${numbPxToRem(340)};
-            margin-left: 24px;
-            opacity: 1;
-        }
-    `}
-`}`
+`

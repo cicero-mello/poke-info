@@ -3,9 +3,9 @@ import { FloatingCardProps } from "./types"
 import * as S from "./styles"
 
 export const FloatingCard: FC<FloatingCardProps> = ({
-    title, children
+    title, children, componentRef
 }) => (
-    <S.Component>
+    <S.Component ref={componentRef}>
         <S.Title>{title}</S.Title>
         <S.Content>{children}</S.Content>
     </S.Component>

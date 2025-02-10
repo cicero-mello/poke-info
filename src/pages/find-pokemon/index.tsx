@@ -1,28 +1,30 @@
 import { PokemonFloatingCard, VersionFloatingCard } from "./components"
+import { useAnimation } from "./animations"
 import { useState } from "preact/hooks"
-import { PageStep } from "./types"
 import * as S from "./styles"
 
 export const FindPokemon = () => {
+    const { refs, animations } = useAnimation()
+
     const [pokemonId, setPokemonId] = useState(0)
     const [versionGroupId, setVersionGroupId] = useState(0)
 
-    const pageStep: PageStep = (
-        versionGroupId ? "3" :
-        pokemonId ? "2" : "1"
-    )
-
     return (
-        <S.Screen $pageStep={pageStep}>
+        <S.Screen>
             <PokemonFloatingCard
                 pokemonId={pokemonId}
                 setPokemonId={setPokemonId}
+                hideVersionFloatingCard={animations.hideVersionFloatingCard}
+                showVersionFloatingCard={animations.showVersionFloatingCard}
             />
-            <VersionFloatingCard
-                pokemonId={pokemonId}
-                versionGroupId={versionGroupId}
-                setVersionGroupId={setVersionGroupId}
-            />
+            {!!pokemonId &&
+                <VersionFloatingCard
+                    pokemonId={pokemonId}
+                    versionGroupId={versionGroupId}
+                    setVersionGroupId={setVersionGroupId}
+                    componentRef={refs.versionFloatingCard}
+                />
+            }
         </S.Screen>
     )
 }
