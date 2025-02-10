@@ -1,3 +1,4 @@
+import { versionFloatingCardAnimationClasses } from "./animations/animation-classes"
 import { transitionTime } from "@style-guide/transition-time"
 import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
@@ -11,13 +12,18 @@ export const ContentWrapper = styled.div`
     height: 100%;
     width: 100%;
 
+    .version-image, > .styled-button {
+        ${versionFloatingCardAnimationClasses}
+    }
+
     #setted-version{
         pointer-events: none;
-        gap: 16px;
+        opacity: 0;
 
         label {
             opacity: 1;
             font-weight: bold;
+            padding-bottom: ${numbPxToRem(16)};
         }
         button {
             border-radius: 50%;
@@ -64,6 +70,9 @@ export const VersionList = styled.div`
     gap: ${numbPxToRem(24)};
     height: 100%;
     width: 100%;
+    opacity: 0;
+
+    ${versionFloatingCardAnimationClasses}
 `
 
 export const Line = styled.span`

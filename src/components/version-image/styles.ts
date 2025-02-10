@@ -13,7 +13,6 @@ export const Component = styled.div.attrs({
     flex-direction: column;
     align-items: center;
     width: fit-content;
-    gap: ${numbPxToRem(10)};
 
     &:has(label:hover),
     &:has(button:hover) {
@@ -35,6 +34,7 @@ export const Title = styled.label`
     cursor: pointer;
     transition: ${transitionTime.fast} linear;
     opacity: 0.7;
+    padding-bottom: ${numbPxToRem(10)};
 `
 
 export const Image = styled.img<{$isLoaded?: boolean}>`
@@ -44,7 +44,6 @@ ${({ $isLoaded }) => css`
     filter: contrast(0.85);
     border-radius: ${numbPxToRem(4)};
     image-rendering: pixelated;
-    z-index: 1;
     transition: ${transitionTime.fast} linear;
     opacity: ${$isLoaded ? "0.7" : "0 !important"};
 `}`
