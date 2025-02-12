@@ -30,3 +30,6 @@ export * from "./get-berries/types"
 
 export * from "./get-item"
 export * from "./get-ability/types"
+
+export * from "./get-pokemon-location-areas"
+export * from "./get-pokemon-location-areas/types"
