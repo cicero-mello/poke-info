@@ -36,3 +36,7 @@ export * from "./get-pokemon-location-areas/types"
 
 export * from "./get-location-area"
 export * from "./get-location-area/types"
+
+export * from "./get-encounter-condition-value"
+export * from "./get-encounter-condition-value/types"
+
