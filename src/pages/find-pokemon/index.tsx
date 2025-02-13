@@ -7,7 +7,7 @@ import * as api from "@api"
 export const FindPokemon = () => {
     const { refs, animations } = useAnimation()
 
-    const [versionGroupId, setVersionGroupId] = useState(0)
+    const [chosenVersionId, setChosenVersionId] = useState(0)
     const [
         encountersPerVersionId,
         setEncountersPerVersionId
@@ -38,8 +38,9 @@ export const FindPokemon = () => {
             />
             {showVersionCard &&
                 <VersionFloatingCard
-                    versionGroupId={versionGroupId}
-                    setVersionGroupId={setVersionGroupId}
+                    versionIds={[...encountersPerVersionId.keys()]}
+                    chosenVersionId={chosenVersionId}
+                    setChosenVersionId={setChosenVersionId}
                     componentRef={refs.versionFloatingCard}
                 />
             }

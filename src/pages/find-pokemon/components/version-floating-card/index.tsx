@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "preact/hooks"
 import { Button, FloatingCard, VersionImage } from "@components"
-import { versionGroupIdPerVersionName } from "@utils"
+import { useEffect, useRef, useState } from "preact/hooks"
 import { VersionFloatingCardProps } from "./types"
+import { versionNamePerVersionId } from "@utils"
 import { FunctionComponent as FC } from "preact"
 import { useAnimation } from "./animations"
 import { ArrowReturnIco } from "@assets"
@@ -9,20 +9,21 @@ import { VersionName } from "@types"
 import * as S from "./styles"
 
 export const VersionFloatingCard: FC<VersionFloatingCardProps> = ({
-    versionGroupId,
-    setVersionGroupId,
+    versionIds,
+    chosenVersionId,
+    setChosenVersionId,
     componentRef
 }) => {
     const { refs, animations } = useAnimation()
 
     const versionName = useRef<VersionName>(null)
     const [isToShowSettedVersion, setIsToShowSettedVersion] = useState(
-        !!versionGroupId && !!versionName.current
+        !!chosenVersionId && !!versionName.current
     )
 
     const onReturnToList = async () => {
         await animations.hideSettedVersion()
-        setVersionGroupId(0)
+        setChosenVersionId(0)
         setIsToShowSettedVersion(false)
     }
 
@@ -54,15 +55,15 @@ export const VersionFloatingCard: FC<VersionFloatingCardProps> = ({
                         />
                     </> :
                     <S.VersionList ref={refs.versionList}>
-                        {[...versionGroupIdPerVersionName].map(([key, value]) => (
+                        {versionIds.map((versionId) => (
                             <>
                                 <VersionImage
-                                    key={key}
-                                    versionName={key}
+                                    key={`version-image-${versionId}`}
+                                    versionName={versionNamePerVersionId.get(versionId)!}
                                     onClick={async () => {
-                                        versionName.current = key
+                                        versionName.current = versionNamePerVersionId.get(versionId)!
                                         await animations.hideVersionList()
-                                        setVersionGroupId(value)
+                                        setChosenVersionId(versionId)
                                         setIsToShowSettedVersion(true)
                                     }}
                                 />

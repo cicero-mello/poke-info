@@ -1,7 +1,8 @@
 import { RefObject } from "preact"
 
 export interface VersionFloatingCardProps {
-    versionGroupId: number
-    setVersionGroupId: (versionGroupId: number) => void
+    chosenVersionId: number
+    setChosenVersionId: (versionId: number) => void
+    versionIds: number[]
     componentRef?: RefObject<HTMLDivElement>
 }
