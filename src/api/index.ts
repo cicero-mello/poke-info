@@ -40,3 +40,5 @@ export * from "./get-location-area/types"
 export * from "./get-encounter-condition-value"
 export * from "./get-encounter-condition-value/types"
 
+export * from "./get-encounter-method"
+export * from "./get-encounter-method/types"
