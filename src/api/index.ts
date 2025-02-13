@@ -33,3 +33,6 @@ export * from "./get-ability/types"
 
 export * from "./get-pokemon-location-areas"
 export * from "./get-pokemon-location-areas/types"
+
+export * from "./get-location-area"
+export * from "./get-location-area/types"
