@@ -24,4 +24,13 @@ export const Screen = styled.div`
         opacity: 0;
         ${versionFloatingCardAnimationClasses}
     }
+
+    #no-encounters-floating-card {
+        padding: 0 !important;
+        & > div {
+            padding: 0;
+            border-radius: ${numbPxToRem(12)};
+            overflow: hidden;
+        }
+    }
 `

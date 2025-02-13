@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "preact/hooks"
+import { useEffect, useRef, useState } from "preact/hooks"
 import { Button, FloatingCard, VersionImage } from "@components"
 import { versionGroupIdPerVersionName } from "@utils"
 import { VersionFloatingCardProps } from "./types"
@@ -9,7 +9,6 @@ import { VersionName } from "@types"
 import * as S from "./styles"
 
 export const VersionFloatingCard: FC<VersionFloatingCardProps> = ({
-    pokemonId,
     versionGroupId,
     setVersionGroupId,
     componentRef
@@ -26,14 +25,6 @@ export const VersionFloatingCard: FC<VersionFloatingCardProps> = ({
         setVersionGroupId(0)
         setIsToShowSettedVersion(false)
     }
-
-    useLayoutEffect(() => {
-        if (pokemonId) return
-        setVersionGroupId(0)
-        setTimeout(() => {
-            setIsToShowSettedVersion(false)
-        }, 400)
-    }, [pokemonId])
 
     useEffect(() => {
         if(isToShowSettedVersion) {

@@ -5,6 +5,7 @@ import { useRef } from "preact/hooks"
 
 export const useAnimation = (): UseAnimation => {
     const versionFloatingCardRef = useRef<HTMLDivElement>(null)
+    const noEncountersFloatingCardRef = useRef<HTMLDivElement>(null)
 
     const hideVersionFloatingCard = async () => {
         applyAnimation<AnimationClass>({
@@ -24,13 +25,34 @@ export const useAnimation = (): UseAnimation => {
         await delay(ANIMATION_TIME.comeFromBottom)
     }
 
+    const hideNoEncountersFloatingCard = async () => {
+        applyAnimation<AnimationClass>({
+            animationClasses: ANIMATION_CLASSES,
+            desiredAnimationClass: "go-bottom",
+            element: noEncountersFloatingCardRef.current
+        })
+        await delay(ANIMATION_TIME.goBottom)
+    }
+
+    const showNoEncountersFloatingCard = async () => {
+        applyAnimation<AnimationClass>({
+            animationClasses: ANIMATION_CLASSES,
+            desiredAnimationClass: "come-from-bottom",
+            element: noEncountersFloatingCardRef.current
+        })
+        await delay(ANIMATION_TIME.comeFromBottom)
+    }
+
     return {
         refs: {
-            versionFloatingCard: versionFloatingCardRef
+            versionFloatingCard: versionFloatingCardRef,
+            noEncountersFloatingCard: noEncountersFloatingCardRef
         },
         animations: {
             hideVersionFloatingCard,
-            showVersionFloatingCard
+            showVersionFloatingCard,
+            hideNoEncountersFloatingCard,
+            showNoEncountersFloatingCard
         }
     }
 }

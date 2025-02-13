@@ -9,11 +9,14 @@ import * as S from "./styles"
 import * as api from "@api"
 
 export const PokemonFloatingCard: FC<PokemonFloatingCardProps> = ({
-    pokemonId,
-    setPokemonId,
+    setEncountersPerVersionId,
     hideVersionFloatingCard,
-    showVersionFloatingCard
+    showVersionFloatingCard,
+    hideNoEncountersFloatingCard,
+    showNoEncountersFloatingCard
 }) => {
+    const [pokemonId, setPokemonId] = useState(0)
+
     const pokeImgRef = useRef<CirclePokemonImageRef>(null)
     const [hideSpinner, setHideSpinner] = useState(true)
     const queryClient = useQueryClient()
@@ -30,27 +33,46 @@ export const PokemonFloatingCard: FC<PokemonFloatingCardProps> = ({
         const showSpinnerTimeout = setTimeout(() => {
             setHideSpinner(false)
         }, 800)
+
         const pokemonQuery = queryClient.fetchQuery({
             queryKey: ["getPokemon", pokemonId],
             queryFn: () => api.getPokemon({ idOrName: pokemonId + "" })
         })
+
         await animations.hideSearch()
         await pokemonQuery
         setPokemonId(pokemonId)
         if(pokeImgRef.current) await pokeImgRef.current.loaded()
+
+        const { encountersPerVersionId } = await queryClient.fetchQuery({
+            queryKey: ["getPokemonLocationAreas", pokemonId],
+            queryFn: () => api.getPokemonLocationAreas({ idOrName: pokemonId })
+        })
+        setEncountersPerVersionId(encountersPerVersionId)
+
+        const haveEncounter = (
+            !!encountersPerVersionId &&
+            encountersPerVersionId.size > 0
+        )
+
         clearTimeout(showSpinnerTimeout)
         setHideSpinner(true)
+
         await animations.showPokemon()
-        showVersionFloatingCard()
         animations.showReturnButton()
+
+        if(haveEncounter) showVersionFloatingCard()
+        else showNoEncountersFloatingCard()
     }
 
     const onReturnToSearch = async () => {
         const hidingReturnButtonPromise = animations.hideReturnButton()
+        hideNoEncountersFloatingCard()
         await hideVersionFloatingCard()
         await animations.hidePokemon()
         await hidingReturnButtonPromise
         setPokemonId(0)
+        setEncountersPerVersionId(undefined)
         animations.showSearch()
     }
 

@@ -5,9 +5,10 @@ export interface GetPokemonLocationAreasParams {
 }
 
 export type GetPokemonLocationAreasApiResponse = PokeApi.PokemonLocationArea[]
+export type EncountersPerVersionId = Map<number, Encounter[]>
 
 export interface GetPokemonLocationAreasResponse {
-    encountersPerVersionId: Map<number, Encounter[]>
+    encountersPerVersionId: EncountersPerVersionId
 }
 
 export interface Encounter {

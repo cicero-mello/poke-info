@@ -1,28 +1,51 @@
-import { PokemonFloatingCard, VersionFloatingCard } from "./components"
+import { PokemonFloatingCard, VersionFloatingCard, NoEncountersFloatingCard } from "./components"
+import { useEffect, useState } from "preact/hooks"
 import { useAnimation } from "./animations"
-import { useState } from "preact/hooks"
 import * as S from "./styles"
+import * as api from "@api"
 
 export const FindPokemon = () => {
     const { refs, animations } = useAnimation()
 
-    const [pokemonId, setPokemonId] = useState(0)
     const [versionGroupId, setVersionGroupId] = useState(0)
+    const [
+        encountersPerVersionId,
+        setEncountersPerVersionId
+    ] = useState<api.EncountersPerVersionId>()
+
+    useEffect(() => {
+        console.log(encountersPerVersionId)
+    }, [encountersPerVersionId])
+
+    const showVersionCard = (
+        !!encountersPerVersionId &&
+        encountersPerVersionId.size > 0
+    )
+
+    const showNoEncountersCard = (
+        !!encountersPerVersionId &&
+        encountersPerVersionId.size === 0
+    )
 
     return (
         <S.Screen>
             <PokemonFloatingCard
-                pokemonId={pokemonId}
-                setPokemonId={setPokemonId}
+                setEncountersPerVersionId={setEncountersPerVersionId}
                 hideVersionFloatingCard={animations.hideVersionFloatingCard}
                 showVersionFloatingCard={animations.showVersionFloatingCard}
+                hideNoEncountersFloatingCard={animations.hideNoEncountersFloatingCard}
+                showNoEncountersFloatingCard={animations.showNoEncountersFloatingCard}
             />
-            {!!pokemonId &&
+            {showVersionCard &&
                 <VersionFloatingCard
-                    pokemonId={pokemonId}
                     versionGroupId={versionGroupId}
                     setVersionGroupId={setVersionGroupId}
                     componentRef={refs.versionFloatingCard}
+                />
+            }
+            {showNoEncountersCard &&
+                <NoEncountersFloatingCard
+                    componentRef={refs.noEncountersFloatingCard}
                 />
             }
         </S.Screen>

@@ -5,4 +5,5 @@ export interface FloatingCardProps {
     title: string
     children: ComponentChildren
     componentRef?: RefObject<HTMLDivElement>
+    id?: string
 }
