@@ -10,6 +10,7 @@ import * as api from "@api"
 
 export const PokemonFloatingCard: FC<PokemonFloatingCardProps> = ({
     setEncountersPerVersionId,
+    setChosenVersionId,
     hideVersionFloatingCard,
     showVersionFloatingCard,
     hideNoEncountersFloatingCard,
@@ -72,6 +73,7 @@ export const PokemonFloatingCard: FC<PokemonFloatingCardProps> = ({
         await animations.hidePokemon()
         await hidingReturnButtonPromise
         setPokemonId(0)
+        setChosenVersionId(0)
         setEncountersPerVersionId(undefined)
         animations.showSearch()
     }

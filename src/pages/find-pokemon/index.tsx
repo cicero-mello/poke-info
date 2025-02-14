@@ -1,6 +1,6 @@
-import { PokemonFloatingCard, VersionFloatingCard, NoEncountersFloatingCard } from "./components"
-import { useEffect, useState } from "preact/hooks"
 import { useAnimation } from "./animations"
+import { useState } from "preact/hooks"
+import * as C from "./components"
 import * as S from "./styles"
 import * as api from "@api"
 
@@ -13,10 +13,6 @@ export const FindPokemon = () => {
         setEncountersPerVersionId
     ] = useState<api.EncountersPerVersionId>()
 
-    useEffect(() => {
-        console.log(encountersPerVersionId)
-    }, [encountersPerVersionId])
-
     const showVersionCard = (
         !!encountersPerVersionId &&
         encountersPerVersionId.size > 0
@@ -27,17 +23,23 @@ export const FindPokemon = () => {
         encountersPerVersionId.size === 0
     )
 
+    const showPlacesCard = (
+        !!chosenVersionId &&
+        !!encountersPerVersionId
+    )
+
     return (
         <S.Screen>
-            <PokemonFloatingCard
+            <C.PokemonFloatingCard
                 setEncountersPerVersionId={setEncountersPerVersionId}
+                setChosenVersionId={setChosenVersionId}
                 hideVersionFloatingCard={animations.hideVersionFloatingCard}
                 showVersionFloatingCard={animations.showVersionFloatingCard}
                 hideNoEncountersFloatingCard={animations.hideNoEncountersFloatingCard}
                 showNoEncountersFloatingCard={animations.showNoEncountersFloatingCard}
             />
             {showVersionCard &&
-                <VersionFloatingCard
+                <C.VersionFloatingCard
                     versionIds={[...encountersPerVersionId.keys()]}
                     chosenVersionId={chosenVersionId}
                     setChosenVersionId={setChosenVersionId}
@@ -45,8 +47,13 @@ export const FindPokemon = () => {
                 />
             }
             {showNoEncountersCard &&
-                <NoEncountersFloatingCard
+                <C.NoEncountersFloatingCard
                     componentRef={refs.noEncountersFloatingCard}
+                />
+            }
+            {showPlacesCard &&
+                <C.PlacesFloatingCard
+                    encounters={encountersPerVersionId.get(chosenVersionId)!}
                 />
             }
         </S.Screen>

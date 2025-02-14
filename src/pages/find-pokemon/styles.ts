@@ -33,4 +33,8 @@ export const Screen = styled.div`
             overflow: hidden;
         }
     }
+
+    > div:nth-child(3) {
+        margin-left: 24px;
+    }
 `
