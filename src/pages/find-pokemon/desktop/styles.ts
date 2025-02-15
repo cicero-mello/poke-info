@@ -3,7 +3,7 @@ import { dimensions } from "@style-guide/dimensions"
 import { numbPxToRem } from "@style-guide"
 import styled from "styled-components"
 
-export const Screen = styled.div`
+export const Screen = styled.main`
     display: flex;
     justify-content: center;
     align-items: center;

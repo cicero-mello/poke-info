@@ -1,11 +1,11 @@
 import { FunctionComponent as FC} from "preact"
 import { useAnimation } from "./animations"
-import { DesktopProps } from "./types"
+import { ScreenProps } from "../types"
 import { useEffect } from "preact/hooks"
 import * as C from "./components"
 import * as S from "./styles"
 
-export const Desktop: FC<DesktopProps> = ({
+export const Desktop: FC<ScreenProps> = ({
     pokemonId,
     setPokemonId,
     chosenVersionId,

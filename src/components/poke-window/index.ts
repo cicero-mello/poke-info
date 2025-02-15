@@ -64,7 +64,6 @@ export const PokeWindow = styled.main.attrs({
         (max-height: ${pokeWindowRem.full.maxHeight})
     {
         background: ${styleGuide.color.onyxAlpha83};
-        border-radius: ${numbPxToRem(12)};
         padding: 0px;
         border-radius: 0;
         width: 100%;

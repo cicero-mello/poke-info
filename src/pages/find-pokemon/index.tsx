@@ -18,12 +18,12 @@ export const FindPokemon = () => {
     if(isMobileLayout){
         return (
             <Mobile
-                // pokemonId={pokemonId}
-                // setPokemonId={setPokemonId}
-                // chosenVersionId={chosenVersionId}
-                // setChosenVersionId={setChosenVersionId}
-                // encountersPerVersionId={encountersPerVersionId}
-                // setEncountersPerVersionId={setEncountersPerVersionId}
+                pokemonId={pokemonId}
+                setPokemonId={setPokemonId}
+                chosenVersionId={chosenVersionId}
+                setChosenVersionId={setChosenVersionId}
+                encountersPerVersionId={encountersPerVersionId}
+                setEncountersPerVersionId={setEncountersPerVersionId}
             />
         )
     }

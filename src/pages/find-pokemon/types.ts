@@ -1,7 +1,7 @@
 import { Dispatch, StateUpdater } from "preact/hooks"
 import { EncountersPerVersionId } from "@api"
 
-export interface DesktopProps {
+export interface ScreenProps {
     pokemonId: number
     setPokemonId: Dispatch<StateUpdater<number>>
     chosenVersionId: number
