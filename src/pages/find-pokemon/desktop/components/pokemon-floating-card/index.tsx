@@ -1,14 +1,16 @@
 import { Button, CirclePokemonImage, CirclePokemonImageRef, FloatingCard, PokemonSearch, Spinner } from "@components"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { ArrowReturnIco, PikachuShadowIco } from "@assets"
+import { useEffect, useRef, useState } from "preact/hooks"
 import { PokemonFloatingCardProps } from "./types"
 import { FunctionComponent as FC } from "preact"
-import { useRef, useState } from "preact/hooks"
 import { useAnimation } from "./animations"
 import * as S from "./styles"
 import * as api from "@api"
 
 export const PokemonFloatingCard: FC<PokemonFloatingCardProps> = ({
+    pokemonId,
+    setPokemonId,
     setEncountersPerVersionId,
     setChosenVersionId,
     hideVersionFloatingCard,
@@ -17,8 +19,6 @@ export const PokemonFloatingCard: FC<PokemonFloatingCardProps> = ({
     showNoEncountersFloatingCard,
     hidePlacesFloatingCard
 }) => {
-    const [pokemonId, setPokemonId] = useState(0)
-
     const pokeImgRef = useRef<CirclePokemonImageRef>(null)
     const [hideSpinner, setHideSpinner] = useState(true)
     const queryClient = useQueryClient()
@@ -79,6 +79,12 @@ export const PokemonFloatingCard: FC<PokemonFloatingCardProps> = ({
         setEncountersPerVersionId(undefined)
         animations.showSearch()
     }
+
+    useEffect(() => {
+        if(pokemonId){
+            onFindPokemon(pokemonId)
+        }
+    }, [])
 
     return (
         <FloatingCard title="Pokémon">

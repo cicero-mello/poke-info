@@ -54,7 +54,6 @@ export const useAnimation = (): UseAnimation => {
     }
 
     const showPlacesFloatingCard = async () => {
-        console.log(placesFloatingCardRef)
         applyAnimation<AnimationClass>({
             animationClasses: ANIMATION_CLASSES,
             desiredAnimationClass: "come-from-right",

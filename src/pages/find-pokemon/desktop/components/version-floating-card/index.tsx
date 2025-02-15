@@ -31,6 +31,13 @@ export const VersionFloatingCard: FC<VersionFloatingCardProps> = ({
         setIsToShowSettedVersion(false)
     }
 
+    const onChooseVersion = async (versionId: number) => {
+        versionName.current = versionNamePerVersionId.get(versionId)!
+        await animations.hideVersionList()
+        setChosenVersionId(versionId)
+        setIsToShowSettedVersion(true)
+    }
+
     useEffect(() => {
         if(isToShowSettedVersion) {
             animations.showSettedVersion()
@@ -39,6 +46,12 @@ export const VersionFloatingCard: FC<VersionFloatingCardProps> = ({
         }
         animations.showVersionList()
     }, [isToShowSettedVersion])
+
+    useEffect(() => {
+        if(chosenVersionId){
+            onChooseVersion(chosenVersionId)
+        }
+    }, [])
 
     return (
         <FloatingCard
@@ -65,12 +78,7 @@ export const VersionFloatingCard: FC<VersionFloatingCardProps> = ({
                                 <VersionImage
                                     key={`version-image-${versionId}`}
                                     versionName={versionNamePerVersionId.get(versionId)!}
-                                    onClick={async () => {
-                                        versionName.current = versionNamePerVersionId.get(versionId)!
-                                        await animations.hideVersionList()
-                                        setChosenVersionId(versionId)
-                                        setIsToShowSettedVersion(true)
-                                    }}
+                                    onClick={() => onChooseVersion(versionId)}
                                 />
                                 <S.Line />
                             </>
