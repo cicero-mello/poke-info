@@ -12,7 +12,9 @@ export const VersionFloatingCard: FC<VersionFloatingCardProps> = ({
     versionIds,
     chosenVersionId,
     setChosenVersionId,
-    componentRef
+    componentRef,
+    showPlacesFloatingCard,
+    hidePlacesFloatingCard
 }) => {
     const { refs, animations } = useAnimation()
 
@@ -22,7 +24,9 @@ export const VersionFloatingCard: FC<VersionFloatingCardProps> = ({
     )
 
     const onReturnToList = async () => {
+        const hidingPlacesCard = hidePlacesFloatingCard()
         await animations.hideSettedVersion()
+        await hidingPlacesCard
         setChosenVersionId(0)
         setIsToShowSettedVersion(false)
     }
@@ -30,6 +34,7 @@ export const VersionFloatingCard: FC<VersionFloatingCardProps> = ({
     useEffect(() => {
         if(isToShowSettedVersion) {
             animations.showSettedVersion()
+            showPlacesFloatingCard()
             return
         }
         animations.showVersionList()

@@ -37,12 +37,15 @@ export const FindPokemon = () => {
                 showVersionFloatingCard={animations.showVersionFloatingCard}
                 hideNoEncountersFloatingCard={animations.hideNoEncountersFloatingCard}
                 showNoEncountersFloatingCard={animations.showNoEncountersFloatingCard}
+                hidePlacesFloatingCard={animations.hidePlacesFloatingCard}
             />
             {showVersionCard &&
                 <C.VersionFloatingCard
                     versionIds={[...encountersPerVersionId.keys()]}
                     chosenVersionId={chosenVersionId}
                     setChosenVersionId={setChosenVersionId}
+                    hidePlacesFloatingCard={animations.hidePlacesFloatingCard}
+                    showPlacesFloatingCard={animations.showPlacesFloatingCard}
                     componentRef={refs.versionFloatingCard}
                 />
             }
@@ -53,6 +56,7 @@ export const FindPokemon = () => {
             }
             {showPlacesCard &&
                 <C.PlacesFloatingCard
+                    componentRef={refs.placesFloatingCard}
                     encounters={encountersPerVersionId.get(chosenVersionId)!}
                 />
             }

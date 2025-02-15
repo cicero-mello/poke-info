@@ -8,4 +8,5 @@ export interface PokemonFloatingCardProps {
     showVersionFloatingCard: () => Promise<void>
     hideNoEncountersFloatingCard: () => Promise<void>
     showNoEncountersFloatingCard: () => Promise<void>
+    hidePlacesFloatingCard: () => Promise<void>
 }

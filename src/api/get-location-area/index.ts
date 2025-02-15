@@ -1,3 +1,4 @@
+import { capitalizeApiName } from "@utils"
 import * as T from "./types"
 import axios from "axios"
 
@@ -10,7 +11,7 @@ export const getLocationArea = async ({
 
     const name = data.names.find(
         (name) => name.language.name === "en"
-    )?.name ?? data.name ?? ""
+    )?.name ?? capitalizeApiName(data.name) ?? ""
 
     return { name }
 }

@@ -1,3 +1,5 @@
+import { transitionTime } from "@style-guide/transition-time"
+import { fadeIn } from "@style-guide/keyframes"
 import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
@@ -11,6 +13,7 @@ export const Component = styled.section.attrs({
     padding: ${numbPxToRem(16)} ${numbPxToRem(24)} ${numbPxToRem(16)} ${numbPxToRem(24)};
     border: ${numbPxToRem(2)} solid ${color.cloudGray};
     border-radius: ${numbPxToRem(6)};
+    animation: ${fadeIn} ${transitionTime.slow} ease-in-out;
 `
 
 export const PlaceName = styled.h3`

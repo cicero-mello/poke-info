@@ -1,5 +1,6 @@
+import { EncounterPlace, FloatingCard, Spinner } from "@components"
 import { useEncounterPlaces } from "./use-encounter-places"
-import { EncounterPlace, FloatingCard } from "@components"
+import { useEffect, useState } from "preact/hooks"
 import { PlacesFloatingCardProps } from "./types"
 import { FunctionComponent as FC } from "preact"
 import * as S from "./styles"
@@ -9,7 +10,19 @@ export const PlacesFloatingCard: FC<PlacesFloatingCardProps> = ({
     encounters
 }) => {
     const encounterPlaces = useEncounterPlaces(encounters)
-    const isLoading = encounterPlaces.length === 0
+    const [showSpinner, setShowSpinner] = useState(false)
+
+    useEffect(() => {
+        const isLoading = encounterPlaces.length === 0
+        const showSpinnerTimeout = setTimeout(() => {
+            setShowSpinner(true)
+        }, 1500)
+        if(!isLoading){
+            setShowSpinner(false)
+            clearTimeout(showSpinnerTimeout)
+        }
+        return () => clearTimeout(showSpinnerTimeout)
+    }, [encounterPlaces])
 
     return (
         <FloatingCard
@@ -17,6 +30,7 @@ export const PlacesFloatingCard: FC<PlacesFloatingCardProps> = ({
             componentRef={componentRef}
         >
             <S.ContentWrapper>
+                {showSpinner && <Spinner />}
                 {encounterPlaces.map((encounter) => (
                     encounter.methods.map((method) => (
                         <EncounterPlace

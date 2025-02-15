@@ -14,7 +14,8 @@ export const PokemonFloatingCard: FC<PokemonFloatingCardProps> = ({
     hideVersionFloatingCard,
     showVersionFloatingCard,
     hideNoEncountersFloatingCard,
-    showNoEncountersFloatingCard
+    showNoEncountersFloatingCard,
+    hidePlacesFloatingCard
 }) => {
     const [pokemonId, setPokemonId] = useState(0)
 
@@ -69,6 +70,7 @@ export const PokemonFloatingCard: FC<PokemonFloatingCardProps> = ({
     const onReturnToSearch = async () => {
         const hidingReturnButtonPromise = animations.hideReturnButton()
         hideNoEncountersFloatingCard()
+        hidePlacesFloatingCard()
         await hideVersionFloatingCard()
         await animations.hidePokemon()
         await hidingReturnButtonPromise

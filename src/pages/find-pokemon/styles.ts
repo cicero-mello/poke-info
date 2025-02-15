@@ -16,7 +16,7 @@ export const Screen = styled.div`
     color: white;
     overflow: hidden;
 
-    > div:nth-child(2) {
+    > div:nth-child(2), > div:nth-child(3) {
         max-width: 0;
         max-height: 0;
         margin-left: 0;
@@ -32,9 +32,5 @@ export const Screen = styled.div`
             border-radius: ${numbPxToRem(12)};
             overflow: hidden;
         }
-    }
-
-    > div:nth-child(3) {
-        margin-left: 24px;
     }
 `
