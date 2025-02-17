@@ -1,24 +1,21 @@
-import { pokemonFloatingCardAnimationClasses } from "@pages/find-pokemon/desktop/components/pokemon-floating-card/animations"
 import { transitionTime } from "@style-guide/transition-time"
 import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import styled from "styled-components"
+import { animationClasses } from "./animations/animation-classes"
 
 export const Component = styled.section`
     display: flex;
+    flex-direction: column;
     position: relative;
     width: 100%;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin-top: ${numbPxToRem(24)};
 
     .circle-pokemon-image {
-        top: 0;
-        position: absolute;
         opacity: 0;
         pointer-events: none;
-        ${pokemonFloatingCardAnimationClasses}
     }
 
     .spinner {
@@ -27,12 +24,9 @@ export const Component = styled.section`
     }
 
     .styled-button {
-        position: absolute;
-        bottom: -${numbPxToRem(272)};
-
+        margin-top: ${numbPxToRem(10)};
         opacity: 0;
         pointer-events: none;
-        ${pokemonFloatingCardAnimationClasses}
 
         .arrow-return-ico {
             height: ${numbPxToRem(18)};
@@ -48,9 +42,15 @@ export const Component = styled.section`
             }
         }
     }
+
+    .circle-pokemon-image, & > .styled-button, .search-wrapper {
+        ${animationClasses}
+    }
 `
 
-export const SearchWrapper = styled.div`
+export const SearchWrapper = styled.div.attrs({
+    className: "search-wrapper"
+})`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,6 +73,4 @@ export const SearchWrapper = styled.div`
             fill: ${color.platinum};
         }
     }
-
-    ${pokemonFloatingCardAnimationClasses}
 `

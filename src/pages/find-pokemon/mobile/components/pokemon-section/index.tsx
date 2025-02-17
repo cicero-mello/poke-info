@@ -1,10 +1,10 @@
 import { Button, CirclePokemonImage, CirclePokemonImageRef, PokemonSearch, Spinner } from "@components"
-import { useAnimation } from "../../../desktop/components/pokemon-floating-card/animations"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useEffect, useRef, useState } from "preact/hooks"
 import { ArrowReturnIco, PikachuShadowIco } from "@assets"
 import { FunctionComponent as FC } from "preact"
 import { PokemonSectionProps } from "./types"
+import { useAnimation } from "./animations"
 import * as S from "./styles"
 import * as api from "@api"
 
@@ -36,7 +36,7 @@ export const PokemonSection: FC<PokemonSectionProps> = ({
             queryFn: () => api.getPokemon({ idOrName: pokemonId + "" })
         })
 
-        await animations.hideSearch()
+        await animations.hideSearchWrapper()
         await pokemonQuery
         setPokemonId(pokemonId)
 
@@ -53,16 +53,14 @@ export const PokemonSection: FC<PokemonSectionProps> = ({
         setEncountersPerVersionId(encountersPerVersionId)
         setHideSpinner(true)
         await animations.showPokemon()
-        animations.showReturnButton()
     }
 
     const onReturnToSearch = async () => {
-        animations.hideReturnButton()
         await animations.hidePokemon()
         setPokemonId(0)
         setChosenVersionId(0)
         setEncountersPerVersionId(undefined)
-        animations.showSearch()
+        animations.showSearchWrapper()
     }
 
     useEffect(() => {
