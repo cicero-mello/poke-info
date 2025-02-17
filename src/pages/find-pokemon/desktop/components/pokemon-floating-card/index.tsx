@@ -95,7 +95,7 @@ export const PokemonFloatingCard: FC<PokemonFloatingCardProps> = ({
                 </Button>
                 <S.SearchWrapper ref={refs.searchWrapper}>
                     <PokemonSearch
-                        label="Search for a name"
+                        label="Search for a name or number"
                         onFind={onFindPokemon}
                     />
                     <PikachuShadowIco />

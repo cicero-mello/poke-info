@@ -96,3 +96,8 @@ export const removeDuplicatesById = <T extends { id: number | string }>(
 export const updateUrl = (newUrl: string) => {
     window.history.replaceState({}, "", newUrl)
 }
+
+export const retractMobileKeyboard = () => {
+    const activeElement = document.activeElement as HTMLElement
+    if(!!activeElement) activeElement.blur()
+}

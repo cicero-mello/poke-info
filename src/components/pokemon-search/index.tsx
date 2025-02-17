@@ -1,8 +1,8 @@
+import { normalizePokemonName, retractMobileKeyboard } from "@utils"
 import { useEffect, useRef, useState } from "preact/hooks"
 import { useQuery } from "@tanstack/react-query"
 import { PokemonSearchProps } from "./types"
 import { SearchPokeballIco } from "@assets"
-import { normalizePokemonName } from "@utils"
 import { FunctionComponent as FC } from "preact"
 import * as S from "./styles"
 import * as api from "@api"
@@ -33,7 +33,10 @@ export const PokemonSearch: FC<PokemonSearchProps> = ({
     const searchPokemon = async () => {
         const { isError, data } = await refetch()
         if(isError || !data?.id) setShowNotFound(true)
-        else onFind(data.id)
+        else {
+            onFind(data.id)
+            retractMobileKeyboard()
+        }
         setPokemonSearchText("")
     }
 

@@ -2,6 +2,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { FunctionComponent as FC } from "preact"
 import { DiceIco, DoubleArrowIco } from "@assets"
 import { Button, SearchInput } from "@components"
+import { retractMobileKeyboard } from "@utils"
 import { FooterProps } from "./types"
 import { PATHS } from "@types"
 import * as S from "./styles"
@@ -40,7 +41,10 @@ export const Footer: FC<FooterProps> = ({
                 queryKey: ["getBerry", value],
                 queryFn: () => api.getBerry({ idOrName: value })
             })
-            if(id) changeBerry(id, "bottom")
+            if(id){
+                changeBerry(id, "bottom")
+                retractMobileKeyboard()
+            }
             return { notFound: !id }
         } catch (error) {
             return { notFound: true }
