@@ -7,9 +7,9 @@ export const Mobile: FC<ScreenProps> = ({
     pokemonId,
     setPokemonId,
     // chosenVersionId,
-    // setChosenVersionId,
+    setChosenVersionId,
     // encountersPerVersionId,
-    // setEncountersPerVersionId
+    setEncountersPerVersionId
 }) => {
 
     return (
@@ -18,6 +18,8 @@ export const Mobile: FC<ScreenProps> = ({
             <PokemonSection
                 pokemonId={pokemonId}
                 setPokemonId={setPokemonId}
+                setChosenVersionId={setChosenVersionId}
+                setEncountersPerVersionId={setEncountersPerVersionId}
             />
             {/* <VersionSection
                 chosenVersionId={chosenVersionId}
