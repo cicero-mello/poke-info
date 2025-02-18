@@ -6,6 +6,7 @@ export * from "./animation-classes"
 
 export const usePageAnimation = () => {
     const versionSectionRef = useRef<HTMLDivElement>(null)
+    const noEncountersSectionRef = useRef<HTMLDivElement>(null)
 
     const showVersionSection = async () => {
         applyAnimation<AnimationClass>({
@@ -27,13 +28,36 @@ export const usePageAnimation = () => {
         await delay(ANIMATION_TIME.fadeOut)
     }
 
+    const showNoEncountersSection = async () => {
+        applyAnimation<AnimationClass>({
+            element: noEncountersSectionRef.current,
+            animationClasses: ANIMATION_CLASSES,
+            desiredAnimationClass: "fade-in"
+        })
+
+        await delay(ANIMATION_TIME.fadeIn)
+    }
+
+    const hideNoEncountersSection = async () => {
+        applyAnimation<AnimationClass>({
+            element: noEncountersSectionRef.current,
+            animationClasses: ANIMATION_CLASSES,
+            desiredAnimationClass: "fade-out"
+        })
+
+        await delay(ANIMATION_TIME.fadeOut)
+    }
+
     return {
         refs: {
-            versionSection: versionSectionRef
+            versionSection: versionSectionRef,
+            noEncountersSection: noEncountersSectionRef
         },
         animations: {
             showVersionSection,
-            hideVersionSection
+            hideVersionSection,
+            showNoEncountersSection,
+            hideNoEncountersSection
         }
     }
 }

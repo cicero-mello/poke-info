@@ -1,4 +1,4 @@
-import { PokemonSection, VersionSection } from "./components"
+import * as C from "./components"
 import { FunctionComponent as FC } from "preact"
 import { versionNamePerVersionId } from "@utils"
 import { usePageAnimation } from "./animations"
@@ -20,10 +20,15 @@ export const Mobile: FC<ScreenProps> = ({
         encountersPerVersionId.size > 0
     )
 
+    const showNoEncountersCard = (
+        !!encountersPerVersionId &&
+        encountersPerVersionId.size === 0
+    )
+
     return (
         <S.Screen>
             <S.PageName>Find a Pokémon</S.PageName>
-            <PokemonSection
+            <C.PokemonSection
                 pokemonId={pokemonId}
                 setPokemonId={setPokemonId}
                 setChosenVersionId={setChosenVersionId}
@@ -31,11 +36,16 @@ export const Mobile: FC<ScreenProps> = ({
                 pageAnimations={animations}
             />
             {showVersionCard &&
-                <VersionSection
+                <C.VersionSection
                     versionIds={[...versionNamePerVersionId.keys()]}
                     chosenVersionId={chosenVersionId}
                     setChosenVersionId={setChosenVersionId}
                     componentRef={refs.versionSection}
+                />
+            }
+            {showNoEncountersCard &&
+                <C.NoEncountersSection
+                    componentRef={refs.noEncountersSection}
                 />
             }
         </S.Screen>

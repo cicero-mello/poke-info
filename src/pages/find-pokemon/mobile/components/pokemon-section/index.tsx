@@ -50,14 +50,21 @@ export const PokemonSection: FC<PokemonSectionProps> = ({
             queryFn: () => api.getPokemonLocationAreas({ idOrName: pokemonId })
         })
 
+        const haveEncounter = (
+            !!encountersPerVersionId &&
+            encountersPerVersionId.size > 0
+        )
+
         clearTimeout(showSpinnerTimeout)
         setEncountersPerVersionId(encountersPerVersionId)
         setHideSpinner(true)
         await animations.showPokemon()
-        pageAnimations.showVersionSection()
+        if(haveEncounter) pageAnimations.showVersionSection()
+        else pageAnimations.showNoEncountersSection()
     }
 
     const onReturnToSearch = async () => {
+        pageAnimations.hideNoEncountersSection()
         await pageAnimations.hideVersionSection()
         await animations.hidePokemon()
         setPokemonId(0)
