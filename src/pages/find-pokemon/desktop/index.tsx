@@ -32,7 +32,7 @@ export const Desktop: FC<ScreenProps> = ({
 
     useEffect(() => {
         if(showNoEncountersCard){
-            animations.hideNoEncountersFloatingCard()
+            animations.showNoEncountersFloatingCard()
             return
         }
         if(showVersionCard){

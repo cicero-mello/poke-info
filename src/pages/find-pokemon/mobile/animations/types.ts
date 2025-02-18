@@ -5,12 +5,15 @@ export interface PageAnimations {
     hideVersionSection: () => Promise<void>
     showNoEncountersSection: () => Promise<void>
     hideNoEncountersSection: () => Promise<void>
+    showPlacesSection: () => Promise<void>
+    hidePlacesSection: () => Promise<void>
 }
 
 export interface UsePageAnimation {
     refs: {
         versionSection: RefObject<HTMLDivElement>
         noEncountersSection: RefObject<HTMLDivElement>
+        placesSection: RefObject<HTMLDivElement>
     }
     animations: PageAnimations
 }

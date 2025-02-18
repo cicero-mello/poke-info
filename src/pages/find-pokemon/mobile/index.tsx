@@ -1,8 +1,8 @@
-import * as C from "./components"
 import { FunctionComponent as FC } from "preact"
-import { versionNamePerVersionId } from "@utils"
 import { usePageAnimation } from "./animations"
+import { useEffect } from "preact/hooks"
 import { ScreenProps } from "../types"
+import * as C from "./components"
 import * as S from "./styles"
 
 export const Mobile: FC<ScreenProps> = ({
@@ -25,6 +25,24 @@ export const Mobile: FC<ScreenProps> = ({
         encountersPerVersionId.size === 0
     )
 
+    const showPlacesCard = (
+        !!chosenVersionId &&
+        !!encountersPerVersionId
+    )
+
+    useEffect(() => {
+        if(showNoEncountersCard){
+            animations.showNoEncountersSection()
+            return
+        }
+        if(showVersionCard){
+            animations.showVersionSection()
+        }
+        if(showPlacesCard){
+            animations.showPlacesSection()
+        }
+    }, [])
+
     return (
         <S.Screen>
             <S.PageName>Find a Pokémon</S.PageName>
@@ -37,15 +55,22 @@ export const Mobile: FC<ScreenProps> = ({
             />
             {showVersionCard &&
                 <C.VersionSection
-                    versionIds={[...versionNamePerVersionId.keys()]}
+                    versionIds={[...encountersPerVersionId.keys()]}
                     chosenVersionId={chosenVersionId}
                     setChosenVersionId={setChosenVersionId}
                     componentRef={refs.versionSection}
+                    pageAnimations={animations}
                 />
             }
             {showNoEncountersCard &&
                 <C.NoEncountersSection
                     componentRef={refs.noEncountersSection}
+                />
+            }
+            {showPlacesCard &&
+                <C.PlacesSection
+                    componentRef={refs.placesSection}
+                    encounters={encountersPerVersionId.get(chosenVersionId)!}
                 />
             }
         </S.Screen>

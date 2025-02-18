@@ -65,6 +65,7 @@ export const PokemonSection: FC<PokemonSectionProps> = ({
 
     const onReturnToSearch = async () => {
         pageAnimations.hideNoEncountersSection()
+        pageAnimations.hidePlacesSection()
         await pageAnimations.hideVersionSection()
         await animations.hidePokemon()
         setPokemonId(0)

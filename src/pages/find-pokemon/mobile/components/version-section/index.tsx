@@ -13,6 +13,7 @@ export const VersionSection: FC<VersionSectionProps> = ({
     versionIds,
     chosenVersionId,
     setChosenVersionId,
+    pageAnimations,
     componentRef
 }) => {
     const momentumScrollX = useMomentumScrollX()
@@ -32,14 +33,20 @@ export const VersionSection: FC<VersionSectionProps> = ({
     }
 
     const onReturnToList = async () => {
+        pageAnimations.hidePlacesSection()
         await animations.hideSettedVersion()
         setChosenVersionId(0)
         setIsToShowSettedVersion(false)
     }
 
     useEffect(() => {
+        const showSettedVersionAndPlacesSection = async () => {
+            await animations.showSettedVersion()
+            pageAnimations.showPlacesSection()
+        }
+
         if (isToShowSettedVersion){
-            animations.showSettedVersion()
+            showSettedVersionAndPlacesSection()
             return
         }
         animations.showVersionList()
