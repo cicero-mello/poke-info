@@ -1,3 +1,5 @@
+import { dimensions } from "@style-guide/dimensions"
+import { scrollbar } from "@style-guide/scrollbar"
 import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
@@ -8,11 +10,14 @@ export const Screen = styled.main`
     flex-direction: column;
     background: ${color.onyxAlpha83};
     width: 100%;
-    height: 100%;
-    padding: 36px 24px;
+    height: calc(100svh - ${dimensions.headerHeight});
+    padding: 28px 24px;
     color: ${color.pearlGray};
     align-items: center;
-    gap: ${numbPxToRem(24)};
+    gap: ${numbPxToRem(32)};
+
+    overflow-y: scroll;
+    ${scrollbar.tinyGray}
 `
 
 export const PageName = styled.h1`

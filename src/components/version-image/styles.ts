@@ -48,7 +48,9 @@ ${({ $isLoaded }) => css`
     opacity: ${$isLoaded ? "0.7" : "0 !important"};
 `}`
 
-export const ImageLoader = styled.div`
+export const ImageLoader = styled.div.attrs({
+    className: "image-loader-version-image"
+})`
     height: ${numbPxToRem(120)};
     width: ${numbPxToRem(120)};
     pointer-events: none;

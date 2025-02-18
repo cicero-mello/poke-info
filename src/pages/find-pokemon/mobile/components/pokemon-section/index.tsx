@@ -12,7 +12,8 @@ export const PokemonSection: FC<PokemonSectionProps> = ({
     pokemonId,
     setPokemonId,
     setChosenVersionId,
-    setEncountersPerVersionId
+    setEncountersPerVersionId,
+    pageAnimations
 }) => {
     const { refs, animations } = useAnimation()
 
@@ -53,9 +54,11 @@ export const PokemonSection: FC<PokemonSectionProps> = ({
         setEncountersPerVersionId(encountersPerVersionId)
         setHideSpinner(true)
         await animations.showPokemon()
+        pageAnimations.showVersionSection()
     }
 
     const onReturnToSearch = async () => {
+        await pageAnimations.hideVersionSection()
         await animations.hidePokemon()
         setPokemonId(0)
         setChosenVersionId(0)

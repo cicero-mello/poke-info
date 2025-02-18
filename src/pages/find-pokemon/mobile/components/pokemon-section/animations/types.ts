@@ -15,7 +15,5 @@ export interface UseAnimation {
 }
 
 export type AnimationClass = (
-    "go-left" | "come-from-left" |
-    "spin-zoom-in" | "spin-zoom-out" |
     "fade-in" | "fade-out"
 )
