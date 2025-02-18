@@ -5,6 +5,7 @@ import styled from "styled-components"
 export const Component = styled.section`
     display: flex;
     flex-direction: column;
+    max-width: ${numbPxToRem(680)};
     margin-top: ${numbPxToRem(24)};
     gap: ${numbPxToRem(24)};
 
