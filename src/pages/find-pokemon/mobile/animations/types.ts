@@ -19,5 +19,6 @@ export interface UsePageAnimation {
 }
 
 export type AnimationClass = (
-    "fade-in" | "fade-out"
+    "fade-in" | "fade-out" |
+    "go-bottom" | "come-from-bottom"
 )

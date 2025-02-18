@@ -17,7 +17,7 @@ export const Screen = styled.main`
     gap: ${numbPxToRem(32)};
 
     overflow-y: scroll;
-    ${scrollbar.tinyGray}
+    ${scrollbar.hidden}
 `
 
 export const PageName = styled.h1`

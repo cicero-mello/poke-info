@@ -11,9 +11,12 @@ export interface UseAnimation {
         hideSearchWrapper: () => Promise<void>
         showPokemon: () => Promise<void>
         hidePokemon: () => Promise<void>
+        hideReturnButton: () => Promise<void>
     }
 }
 
 export type AnimationClass = (
-    "fade-in" | "fade-out"
+    "fade-in" | "fade-out" |
+    "spin-zoom-in" | "spin-zoom-out" |
+    "go-left" | "come-from-left"
 )

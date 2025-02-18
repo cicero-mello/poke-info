@@ -1,16 +1,36 @@
-import { fadeIn } from "@style-guide/keyframes"
+import { fadeIn, fadeOut, spinZoom } from "@style-guide/keyframes"
+import { css, keyframes } from "styled-components"
+import { numbPxToRem } from "@style-guide"
 import { AnimationClass } from "./types"
-import { css } from "styled-components"
 
 export const ANIMATION_CLASSES: AnimationClass[] = [
     "fade-in",
-    "fade-out"
+    "fade-out",
+    "spin-zoom-in",
+    "spin-zoom-out",
+    "go-left",
+    "come-from-left"
 ]
 
 export const ANIMATION_TIME = {
     fadeIn: 200,
-    fadeOut: 200
+    fadeOut: 200,
+    spinZoomIn: 500,
+    spinZoomOut: 500,
+    goLeft: 300,
+    comeFromLeft: 300
 }
+
+const customGoLeft = keyframes`
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-${numbPxToRem(100)});
+        opacity: 0;
+    }
+`
 
 export const animationClasses = css`
     &.fade-in {
@@ -21,10 +41,39 @@ export const animationClasses = css`
         ;
     }
     &.fade-out {
+        pointer-events: none;
         animation:
-            ${fadeIn}
+            ${fadeOut}
             ${ANIMATION_TIME.fadeOut}ms
-            linear forwards reverse
+            linear forwards
+        ;
+    }
+    &.spin-zoom-in {
+        animation:
+            ${spinZoom}
+            ${ANIMATION_TIME.spinZoomIn}ms
+            ease-in-out forwards
+        ;
+    }
+    &.spin-zoom-out {
+        animation:
+            ${spinZoom}
+            ${ANIMATION_TIME.spinZoomOut}ms
+            ease-in-out reverse forwards
+        ;
+    }
+    &.go-left {
+        animation:
+            ${customGoLeft}
+            ${ANIMATION_TIME.goLeft}ms
+            ease-in-out forwards
+        ;
+    }
+    &.come-from-left {
+        animation:
+            ${customGoLeft}
+            ${ANIMATION_TIME.comeFromLeft}ms
+            ease-in-out forwards reverse
         ;
     }
 `

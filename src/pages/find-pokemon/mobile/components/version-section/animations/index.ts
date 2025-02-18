@@ -33,41 +33,40 @@ export const useAnimation = (): UseAnimation => {
         applyAnimation<AnimationClass>({
             element: versionListWrapperRef.current,
             animationClasses: ANIMATION_CLASSES,
-            desiredAnimationClass: "fade-in"
+            desiredAnimationClass: "come-from-left"
         })
 
-        await delay(ANIMATION_TIME.fadeIn)
+        await delay(ANIMATION_TIME.comeFromLeft)
     }
 
     const hideVersionList = async () => {
         applyAnimation<AnimationClass>({
             element: versionListWrapperRef.current,
             animationClasses: ANIMATION_CLASSES,
-            desiredAnimationClass: "fade-out"
+            desiredAnimationClass: "go-left"
         })
 
-        await delay(ANIMATION_TIME.fadeOut)
+        await delay(ANIMATION_TIME.goLeft)
     }
 
     const hideSettedVersion = async () => {
-        hideReturnButton()
         applyAnimation<AnimationClass>({
             element: settedVersionImageRef.current,
             animationClasses: ANIMATION_CLASSES,
-            desiredAnimationClass: "fade-out"
+            desiredAnimationClass: "spin-zoom-out"
         })
 
-        await delay(ANIMATION_TIME.fadeOut)
+        await delay(ANIMATION_TIME.spinZoomOut)
     }
 
     const showSettedVersion = async () => {
         applyAnimation<AnimationClass>({
             element: settedVersionImageRef.current,
             animationClasses: ANIMATION_CLASSES,
-            desiredAnimationClass: "fade-in"
+            desiredAnimationClass: "spin-zoom-in"
         })
 
-        await delay(ANIMATION_TIME.fadeIn)
+        await delay(ANIMATION_TIME.spinZoomIn)
         showReturnButton()
     }
 
@@ -81,7 +80,8 @@ export const useAnimation = (): UseAnimation => {
             showVersionList,
             hideVersionList,
             hideSettedVersion,
-            showSettedVersion
+            showSettedVersion,
+            hideReturnButton
         }
     }
 }

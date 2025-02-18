@@ -32,42 +32,40 @@ export const useAnimation = (): UseAnimation => {
         applyAnimation<AnimationClass>({
             element: searchWrapperRef.current,
             animationClasses: ANIMATION_CLASSES,
-            desiredAnimationClass: "fade-in"
+            desiredAnimationClass: "come-from-left"
         })
 
-        await delay(ANIMATION_TIME.fadeIn)
+        await delay(ANIMATION_TIME.comeFromLeft)
     }
 
     const hideSearchWrapper = async () => {
         applyAnimation<AnimationClass>({
             element: searchWrapperRef.current,
             animationClasses: ANIMATION_CLASSES,
-            desiredAnimationClass: "fade-out"
+            desiredAnimationClass: "go-left"
         })
 
-        await delay(ANIMATION_TIME.fadeOut)
+        await delay(ANIMATION_TIME.goLeft)
     }
 
     const showPokemon = async () => {
         applyAnimation<AnimationClass>({
             element: circlePokemonImageRef.current,
             animationClasses: ANIMATION_CLASSES,
-            desiredAnimationClass: "fade-in"
+            desiredAnimationClass: "spin-zoom-in"
         })
 
-        await delay(ANIMATION_TIME.fadeIn)
+        await delay(ANIMATION_TIME.spinZoomIn)
         showReturnButton()
     }
 
     const hidePokemon = async () => {
-        hideReturnButton()
-
         applyAnimation<AnimationClass>({
             element: circlePokemonImageRef.current,
             animationClasses: ANIMATION_CLASSES,
-            desiredAnimationClass: "fade-out"
+            desiredAnimationClass: "spin-zoom-out"
         })
-        await delay(ANIMATION_TIME.fadeOut)
+        await delay(ANIMATION_TIME.spinZoomOut)
     }
 
     return {
@@ -80,7 +78,8 @@ export const useAnimation = (): UseAnimation => {
             showSearchWrapper,
             hideSearchWrapper,
             showPokemon,
-            hidePokemon
+            hidePokemon,
+            hideReturnButton
         }
     }
 }

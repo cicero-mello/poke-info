@@ -13,20 +13,20 @@ export const usePageAnimation = (): UsePageAnimation => {
         applyAnimation<AnimationClass>({
             element: versionSectionRef.current,
             animationClasses: ANIMATION_CLASSES,
-            desiredAnimationClass: "fade-in"
+            desiredAnimationClass: "come-from-bottom"
         })
 
-        await delay(ANIMATION_TIME.fadeIn)
+        await delay(ANIMATION_TIME.comeFromBottom)
     }
 
     const hideVersionSection = async () => {
         applyAnimation<AnimationClass>({
             element: versionSectionRef.current,
             animationClasses: ANIMATION_CLASSES,
-            desiredAnimationClass: "fade-out"
+            desiredAnimationClass: "go-bottom"
         })
 
-        await delay(ANIMATION_TIME.fadeOut)
+        await delay(ANIMATION_TIME.goBottom)
     }
 
     const showNoEncountersSection = async () => {
@@ -53,20 +53,20 @@ export const usePageAnimation = (): UsePageAnimation => {
         applyAnimation<AnimationClass>({
             element: placesSectionRef.current,
             animationClasses: ANIMATION_CLASSES,
-            desiredAnimationClass: "fade-in"
+            desiredAnimationClass: "come-from-bottom"
         })
 
-        await delay(ANIMATION_TIME.fadeIn)
+        await delay(ANIMATION_TIME.comeFromBottom)
     }
 
     const hidePlacesSection = async () => {
         applyAnimation<AnimationClass>({
             element: placesSectionRef.current,
             animationClasses: ANIMATION_CLASSES,
-            desiredAnimationClass: "fade-out"
+            desiredAnimationClass: "go-bottom"
         })
 
-        await delay(ANIMATION_TIME.fadeOut)
+        await delay(ANIMATION_TIME.goBottom)
     }
 
     return {

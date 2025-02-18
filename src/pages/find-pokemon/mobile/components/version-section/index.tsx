@@ -33,7 +33,8 @@ export const VersionSection: FC<VersionSectionProps> = ({
     }
 
     const onReturnToList = async () => {
-        pageAnimations.hidePlacesSection()
+        animations.hideReturnButton()
+        await pageAnimations.hidePlacesSection()
         await animations.hideSettedVersion()
         setChosenVersionId(0)
         setIsToShowSettedVersion(false)
