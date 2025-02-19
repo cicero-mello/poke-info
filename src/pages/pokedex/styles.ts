@@ -125,8 +125,8 @@ ${({ $hide }) => css`
 
     position: relative;
     width: 100%;
-    height: ${pxToRem("20px")};
-    margin-bottom: ${pxToRem(`42px`)};
+    min-height: ${pxToRem("20px")};
+    margin-bottom: ${pxToRem(`36px`)};
     color: ${styleGuide.color.ashGray};
     -webkit-tap-highlight-color: transparent;
 

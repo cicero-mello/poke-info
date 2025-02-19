@@ -15,8 +15,8 @@
 
     &:focus-visible {
         outline: 4px solid #f34343;
-        outline-offset: 4px;
-        border-radius: 2px;
+        outline-offset: 0.25rem;
+        border-radius: 0.125rem;
     }
 }
 

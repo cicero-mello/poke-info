@@ -1,5 +1,5 @@
+import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import styled, { css, keyframes } from "styled-components"
-import { pxToRem, styleGuide } from "@style-guide"
 import { StyledCardProps } from "./types"
 
 export enum POKE_CARD_STYLE_DATA {
@@ -176,6 +176,14 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
 
         &:hover, &:has(:focus) {
             transform: scale(2.5) rotate(25deg);
+        }
+
+        input {
+            width: ${numbPxToRem(18)};
+            height: ${numbPxToRem(18)};
+            outline-width: ${numbPxToRem(2)};
+            bottom: 0;
+            border-radius: 50%;
         }
     }
 

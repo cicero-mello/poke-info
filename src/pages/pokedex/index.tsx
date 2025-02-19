@@ -112,6 +112,10 @@ export const Pokedex = () => {
         windowDimensions.width <= 760/16 * rootFontSize
     )
 
+    const filtersAreHidden = (
+        showToggleFilterButton && hideFilters
+    )
+
     return (
         <S.Screen $chosePokemon={chosePokemon}>
             <PokeWindow>
@@ -119,12 +123,14 @@ export const Pokedex = () => {
                     <PokemonSearch
                         onFind={handleClickPokeCard}
                         label="Search a Pokémon by name or number"
+                        tabIndex={filtersAreHidden ? -1 : 0}
                     />
                     <S.RightFilters>
                         <FavoriteCheckbox
                             label="Only Favorites"
                             onChange={handleChangeFavorite}
                             defaultChecked={showOnlyFavorites}
+                            tabIndex={filtersAreHidden ? -1 : 0}
                         />
                         <Switch
                             label="View Mode"
@@ -132,6 +138,7 @@ export const Pokedex = () => {
                             nameRight="Detailed"
                             defaultValue={cardMode}
                             onChange={handleChangeSwitch}
+                            tabIndex={filtersAreHidden ? -1 : 0}
                         />
                     </S.RightFilters>
                 </S.Filters>

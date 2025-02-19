@@ -1,4 +1,4 @@
-import { pxToRem, styleGuide } from "@style-guide"
+import { numbPxToRem, styleGuide } from "@style-guide"
 import styled from "styled-components"
 
 export const Component = styled.div.attrs({
@@ -9,13 +9,14 @@ export const Component = styled.div.attrs({
     flex-direction: column;
     align-items: center;
     width: fit-content;
-    gap: ${pxToRem("4px")};
+    height: fit-content;
+    gap: ${numbPxToRem(4)};
 
     .checkbox-pokeball {
         cursor: pointer;
         user-select: none;
-        width: ${pxToRem(`30px`)};
-        height: ${pxToRem("30px")};
+        width: ${numbPxToRem(30)};
+        height: ${numbPxToRem(30)};
         filter: drop-shadow(0px 4px 4px #0000005E);
 
         & > * {
@@ -42,6 +43,9 @@ export const Component = styled.div.attrs({
 export const Input = styled.input`
     appearance: none;
     position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
 `
 
 export const Label = styled.label`
