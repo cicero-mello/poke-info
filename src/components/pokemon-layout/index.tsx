@@ -1,6 +1,6 @@
+import { useEffect, useLayoutEffect, useState } from "preact/hooks"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { TopAreaDesktop } from "./top-area-desktop"
-import { useEffect, useState } from "preact/hooks"
 import { TopAreaMobile } from "./top-area-mobile"
 import { FunctionComponent as FC } from "preact"
 import { PokemonLayoutContext } from "./context"
@@ -50,6 +50,10 @@ export const PokemonLayout: FC<PokemonLayoutProps> = ({
     const onLoadImageWhenPokemonChanges = () => {
         setPrepareToChangePokemon(false)
     }
+
+    useLayoutEffect(() => {
+        setPokeId(pokemonId ?? params.id)
+    }, [pokemonId, params.id])
 
     if(reverseAnimationEnded) return <></>
 
