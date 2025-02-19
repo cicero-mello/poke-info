@@ -27,7 +27,8 @@ ${({
     $previewMode,
     $reverseAnimation,
     $removePointerEvents,
-    $prepareToChangePokemon
+    $prepareToChangePokemon,
+    $isMobileMode
 }) => css`
     display: flex;
     position: relative;
@@ -78,6 +79,13 @@ ${({
         .sparkles-ico,
         .tab-viewer > div[role="tabpanel"] > div {
             opacity: 0;
+        }
+    `}
+
+    ${$isMobileMode && css`
+        .tab-viewer {
+            transition: 300ms ease-in-out;
+            opacity: ${$prepareToChangePokemon ? "0" : "1"};
         }
     `}
 `}`

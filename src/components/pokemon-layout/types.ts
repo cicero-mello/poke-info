@@ -12,6 +12,7 @@ export interface StyledComponentProps {
     $reverseAnimation: boolean
     $removePointerEvents: boolean
     $prepareToChangePokemon: boolean
+    $isMobileMode: boolean
 }
 
 export interface StyledDownAreaProps {

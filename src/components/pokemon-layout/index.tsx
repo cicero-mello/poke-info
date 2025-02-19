@@ -1,6 +1,7 @@
-import { useEffect, useLayoutEffect, useState } from "preact/hooks"
+import { useEffect, useLayoutEffect, useRef, useState } from "preact/hooks"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { TopAreaDesktop } from "./top-area-desktop"
+import { delay, scrollElementToTop } from "@utils"
 import { TopAreaMobile } from "./top-area-mobile"
 import { FunctionComponent as FC } from "preact"
 import { PokemonLayoutContext } from "./context"
@@ -8,7 +9,6 @@ import { PokemonLayoutProps } from "./types"
 import { useNavigation } from "@hooks"
 import { useRoute } from "preact-iso"
 import { PATHS } from "@types"
-import { delay } from "@utils"
 import * as S from "./styles"
 import * as api from "@api"
 
@@ -18,6 +18,7 @@ export const PokemonLayout: FC<PokemonLayoutProps> = ({
 }) => {
     const { params } = useRoute()
     const { navigate } = useNavigation()
+    const contentRef = useRef<HTMLDivElement>(null)
     const [reverseAnimationEnded, setReverseAnimationEnded] = useState(false)
     const [removePointerEvents, setRemovePointerEvents] = useState(false)
     const [pokeId, setPokeId] = useState(pokemonId ?? params.id)
@@ -43,6 +44,7 @@ export const PokemonLayout: FC<PokemonLayoutProps> = ({
         })
         setPrepareToChangePokemon(true)
         await delay(300)
+        scrollElementToTop(contentRef.current!)
         setPokeId(id)
         navigate(PATHS.POKEDEX + "/" + id, false)
     }
@@ -63,6 +65,7 @@ export const PokemonLayout: FC<PokemonLayoutProps> = ({
             $reverseAnimation={!!reverseAnimation}
             $removePointerEvents={removePointerEvents || !children}
             $prepareToChangePokemon={prepareToChangePokemon}
+            $isMobileMode={!!isMobileMode}
         >
             {isMobileMode ?
                 <TopAreaMobile
@@ -89,6 +92,7 @@ export const PokemonLayout: FC<PokemonLayoutProps> = ({
                 >
                     {children &&
                         <S.Content
+                            ref={contentRef}
                             $isMobileMode={!!isMobileMode}
                             $pokemonType={data?.types[0] ?? "normal"}
                         >
