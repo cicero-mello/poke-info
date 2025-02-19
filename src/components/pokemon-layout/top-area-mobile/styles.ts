@@ -77,6 +77,13 @@ export const RightSide = styled.div`
         height: ${numbPxToRem(24)};
     }
 
+    .favorite-checkbox {
+        input {
+            border-radius: 50%;
+            top: 0;
+        }
+    }
+
     .checkbox-pokeball {
         width: ${numbPxToRem(34)};
         height: ${numbPxToRem(34)};

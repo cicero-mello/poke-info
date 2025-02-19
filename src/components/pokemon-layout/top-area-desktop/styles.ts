@@ -23,11 +23,14 @@ export const Component = styled.div.attrs({
         right: ${pxToRem("16px")};
         top: ${pxToRem("10px")};
 
-        opacity: 0.6;
-        transition: ${styleGuide.transitionTime.fast};
-
+        svg {
+            transition: ${styleGuide.transitionTime.fast};
+            opacity: 0.6;
+        }
         &:hover {
-            opacity: 1;
+            svg {
+                opacity: 1;
+            }
         }
     }
 `
@@ -57,6 +60,13 @@ export const TagsAndFavorite = styled.div`
     margin-left: ${pxToRem("28px")};
     flex-direction: column;
     justify-content: space-evenly;
+
+    .favorite-checkbox {
+        input {
+            border-radius: 50%;
+            top: 0;
+        }
+    }
 
     .checkbox-pokeball {
         width: ${pxToRem("44px")};

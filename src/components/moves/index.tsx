@@ -82,6 +82,7 @@ export const Moves: FC<MovesProps> = ({
                     <S.ReturnToMainSection
                         onClick={handleClickReturn}
                         $hide={currentSection.name === "main" || isLoading}
+                        tabIndex={currentSection.name === "main" ? -1 : 0}
                     >
                         <ArrowReturnIco />
                     </S.ReturnToMainSection>

@@ -1,6 +1,7 @@
-import { css } from "styled-components"
-import { styleGuide } from "@style-guide"
 import { ButtonTheme, ThemeFunction } from "../types"
+import { color } from "@style-guide/color"
+import { styleGuide } from "@style-guide"
+import { css } from "styled-components"
 
 const line: ThemeFunction = ($emphasis) => css`
     ${styleGuide.text.lg}
@@ -58,8 +59,6 @@ const linePokemon: ThemeFunction = ($emphasis, $pokemonType) => css`
     line-height: 1.75rem;
     white-space: nowrap;
 
-    color: white;
-
     justify-content: center;
 
     &::before {
@@ -71,11 +70,13 @@ const linePokemon: ThemeFunction = ($emphasis, $pokemonType) => css`
     transition-timing-function: ease-out;
 
     ${!$emphasis && css`
+        color: ${color.whiteAlpha80}
         opacity: 0.8;
         transform: scale(0.8);
     `}
 
     ${$emphasis && css`
+        color: white;
         &::before {
             height: 2px;
             border-radius: 4px;
