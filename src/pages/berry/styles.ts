@@ -44,6 +44,10 @@ export const Screen = styled.div`
             .berries-header-retract-button {
                 width: ${numbPxToRem(36)};
             }
+
+            .hidden-description {
+                margin-right: ${numbPxToRem(24)}
+            }
         }
 
         .berry-data {

@@ -1,9 +1,9 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { BerryComponents, Button, Spinner } from "@components"
+import { useDocumentTitle, useWindowResize } from "@hooks"
 import { getRootFontSize, updateUrl } from "@utils"
 import { useAnimation } from "./animation"
 import { ArrowReturnIco } from "@assets"
-import { useDocumentTitle, useWindowResize } from "@hooks"
 import { useState } from "preact/hooks"
 import { useRoute } from "preact-iso"
 import { PATHS } from "@types"
@@ -93,17 +93,17 @@ export const Berry = () => {
 
     const windowDimensions = useWindowResize()
     const rootFontSize = getRootFontSize()
+    const isVerticalLayout = (
+        windowDimensions.width <= (860 / 16 * rootFontSize)
+    )
     const pentagonSize = (
         windowDimensions.width > (500 / 16 * rootFontSize) ? 140 : 120
-    )
-    const pentagonAlwaysShowStatsValue = (
-        windowDimensions.width <= (860 / 16 * rootFontSize)
     )
 
     return (
         <S.Screen>
             <S.BerryWindow>
-                <BerryComponents.Header/>
+                <BerryComponents.Header startsRetracted={isVerticalLayout}/>
                 <S.BerryData $showLoading={showLoader || !data}>
                     <Spinner />
                     {!!data && <>
@@ -140,7 +140,7 @@ export const Berry = () => {
                                 flavors={data.flavors}
                                 pentagonSize={pentagonSize}
                                 componentRef={refs.berryContentRef}
-                                pentagonAlwaysShowStatsValue={pentagonAlwaysShowStatsValue}
+                                pentagonAlwaysShowStatsValue={isVerticalLayout}
                             />
                         }
                         {!!itemId &&

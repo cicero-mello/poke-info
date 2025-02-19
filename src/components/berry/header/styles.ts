@@ -36,6 +36,17 @@ export const Description = styled.p`
     transition: ${transitionTime.slow} ease-in-out;
 `
 
+export const HiddenDescription = styled.p.attrs({
+    className: "hidden-description"
+})`
+    position: absolute;
+    pointer-events: none;
+    overflow: hidden;
+    margin-right: ${numbPxToRem(48)};
+    opacity: 0;
+    ${text.xl}
+`
+
 export const RetractButton = styled.button.attrs({
     className: "berries-header-retract-button"
 })`
