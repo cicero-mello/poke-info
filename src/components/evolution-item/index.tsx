@@ -70,7 +70,7 @@ export const EvolutionItem: FC<EvolutionItemProps> = ({
                         }
                         {!!requirement.heldItem &&
                             <InfoLine title="Held Item">
-                                {requirement.item}
+                                {requirement.heldItem}
                             </InfoLine>
                         }
                         {!!requirement.knowMoveType &&
