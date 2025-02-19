@@ -39,11 +39,30 @@ ${({$hasScrollX}) => css`
         &:active {
             cursor: grabbing;
         }
+
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            black ${numbPxToRem(24)},
+            black calc(100% - ${numbPxToRem(24)}),
+            transparent
+        );
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            black ${numbPxToRem(24)},
+            black calc(100% - ${numbPxToRem(24)}),
+            transparent
+        );
     `}
 
     ${scrollbar.whiteSmall}
     &::-webkit-scrollbar {
         height: ${numbPxToRem(2)};
+    }
+    &::-webkit-scrollbar-track {
+        margin-right: ${numbPxToRem(24)};
+        margin-left: ${numbPxToRem(24)};
     }
 
     .info-line {

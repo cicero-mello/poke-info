@@ -79,7 +79,7 @@ export const Screen = styled.div`
                     order: 2;
                     gap: ${numbPxToRem(8)};
                     column-gap: ${numbPxToRem(32)};
-                    padding: ${numbPxToRem(24)} ${numbPxToRem(12)} ${numbPxToRem(18)} ${numbPxToRem(12)};
+                    padding: ${numbPxToRem(24)} ${numbPxToRem(24)} ${numbPxToRem(18)} ${numbPxToRem(24)};
 
                     .info-line {
                         ${text.lg}
