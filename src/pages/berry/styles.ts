@@ -204,7 +204,9 @@ export const TitleWrapper = styled.header`
         height: fit-content;
         width: fit-content;
 
-        transition: 120ms linear;
+        transition-property: color, background-color, opacity;
+        transition-timing-function: linear, linear, linear;
+        transition-duration: 120ms, 120ms, 120ms;
 
         &:hover {
             .arrow-return-ico > path {

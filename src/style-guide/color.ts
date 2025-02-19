@@ -49,6 +49,7 @@ export enum color {
     royalBlue = "#235CF0",
     royalBlueAlpha92 = "#235CF0EB",
     coralRed = "#FF4A4A",
+    outline = "#F34343",
 
     hp = "#5FA659",
     attack = "#DFAA6E",

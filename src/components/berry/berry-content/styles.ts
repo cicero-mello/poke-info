@@ -1,9 +1,9 @@
 import { berryAnimationClasses } from "@pages/berry/animation"
 import { scrollbar } from "@style-guide/scrollbar"
+import styled, { css } from "styled-components"
 import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import { text } from  "@style-guide/text"
-import styled, { css } from "styled-components"
 
 export const Component = styled.div.attrs({
     className: "berry-content"
@@ -32,6 +32,12 @@ ${({$hasScrollX}) => css`
     width: 100%;
     overflow-x: scroll;
     padding-bottom: ${numbPxToRem(24)};
+
+    &:focus-visible{
+        box-sizing: inherit;
+        border-top: ${numbPxToRem(4)} solid ${color.outline};
+        border-bottom: ${numbPxToRem(4)} solid ${color.outline};
+    }
 
     ${$hasScrollX && css`
         user-select: none;

@@ -1,9 +1,10 @@
 import { delay, normalizePokemonName } from "@utils"
 import { FunctionComponent as FC } from "preact"
+import { useRef, useState } from "preact/hooks"
 import { Spinner } from "@components/spinner"
 import { MagnifyingGlassIco } from "@assets"
 import { SearchInputProps } from "./types"
-import { useState } from "preact/hooks"
+import { useFocusOrigin } from "@hooks"
 import * as S from "./styles"
 
 export const SearchInput: FC<SearchInputProps> = ({
@@ -11,6 +12,8 @@ export const SearchInput: FC<SearchInputProps> = ({
 }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [isNotFound, setIsNotFound] = useState(false)
+    const inputRef = useRef<HTMLInputElement>(null)
+    const focusOrigin = useFocusOrigin(inputRef)
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -33,6 +36,7 @@ export const SearchInput: FC<SearchInputProps> = ({
             onSubmit={handleSubmit}
             $isLoading={isLoading}
             $isNotFound={isNotFound}
+            $focusOrigin={focusOrigin}
         >
             <S.Input
                 name="search"
@@ -40,6 +44,7 @@ export const SearchInput: FC<SearchInputProps> = ({
                 spellcheck={false}
                 autoCorrect="off"
                 autoCapitalize="off"
+                ref={inputRef}
             />
             <S.SearchButton $isLoading={isLoading}>
                 <MagnifyingGlassIco />

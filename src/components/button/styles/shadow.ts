@@ -16,8 +16,11 @@ const shadow: ThemeFunction = () => css`
     padding: ${numbPxToRem(8)};
     border-radius: ${numbPxToRem(5)};
     gap: ${numbPxToRem(4)};
-    transition: 130ms ease-out;
     box-shadow: ${numbPxToRem(3)} ${numbPxToRem(3)} ${numbPxToRem(4)} ${color.blackAlpha25};
+
+    transition-property: box-shadow, transform, background-color;
+    transition-timing-function: ease-out, ease-out, ease-out;
+    transition-duration: 130ms, 130ms, 130ms;
 
     &:active {
         box-shadow: 0 0 0 ${color.blackAlpha25};

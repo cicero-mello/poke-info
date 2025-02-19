@@ -12,8 +12,11 @@ const smallTag: ThemeFunction = () => css`
     width: fit-content;
     padding: ${numbPxToRem(1)} ${numbPxToRem(6)};
     border-radius: ${numbPxToRem(4)};
-    transition: ${transitionTime.fast} linear;
     user-select: none;
+
+    transition-property: color, background-color, opacity;
+    transition-timing-function: linear, linear, linear;
+    transition-duration: ${transitionTime.fast}, ${transitionTime.fast}, ${transitionTime.fast};
 
     &:hover {
         color: black;

@@ -1,5 +1,7 @@
 import { transitionTime } from "@style-guide/transition-time"
+import { FocusOrigin } from "@hooks/use-focus-origin/types"
 import { crashZoom } from "@style-guide/keyframes"
+import { focusOutline } from "@style-guide/focus"
 import styled, { css } from "styled-components"
 import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
@@ -7,14 +9,13 @@ import { text } from "@style-guide/text"
 
 export const Component = styled.form.attrs({
     className: "search-input"
-})<{$isNotFound: boolean, $isLoading: boolean}>`
-${({ $isNotFound, $isLoading }) => css`
+})<{$isNotFound: boolean, $isLoading: boolean, $focusOrigin: FocusOrigin}>`
+${({ $isNotFound, $isLoading, $focusOrigin }) => css`
     display: flex;
     position: relative;
     height: fit-content;
     max-width: ${numbPxToRem(180)};
     width: 100%;
-    overflow: hidden;
     border-radius: ${numbPxToRem(5)};
     box-shadow: ${numbPxToRem(3)} ${numbPxToRem(3)} ${numbPxToRem(4)} ${color.blackAlpha25};
 
@@ -28,6 +29,15 @@ ${({ $isNotFound, $isLoading }) => css`
     ${($isNotFound || $isLoading) && css`
         pointer-events: none;
     `}
+
+    input {
+        outline: none;
+        ${$focusOrigin === "tab" && css`
+            &:focus {
+                ${focusOutline}
+            }
+        `}
+    }
 `}`
 
 export const Input = styled.input`
@@ -38,7 +48,11 @@ export const Input = styled.input`
     background-color: ${color.snowGray};
     color: ${color.steelGray};
     caret-color: ${color.steelGray};
-    transition: ${transitionTime.medium} ease-out;
+    border-radius: ${numbPxToRem(5)} 0 0 ${numbPxToRem(5)};
+
+    transition-property: background-color, color;
+    transition-timing-function: ease-out, ease-out;
+    transition-duration: ${transitionTime.medium}, ${transitionTime.medium};
 
     &::selection {
         background-color: ${color.steelGray};
@@ -56,6 +70,7 @@ ${({ $isLoading }) => css`
     background-color: ${color.steelBlue};
     height: 100%;
     padding: 0 ${numbPxToRem(8)};
+    border-radius: 0 ${numbPxToRem(5)} ${numbPxToRem(5)} 0;
 
     transition:
         opacity ${transitionTime.medium} ease-out,
