@@ -49,7 +49,7 @@ ${({ $animationType }) => css`
 
     div[role="tabpanel"] {
         border-radius: 0;
-        min-height: ${numbPxToRem(400)};
+        min-height: calc(100svh - ${numbPxToRem(200)});
 
         .spinner {
             right:  ${numbPxToRem(24)};
