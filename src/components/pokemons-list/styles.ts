@@ -25,25 +25,6 @@ ${({ $hide }) => css`
     opacity: ${$hide ? 0 : 1};
 
     ${styleGuide.scrollbar.white}
-    &::-webkit-scrollbar-track {
-        margin-top: ${pxToRem(20)};
-        margin-bottom: ${pxToRem(20)};
-    }
-
-    mask-image: linear-gradient(
-        to bottom,
-        transparent,
-        black ${pxToRem(20)},
-        black calc(100% - ${pxToRem(20)}),
-        transparent
-    );
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        transparent,
-        black ${pxToRem(20)},
-        black calc(100% - ${pxToRem(20)}),
-        transparent
-    );
 `}`
 
 export const VirtualizedContainer = styled.div.attrs({
