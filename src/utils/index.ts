@@ -2,6 +2,7 @@ export * from "./debounce"
 export * from "./poke-api"
 export * from "./games-images"
 export * from "./animation"
+export * from "./scroll"
 
 export const delay = (time: number) => new Promise((resolve) => {
     setTimeout(() => resolve(true), time)

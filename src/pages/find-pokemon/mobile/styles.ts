@@ -5,7 +5,9 @@ import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
 import styled from "styled-components"
 
-export const Screen = styled.main`
+export const Screen = styled.main.attrs({
+    id: "screen"
+})`
     display: flex;
     flex-direction: column;
     background: ${color.onyxAlpha83};

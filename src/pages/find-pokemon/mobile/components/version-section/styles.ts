@@ -7,7 +7,9 @@ import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
 
-export const Component = styled.section`
+export const Component = styled.section.attrs({
+    id: "version-section"
+})`
     display: flex;
     flex-direction: column;
     justify-content: center;

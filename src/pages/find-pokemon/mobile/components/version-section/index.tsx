@@ -1,7 +1,7 @@
+import { getRootFontSize, scrollElementToBottom, scrollElementToTop, versionNamePerVersionId } from "@utils"
 import { useEffect, useRef, useState } from "preact/hooks"
 import { useHasScrollX, useMomentumScrollX } from "@hooks"
 import { Button, VersionImage } from "@components"
-import { versionNamePerVersionId } from "@utils"
 import { FunctionComponent as FC } from "preact"
 import { VersionSectionProps } from "./types"
 import { useAnimation } from "./animations"
@@ -16,6 +16,7 @@ export const VersionSection: FC<VersionSectionProps> = ({
     pageAnimations,
     componentRef
 }) => {
+    const needToScrollBottom = useRef(false)
     const momentumScrollX = useMomentumScrollX()
     const hasScroll = useHasScrollX(momentumScrollX.carouselRef)
     const { refs, animations } = useAnimation()
@@ -36,6 +37,8 @@ export const VersionSection: FC<VersionSectionProps> = ({
         animations.hideReturnButton()
         await pageAnimations.hidePlacesSection()
         await animations.hideSettedVersion()
+        await scrollElementToTop(document.getElementById("screen")!)
+        needToScrollBottom.current = true
         setChosenVersionId(0)
         setIsToShowSettedVersion(false)
     }
@@ -44,12 +47,22 @@ export const VersionSection: FC<VersionSectionProps> = ({
         const showSettedVersionAndPlacesSection = async () => {
             await animations.showSettedVersion()
             pageAnimations.showPlacesSection()
+
+            const screen = document.getElementById("screen")!
+            const rootFontSize = getRootFontSize()
+            await scrollElementToBottom(screen, 400 * rootFontSize / 16)
         }
 
-        if (isToShowSettedVersion){
+        if(isToShowSettedVersion){
             showSettedVersionAndPlacesSection()
             return
         }
+
+        if(needToScrollBottom.current){
+            needToScrollBottom.current = false
+            scrollElementToBottom(document.getElementById("screen")!)
+        }
+
         animations.showVersionList()
     }, [isToShowSettedVersion])
 

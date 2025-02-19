@@ -2,7 +2,9 @@ import { pageAnimationClasses } from "../../animations"
 import { numbPxToRem } from "@style-guide"
 import styled from "styled-components"
 
-export const Component = styled.section`
+export const Component = styled.section.attrs({
+    id: "places-section"
+})`
     display: flex;
     flex-direction: column;
     max-width: ${numbPxToRem(680)};

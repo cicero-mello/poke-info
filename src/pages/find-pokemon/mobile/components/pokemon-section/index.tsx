@@ -1,4 +1,5 @@
 import { Button, CirclePokemonImage, CirclePokemonImageRef, PokemonSearch, Spinner } from "@components"
+import { scrollElementToBottom, scrollElementToTop } from "@utils"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { useEffect, useRef, useState } from "preact/hooks"
 import { ArrowReturnIco, PikachuShadowIco } from "@assets"
@@ -59,7 +60,11 @@ export const PokemonSection: FC<PokemonSectionProps> = ({
         setEncountersPerVersionId(encountersPerVersionId)
         setHideSpinner(true)
         await animations.showPokemon()
-        if(haveEncounter) pageAnimations.showVersionSection()
+        if(haveEncounter){
+            const screen = document.getElementById("screen")!
+            await scrollElementToBottom(screen)
+            await pageAnimations.showVersionSection()
+        }
         else pageAnimations.showNoEncountersSection()
     }
 
@@ -67,6 +72,10 @@ export const PokemonSection: FC<PokemonSectionProps> = ({
         pageAnimations.hideNoEncountersSection()
         pageAnimations.hidePlacesSection()
         animations.hideReturnButton()
+
+        const screen = document.getElementById("screen")!
+        await scrollElementToTop(screen)
+
         await pageAnimations.hideVersionSection()
         await animations.hidePokemon()
         setPokemonId(0)
