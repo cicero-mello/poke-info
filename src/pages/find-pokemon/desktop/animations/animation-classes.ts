@@ -1,6 +1,6 @@
-import { AnimationClass } from "./types"
 import { css, keyframes } from "styled-components"
-import { numbPxToRem } from "@style-guide"
+import { AnimationClass } from "./types"
+import { pxToRem } from "@style-guide"
 
 export const ANIMATION_CLASSES: AnimationClass[] = [
     "come-from-bottom",
@@ -25,18 +25,18 @@ const customComeFromBottom = keyframes`
         opacity: 0;
     }
     50% {
-        max-width: ${numbPxToRem(340)};
-        max-height: ${numbPxToRem(340)};
-        margin-left: ${numbPxToRem(24)};
-        padding-right: ${numbPxToRem(8)};
+        max-width: ${pxToRem(340)};
+        max-height: ${pxToRem(340)};
+        margin-left: ${pxToRem(24)};
+        padding-right: ${pxToRem(8)};
         transform: translateY(200px);
         opacity: 0;
     }
     100% {
-        max-width: ${numbPxToRem(340)};
-        max-height: ${numbPxToRem(340)};
-        margin-left: ${numbPxToRem(24)};
-        padding-right: ${numbPxToRem(8)};
+        max-width: ${pxToRem(340)};
+        max-height: ${pxToRem(340)};
+        margin-left: ${pxToRem(24)};
+        padding-right: ${pxToRem(8)};
         transform: translateY(0);
         opacity: 1;
     }
@@ -51,18 +51,18 @@ const customComeFromRight = keyframes`
         opacity: 0;
     }
     50% {
-        max-width: ${numbPxToRem(340)};
-        max-height: ${numbPxToRem(340)};
-        margin-left: ${numbPxToRem(24)};
-        padding-right: ${numbPxToRem(8)};
+        max-width: ${pxToRem(340)};
+        max-height: ${pxToRem(340)};
+        margin-left: ${pxToRem(24)};
+        padding-right: ${pxToRem(8)};
         transform: translateX(200px);
         opacity: 0;
     }
     100% {
-        max-width: ${numbPxToRem(340)};
-        max-height: ${numbPxToRem(340)};
-        margin-left: ${numbPxToRem(24)};
-        padding-right: ${numbPxToRem(8)};
+        max-width: ${pxToRem(340)};
+        max-height: ${pxToRem(340)};
+        margin-left: ${pxToRem(24)};
+        padding-right: ${pxToRem(8)};
         transform: translateX(0);
         opacity: 1;
     }

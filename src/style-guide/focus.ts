@@ -1,9 +1,9 @@
-import { color } from "./color"
-import { numbPxToRem } from "./px-to-rem"
 import { css } from "styled-components"
+import { pxToRem } from "./px-to-rem"
+import { color } from "./color"
 
 export const focusOutline = css`
-    outline: ${numbPxToRem(4)} solid ${color.outline};
-    outline-offset: ${numbPxToRem(4)};
-    border-radius: ${numbPxToRem(2)};
+    outline: ${pxToRem(4)} solid ${color.outline};
+    outline-offset: ${pxToRem(4)};
+    border-radius: ${pxToRem(2)};
 `

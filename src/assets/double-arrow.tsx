@@ -1,10 +1,10 @@
-import { numbPxToRem } from "@style-guide"
-import { color } from "@style-guide/color"
 import { FunctionComponent as FC } from "preact/compat"
 import { HTMLAttributes } from "preact/compat"
+import { color } from "@style-guide/color"
+import { pxToRem } from "@style-guide"
 
 export const DoubleArrowIco: FC<HTMLAttributes<SVGElement>> = (props) => (
-    <svg width={numbPxToRem(18)} height={numbPxToRem(18)} viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg width={pxToRem(18)} height={pxToRem(18)} viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
         <g clip-path="url(#clip0_314_11329)">
             <g filter="url(#filter0_d_314_11329)">
                 <path

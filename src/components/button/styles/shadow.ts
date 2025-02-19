@@ -1,5 +1,5 @@
-import { numbPxToRem, styleGuide } from "@style-guide"
 import { ButtonTheme, ThemeFunction } from "../types"
+import { pxToRem, styleGuide } from "@style-guide"
 import { color } from "@style-guide/color"
 import { css } from "styled-components"
 
@@ -13,10 +13,10 @@ const shadow: ThemeFunction = () => css`
     background-color: ${color.carbonAlpha60};
     font-family: Play, sans-serif;
     color: ${color.whiteAlpha94};
-    padding: ${numbPxToRem(8)};
-    border-radius: ${numbPxToRem(5)};
-    gap: ${numbPxToRem(4)};
-    box-shadow: ${numbPxToRem(3)} ${numbPxToRem(3)} ${numbPxToRem(4)} ${color.blackAlpha25};
+    padding: ${pxToRem(8)};
+    border-radius: ${pxToRem(5)};
+    gap: ${pxToRem(4)};
+    box-shadow: ${pxToRem(3)} ${pxToRem(3)} ${pxToRem(4)} ${color.blackAlpha25};
 
     transition-property: box-shadow, transform, background-color;
     transition-timing-function: ease-out, ease-out, ease-out;

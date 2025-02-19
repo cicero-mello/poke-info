@@ -1,5 +1,5 @@
-import { pxToRem, styleGuide } from "@style-guide"
 import { transitionTime } from "@style-guide/transition-time"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 
 export const Spinner = styled.div.attrs({
@@ -7,8 +7,8 @@ export const Spinner = styled.div.attrs({
 })<{ $hide?: boolean }>`
 ${({ $hide }) => css`
     position: absolute;
-    width: ${pxToRem("24px")};
-    height: ${pxToRem("24px")};
+    width: ${pxToRem(24)};
+    height: ${pxToRem(24)};
     aspect-ratio: 1;
     border-radius: 100%;
     background:

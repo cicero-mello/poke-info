@@ -10,9 +10,9 @@ const bigBlue: ThemeFunction = ($emphasis) => css`
     text-align: center;
     background-color: ${styleGuide.color.skyBlueAlpha92};
 
-    padding: ${pxToRem("16px")} ${pxToRem("20px")};
-    border-radius: ${pxToRem("12px")};
-    border: ${pxToRem("2px")} solid ${styleGuide.color.whiteAlpha70};
+    padding: ${pxToRem(16)} ${pxToRem(20)};
+    border-radius: ${pxToRem(12)};
+    border: ${pxToRem(2)} solid ${styleGuide.color.whiteAlpha70};
 
     transition-property: background-color;
     transition-duration: ${styleGuide.transitionTime.fast};
@@ -27,7 +27,7 @@ const bigBlue: ThemeFunction = ($emphasis) => css`
 
     @media(max-width: ${styleGuide.dimensions.mobileWidth}){
         ${styleGuide.text.base}
-        padding: ${pxToRem("12px")} ${pxToRem("16px")};
+        padding: ${pxToRem(12)} ${pxToRem(16)};
     }
 `
 

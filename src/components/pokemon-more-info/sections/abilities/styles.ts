@@ -1,18 +1,18 @@
-import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled from "styled-components"
 
 export const Section = styled.section`
     display: flex;
     flex-direction: column;
-    gap:  ${pxToRem("12px")};
+    gap:  ${pxToRem(12)};
 `
 
 export const Title = styled.h3`
-    margin-bottom: ${pxToRem("2px")};
+    margin-bottom: ${pxToRem(2)};
 `
 
 export const Text = styled.p`
-    padding-left: ${pxToRem("8px")};
+    padding-left: ${pxToRem(8)};
 `
 
 export const Line = styled.div`
@@ -27,8 +27,8 @@ export const Line = styled.div`
 export const List = styled.ul`
     display: flex;
     flex-wrap: wrap;
-    gap: ${numbPxToRem(18)};
-    padding-left: ${pxToRem("8px")};
+    gap: ${pxToRem(18)};
+    padding-left: ${pxToRem(8)};
 `
 
 export const ListItem = styled.li`

@@ -1,6 +1,6 @@
 import { getSlideFromBottom, slideFromLeft, slideFromRight } from "@style-guide/keyframes"
-import { numbPxToRem } from "@style-guide"
 import { css } from "styled-components"
+import { pxToRem } from "@style-guide"
 
 export const ANIMATION_TIME = 240
 
@@ -19,9 +19,9 @@ export const berryAnimationClasses = css`
         animation: ${slideFromLeft} ${ANIMATION_TIME}ms ease-out forwards;
     }
     &.go-bottom{
-        animation: ${getSlideFromBottom(numbPxToRem(315))} ${ANIMATION_TIME}ms ease-in forwards reverse;
+        animation: ${getSlideFromBottom(pxToRem(315))} ${ANIMATION_TIME}ms ease-in forwards reverse;
     }
     &.come-from-bottom{
-        animation: ${getSlideFromBottom(numbPxToRem(315))} ${ANIMATION_TIME}ms ease-out forwards;
+        animation: ${getSlideFromBottom(pxToRem(315))} ${ANIMATION_TIME}ms ease-out forwards;
     }
 `

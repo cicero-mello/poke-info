@@ -3,9 +3,9 @@ import { FocusOrigin } from "@hooks/use-focus-origin/types"
 import { crashZoom } from "@style-guide/keyframes"
 import { focusOutline } from "@style-guide/focus"
 import styled, { css } from "styled-components"
-import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
+import { pxToRem } from "@style-guide"
 
 export const Component = styled.form.attrs({
     className: "search-input"
@@ -14,10 +14,10 @@ ${({ $isNotFound, $isLoading, $focusOrigin }) => css`
     display: flex;
     position: relative;
     height: fit-content;
-    max-width: ${numbPxToRem(180)};
+    max-width: ${pxToRem(180)};
     width: 100%;
-    border-radius: ${numbPxToRem(5)};
-    box-shadow: ${numbPxToRem(3)} ${numbPxToRem(3)} ${numbPxToRem(4)} ${color.blackAlpha25};
+    border-radius: ${pxToRem(5)};
+    box-shadow: ${pxToRem(3)} ${pxToRem(3)} ${pxToRem(4)} ${color.blackAlpha25};
 
     ${$isNotFound && css`
         box-shadow: 0 0 0 transparent;
@@ -43,12 +43,12 @@ ${({ $isNotFound, $isLoading, $focusOrigin }) => css`
 export const Input = styled.input`
     ${text.sm}
     width: 100%;
-    padding: ${numbPxToRem(4)} ${numbPxToRem(6)};
-    margin-right: ${numbPxToRem(32)};
+    padding: ${pxToRem(4)} ${pxToRem(6)};
+    margin-right: ${pxToRem(32)};
     background-color: ${color.snowGray};
     color: ${color.steelGray};
     caret-color: ${color.steelGray};
-    border-radius: ${numbPxToRem(5)} 0 0 ${numbPxToRem(5)};
+    border-radius: ${pxToRem(5)} 0 0 ${pxToRem(5)};
 
     transition-property: background-color, color;
     transition-timing-function: ease-out, ease-out;
@@ -69,8 +69,8 @@ ${({ $isLoading }) => css`
     right: 0;
     background-color: ${color.steelBlue};
     height: 100%;
-    padding: 0 ${numbPxToRem(8)};
-    border-radius: 0 ${numbPxToRem(5)} ${numbPxToRem(5)} 0;
+    padding: 0 ${pxToRem(8)};
+    border-radius: 0 ${pxToRem(5)} ${pxToRem(5)} 0;
 
     transition:
         opacity ${transitionTime.medium} ease-out,
@@ -87,8 +87,8 @@ ${({ $isLoading }) => css`
     }
 
     .magnifying-glass-ico {
-        width: ${numbPxToRem(16)};
-        height: ${numbPxToRem(16)};
+        width: ${pxToRem(16)};
+        height: ${pxToRem(16)};
 
         ${$isLoading && css`
             opacity: 0;
@@ -96,8 +96,8 @@ ${({ $isLoading }) => css`
     }
 
     .spinner {
-        width: ${numbPxToRem(16)};
-        height: ${numbPxToRem(16)};
+        width: ${pxToRem(16)};
+        height: ${pxToRem(16)};
         mask: radial-gradient(farthest-side,#0000 calc(100% - 0.19rem),#000 0);
         -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 0.19rem),#000 0);
         opacity: 0;

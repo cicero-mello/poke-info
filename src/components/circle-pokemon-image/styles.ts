@@ -1,5 +1,5 @@
 import { transitionTime } from "@style-guide/transition-time"
-import { numbPxToRem, styleGuide } from "@style-guide"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 import { text } from "@style-guide/text"
 import { PokeApi } from "@types"
@@ -9,7 +9,7 @@ export const Component = styled.div.attrs({
 })`
     display: flex;
     flex-direction: column;
-    gap: ${numbPxToRem(16)};
+    gap: ${pxToRem(16)};
 `
 
 export const Name = styled.span`
@@ -26,15 +26,15 @@ export const ImageWrapper = styled.div`
 
 export const Image = styled.img`
     position: relative;
-    height: ${numbPxToRem(200)};
-    width: ${numbPxToRem(200)};
+    height: ${pxToRem(200)};
+    width: ${pxToRem(200)};
 `
 
 export const BackgroundCircle = styled.div
 <{$type?: PokeApi.PokemonType}>`
 ${({ $type }) => css`
     min-width: 100%;
-    max-width: ${numbPxToRem(200)};
+    max-width: ${pxToRem(200)};
     min-height: 100%;
     position: absolute;
     border-radius: 50%;

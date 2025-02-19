@@ -1,7 +1,7 @@
 import { fadeIn, fadeOut, spinZoom } from "@style-guide/keyframes"
 import { css, keyframes } from "styled-components"
-import { numbPxToRem } from "@style-guide"
 import { AnimationClass } from "./types"
+import { pxToRem } from "@style-guide"
 
 export const ANIMATION_CLASSES: AnimationClass[] = [
     "fade-in",
@@ -27,7 +27,7 @@ const customGoLeft = keyframes`
         opacity: 1;
     }
     to {
-        transform: translateX(-${numbPxToRem(100)});
+        transform: translateX(-${pxToRem(100)});
         opacity: 0;
     }
 `

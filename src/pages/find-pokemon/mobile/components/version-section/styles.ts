@@ -3,9 +3,9 @@ import { pageAnimationClasses } from "../../animations"
 import { scrollbar } from "@style-guide/scrollbar"
 import { animationClasses } from "./animations"
 import styled, { css } from "styled-components"
-import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
+import { pxToRem } from "@style-guide"
 
 export const Component = styled.section.attrs({
     id: "version-section"
@@ -15,8 +15,8 @@ export const Component = styled.section.attrs({
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: ${numbPxToRem(274)};
-    max-width: ${numbPxToRem(680)};
+    min-height: ${pxToRem(274)};
+    max-width: ${pxToRem(680)};
     color: ${color.pearlGray};
 
     .version-image {
@@ -35,7 +35,7 @@ export const VersionListWrapper = styled.div`
 
 export const Title = styled.h2`
     ${text.lg}
-    line-height: ${numbPxToRem(18)};
+    line-height: ${pxToRem(18)};
     text-align: center;
 `
 
@@ -43,11 +43,11 @@ export const VersionList = styled.div
 <{$hasScroll: boolean}>`
 ${({ $hasScroll }) => css`
     display: flex;
-    gap: ${numbPxToRem(24)};
+    gap: ${pxToRem(24)};
     width: 100%;
     overflow-y: hidden;
     overflow-x: scroll;
-    padding: ${numbPxToRem(24)};
+    padding: ${pxToRem(24)};
 
     ${$hasScroll && css`
         user-select: none;
@@ -61,25 +61,25 @@ ${({ $hasScroll }) => css`
     mask-image: linear-gradient(
         to right,
         transparent,
-        black ${numbPxToRem(24)},
-        black calc(100% - ${numbPxToRem(24)}),
+        black ${pxToRem(24)},
+        black calc(100% - ${pxToRem(24)}),
         transparent
     );
     -webkit-mask-image: linear-gradient(
         to right,
         transparent,
-        black ${numbPxToRem(24)},
-        black calc(100% - ${numbPxToRem(24)}),
+        black ${pxToRem(24)},
+        black calc(100% - ${pxToRem(24)}),
         transparent
     );
 
     ${scrollbar.tinyGray}
 
     &::-webkit-scrollbar-track {
-        margin: 0 ${numbPxToRem(24)};
+        margin: 0 ${pxToRem(24)};
     }
     &::-webkit-scrollbar {
-        height: ${numbPxToRem(2)};
+        height: ${pxToRem(2)};
     }
 
     .version-image {
@@ -87,24 +87,24 @@ ${({ $hasScroll }) => css`
         justify-content: center;
 
         button {
-            min-height: ${numbPxToRem(100)};
+            min-height: ${pxToRem(100)};
         }
 
         label {
             white-space: nowrap;
-            min-width: ${numbPxToRem(100)};
+            min-width: ${pxToRem(100)};
             text-align: center;
         }
 
         img {
             user-select: none;
-            height: ${numbPxToRem(100)};
+            height: ${pxToRem(100)};
         }
 
         .image-loader-version-image {
             top: 0;
-            height: ${numbPxToRem(100)};
-            width: ${numbPxToRem(100)};
+            height: ${pxToRem(100)};
+            width: ${pxToRem(100)};
         }
     }
 `}`
@@ -119,14 +119,14 @@ export const SettedVersionWrapper = styled.div`
         label {
             opacity: 1;
             font-weight: bold;
-            padding-bottom: ${numbPxToRem(16)};
+            padding-bottom: ${pxToRem(16)};
             pointer-events: none;
         }
         button {
             border-radius: 50%;
             overflow: hidden;
-            height: ${numbPxToRem(200)};
-            width: ${numbPxToRem(200)};
+            height: ${pxToRem(200)};
+            width: ${pxToRem(200)};
             pointer-events: none;
         }
         button > img {
@@ -139,11 +139,11 @@ export const SettedVersionWrapper = styled.div`
 
     & > .styled-button {
         opacity: 0;
-        margin-top: ${numbPxToRem(12)};
+        margin-top: ${pxToRem(12)};
         ${animationClasses}
 
         .arrow-return-ico {
-            height: ${numbPxToRem(18)};
+            height: ${pxToRem(18)};
             * {
                 transition: ${transitionTime.fast} linear;
                 fill: ${color.whiteAlpha70};

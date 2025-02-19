@@ -1,4 +1,4 @@
-import { numbPxToRem, styleGuide } from "@style-guide"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 
 export const Component = styled.div<{ $isLoading: boolean }>`
@@ -8,10 +8,10 @@ ${({ $isLoading }) => css`
     width: 100%;
     color: ${styleGuide.color.pearlGray};
 
-    gap: ${numbPxToRem(12)};
+    gap: ${pxToRem(12)};
 
     .evolution-item:last-child {
-        padding-bottom: ${numbPxToRem(24)};
+        padding-bottom: ${pxToRem(24)};
     }
 
     animation:
@@ -28,7 +28,7 @@ ${({ $isLoading }) => css`
     .spinner {
         position: fixed;
         transition: ${styleGuide.transitionTime.medium};
-        right: ${numbPxToRem(56)};
+        right: ${pxToRem(56)};
         opacity: ${$isLoading ? 1 : 0};
         pointer-events: none;
     }
@@ -50,5 +50,5 @@ export const Line = styled.span.attrs({
     min-height: 2px;
     width: 100%;
     border-radius: 10px;
-    margin: ${numbPxToRem(12)} 0;
+    margin: ${pxToRem(12)} 0;
 `

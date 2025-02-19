@@ -1,12 +1,12 @@
 import { FunctionComponent as FC } from "preact/compat"
 import { HTMLAttributes } from "preact/compat"
-import { numbPxToRem } from "@style-guide"
+import { pxToRem } from "@style-guide"
 
 export const PokeDollar: FC<HTMLAttributes<SVGElement>> = (props) => (
     <svg
         version="1.0"
-        width={numbPxToRem(24)}
-        height={numbPxToRem(24)}
+        width={pxToRem(24)}
+        height={pxToRem(24)}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1200.000000 1656.000000"
         preserveAspectRatio="xMidYMid meet"

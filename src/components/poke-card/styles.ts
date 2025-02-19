@@ -1,5 +1,5 @@
-import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import styled, { css, keyframes } from "styled-components"
+import { pxToRem, styleGuide } from "@style-guide"
 import { StyledCardProps } from "./types"
 
 export enum POKE_CARD_STYLE_DATA {
@@ -38,12 +38,12 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
         + "rem"
     };
 
-    border-radius: ${pxToRem("5px")};
+    border-radius: ${pxToRem(5)};
     background-color: ${styleGuide.color.onyx};
     box-shadow:
-        ${pxToRem("7px")}
-        ${pxToRem("7px")}
-        ${pxToRem("7px")}
+        ${pxToRem(7)}
+        ${pxToRem(7)}
+        ${pxToRem(7)}
         #00000033
     ;
 
@@ -160,9 +160,9 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
     .favorite-checkbox {
         position: absolute;
         right: 0;
-        margin: ${pxToRem("5px")};
-        height: ${pxToRem("24px")};
-        width: ${pxToRem("24px")};
+        margin: ${pxToRem(5)};
+        height: ${pxToRem(24)};
+        width: ${pxToRem(24)};
         z-index: 3;
 
         transition-property: opacity, transform;
@@ -179,9 +179,9 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
         }
 
         input {
-            width: ${numbPxToRem(18)};
-            height: ${numbPxToRem(18)};
-            outline-width: ${numbPxToRem(2)};
+            width: ${pxToRem(18)};
+            height: ${pxToRem(18)};
+            outline-width: ${pxToRem(2)};
             bottom: 0;
             border-radius: 50%;
         }
@@ -199,7 +199,7 @@ export const TopArea = styled.div`
     width: 100%;
     height: 30%;
     justify-content: space-between;
-    padding: ${pxToRem("5px")};
+    padding: ${pxToRem(5)};
 `
 
 export const PokeNumber = styled.span`
@@ -235,9 +235,9 @@ export const DownArea = styled.div.attrs({
     height: 78%;
     padding-top: 21%;
     background-color: ${styleGuide.color.mistGray};
-    border-radius: ${pxToRem("5px")};
+    border-radius: ${pxToRem(5)};
     border-top:
-        ${pxToRem("4px")} solid
+        ${pxToRem(4)} solid
         ${styleGuide.color.grassCardBorderStrong}
     ;
 
@@ -253,7 +253,7 @@ export const DownArea = styled.div.attrs({
         background: ${styleGuide.color.onyx};
         border-radius: 0px 0px 100px 100px;
         border:
-            ${pxToRem("4px")} solid
+            ${pxToRem(4)} solid
             ${styleGuide.color.grassCardBorderStrong}
         ;
         border-top: none;

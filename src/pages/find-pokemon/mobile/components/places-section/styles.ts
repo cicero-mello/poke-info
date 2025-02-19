@@ -1,5 +1,5 @@
 import { pageAnimationClasses } from "../../animations"
-import { numbPxToRem } from "@style-guide"
+import { pxToRem } from "@style-guide"
 import styled from "styled-components"
 
 export const Component = styled.section.attrs({
@@ -7,9 +7,9 @@ export const Component = styled.section.attrs({
 })`
     display: flex;
     flex-direction: column;
-    max-width: ${numbPxToRem(680)};
-    margin-top: ${numbPxToRem(24)};
-    gap: ${numbPxToRem(24)};
+    max-width: ${pxToRem(680)};
+    margin-top: ${pxToRem(24)};
+    gap: ${pxToRem(24)};
 
     opacity: 0;
     ${pageAnimationClasses}

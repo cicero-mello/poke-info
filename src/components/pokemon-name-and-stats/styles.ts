@@ -21,18 +21,18 @@ ${({ $bigMode }) => css`
     overflow: hidden;
     width: 100%;
     padding: 8px 16px;
-    gap: ${pxToRem("8px")};
+    gap: ${pxToRem(8)};
 
     overflow-y: auto;
 
     ${styleGuide.scrollbar.whiteSmall}
 
     &::-webkit-scrollbar-thumb {
-        min-height: ${pxToRem("12px")};
+        min-height: ${pxToRem(12)};
     }
 
     ${$bigMode && css`
-        gap: ${pxToRem("14px")};
+        gap: ${pxToRem(14)};
 
         progress {
             background-color: ${styleGuide.color.pearlGray};
@@ -62,9 +62,9 @@ export const PokeName = styled.span.attrs({
         background-color: ${styleGuide.color.silverGray};
         color: transparent;
         width: 54%;
-        height: ${pxToRem(`16px`)};
-        margin: ${pxToRem(`6px`)} 0;
-        border-radius: ${pxToRem("4px")};
+        height: ${pxToRem(16)};
+        margin: ${pxToRem(6)} 0;
+        border-radius: ${pxToRem(4)};
         animation:
             ${styleGuide.keyframes.opacityLoading2}
             1.3s ease-in-out infinite
@@ -79,5 +79,5 @@ export const BigPokeName = styled(PokeName).attrs({
     ${styleGuide.text["2xl"]}
     color: white;
     font-weight: bold;
-    min-height: ${pxToRem("32px")};
+    min-height: ${pxToRem(32)};
 `

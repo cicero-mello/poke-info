@@ -1,25 +1,25 @@
 import { transitionTime } from "@style-guide/transition-time"
 import { fadeIn } from "@style-guide/keyframes"
-import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
 import styled from "styled-components"
+import { pxToRem } from "@style-guide"
 
 export const Component = styled.section.attrs({
     className: "encounter-place"
 })`
     display: flex;
     flex-direction: column;
-    padding: ${numbPxToRem(16)} ${numbPxToRem(24)} ${numbPxToRem(16)} ${numbPxToRem(24)};
-    border: ${numbPxToRem(2)} solid ${color.cloudGray};
-    border-radius: ${numbPxToRem(6)};
+    padding: ${pxToRem(16)} ${pxToRem(24)} ${pxToRem(16)} ${pxToRem(24)};
+    border: ${pxToRem(2)} solid ${color.cloudGray};
+    border-radius: ${pxToRem(6)};
     animation: ${fadeIn} ${transitionTime.slow} ease-in-out;
 `
 
 export const PlaceName = styled.h3`
     text-align: center;
     color: white;
-    margin-bottom: ${numbPxToRem(12)};
+    margin-bottom: ${pxToRem(12)};
     ${text.xl}
 `
 
@@ -29,7 +29,7 @@ export const MethodWrapper = styled.div`
     color: ${color.mistGray};
     ${text.lg}
 
-    gap: ${numbPxToRem(14)};
+    gap: ${pxToRem(14)};
 `
 
 export const MethodName = styled.p`
@@ -43,8 +43,8 @@ export const Numbers = styled.ul`
 
         &::before {
             content: "";
-            min-width: ${numbPxToRem(6)};
-            min-height: ${numbPxToRem(6)};
+            min-width: ${pxToRem(6)};
+            min-height: ${pxToRem(6)};
             border-radius: 50%;
             background-color: ${color.mistGray};
         }
@@ -67,22 +67,22 @@ export const ConditionWrapper = styled.ul`
     display: flex;
     flex-direction: column;
     list-style-type: none;
-    gap: ${numbPxToRem(8)};
+    gap: ${pxToRem(8)};
 `
 
 export const Condition = styled.li`
     display: flex;
     align-items: center;
     line-height: normal;
-    margin-left: ${numbPxToRem(12)};
-    margin-bottom: ${numbPxToRem(4)};
+    margin-left: ${pxToRem(12)};
+    margin-bottom: ${pxToRem(4)};
 
     &::before {
         content: "";
-        min-width: ${numbPxToRem(6)};
-        min-height: ${numbPxToRem(6)};
+        min-width: ${pxToRem(6)};
+        min-height: ${pxToRem(6)};
         border-radius: 50%;
         background-color: ${color.mistGray};
-        margin-right: ${numbPxToRem(8)};
+        margin-right: ${pxToRem(8)};
     }
 `

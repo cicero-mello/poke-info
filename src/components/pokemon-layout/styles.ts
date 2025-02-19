@@ -1,6 +1,6 @@
 import { StyledComponentProps, StyledContent, StyledDownAreaProps } from "./types"
-import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import styled, { css, keyframes } from "styled-components"
+import { pxToRem, styleGuide } from "@style-guide"
 import { pokeWindowRem } from "@components"
 
 export const descendHeader = keyframes`
@@ -95,21 +95,21 @@ export const DownAreaContainer = styled.div`
     position: absolute;
     overflow: hidden;
     width: 100%;
-    height: calc(100% - ${pxToRem("154px")} - ${pxToRem("60px")});
-    margin-top: ${pxToRem("154px")};
+    height: calc(100% - ${pxToRem(154)} - ${pxToRem(60)});
+    margin-top: ${pxToRem(154)};
 
     @media
         (max-height: ${pokeWindowRem.noWhiteLine.maxHeight}),
         (max-width: ${pokeWindowRem.full.maxWidth})
     {
-        height: calc(100% - ${pxToRem("154px")});
+        height: calc(100% - ${pxToRem(154)});
     }
 
     @media
         (max-width: ${pokeWindowRem.full.maxWidth}),
         (max-height: ${pokeWindowRem.full.maxHeight})
     {
-        height: calc(100% - ${pxToRem("154px")});
+        height: calc(100% - ${pxToRem(154)});
     }
 `
 
@@ -119,9 +119,9 @@ ${({ $pokemonType, $previewMode, $reverseAnimation, $isMobileMode }) => css`
     position: relative;
     width: 100%;
     background-color: ${styleGuide.getCardColors($pokemonType).background};
-    border-radius: ${pxToRem("5px")};
+    border-radius: ${pxToRem(5)};
     border-top:
-        ${pxToRem("5px")} solid
+        ${pxToRem(5)} solid
         ${styleGuide.getCardColors($pokemonType).border}
     ;
 
@@ -134,16 +134,16 @@ ${({ $pokemonType, $previewMode, $reverseAnimation, $isMobileMode }) => css`
         z-index: 2;
         position: absolute;
         transform: translateX(-50%);
-        left: ${pxToRem("210px")};
+        left: ${pxToRem(210)};
 
-        top: -${pxToRem("130px")};
-        width: ${pxToRem("268px")};
-        height: ${pxToRem("204px")};
+        top: -${pxToRem(130)};
+        width: ${pxToRem(268)};
+        height: ${pxToRem(204)};
 
         background: ${styleGuide.color.onyx};
         border-radius: 0px 0px 300px 300px;
         border:
-            ${pxToRem("5px")} solid
+            ${pxToRem(5)} solid
             ${styleGuide.getCardColors($pokemonType).border}
         ;
         border-top: none;
@@ -154,9 +154,9 @@ ${({ $pokemonType, $previewMode, $reverseAnimation, $isMobileMode }) => css`
 
         ${$isMobileMode && css`
             left: 50%;
-            top: -${numbPxToRem(134)};
-            width: ${numbPxToRem(194)};
-            height: ${numbPxToRem(188)};
+            top: -${pxToRem(134)};
+            width: ${pxToRem(194)};
+            height: ${pxToRem(188)};
         `}
     }
 
@@ -200,10 +200,10 @@ ${({ $isMobileMode, $pokemonType }) => css`
             pointer-events: none;
             position: fixed;
             width: calc(100%);
-            height: ${numbPxToRem(70)};
+            height: ${pxToRem(70)};
             z-index: 1;
             background: linear-gradient(
-                ${styleGuide.getCardColors($pokemonType).background}  ${numbPxToRem(8)},
+                ${styleGuide.getCardColors($pokemonType).background}  ${pxToRem(8)},
                 transparent
             );
         }

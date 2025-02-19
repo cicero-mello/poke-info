@@ -1,4 +1,4 @@
-import { numbPxToRem, styleGuide } from "@style-guide"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 
 export const Component = styled.div<{ $isLoading: boolean }>`
@@ -20,7 +20,7 @@ ${({ $isLoading }) => css`
     .spinner {
         position: fixed;
         transition: ${styleGuide.transitionTime.medium};
-        right: ${numbPxToRem(56)};
+        right: ${pxToRem(56)};
         opacity: ${$isLoading ? 1 : 0};
         pointer-events: none;
     }
@@ -31,10 +31,10 @@ export const ReturnToMainSection = styled.button.attrs({
 })<{ $hide: boolean }>`
 ${({ $hide }) => css`
     position: fixed;
-    right: ${numbPxToRem(80)};
-    width: ${numbPxToRem(24)};
-    right: ${numbPxToRem(40)};
-    top: ${numbPxToRem(65)};
+    right: ${pxToRem(80)};
+    width: ${pxToRem(24)};
+    right: ${pxToRem(40)};
+    top: ${pxToRem(65)};
 
     svg > path {
         fill: white;
@@ -58,7 +58,7 @@ ${({ $hide }) => css`
 `}`
 
 export const NoMovesMessage = styled.h3`
-    margin-top: ${numbPxToRem(24)};
+    margin-top: ${pxToRem(24)};
     align-self: center;
     font-weight: normal;
     text-align: center;

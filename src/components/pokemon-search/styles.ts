@@ -9,7 +9,7 @@ export const Form = styled.form.attrs({
 ${({ $focusOrigin }) => css`
     display: flex;
     flex-direction: column;
-    gap: ${pxToRem("8px")};
+    gap: ${pxToRem(8)};
 
     input {
         outline: none;
@@ -33,7 +33,7 @@ export const InputWrapper = styled.span`
     display: flex;
     position: relative;
 
-    max-width: ${pxToRem("320px")};
+    max-width: ${pxToRem(320)};
     width: 100%;
 `
 
@@ -42,8 +42,8 @@ export const Input = styled.input`
     color: ${styleGuide.color.graphite};
     caret-color: ${styleGuide.color.graphite};
     background-color: ${styleGuide.color.silverGray};
-    padding: ${pxToRem("4px")} ${pxToRem("8px")};
-    border-radius: ${pxToRem("4px")} 0 0 ${pxToRem("4px")};
+    padding: ${pxToRem(4)} ${pxToRem(8)};
+    border-radius: ${pxToRem(4)} 0 0 ${pxToRem(4)};
     width: 100%;
 `
 
@@ -60,12 +60,12 @@ ${({ $isLoading }) => css`
     justify-content: center;
     background-color: ${styleGuide.color.graphite};
 
-    padding: 0 ${pxToRem("6px")};
-    border-radius: 0 ${pxToRem("4px")} ${pxToRem("4px")} 0;
+    padding: 0 ${pxToRem(6)};
+    border-radius: 0 ${pxToRem(4)} ${pxToRem(4)} 0;
 
     svg {
-        height: ${pxToRem("25px")};
-        width: ${pxToRem("26px")};
+        height: ${pxToRem(25)};
+        width: ${pxToRem(26)};
         transition: ${styleGuide.transitionTime.slow};
     }
 
@@ -101,8 +101,8 @@ const hidingPopUp = keyframes`
 export const NotFoundPopUp = styled.div`
     position: absolute;
     background-color: ${styleGuide.color.fire};
-    bottom: -${pxToRem("36px")};
-    padding: ${pxToRem("4px")} ${pxToRem("16px")};
+    bottom: -${pxToRem(36)};
+    padding: ${pxToRem(4)} ${pxToRem(16)};
     border-radius: 100px;
     z-index: 1;
     pointer-events: none;

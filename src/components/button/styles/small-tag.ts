@@ -1,6 +1,6 @@
 import { transitionTime } from "@style-guide/transition-time"
-import { numbPxToRem, styleGuide } from "@style-guide"
 import { ButtonTheme, ThemeFunction } from "../types"
+import { pxToRem, styleGuide } from "@style-guide"
 import { color } from "@style-guide/color"
 import { css } from "styled-components"
 
@@ -10,8 +10,8 @@ const smallTag: ThemeFunction = () => css`
     color: ${color.carbon};
     height: fit-content;
     width: fit-content;
-    padding: ${numbPxToRem(1)} ${numbPxToRem(6)};
-    border-radius: ${numbPxToRem(4)};
+    padding: ${pxToRem(1)} ${pxToRem(6)};
+    border-radius: ${pxToRem(4)};
     user-select: none;
 
     transition-property: color, background-color, opacity;

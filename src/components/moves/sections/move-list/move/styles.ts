@@ -1,32 +1,32 @@
-import { numbPxToRem, styleGuide } from "@style-guide"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled from "styled-components"
 
 export const Component = styled.div.attrs({
     className: "move"
 })`
     color: ${styleGuide.color.pearlGray};
-    padding-bottom: ${numbPxToRem(32)};
+    padding-bottom: ${pxToRem(32)};
 `
 
 export const Title = styled.h4`
     width: fit-content;
-    font-size: ${numbPxToRem(20)};
+    font-size: ${pxToRem(20)};
     color: ${styleGuide.color.pearlGray};
-    margin-right: ${numbPxToRem(8)};
+    margin-right: ${pxToRem(8)};
 `
 
 export const Header = styled.header`
     display: flex;
     flex-wrap: wrap;
-    gap: ${numbPxToRem(8)};
+    gap: ${pxToRem(8)};
 `
 
 export const Content = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: ${numbPxToRem(12)};
-    margin-left: ${numbPxToRem(8)};
-    gap:  ${numbPxToRem(12)};
+    margin-top: ${pxToRem(12)};
+    margin-left: ${pxToRem(8)};
+    gap:  ${pxToRem(12)};
 `
 
 export const Description = styled.p`
@@ -41,27 +41,27 @@ export const AdditionalDescription = styled.p`
 
 export const LearnMethod = styled.div`
     display: flex;
-    gap: ${numbPxToRem(12)};
+    gap: ${pxToRem(12)};
 
     .mortarboard-ico{
-        min-height: ${numbPxToRem(24)};
-        min-width: ${numbPxToRem(24)};
+        min-height: ${pxToRem(24)};
+        min-width: ${pxToRem(24)};
     }
 
     > p {
-        margin-top: ${numbPxToRem(2)};
+        margin-top: ${pxToRem(2)};
     }
 `
 
 export const InfoTopics = styled.div`
     display: flex;
     flex-wrap: wrap;
-    gap: ${numbPxToRem(2)} 0;
+    gap: ${pxToRem(2)} 0;
 
     > div {
         display: flex;
         flex-direction: column;
-        gap: ${numbPxToRem(2)} 0;
+        gap: ${pxToRem(2)} 0;
 
         &:first-child {
             width: 50%;

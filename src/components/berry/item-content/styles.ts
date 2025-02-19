@@ -1,9 +1,9 @@
 import { berryAnimationClasses } from "@pages/berry/animation"
 import { transitionTime } from "@style-guide/transition-time"
 import styled, { css } from "styled-components"
-import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
+import { pxToRem } from "@style-guide"
 
 export const Component = styled.div.attrs({
     className: "item-content"
@@ -22,7 +22,7 @@ export const Descriptions = styled.div.attrs({
     display: flex;
     flex-direction: column;
     width: 64%;
-    gap: ${numbPxToRem(5)};
+    gap: ${pxToRem(5)};
 
     color: ${color.pearlGray};
 `
@@ -37,11 +37,11 @@ ${({ $imageIsLoaded }) => css`
 
     img {
         image-rendering: pixelated;
-        min-width: ${numbPxToRem(30)};
-        max-width: ${numbPxToRem(30)};
-        min-height: ${numbPxToRem(30)};
-        max-height: ${numbPxToRem(30)};
-        margin-right: ${numbPxToRem(12)};
+        min-width: ${pxToRem(30)};
+        max-width: ${pxToRem(30)};
+        min-height: ${pxToRem(30)};
+        max-height: ${pxToRem(30)};
+        margin-right: ${pxToRem(12)};
         pointer-events: none;
 
         transition: ${transitionTime.medium};
@@ -61,8 +61,8 @@ ${({ $imageIsLoaded }) => css`
 
 export const Description = styled.p`
     ${text.base}
-    margin-left: ${numbPxToRem(12 + 30)};
-    line-height: ${numbPxToRem(22)};
+    margin-left: ${pxToRem(12 + 30)};
+    line-height: ${pxToRem(22)};
 `
 
 export const ListWrapper = styled.div`
@@ -73,15 +73,15 @@ export const ListWrapper = styled.div`
 export const List = styled.ul`
     display: flex;
     flex-direction: column;
-    gap: ${numbPxToRem(8)};
+    gap: ${pxToRem(8)};
     width: 30%;
-    width: ${numbPxToRem(320)};
-    padding-left: ${numbPxToRem(44)};
+    width: ${pxToRem(320)};
+    padding-left: ${pxToRem(44)};
 
     .info-line {
         width: fit-content;
         ${text.lg}
-        gap: 0 ${numbPxToRem(5)};
+        gap: 0 ${pxToRem(5)};
     }
 
     .info-line-title {
@@ -93,7 +93,7 @@ export const List = styled.ul`
     .info-line-data {
         font-weight: bold;
         white-space: nowrap;
-        line-height: ${numbPxToRem(18)};
+        line-height: ${pxToRem(18)};
         color: ${color.softSilver};
     }
 
@@ -108,8 +108,8 @@ export const List = styled.ul`
 
     .poke-dollar-ico {
         position: absolute;
-        right: -${numbPxToRem(23)};
-        height: ${numbPxToRem(20)};
+        right: -${pxToRem(23)};
+        height: ${pxToRem(20)};
         path {
             fill: ${color.softSilver};
         }

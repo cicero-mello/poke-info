@@ -1,6 +1,6 @@
 import { versionFloatingCardAnimationClasses } from "./animations/animation-classes"
 import { dimensions } from "@style-guide/dimensions"
-import { numbPxToRem } from "@style-guide"
+import { pxToRem } from "@style-guide"
 import styled from "styled-components"
 
 export const Screen = styled.main`
@@ -11,7 +11,7 @@ export const Screen = styled.main`
     max-width: ${dimensions.headerContainerWidth};
     height: 100%;
     width: 100%;
-    padding: ${numbPxToRem(52)};
+    padding: ${pxToRem(52)};
     align-self: center;
     color: white;
     overflow: hidden;
@@ -29,7 +29,7 @@ export const Screen = styled.main`
         padding: 0 !important;
         & > div {
             padding: 0;
-            border-radius: ${numbPxToRem(12)};
+            border-radius: ${pxToRem(12)};
             overflow: hidden;
         }
     }

@@ -13,15 +13,15 @@ ${({ $bigMode }) => css`
     color: ${styleGuide.color.steelGray};
     white-space: nowrap;
     line-height: 0;
-    height: ${pxToRem("10px")};
-    border-radius: ${pxToRem("20px")};
+    height: ${pxToRem(10)};
+    border-radius: ${pxToRem(20)};
 
     &:has(label){
-        height: ${pxToRem("20px")};
+        height: ${pxToRem(20)};
     }
 
     &:has(progress:not([value])){
-        border-radius: ${pxToRem("20px")};
+        border-radius: ${pxToRem(20)};
         background-color: ${styleGuide.color.silverGray};
         animation:
             ${styleGuide.keyframes.opacityLoading2}
@@ -42,7 +42,7 @@ ${({ $bigMode }) => css`
         }
 
         progress {
-            height: ${pxToRem("12px")};
+            height: ${pxToRem(12)};
         }
     `}
 `}`
@@ -63,9 +63,9 @@ ${({ $statName }) => css`
     display: flex;
     overflow: hidden;
     width: 100%;
-    height: ${pxToRem("10px")};
+    height: ${pxToRem(10)};
     background-color: white;
-    border-radius: ${pxToRem("20px")};
+    border-radius: ${pxToRem(20)};
     transition: ${styleGuide.transitionTime.slow};
 
     ${!$statName && css`
@@ -75,7 +75,7 @@ ${({ $statName }) => css`
     &::-webkit-progress-bar {
         overflow: hidden;
         background-color: white;
-        border-radius: ${pxToRem("20px")};
+        border-radius: ${pxToRem(20)};
     }
 
     ${$statName && css`

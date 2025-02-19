@@ -1,4 +1,4 @@
-import { numbPxToRem, styleGuide } from "@style-guide"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 
 const componentCss = css`
@@ -10,7 +10,7 @@ const componentCss = css`
 
     &:hover {
         & > .text {
-            transform: translateY(-${numbPxToRem(3)});
+            transform: translateY(-${pxToRem(3)});
         }
     }
 `

@@ -1,4 +1,4 @@
-import { numbPxToRem, styleGuide } from "@style-guide"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled from "styled-components"
 
 export const Component = styled.div.attrs({
@@ -8,10 +8,10 @@ export const Component = styled.div.attrs({
 
     display: flex;
     height: fit-content;
-    padding: ${numbPxToRem(3)} ${numbPxToRem(10)};
+    padding: ${pxToRem(3)} ${pxToRem(10)};
     align-items: center;
     font-weight: bold;
     border-radius: 10rem;
-    border: ${numbPxToRem(2)} solid ${styleGuide.color.whiteAlpha49};
+    border: ${pxToRem(2)} solid ${styleGuide.color.whiteAlpha49};
     color: ${styleGuide.color.pearlGray};
 `

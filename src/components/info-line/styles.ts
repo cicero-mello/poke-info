@@ -5,7 +5,7 @@ const componentCss = css`
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: ${pxToRem("4px")} ${pxToRem("8px")};
+    gap: ${pxToRem(4)} ${pxToRem(8)};
     ${styleGuide.text.base}
 `
 
@@ -32,5 +32,5 @@ export const Info = styled.span.attrs({
 })`
     display: flex;
     flex-wrap: wrap;
-    gap: ${pxToRem("16px")} ${pxToRem("8px")};
+    gap: ${pxToRem(16)} ${pxToRem(8)};
 `

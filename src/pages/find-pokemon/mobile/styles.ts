@@ -1,9 +1,9 @@
 import { dimensions } from "@style-guide/dimensions"
 import { scrollbar } from "@style-guide/scrollbar"
-import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
 import styled from "styled-components"
+import { pxToRem } from "@style-guide"
 
 export const Screen = styled.main.attrs({
     id: "screen"
@@ -16,7 +16,7 @@ export const Screen = styled.main.attrs({
     padding: 28px 24px;
     color: ${color.pearlGray};
     align-items: center;
-    gap: ${numbPxToRem(32)};
+    gap: ${pxToRem(32)};
 
     overflow-y: scroll;
     ${scrollbar.hidden}

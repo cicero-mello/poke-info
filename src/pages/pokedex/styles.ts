@@ -1,4 +1,4 @@
-import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 import { pokeWindowRem } from "@components"
 
@@ -48,17 +48,17 @@ ${({ $hide }) => css`
     ;
 
     width: 100%;
-    margin-top: ${numbPxToRem(38)};
-    margin-bottom: ${pxToRem("28px")};
+    margin-top: ${pxToRem(38)};
+    margin-bottom: ${pxToRem(28)};
     padding: 0 clamp(36px, 6%, 100%);
 
     opacity: 1;
     z-index: 1;
-    min-height: ${pxToRem("68px")};
-    height: ${pxToRem("68px")};
+    min-height: ${pxToRem(68)};
+    height: ${pxToRem(68)};
 
     @media(max-height: ${pokeWindowRem.noWhiteLine.maxHeight}){
-        margin-top: ${pxToRem("28px")};
+        margin-top: ${pxToRem(28)};
     }
 
     @media
@@ -70,16 +70,16 @@ ${({ $hide }) => css`
         align-items: center;
         justify-content: flex-start;
 
-        min-height: ${pxToRem("150px")};
-        height: ${pxToRem("150px")};
+        min-height: ${pxToRem(150)};
+        height: ${pxToRem(150)};
         overflow: hidden;
 
-        margin-top: ${pxToRem("32px")};
-        gap: ${pxToRem("24px")};
+        margin-top: ${pxToRem(32)};
+        gap: ${pxToRem(24)};
 
         .pokemon-search-input {
             width: 100%;
-            max-width: ${pxToRem("550px")};
+            max-width: ${pxToRem(550)};
             span {
                 max-width: unset;
             }
@@ -89,7 +89,7 @@ ${({ $hide }) => css`
             width: 100%;
             flex-wrap: wrap;
             justify-content: space-evenly;
-            gap: ${pxToRem("24px")};
+            gap: ${pxToRem(24)};
         }
 
         transition: 300ms ease-out;
@@ -98,12 +98,12 @@ ${({ $hide }) => css`
             min-height: 0;
             height: 0;
             margin-bottom: 0;
-            margin-top: ${pxToRem("34px")};
+            margin-top: ${pxToRem(34)};
         `}
     }
 
-    @media(max-width: ${pxToRem("370px")}){
-        min-height: ${pxToRem("260px")};
+    @media(max-width: ${pxToRem(370)}){
+        min-height: ${pxToRem(260)};
 
         ${$hide && css`
             min-height: 0;
@@ -125,8 +125,8 @@ ${({ $hide }) => css`
 
     position: relative;
     width: 100%;
-    min-height: ${pxToRem("20px")};
-    margin-bottom: ${pxToRem(`36px`)};
+    min-height: ${pxToRem(20)};
+    margin-bottom: ${pxToRem(36)};
     color: ${styleGuide.color.ashGray};
     -webkit-tap-highlight-color: transparent;
 

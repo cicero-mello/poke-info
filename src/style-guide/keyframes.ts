@@ -1,5 +1,5 @@
 import { keyframes } from "styled-components"
-import { numbPxToRem } from "./px-to-rem"
+import { pxToRem } from "./px-to-rem"
 
 export const fadeIn = keyframes`
     from {
@@ -141,10 +141,10 @@ export const spinZoom = keyframes`
 
 export const jump = keyframes`
     0% {
-        transform: translateY(-${numbPxToRem(20)});
+        transform: translateY(-${pxToRem(20)});
     }
     25% {
-        transform: translateY(-${numbPxToRem(14)});
+        transform: translateY(-${pxToRem(14)});
     }
     50% {
         transform: translateY(0) scaleY(100%);
@@ -153,9 +153,9 @@ export const jump = keyframes`
         transform: translateY(0) scaleY(88%);
     }
     75% {
-        transform: translateY(-${numbPxToRem(18)}) scaleY(100%);
+        transform: translateY(-${pxToRem(18)}) scaleY(100%);
     }
     100% {
-        transform: translateY(-${numbPxToRem(20)});
+        transform: translateY(-${pxToRem(20)});
     }
 `

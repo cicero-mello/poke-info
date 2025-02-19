@@ -1,4 +1,4 @@
-import { numbPxToRem, styleGuide } from "@style-guide"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled from "styled-components"
 
 export const pokeWindow = {
@@ -13,11 +13,11 @@ export const pokeWindow = {
 
 export const pokeWindowRem = {
     noWhiteLine: {
-        maxHeight: numbPxToRem(pokeWindow.noWhiteLine.maxHeight)
+        maxHeight: pxToRem(pokeWindow.noWhiteLine.maxHeight)
     },
     full: {
-        maxWidth: numbPxToRem(pokeWindow.full.maxWidth),
-        maxHeight: numbPxToRem(pokeWindow.full.maxHeight)
+        maxWidth: pxToRem(pokeWindow.full.maxWidth),
+        maxHeight: pxToRem(pokeWindow.full.maxHeight)
     }
 }
 
@@ -27,14 +27,14 @@ export const PokeWindow = styled.main.attrs({
     display: flex;
     flex-direction: column;
     position: relative;
-    border-radius: ${numbPxToRem(40)};
+    border-radius: ${pxToRem(40)};
     overflow: hidden;
     color: white;
     aspect-ratio: 1248 / 860;
     height: 100%;
-    max-height: ${numbPxToRem(812)};
+    max-height: ${pxToRem(812)};
     align-self: center;
-    padding-top: ${numbPxToRem(60)};
+    padding-top: ${pxToRem(60)};
 
     background: ${styleGuide.color.onyxAlpha83};
 
@@ -43,7 +43,7 @@ export const PokeWindow = styled.main.attrs({
         content: "";
         width: 100%;
         top: 0;
-        height: ${numbPxToRem(60)};
+        height: ${pxToRem(60)};
         background-color: ${styleGuide.color.pearlGray};
         z-index: 5;
         pointer-events: none;
@@ -51,7 +51,7 @@ export const PokeWindow = styled.main.attrs({
 
     @media(max-height: ${pokeWindowRem.noWhiteLine.maxHeight}){
         background: ${styleGuide.color.onyxAlpha83};
-        border-radius: ${numbPxToRem(12)};
+        border-radius: ${pxToRem(12)};
         padding-top: 0;
 
         &::before {

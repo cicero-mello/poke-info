@@ -1,11 +1,11 @@
 import { pageAnimationClasses } from "../../animations"
-import { numbPxToRem } from "@style-guide"
 import { text } from "@style-guide/text"
+import { pxToRem } from "@style-guide"
 import styled from "styled-components"
 
 export const Component = styled.section`
     position: relative;
-    max-width: ${numbPxToRem(680)};
+    max-width: ${pxToRem(680)};
     width: 100%;
     height: 100%;
 
@@ -18,6 +18,6 @@ export const Item = styled.span`
     text-align: center;
     white-space: nowrap;
     ${text.lg}
-    line-height: ${numbPxToRem(22)};
+    line-height: ${pxToRem(22)};
     font-weight: bold;
 `

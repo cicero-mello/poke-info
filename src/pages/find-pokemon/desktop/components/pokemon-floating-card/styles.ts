@@ -1,7 +1,7 @@
 import { pokemonFloatingCardAnimationClasses } from "./animations"
 import { transitionTime } from "@style-guide/transition-time"
-import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
+import { pxToRem } from "@style-guide"
 import styled from "styled-components"
 
 export const ContentWrapper = styled.div`
@@ -13,7 +13,7 @@ export const ContentWrapper = styled.div`
     height: 100%;
 
     .pokemon-search-input {
-        max-width: ${numbPxToRem(256)};
+        max-width: ${pxToRem(256)};
         width: 100%;
     }
 
@@ -33,16 +33,16 @@ export const ContentWrapper = styled.div`
     .styled-button {
         position: absolute;
         top: 0;
-        left: -${numbPxToRem(20)};
+        left: -${pxToRem(20)};
         height: fit-content;
         opacity: 0;
-        margin-left: ${numbPxToRem(18)};
+        margin-left: ${pxToRem(18)};
         z-index: 1;
 
         ${pokemonFloatingCardAnimationClasses}
 
         .arrow-return-ico {
-            height: ${numbPxToRem(18)};
+            height: ${pxToRem(18)};
             width: fit-content;
 
             * {
@@ -65,7 +65,7 @@ export const SearchWrapper = styled.div`
     justify-content: space-evenly;
     align-items: center;
     height: 100%;
-    gap: ${numbPxToRem(12)};
+    gap: ${pxToRem(12)};
 
     ${pokemonFloatingCardAnimationClasses}
 `

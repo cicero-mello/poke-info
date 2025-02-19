@@ -1,8 +1,8 @@
-import { transitionTime } from "@style-guide/transition-time"
-import { numbPxToRem } from "@style-guide"
-import { color } from "@style-guide/color"
-import styled from "styled-components"
 import { animationClasses } from "./animations/animation-classes"
+import { transitionTime } from "@style-guide/transition-time"
+import { color } from "@style-guide/color"
+import { pxToRem } from "@style-guide"
+import styled from "styled-components"
 
 export const Component = styled.section`
     display: flex;
@@ -20,16 +20,16 @@ export const Component = styled.section`
 
     .spinner {
         position: absolute;
-        top: ${numbPxToRem(94)};
+        top: ${pxToRem(94)};
     }
 
     .styled-button {
-        margin-top: ${numbPxToRem(10)};
+        margin-top: ${pxToRem(10)};
         opacity: 0;
         pointer-events: none;
 
         .arrow-return-ico {
-            height: ${numbPxToRem(18)};
+            height: ${pxToRem(18)};
             * {
                 transition: ${transitionTime.fast} linear;
                 fill: ${color.whiteAlpha70};
@@ -55,18 +55,18 @@ export const SearchWrapper = styled.div.attrs({
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: ${numbPxToRem(16)} ${numbPxToRem(24)};
+    gap: ${pxToRem(16)} ${pxToRem(24)};
     position: absolute;
     top: 0;
 
     .pokemon-search-input {
         button {
-            height: ${numbPxToRem(32)};
+            height: ${pxToRem(32)};
         }
     }
 
     .pikachu-shadow-svg {
-        height:  ${numbPxToRem(200)};
+        height:  ${pxToRem(200)};
         width: fit-content;
 
         * {

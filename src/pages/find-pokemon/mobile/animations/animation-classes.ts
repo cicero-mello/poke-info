@@ -1,7 +1,7 @@
 import { fadeIn, fadeOut } from "@style-guide/keyframes"
 import { css, keyframes } from "styled-components"
-import { numbPxToRem } from "@style-guide"
 import { AnimationClass } from "./types"
+import { pxToRem } from "@style-guide"
 
 export const ANIMATION_CLASSES: AnimationClass[] = [
     "fade-in",
@@ -19,7 +19,7 @@ export const ANIMATION_TIME = {
 
 const customComeFromBottom = keyframes`
     from {
-        transform: translateY(${numbPxToRem(60)});
+        transform: translateY(${pxToRem(60)});
         opacity: 0;
     }
     to {

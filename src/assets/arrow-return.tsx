@@ -1,11 +1,11 @@
 import { FunctionComponent as FC } from "preact/compat"
 import { HTMLAttributes } from "preact/compat"
-import { numbPxToRem } from "@style-guide"
+import { pxToRem } from "@style-guide"
 
 export const ArrowReturnIco: FC<HTMLAttributes<SVGElement>> = (props) => (
     <svg
-        width={numbPxToRem(61)}
-        height={numbPxToRem(34)}
+        width={pxToRem(61)}
+        height={pxToRem(34)}
         viewBox="0 0 68 38"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

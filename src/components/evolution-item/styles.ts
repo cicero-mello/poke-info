@@ -1,4 +1,4 @@
-import { numbPxToRem, styleGuide } from "@style-guide"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled from "styled-components"
 
 export const Component = styled.div.attrs({
@@ -8,11 +8,11 @@ export const Component = styled.div.attrs({
     width: 100%;
 
     .info-line > span:first-child {
-        padding-left: ${numbPxToRem(8)};
+        padding-left: ${pxToRem(8)};
         opacity: 0.6;
     }
 
-    @media (max-width: ${numbPxToRem(960)}){
+    @media (max-width: ${pxToRem(960)}){
         flex-direction: column;
 
         .pokemon-pixel-art {
@@ -25,11 +25,11 @@ export const Component = styled.div.attrs({
 
         .infos {
             padding-left: 0;
-            padding-top: ${numbPxToRem(16)};
+            padding-top: ${pxToRem(16)};
         }
 
         .how-to-get {
-            margin-top: ${numbPxToRem(16)};
+            margin-top: ${pxToRem(16)};
         }
     }
 `
@@ -39,8 +39,8 @@ export const Infos = styled.div.attrs({
 })`
     display: flex;
     flex-direction: column;
-    padding-left: ${numbPxToRem(18)};
-    gap: ${numbPxToRem(4)};
+    padding-left: ${pxToRem(18)};
+    gap: ${pxToRem(4)};
 `
 
 export const PokemonName = styled.h3.attrs({
@@ -50,17 +50,17 @@ export const PokemonName = styled.h3.attrs({
 export const Text = styled.p.attrs({
     className: "text"
 })`
-    padding-left: ${numbPxToRem(8)};
+    padding-left: ${pxToRem(8)};
 `
 
 export const HowToGet = styled.h4.attrs({
     className: "how-to-get"
 })`
-    margin-top: ${numbPxToRem(18)};
+    margin-top: ${pxToRem(18)};
     > span {
         opacity: 0.8;
         font-weight: normal;
-        margin-left: ${numbPxToRem(2)};
+        margin-left: ${pxToRem(2)};
 
         ${styleGuide.text.sm};
     }

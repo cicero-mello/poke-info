@@ -1,4 +1,4 @@
-import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 import { TypeTagSize } from "./types"
 import { PokeApi } from "@types"
@@ -16,29 +16,29 @@ ${({ $pokemonType, $size, $cleanMode }) => css`
     font-weight: bold;
     white-space: nowrap;
     height: fit-content;
-    width: ${pxToRem("92px")};
-    padding: ${pxToRem("7px")} 0;
-    border-radius: ${pxToRem(`8px`)};
+    width: ${pxToRem(92)};
+    padding: ${pxToRem(7)} 0;
+    border-radius: ${pxToRem(8)};
     color: ${styleGuide.color.pearlGray};
 
     ${$size == "small" && css`
         ${styleGuide.text.sm}
-        padding: ${pxToRem("5px")} 0;
-        width: ${pxToRem("78px")};
+        padding: ${pxToRem(5)} 0;
+        width: ${pxToRem(78)};
     `}
 
     ${$size == "smaller" && css`
         ${styleGuide.text.xs}
-        padding: ${pxToRem("5px")} 0;
-        width: ${pxToRem("64px")};
+        padding: ${pxToRem(5)} 0;
+        width: ${pxToRem(64)};
     `}
 
     ${$cleanMode && css`
         ${styleGuide.text.xs}
         width: fit-content;
         background-color: unset;
-        padding: ${numbPxToRem(3)} ${numbPxToRem(10)};
+        padding: ${pxToRem(3)} ${pxToRem(10)};
         color: ${styleGuide.color.pearlGray};
-        border: ${numbPxToRem(2)} solid ${styleGuide.color.whiteAlpha49};
+        border: ${pxToRem(2)} solid ${styleGuide.color.whiteAlpha49};
     `}
 `}`

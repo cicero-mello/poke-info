@@ -1,5 +1,5 @@
-import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
 import { VirtualItem } from "@tanstack/react-virtual"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 import { VirtualStyleData } from "./types"
 
@@ -19,29 +19,29 @@ ${({ $hide }) => css`
     overflow-x: hidden;
     position: relative;
 
-    padding-top: ${pxToRem("32px")};
+    padding-top: ${pxToRem(32)};
 
     transition: ${styleGuide.transitionTime.medium} linear;
     opacity: ${$hide ? 0 : 1};
 
     ${styleGuide.scrollbar.white}
     &::-webkit-scrollbar-track {
-        margin-top: ${numbPxToRem(20)};
-        margin-bottom: ${numbPxToRem(20)};
+        margin-top: ${pxToRem(20)};
+        margin-bottom: ${pxToRem(20)};
     }
 
     mask-image: linear-gradient(
         to bottom,
         transparent,
-        black ${numbPxToRem(20)},
-        black calc(100% - ${numbPxToRem(20)}),
+        black ${pxToRem(20)},
+        black calc(100% - ${pxToRem(20)}),
         transparent
     );
     -webkit-mask-image: linear-gradient(
         to bottom,
         transparent,
-        black ${numbPxToRem(20)},
-        black calc(100% - ${numbPxToRem(20)}),
+        black ${pxToRem(20)},
+        black calc(100% - ${pxToRem(20)}),
         transparent
     );
 `}`
@@ -75,7 +75,7 @@ export const NoFavoritePokemons = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: ${numbPxToRem(4)};
+    gap: ${pxToRem(4)};
     color: ${styleGuide.color.pearlGray};
     ${styleGuide.text.lg}
 
@@ -86,16 +86,16 @@ export const NoFavoritePokemons = styled.div`
     }
 
     .checkbox-pokeball {
-        margin: 0 ${numbPxToRem(1)};
-        height: ${numbPxToRem(22)};
-        width: ${numbPxToRem(22)};
+        margin: 0 ${pxToRem(1)};
+        height: ${pxToRem(22)};
+        width: ${pxToRem(22)};
 
         > path {
             fill: ${styleGuide.color.pearlGray};
         }
     }
 
-    @media (max-width: ${numbPxToRem(400)}){
+    @media (max-width: ${pxToRem(400)}){
         ${styleGuide.text.base}
     }
 `

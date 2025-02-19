@@ -1,4 +1,4 @@
-import { numbPxToRem, pxToRem, styleGuide } from "@style-guide"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled from "styled-components"
 
 export const Component = styled.div.attrs({
@@ -17,7 +17,7 @@ export const TabList = styled.div.attrs({
     display: flex;
     width: 100%;
     justify-content: center;
-    gap: ${numbPxToRem(18)};
+    gap: ${pxToRem(18)};
 
     ${styleGuide.text.xl}
 
@@ -30,12 +30,12 @@ export const TabPanel = styled.div.attrs({
     role: "tabpanel"
 })`
     display: flex;
-    max-height: calc(100% - ${numbPxToRem(18)} - ${numbPxToRem(28)});
+    max-height: calc(100% - ${pxToRem(18)} - ${pxToRem(28)});
     height: 100%;
     background-color: ${styleGuide.color.ironGrayAlpha30};
-    border-radius: ${numbPxToRem(18)};
-    margin-top: ${numbPxToRem(18)};
-    padding: ${pxToRem("28px")} ${pxToRem("12px")} ${pxToRem("28px")} ${pxToRem("28px")};
+    border-radius: ${pxToRem(18)};
+    margin-top: ${pxToRem(18)};
+    padding: ${pxToRem(28)} ${pxToRem(12)} ${pxToRem(28)} ${pxToRem(28)};
 `
 
 export const Content = styled.div`
@@ -43,5 +43,5 @@ export const Content = styled.div`
     width: 100%;
     overflow-y: auto;
     ${styleGuide.scrollbar.whiteSmall}
-    padding-right: ${pxToRem("28px")};
+    padding-right: ${pxToRem(28)};
 `

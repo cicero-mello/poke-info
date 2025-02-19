@@ -1,8 +1,8 @@
 import { transitionTime } from "@style-guide/transition-time"
 import styled, { css } from "styled-components"
-import { numbPxToRem } from "@style-guide"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
+import { pxToRem } from "@style-guide"
 
 export const Component = styled.header.attrs({
     className: "berries-header"
@@ -14,14 +14,14 @@ ${({$retract}) => css`
     height: fit-content;
     width: 100%;
     background-color: ${color.berry};
-    padding: ${numbPxToRem(38)} ${numbPxToRem(48)};
-    gap: ${numbPxToRem(18)};
+    padding: ${pxToRem(38)} ${pxToRem(48)};
+    gap: ${pxToRem(18)};
     transition: ${transitionTime.slow} ease-in-out;
     z-index: 1;
 
     ${$retract && css`
         gap: 0;
-        padding: ${numbPxToRem(14)} ${numbPxToRem(48)};
+        padding: ${pxToRem(14)} ${pxToRem(48)};
         p {
             opacity: 0;
         }
@@ -42,7 +42,7 @@ export const HiddenDescription = styled.p.attrs({
     position: absolute;
     pointer-events: none;
     overflow: hidden;
-    margin-right: ${numbPxToRem(48)};
+    margin-right: ${pxToRem(48)};
     opacity: 0;
     ${text.xl}
 `
@@ -51,10 +51,10 @@ export const RetractButton = styled.button.attrs({
     className: "berries-header-retract-button"
 })`
     position: absolute;
-    right:  ${numbPxToRem(23)};
+    right:  ${pxToRem(23)};
     bottom: 0;
-    width:  ${numbPxToRem(50)};
-    height:  ${numbPxToRem(30)};
+    width:  ${pxToRem(50)};
+    height:  ${pxToRem(30)};
 
     &:hover {
         &::before {
@@ -65,11 +65,11 @@ export const RetractButton = styled.button.attrs({
     &::before {
         content: "";
         position: absolute;
-        height: ${numbPxToRem(3)};
+        height: ${pxToRem(3)};
         width: 100%;
         background-color: ${color.whiteAlpha49};
-        bottom: ${numbPxToRem(10)};
-        border-radius: ${numbPxToRem(10)};
+        bottom: ${pxToRem(10)};
+        border-radius: ${pxToRem(10)};
         transition: ${transitionTime.medium} ease-in-out;
     }
 `

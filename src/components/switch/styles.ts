@@ -9,24 +9,24 @@ ${({ $nameLeftWidth, $nameRightWidth }) => css`
     flex-direction: column;
     width: fit-content;
     position: relative;
-    gap: ${pxToRem("6px")};
+    gap: ${pxToRem(6)};
 
     &:has(input:not(:checked)) .slider{
         margin-left: 0;
         width: calc(
             ${$nameLeftWidth}
-            + ${pxToRem("28px")}
+            + ${pxToRem(28)}
         );
     }
 
     &:has(input:checked) .slider {
         margin-left: calc(
             ${$nameLeftWidth}
-            + ${pxToRem("28px")}
+            + ${pxToRem(28)}
         );
         width: calc(
             ${$nameRightWidth}
-            + ${pxToRem("28px")}
+            + ${pxToRem(28)}
         );
     }
 `}`
@@ -40,11 +40,11 @@ export const SliderContainer = styled.div`
     cursor: pointer;
     display: flex;
     position: relative;
-    gap: ${pxToRem(`28px`)};
+    gap: ${pxToRem(28)};
 
     background-color: white;
-    padding: ${pxToRem("2px")} ${pxToRem("14px")};
-    border-radius: ${pxToRem("56px")};
+    padding: ${pxToRem(2)} ${pxToRem(14)};
+    border-radius: ${pxToRem(56)};
     overflow: hidden;
 `
 
@@ -74,7 +74,7 @@ ${({ $withTransition }) => css`
     `}
 
     position: absolute;
-    border-radius: ${pxToRem("56px")};
+    border-radius: ${pxToRem(56)};
     background: linear-gradient(
         to bottom,
         ${styleGuide.color.pastelBlueAlpha30},

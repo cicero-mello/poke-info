@@ -17,7 +17,7 @@ export const Content = styled.main`
         + 48px + 48px
     );
 
-    @media(max-width: ${pxToRem("1120px")}){
+    @media(max-width: ${pxToRem(1120)}){
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
@@ -26,16 +26,16 @@ export const Content = styled.main`
 
 export const Logo = styled.img`
     display: flex;
-    max-width: ${pxToRem("624px")};
+    max-width: ${pxToRem(624)};
     padding-bottom: 200px;
     width: 100%;
 
-    @media(max-width: ${pxToRem("1120px")}){
+    @media(max-width: ${pxToRem(1120)}){
         align-items: center;
         padding-bottom: 0px;
     }
 
-    @media(max-height: ${pxToRem("550px")}){
+    @media(max-height: ${pxToRem(550)}){
         padding-bottom: 0px;
     }
 `
@@ -45,7 +45,7 @@ export const Navigation = styled.nav`
     flex-direction: column;
     align-items: flex-end;
     justify-self: flex-end;
-    gap: ${pxToRem("24px")};
+    gap: ${pxToRem(24)};
     perspective: 900px;
     padding-top: 200px;
 
@@ -57,16 +57,16 @@ export const Navigation = styled.nav`
         }
     }
 
-    @media(max-width: ${pxToRem("1120px")}){
+    @media(max-width: ${pxToRem(1120)}){
         align-items: center;
         padding-top: 0px;
     }
 
     @media(max-width: ${styleGuide.dimensions.mobileWidth}){
-        gap: ${pxToRem("16px")};
+        gap: ${pxToRem(16)};
     }
 
-    @media(max-height: ${pxToRem("550px")}){
+    @media(max-height: ${pxToRem(550)}){
         padding-top: 0px;
     }
 `

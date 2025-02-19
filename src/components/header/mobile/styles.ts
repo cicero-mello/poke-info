@@ -14,13 +14,13 @@ ${({ $isMenuOpen }) => css`
     display: flex;
     position: relative;
     align-self: center;
-    width: ${pxToRem("32px")};
-    height: ${pxToRem("24px")};
-    margin-bottom: ${pxToRem("3px")};
+    width: ${pxToRem(32)};
+    height: ${pxToRem(24)};
+    margin-bottom: ${pxToRem(3)};
 
     & > .menu-line {
         transition: ${styleGuide.transitionTime.medium} linear;
-        width: ${pxToRem("32px")};
+        width: ${pxToRem(32)};
         &:nth-child(1){ top: 0%; }
         &:nth-child(2){ top: 50%; right: 0%; }
         &:nth-child(3){ top: 100%; right: 0%; }
@@ -29,13 +29,13 @@ ${({ $isMenuOpen }) => css`
     ${$isMenuOpen && css`
         & > .menu-line:nth-child(1){
             transform: rotate(-45deg);
-            width: ${pxToRem("20px")};
+            width: ${pxToRem(20)};
             top: 50%;
         }
 
         & > .menu-line:nth-child(2){
             transform: rotate(45deg);
-            width: ${pxToRem("20px")};
+            width: ${pxToRem(20)};
             top: 50%;
             opacity: 0;
             right: -2%;
@@ -43,7 +43,7 @@ ${({ $isMenuOpen }) => css`
 
         & > .menu-line:nth-child(3){
             transform: rotate(45deg);
-            width: ${pxToRem("20px")};
+            width: ${pxToRem(20)};
             top: 50%;
             right: -2%;
         }
@@ -55,8 +55,8 @@ export const MenuLine = styled.span.attrs({
 })<{ $theme: HeaderTheme }>`
 ${({ $theme }) => css`
     position: absolute;
-    height: ${pxToRem("3px")};
-    border-radius: ${pxToRem("6px")};
+    height: ${pxToRem(3)};
+    border-radius: ${pxToRem(6)};
 
     ${$theme === "dark" && css`
         background-color: ${styleGuide.color.slateBlue};
@@ -77,16 +77,16 @@ ${({ $theme, $isMenuOpen }) => css`
     overflow: hidden;
 
     top: 100%;
-    width: ${pxToRem("168px")};
-    height: ${pxToRem("180px")};
+    width: ${pxToRem(168)};
+    height: ${pxToRem(180)};
     right: -${styleGuide.dimensions.desktopHeaderPaddingX};
     border-radius: 0 0 0 100%;
-    gap: ${pxToRem("8px")};
+    gap: ${pxToRem(8)};
     padding:
-        ${pxToRem("14px")}
-        ${pxToRem("12px")}
-        ${pxToRem("28px")}
-        ${pxToRem("24px")}
+        ${pxToRem(14)}
+        ${pxToRem(12)}
+        ${pxToRem(28)}
+        ${pxToRem(24)}
     ;
 
     transition-property: background-color, height, padding;

@@ -29,7 +29,7 @@ export const Component = styled.header<{ $theme: HeaderTheme }>`${
 `}`
 
 export const Logo = styled.img`
-    height: ${pxToRem("44px")};
+    height: ${pxToRem(44)};
 `
 
 export const HeaderContainer = styled.div`

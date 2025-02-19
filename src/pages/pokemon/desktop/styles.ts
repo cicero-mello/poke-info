@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components"
-import { numbPxToRem, styleGuide } from "@style-guide"
-import { AnimationType } from "./types"
 import { fanRotate, slideFromRight } from "@style-guide/keyframes"
+import { pxToRem, styleGuide } from "@style-guide"
+import styled, { css } from "styled-components"
+import { AnimationType } from "./types"
 
 export const LeftSide = styled.div
 <{ $animationType: AnimationType }>`
@@ -9,16 +9,16 @@ ${({ $animationType }) => css`
     display: flex;
     position: relative;
     justify-content: center;
-    min-width: ${numbPxToRem(420)};
+    min-width: ${pxToRem(420)};
 
     .pokemon-name-and-stats {
-        padding-top: ${numbPxToRem(88)};
+        padding-top: ${pxToRem(88)};
     }
 
     .stats-container {
-        max-width: ${numbPxToRem(270)};
-        padding: ${numbPxToRem(0)} ${numbPxToRem(44)} ${numbPxToRem(2)} ${numbPxToRem(44)};
-        margin: ${numbPxToRem(20)} 0 ${numbPxToRem(48)} 0;
+        max-width: ${pxToRem(270)};
+        padding: ${pxToRem(0)} ${pxToRem(44)} ${pxToRem(2)} ${pxToRem(44)};
+        margin: ${pxToRem(20)} 0 ${pxToRem(48)} 0;
     }
 
     ${$animationType === "init" && css`
@@ -40,15 +40,15 @@ ${({ $animationType }) => css`
 `}`
 
 export const Fan = styled.div`
-    width: ${numbPxToRem(470)};
-    height:  ${numbPxToRem(470)};
+    width: ${pxToRem(470)};
+    height:  ${pxToRem(470)};
     position: absolute;
 
-    border-radius: ${numbPxToRem(27)} 100% ${numbPxToRem(27)} ${numbPxToRem(45)};
+    border-radius: ${pxToRem(27)} 100% ${pxToRem(27)} ${pxToRem(45)};
     transform: rotate(45deg);
     background-color: ${styleGuide.color.ironGray};
-    top: ${numbPxToRem(30)};
-    left: ${numbPxToRem(5)};
+    top: ${pxToRem(30)};
+    left: ${pxToRem(5)};
 `
 
 export const RightSide = styled.div
@@ -56,7 +56,7 @@ export const RightSide = styled.div
 ${({ $animationType }) => css`
     display: flex;
     width: 100%;
-    padding: ${numbPxToRem(24)} ${numbPxToRem(24)} ${numbPxToRem(24)} 0;
+    padding: ${pxToRem(24)} ${pxToRem(24)} ${pxToRem(24)} 0;
     height: 100%;
 
     ${$animationType === "init" && css`

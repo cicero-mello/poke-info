@@ -1,7 +1,7 @@
 import { transitionTime } from "@style-guide/transition-time"
-import { numbPxToRem, styleGuide } from "@style-guide"
 import { berryAnimationClasses } from "./animation"
 import { scrollbar } from "@style-guide/scrollbar"
+import { pxToRem, styleGuide } from "@style-guide"
 import styled, { css } from "styled-components"
 import { color } from "@style-guide/color"
 import { text } from "@style-guide/text"
@@ -14,11 +14,11 @@ export const Screen = styled.div`
     height: 100%;
     width: 100%;
     max-width: ${styleGuide.dimensions.headerContainerWidth};
-    padding: ${numbPxToRem(52)};
+    padding: ${pxToRem(52)};
     align-self: center;
     color: white;
 
-    @media (max-width: ${numbPxToRem(860)}), (max-height: ${numbPxToRem(680)}){
+    @media (max-width: ${pxToRem(860)}), (max-height: ${pxToRem(680)}){
         padding: 0;
         main {
             max-width: unset;
@@ -32,26 +32,26 @@ export const Screen = styled.div`
         }
 
         .berries-header {
-            padding: ${numbPxToRem(18)} ${numbPxToRem(24)} ${numbPxToRem(24)} ${numbPxToRem(24)};
+            padding: ${pxToRem(18)} ${pxToRem(24)} ${pxToRem(24)} ${pxToRem(24)};
             > h1 {
                 ${text["2xl"]}
-                line-height: ${numbPxToRem(28)};
+                line-height: ${pxToRem(28)};
             }
             > p {
-                margin-top: -${numbPxToRem(8)};
-                margin-bottom: ${numbPxToRem(2)};
+                margin-top: -${pxToRem(8)};
+                margin-bottom: ${pxToRem(2)};
             }
             .berries-header-retract-button {
-                width: ${numbPxToRem(36)};
+                width: ${pxToRem(36)};
             }
 
             .hidden-description {
-                margin-right: ${numbPxToRem(24)}
+                margin-right: ${pxToRem(24)}
             }
         }
 
         .berry-data {
-            padding: ${numbPxToRem(32)} ${numbPxToRem(24)} 0 ${numbPxToRem(24)};
+            padding: ${pxToRem(32)} ${pxToRem(24)} 0 ${pxToRem(24)};
             overflow-y: scroll;
             ${scrollbar.hidden}
 
@@ -59,10 +59,10 @@ export const Screen = styled.div`
                 margin-bottom: unset;
                 > h2 {
                     ${text["2xl"]}
-                    line-height: ${numbPxToRem(28)};
+                    line-height: ${pxToRem(28)};
                 }
                 > .styled-anchor {
-                    margin-top: -${numbPxToRem(2)};
+                    margin-top: -${pxToRem(2)};
                 }
             }
 
@@ -73,17 +73,17 @@ export const Screen = styled.div`
                 grid-template-rows: auto auto;
                 align-content: space-around;
                 height: 100%;
-                margin: ${numbPxToRem(60)} 0 ${numbPxToRem(36)} 0;
-                gap: ${numbPxToRem(60)} 0;
+                margin: ${pxToRem(60)} 0 ${pxToRem(36)} 0;
+                gap: ${pxToRem(60)} 0;
 
                 .flavors-graph{
                     margin-right: unset;
                 }
                 ul {
                     order: 2;
-                    gap: ${numbPxToRem(8)};
-                    column-gap: ${numbPxToRem(32)};
-                    padding: ${numbPxToRem(24)} ${numbPxToRem(24)} ${numbPxToRem(18)} ${numbPxToRem(24)};
+                    gap: ${pxToRem(8)};
+                    column-gap: ${pxToRem(32)};
+                    padding: ${pxToRem(24)} ${pxToRem(24)} ${pxToRem(18)} ${pxToRem(24)};
 
                     .info-line {
                         ${text.lg}
@@ -97,26 +97,26 @@ export const Screen = styled.div`
                 width: 100%;
                 align-items: center;
                 justify-content: space-evenly;
-                margin: ${numbPxToRem(24)} 0 ${numbPxToRem(36)} 0;
-                gap: ${numbPxToRem(36)};
+                margin: ${pxToRem(24)} 0 ${pxToRem(36)} 0;
+                gap: ${pxToRem(36)};
 
                 .descriptions {
                     width: 100%;
-                    gap: ${numbPxToRem(24)} 0;
+                    gap: ${pxToRem(24)} 0;
 
                     .short-effect-wrapper {
                         flex-direction: column;
                         justify-content: center;
                         align-items: center;
                         text-align: center;
-                        padding: 0 ${numbPxToRem(8)};
-                        gap: ${numbPxToRem(4)} 0;
+                        padding: 0 ${pxToRem(8)};
+                        gap: ${pxToRem(4)} 0;
                     }
 
                     > p {
                         justify-content: center;
                         margin: unset;
-                        padding: 0px ${numbPxToRem(24)};
+                        padding: 0px ${pxToRem(24)};
                     }
                 }
                 ul {
@@ -131,7 +131,7 @@ export const Screen = styled.div`
         }
     }
 
-    @media (max-width: ${numbPxToRem(500)}){
+    @media (max-width: ${pxToRem(500)}){
         .flavor-text-in-graph {
             ${text.sm}
             &::before {
@@ -154,12 +154,12 @@ export const BerryWindow = styled.main.attrs({
     position: relative;
     flex-direction: column;
     width: 100%;
-    max-width: ${numbPxToRem(1162)};
-    max-height: ${numbPxToRem(812)};
+    max-width: ${pxToRem(1162)};
+    max-height: ${pxToRem(812)};
     background-color: ${color.ebonyAlpha90};
 
-    outline: ${numbPxToRem(4)} solid ${color.ashGrayAlpha75};
-    border-radius: ${numbPxToRem(20)};
+    outline: ${pxToRem(4)} solid ${color.ashGrayAlpha75};
+    border-radius: ${pxToRem(20)};
     overflow: hidden;
 `
 
@@ -171,14 +171,14 @@ ${({$showLoading}) => css`
     position: relative;
     flex-direction: column;
     height: 100%;
-    min-height: ${numbPxToRem(315)};
-    padding: ${numbPxToRem(38)} ${numbPxToRem(48)} ${numbPxToRem(13)} ${numbPxToRem(48)};
-    margin-bottom: ${numbPxToRem(60)};
+    min-height: ${pxToRem(315)};
+    padding: ${pxToRem(38)} ${pxToRem(48)} ${pxToRem(13)} ${pxToRem(48)};
+    margin-bottom: ${pxToRem(60)};
 
     .spinner {
         position: absolute;
-        right: ${numbPxToRem(24)};
-        margin-top: -${numbPxToRem(16)};
+        right: ${pxToRem(24)};
+        margin-top: -${pxToRem(16)};
         opacity: 0;
         transition: ${transitionTime.medium} linear;
 
@@ -191,10 +191,10 @@ ${({$showLoading}) => css`
 export const TitleWrapper = styled.header`
     display: flex;
     width: 100%;
-    min-height: ${numbPxToRem(28)};
-    margin-bottom: ${numbPxToRem(36)};
+    min-height: ${pxToRem(28)};
+    margin-bottom: ${pxToRem(36)};
     flex-wrap: wrap;
-    gap: ${numbPxToRem(12)};
+    gap: ${pxToRem(12)};
     ${text.xl}
 
     ${berryAnimationClasses}
@@ -216,7 +216,7 @@ export const TitleWrapper = styled.header`
     }
 
     .arrow-return-ico {
-        height: ${numbPxToRem(13)};
+        height: ${pxToRem(13)};
         width: fit-content;
         path {
             transition: ${transitionTime.fast} linear;

@@ -1,11 +1,11 @@
 import { FunctionComponent as FC } from "preact/compat"
 import { HTMLAttributes } from "preact/compat"
-import { numbPxToRem } from "@style-guide"
+import { pxToRem } from "@style-guide"
 
 export const MagnifyingGlassIco: FC<HTMLAttributes<SVGElement>> = (props) => (
     <svg
-        width={numbPxToRem(24)}
-        height={numbPxToRem(24)}
+        width={pxToRem(24)}
+        height={pxToRem(24)}
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

@@ -1,5 +1,5 @@
-import { numbPxToRem, pxToRem } from "./px-to-rem"
 import { css } from "styled-components"
+import { pxToRem } from "./px-to-rem"
 import { color } from "./color"
 
 const isFirefox = navigator.userAgent.indexOf("Firefox") !== -1
@@ -22,7 +22,7 @@ const white = css`
         cursor: grab;
         border-radius: 6px;
         background: ${color.mistGray};
-        min-height: ${pxToRem("112px")};
+        min-height: ${pxToRem(112)};
     }
 
     &::-webkit-scrollbar-thumb:active {
@@ -39,7 +39,7 @@ const whiteSmall = css`
 
     &::-webkit-scrollbar-thumb {
         border-radius: 4px;
-        min-height: ${pxToRem("68px")};
+        min-height: ${pxToRem(68)};
     }
 `
 
@@ -69,19 +69,19 @@ const tinyGray = css`
     `}
 
     &::-webkit-scrollbar-track {
-        margin-top: ${numbPxToRem(30)};
-        margin-bottom: ${numbPxToRem(30)};
+        margin-top: ${pxToRem(30)};
+        margin-bottom: ${pxToRem(30)};
     }
     &::-webkit-scrollbar-thumb {
         cursor: grab;
         background-color: ${color.cloudGray};
-        border-radius: ${numbPxToRem(6)};
+        border-radius: ${pxToRem(6)};
     }
     &::-webkit-scrollbar-thumb:active {
         cursor: grabbing;
     }
     &::-webkit-scrollbar {
-        width: ${numbPxToRem(3)};
+        width: ${pxToRem(3)};
     }
 
 `
