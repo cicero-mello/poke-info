@@ -7,6 +7,7 @@ export const Component = styled.header<{ $theme: HeaderTheme }>`${
     display: flex;
     z-index: 10;
     justify-content: center;
+    user-select: none;
     transition-property: background-color, transform;
     transition-duration:
         ${styleGuide.transitionTime.slow},
