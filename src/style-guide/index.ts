@@ -5,6 +5,7 @@ import * as keyframes from "./keyframes"
 import { scrollbar } from "./scrollbar"
 import { color } from "./color"
 import { text } from "./text"
+import * as focus from "./focus"
 export * from "./px-to-rem"
 
 export const styleGuide = {
@@ -14,5 +15,6 @@ export const styleGuide = {
     transitionTime,
     getCardColors,
     keyframes,
-    scrollbar
+    scrollbar,
+    focus
 }

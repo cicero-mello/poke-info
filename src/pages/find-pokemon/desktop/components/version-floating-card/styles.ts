@@ -44,11 +44,14 @@ export const ContentWrapper = styled.div`
         top: 0;
         left: -${numbPxToRem(20)};
         height: fit-content;
-        transition: ${transitionTime.medium} linear;
         opacity: 0;
+        margin-left: ${numbPxToRem(18)};
+        z-index: 1;
 
         .arrow-return-ico {
             height: ${numbPxToRem(18)};
+            width: fit-content;
+
             * {
                 transition: ${transitionTime.fast} linear;
                 fill: ${color.whiteAlpha49};

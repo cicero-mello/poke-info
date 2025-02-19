@@ -1,13 +1,25 @@
-import { pxToRem, styleGuide } from "@style-guide"
+import { FocusOrigin } from "@hooks/use-focus-origin/types"
 import styled, { css, keyframes } from "styled-components"
+import { pxToRem, styleGuide } from "@style-guide"
+import { focusOutline } from "@style-guide/focus"
 
 export const Form = styled.form.attrs({
     className: "pokemon-search-input"
-})`
+})<{$focusOrigin: FocusOrigin}>`
+${({ $focusOrigin }) => css`
     display: flex;
     flex-direction: column;
     gap: ${pxToRem("8px")};
-`
+
+    input {
+        outline: none;
+        ${$focusOrigin === "tab" && css`
+            &:focus {
+                ${focusOutline}
+            }
+        `}
+    }
+`}`
 
 export const Label = styled.label`
     display: flex;
@@ -30,7 +42,6 @@ export const Input = styled.input`
     color: ${styleGuide.color.graphite};
     caret-color: ${styleGuide.color.graphite};
     background-color: ${styleGuide.color.silverGray};
-
     padding: ${pxToRem("4px")} ${pxToRem("8px")};
     border-radius: ${pxToRem("4px")} 0 0 ${pxToRem("4px")};
     width: 100%;
@@ -76,7 +87,7 @@ const showingPopUp = keyframes`
     to { transform: scale(1); }
 `
 
-const hiddingPopUp = keyframes`
+const hidingPopUp = keyframes`
     from {
         opacity: 1;
         filter: blur(0);
@@ -102,7 +113,7 @@ export const NotFoundPopUp = styled.div`
         ${styleGuide.transitionTime.slow}
         ease-in-out forwards
         ,
-        ${hiddingPopUp}
+        ${hidingPopUp}
         ${styleGuide.transitionTime.slow}
         2.4s linear forwards
     ;

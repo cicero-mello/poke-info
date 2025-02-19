@@ -13,11 +13,11 @@
     border: none;
     -webkit-tap-highlight-color: transparent;
 
-    /* &:focus-visible {
+    &:focus-visible {
         outline: 4px solid #f34343;
         outline-offset: 4px;
         border-radius: 2px;
-    } */
+    }
 }
 
 h1, h2, h3, h4, p, ul {

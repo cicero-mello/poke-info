@@ -1,16 +1,18 @@
 import { normalizePokemonName, retractMobileKeyboard } from "@utils"
 import { useEffect, useRef, useState } from "preact/hooks"
+import { FunctionComponent as FC } from "preact"
 import { useQuery } from "@tanstack/react-query"
 import { PokemonSearchProps } from "./types"
 import { SearchPokeballIco } from "@assets"
-import { FunctionComponent as FC } from "preact"
+import { useFocusOrigin } from "@hooks"
 import * as S from "./styles"
 import * as api from "@api"
 
 export const PokemonSearch: FC<PokemonSearchProps> = ({
-    label, onFind
+    label, onFind, tabIndex
 }) => {
     const inputRef = useRef<HTMLInputElement>(null)
+    const focusOrigin = useFocusOrigin(inputRef)
     const [pokemonSearchText, setPokemonSearchText] = useState("")
     const [showNotFound, setShowNotFound] = useState(false)
 
@@ -45,11 +47,15 @@ export const PokemonSearch: FC<PokemonSearchProps> = ({
     }, [pokemonSearchText])
 
     return (
-        <S.Form onSubmit={handleSubmit}>
+        <S.Form
+            onSubmit={handleSubmit}
+            $focusOrigin={focusOrigin}
+        >
             {label && (
                 <S.Label
                     children={label}
                     for="pokemon-search-input"
+                    tabIndex={-1}
                 />
             )}
             <S.InputWrapper>
@@ -60,8 +66,12 @@ export const PokemonSearch: FC<PokemonSearchProps> = ({
                     autoComplete="off"
                     autoCorrect="off"
                     autoCapitalize="off"
+                    tabIndex={tabIndex}
                 />
-                <S.Button $isLoading={isLoading}>
+                <S.Button
+                    $isLoading={isLoading}
+                    tabIndex={tabIndex}
+                >
                     <SearchPokeballIco />
                 </S.Button>
                 {!!showNotFound && <S.NotFoundPopUp />}

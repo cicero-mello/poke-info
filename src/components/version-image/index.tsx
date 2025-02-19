@@ -23,6 +23,7 @@ export const VersionImage: FC<VersionImageProps> = ({
             <Button
                 id={versionName+"-version-image"}
                 onClick={onClick}
+                tabIndex={!!onClick ? 0 : -1}
             >
                 <S.Image
                     src={url}

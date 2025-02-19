@@ -97,6 +97,7 @@ export const PokemonSection: FC<PokemonSectionProps> = ({
                 <PokemonSearch
                     label="Search for a name or number"
                     onFind={onFindPokemon}
+                    tabIndex={!!pokemonId ? -1 : 0}
                 />
                 <PikachuShadowIco />
             </S.SearchWrapper>
@@ -110,6 +111,7 @@ export const PokemonSection: FC<PokemonSectionProps> = ({
             <Button
                 onClick={onReturnToSearch}
                 componentRef={refs.returnButton}
+                tabIndex={!!pokemonId ? 0 : -1}
             >
                 <ArrowReturnIco />
             </Button>

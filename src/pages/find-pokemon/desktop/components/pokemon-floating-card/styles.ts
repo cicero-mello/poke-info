@@ -36,12 +36,15 @@ export const ContentWrapper = styled.div`
         left: -${numbPxToRem(20)};
         height: fit-content;
         opacity: 0;
-        transition: 200ms linear;
+        margin-left: ${numbPxToRem(18)};
+        z-index: 1;
 
         ${pokemonFloatingCardAnimationClasses}
 
         .arrow-return-ico {
             height: ${numbPxToRem(18)};
+            width: fit-content;
+
             * {
                 transition: ${transitionTime.fast} linear;
                 fill: ${color.whiteAlpha49};

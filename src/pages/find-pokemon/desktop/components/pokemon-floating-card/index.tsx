@@ -90,13 +90,18 @@ export const PokemonFloatingCard: FC<PokemonFloatingCardProps> = ({
         <FloatingCard title="Pokémon">
             <S.ContentWrapper>
                 <Spinner $hide={hideSpinner}/>
-                <Button onClick={onReturnToSearch} componentRef={refs.returnButton}>
+                <Button
+                    onClick={onReturnToSearch}
+                    componentRef={refs.returnButton}
+                    tabIndex={!!pokemonId ? 0 : -1}
+                >
                     <ArrowReturnIco />
                 </Button>
                 <S.SearchWrapper ref={refs.searchWrapper}>
                     <PokemonSearch
                         label="Search for a name or number"
                         onFind={onFindPokemon}
+                        tabIndex={!!pokemonId ? -1 : 0}
                     />
                     <PikachuShadowIco />
                 </S.SearchWrapper>
