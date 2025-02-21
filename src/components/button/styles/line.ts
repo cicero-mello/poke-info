@@ -65,13 +65,12 @@ const linePokemon: ThemeFunction = ($emphasis, $pokemonType) => css`
         transition: ${styleGuide.transitionTime.medium} ease-in-out;
     }
 
-    transition-property: opacity, transform;
+    transition-property: color, transform;
     transition-duration: ${styleGuide.transitionTime.mediumSlow};
     transition-timing-function: ease-out;
 
     ${!$emphasis && css`
-        color: ${color.whiteAlpha80}
-        opacity: 0.8;
+        color: ${color.whiteAlpha70};
         transform: scale(0.8);
     `}
 
