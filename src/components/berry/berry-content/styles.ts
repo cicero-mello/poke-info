@@ -1,7 +1,7 @@
 import { berryAnimationClasses } from "@pages/berry/animation"
 import { scrollbar } from "@style-guide/scrollbar"
-import { color } from "@style-guide/color"
 import styled, { css } from "styled-components"
+import { color } from "@style-guide/color"
 import { text } from  "@style-guide/text"
 import { pxToRem } from "@style-guide"
 
@@ -42,6 +42,8 @@ ${({$hasScrollX}) => css`
     ${$hasScrollX && css`
         user-select: none;
         cursor: grab;
+        padding-right: ${pxToRem(24)};
+        padding-left: ${pxToRem(24)};
         &:active {
             cursor: grabbing;
         }
