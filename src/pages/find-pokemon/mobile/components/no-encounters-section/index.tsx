@@ -1,7 +1,7 @@
-import { startPong } from "../../../desktop/components/no-encounters-floating-card/core"
 import { NoEncountersSectionProps } from "./types"
 import { FunctionComponent as FC } from "preact"
 import { useEffect, useRef } from "preact/hooks"
+import { startRicochet } from "cm-ricochet"
 import * as S from "./styles"
 
 export const NoEncountersSection: FC<NoEncountersSectionProps> = ({
@@ -11,13 +11,13 @@ export const NoEncountersSection: FC<NoEncountersSectionProps> = ({
 
     useEffect(() => {
         if (!componentRef.current || !itemRef.current) return
-        const cancelPong = startPong({
+        const stopRicochet = startRicochet({
             container: componentRef.current as HTMLElement,
             item: itemRef.current,
             horizontalSpeed: 100,
             verticalSpeed: 50
         })
-        return () => cancelPong()
+        return stopRicochet
     }, [])
 
     return (
