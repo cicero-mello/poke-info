@@ -32,14 +32,15 @@ export const PokeCard: FC<PokeCardProps> = ({
         <S.Card
             $cardMode={cardMode}
             $pokemonType={data?.types[0]}
+            $isLoading={!data}
         >
             <Button
                 preventNavOnClick
-                navigate={{
+                onClick={data ? onClick : undefined}
+                navigate={!data ? undefined : {
                     path: PATHS.POKEDEX + `/${pokeId}`,
                     transition: false
                 }}
-                onClick={onClick}
             >
                 <S.TopArea>
                     {!!data?.id && data.id < 10000 && (

@@ -11,4 +11,5 @@ export interface PokeCardProps {
 export interface StyledCardProps {
     $pokemonType?: PokeApi.PokemonType
     $cardMode?: PokeCardMode
+    $isLoading?: boolean
 }

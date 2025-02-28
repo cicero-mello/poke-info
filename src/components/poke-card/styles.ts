@@ -22,7 +22,7 @@ const borderLoading = keyframes`
 `
 
 export const Card = styled.div<StyledCardProps>`
-${({ $pokemonType, $cardMode = "Simple" }) => css`
+${({ $pokemonType, $cardMode = "Simple", $isLoading }) => css`
     display: flex;
     position: relative;
     flex-direction: column;
@@ -46,6 +46,16 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
         ${pxToRem(7)}
         #00000033
     ;
+
+    ${$isLoading && css`
+        pointer-events: none !important;
+        cursor: unset !important;
+
+        * {
+            pointer-events: none !important;
+            cursor: unset !important;
+        }
+    `}
 
     .down-area {
         transition-property: border-color, background-color;
@@ -187,7 +197,7 @@ ${({ $pokemonType, $cardMode = "Simple" }) => css`
         }
     }
 
-    .styled-anchor {
+    .styled-anchor, .styled-button {
         height: 100%;
         width: 100%;
     }
