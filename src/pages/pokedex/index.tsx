@@ -1,4 +1,4 @@
-import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList, PokeWindow, PokemonLayout } from "@components"
+import { FavoriteCheckbox, PokemonSearch, Switch, PokeCardMode, PokemonsList, PokeWindow, PokemonLayout, Spinner } from "@components"
 import { useEffect, useMemo, useRef, useState } from "preact/hooks"
 import { customLocalStorage, customSessionStorage } from "@stores"
 import { delay, getRootFontSize, isPokemonPath } from "@utils"
@@ -51,7 +51,7 @@ export const Pokedex = () => {
     ), [showOnlyFavorites])
 
     const pokemonsIds = useMemo(() => {
-        if(!showOnlyFavorites) {
+        if (!showOnlyFavorites) {
             const queryPokemons = infiniteQuery.data?.pages.flat() ?? []
             return queryPokemons.map((pokemons) => pokemons.pokemonId)
         }
@@ -75,7 +75,7 @@ export const Pokedex = () => {
     const handleChangeFavorite = async (checked: boolean) => {
         setHideCards(true)
         await delay(250)
-        if(pokemonsListRef.current){
+        if (pokemonsListRef.current) {
             pokemonsListRef.current.scrollTop = 0
         }
         setShowOnlyFavorites(checked)
@@ -93,7 +93,7 @@ export const Pokedex = () => {
     }
 
     useEffect(() => {
-        if(infiniteQuery.isLoading) setHideCards(true)
+        if (infiniteQuery.isLoading) setHideCards(true)
         else setHideCards(false)
     }, [infiniteQuery.isLoading])
 
@@ -109,7 +109,7 @@ export const Pokedex = () => {
 
     const rootFontSize = getRootFontSize()
     const isPokemonPageAnimationPreviewMobile = (
-        windowDimensions.width <= 760/16 * rootFontSize
+        windowDimensions.width <= 760 / 16 * rootFontSize
     )
 
     const filtersAreHidden = (
@@ -148,6 +148,7 @@ export const Pokedex = () => {
                         onClick={() => setHideFilters(state => !state)}
                     />
                 }
+                {infiniteQuery.isPending && <Spinner />}
                 {!infiniteQuery.isLoading && (
                     <PokemonsList
                         ref={pokemonsListRef}

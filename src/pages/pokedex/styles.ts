@@ -21,6 +21,11 @@ ${({ $chosePokemon }) => css`
         }
     `}
 
+    > .poke-window > .spinner {
+        top:  calc(50% - ${pxToRem(12)});
+        left: calc(50% - ${pxToRem(12)});
+    }
+
     @media(max-height: ${pokeWindowRem.noWhiteLine.maxHeight}){
         padding: 12px 48px;
     }
@@ -35,7 +40,7 @@ ${({ $chosePokemon }) => css`
 
 export const Filters = styled.div.attrs({
     className: "filters"
-})<{ $hide: boolean }>`
+}) <{ $hide: boolean }>`
 ${({ $hide }) => css`
     display: flex;
     position: relative;
@@ -120,7 +125,7 @@ export const RightFilters = styled.span.attrs({
 
 export const ToggleFilterButton = styled.button.attrs({
     className: "toggle-filter-button"
-})<{ $hide: boolean }>`
+}) <{ $hide: boolean }>`
 ${({ $hide }) => css`
 
     position: relative;
